@@ -24,14 +24,14 @@ You can work together on the problem sets and discuss them with classmates, but 
 
 I expect these assignments to be coded from "scratch." I will specify when canned packages are appropriate. In other words, when estimating a regression, I am not looking for the results of `lm( y ~ x)`. Rather, I expect you to construct two matrices and calculate the estimates using this. I also expect you to attempt to maintain good coding practices while doing so -- this will likely be challenging for those of you who are inexperienced at programming, so please plan accordingly -- I will not be providing additional instruction on coding beyond what I cover in class.  See the following resources in R for guidance (Many thanks to Max Kasy for organizing these materials):
 
-1. Introduction to Base R: \url{https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf}
-2. R for Data Science: \url{https://r4ds.had.co.nz/}
-3. Guidance on Data Visualization: \url{https://socviz.co/}
+1. Introduction to Base R: https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf
+2. R for Data Science: https://r4ds.had.co.nz/
+3. Guidance on Data Visualization: https://socviz.co/
 
 ## Main References:
 This is a partial list of various interesting and useful books that will be touched during the course. 
 
-* Joshua Angrist and J\"orn-Steffen Pischke, {\textit{Mostly Harmless Econometrics}}
-* Scott Cunningham, {\textit{Causal Inference: The Mixtape}},  \url{https://mixtape.scunning.com/}
-* Benjamin T. Miller and Peter M. Aronow, {\textit{Foundations of Agnostic Statistics}}
-* Kieran Healy, {\textit{Data Visualization: A Practical Introduction}}, \url{https://socviz.co/}
+* Joshua Angrist and J\"orn-Steffen Pischke,  *Mostly Harmless Econometrics*
+* Scott Cunningham,  *Causal Inference: The Mixtape*,  https://mixtape.scunning.com/
+* Benjamin T. Miller and Peter M. Aronow, *Foundations of Agnostic Statistics*
+* Kieran Healy, *Data Visualization: A Practical Introduction*, https://socviz.co/
