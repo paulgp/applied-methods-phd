@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  31 JAN 2021 23:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  31 JAN 2021 23:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1448,8 +1448,12 @@ Overfull \hbox (64.76743pt too wide) detected at line 797
 [25
 
 ]
-Overfull \hbox (64.76743pt too wide) detected at line 822
+Overfull \hbox (64.76743pt too wide) detected at line 824
 [][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+
+Overfull \vbox (1.69095pt too high) detected at line 824
  []
 
 [26
@@ -1464,11 +1468,11 @@ Overfull \hbox (64.76743pt too wide) detected at line 822
 \tf@snm=\write8
 \openout8 = `po_dags.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 825.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 825.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 827.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 827.
  (./po_dags.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 825.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 825.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 827.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 827.
 Package rerunfilecheck Info: File `po_dags.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
@@ -1498,7 +1502,7 @@ ic/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helv
 etic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uh
 vr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.p
 fb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on po_dags.pdf (26 pages, 176818 bytes).
+Output written on po_dags.pdf (26 pages, 176962 bytes).
 PDF statistics:
  235 PDF objects out of 1000 (max. 8388607)
  182 compressed objects within 2 object streams

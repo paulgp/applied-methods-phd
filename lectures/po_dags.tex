@@ -801,14 +801,16 @@ the data''\\
   \begin{column}{.7\textwidth}
     \begin{wideitemize}
     \item \textbf{Important}: do not lose sight of the fact that these
-      should be estimates that inform our economic model (fully formalized or not)
+      should be estimates that inform our economic model
     \item (Haile 2020) The reduced form equation is one where the
       inputs are i) \emph{exogeneous} (ed note: we have not defined
       this) and ii) unobservable (``structural errors'') and the outputs
       are endogeneous variables. [E.g. $Y_{i} = f(D_{i}, X_{i}, \epsilon_{i})$]
     \item The PO framework's key insight was considering the sets of
-      potential outcomes for the same individuals as a form of missing
-      data. Note that these are effectively  equivalent:
+      counterfactuals for each individual. However, it is not magic;
+      insights can typically map across different notations (DAGs, PO,
+      structural econometric equations).  Note that these are
+      effectively equivalent:
       \begin{align*}
         Y_{i} &= D_{i}Y_{i}(1) + (1-D_{i})Y_{i}(0)\\
         Y_{i} &= \alpha + D_{i}(\tau + v_{i}) + u_{i}        
