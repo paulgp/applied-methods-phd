@@ -504,17 +504,17 @@ the data''\\
   \begin{column}{.5\textwidth}
     \begin{center}
       \begin{tabular}{ccccc}
-    \toprule
-    i & $Y_{i}(1)$ &  $Y_{i}(0)$ & $D_{i}$ & $Y_{i}$ \\
-    \midrule
-    1 &     1      &     -      &   1   & 1 \\
-    2 &     0      &     -      &   1   & 0 \\
-    3 &     1      &     -      &   1   & 1 \\
-    4 &     1      &     -      &   1   & 1 \\
-    5 &     -      &     0      &   0   & 0 \\
-    6 &     -      &     0      &   0   & 0 \\
-    7 &     -      &     0      &   0   & 0 \\        
-    8 &     -      &     1      &   0   & 1 \\    
+        \toprule
+        $i$ & $Y_{i}(1)$ &  $Y_{i}(0)$ & $D_{i}$ & $Y_{i}$ \\
+        \midrule
+        1 &     1      &     -      &   1   & 1 \\
+        2 &     0      &     -      &   1   & 0 \\
+        3 &     1      &     -      &   1   & 1 \\
+        4 &     1      &     -      &   1   & 1 \\
+        5 &     -      &     0      &   0   & 0 \\
+        6 &     -      &     0      &   0   & 0 \\
+        7 &     -      &     0      &   0   & 0 \\        
+        8 &     -      &     1      &   0   & 1 \\    
       \end{tabular}
     \end{center}
   \end{column}%
@@ -549,45 +549,277 @@ the data''\\
   \hfill%
   \begin{column}{.5\textwidth}
     \begin{center}
-\only<1>{    \begin{tikzpicture}
-% nodes %
-%\node[text centered] (z) {$Z$};
-\node[text centered] (t) {$D$};
-\node[right=1.5 of t, text centered] (y) {$Y$};
-%\node[draw, rectangle, dashed, above = 1 of t, text centered] (u) {$U$};
-
-% edges %
-%\draw[->, line width= 1] (z) --  (t);
-\draw [->, line width= 1] (t) -- (y);
-%\draw[->,red, line width= 1,dashed] (u) --node {X} (z);
-%\draw[->,line width= 1] (u) --(t);
-%\draw[->,line width= 1] (u) -- (y);
-%\draw[->, red, line width=1,dashed] (z) to  [out=270,in=270, looseness=0.5] node{X} (y);
-\end{tikzpicture}
-}
-\only<2>{
-   \begin{tikzpicture}
-% nodes %
-%\node[text centered] (z) {$Z$};
-\node[text centered] (t) {$D$};
-\node[right=1.5 of t, text centered] (y) {$Y$};
-\node[draw, rectangle, dashed, above = 1 of t, text centered] (u) {$U$};
-
-% edges %
-%\draw[->, line width= 1] (z) --  (t);
-\draw [->, line width= 1] (t) -- (y);
-%\draw[->,red, line width= 1,dashed] (u) --node {X} (z);
-\draw[->,line width= 1] (u) --(t);
-\draw[->,line width= 1] (u) -- (y);
-%\draw[->, red, line width=1,dashed] (z) to  [out=270,in=270, looseness=0.5] node{X} (y);
-\end{tikzpicture}
-}
-\end{center}
+      \begin{tikzpicture}
+        \node[text centered] (t) {$D$};
+        \node[right=1.5 of t, text centered] (y) {$Y$};
+        \draw [->, line width= 1] (t) -- (y);
+      \end{tikzpicture}
+    \end{center}
   \end{column}
 \end{columns}
-  
 \end{frame}
 
+\begin{frame}{Identification through Directed Acylic Graphs (DAGs)}
+\begin{columns}[T] % align columns
+  \begin{column}{.5\textwidth}
+    \begin{wideitemize}
+    \item We can also allow for the unobservable $U$, which drove
+      identification concerns above
+    \item In this case, $U$ is termed a \emph{confounder}. Why?
+    \item Examine the paths by which $D$ links to $Y$:
+      \begin{itemize}
+      \item The standard direct effect $D \rightarrow Y$
+      \item The ``Back-Door'' path $D \leftarrow U \rightarrow Y$
+      \end{itemize}
+    \item Note that the back-door is \emph{not} causal
+    \item Key point: effect of $D$ on $Y$ is not identified under this setup
+    \end{wideitemize}
+  \end{column}%
+  \hfill%
+  \begin{column}{.5\textwidth}
+    \begin{center}
+      \begin{tikzpicture}
+        % nodes %
+        % \node[text centered] (z) {$Z$};
+        \node[text centered] (t) {$D$};
+        \node[right=1.5 of t, text centered] (y) {$Y$};
+        \node[draw, rectangle, dashed, above = 1 of t, text centered] (u) {$U$};
+
+        % edges %
+        % \draw[->, line width= 1] (z) --  (t);
+        \draw [->, line width= 1] (t) -- (y);
+        % \draw[->,red, line width= 1,dashed] (u) --node {X} (z);
+        \draw[->,line width= 1] (u) --(t);
+        \draw[->,line width= 1] (u) -- (y);
+%\draw[->, red, line width=1,dashed] (z) to  [out=270,in=270, looseness=0.5] node{X} (y);
+      \end{tikzpicture}
+    \end{center}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Identification through Directed Acylic Graphs (DAGs)}
+\begin{columns}[T] % align columns
+  \begin{column}{.6\textwidth}
+    \begin{wideitemize}
+    \item We replace $U$ with an observable $X$
+      identification concerns above
+    \item $X$ is still a confounder, but we could condition on it and
+      identify our effect. Why?
+    \item Examine the paths by which $D$ links to $Y$:
+      \begin{itemize}
+      \item The standard direct effect $D \rightarrow Y$
+      \item The ``Back-Door'' path $D \leftarrow X \rightarrow Y$
+      \end{itemize}
+    \item Now, conditioning on a variable along the path
+      ``blocks'' the path
+      \begin{itemize}
+      \item E.g. $D$ is independent of $Y$ \emph{conditional} on $X$ (strong ignorability)
+      \end{itemize}
+    \end{wideitemize}
+  \end{column}%
+  \hfill%
+  \begin{column}{.5\textwidth}
+    \begin{center}
+      \begin{tikzpicture}
+        % nodes %
+        % \node[text centered] (z) {$Z$};
+        \node[text centered] (t) {$D$};
+        \node[right=1.5 of t, text centered] (y) {$Y$};
+        \node[above = 1 of t, text centered] (u) {$X$};
+
+        % edges %
+        % \draw[->, line width= 1] (z) --  (t);
+        \draw [->, line width= 1] (t) -- (y);
+        % \draw[->,red, line width= 1,dashed] (u) --node {X} (z);
+        \draw[->,line width= 1] (u) --(t);
+        \draw[->,line width= 1] (u) -- (y);
+%\draw[->, red, line width=1,dashed] (z) to  [out=270,in=270, looseness=0.5] node{X} (y);
+      \end{tikzpicture}
+    \end{center}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Identification through Directed Acylic Graphs (DAGs)}
+\begin{columns}[T] % align columns
+  \begin{column}{.6\textwidth}
+    \begin{wideitemize}
+    \item One more example before formalizing the goal
+      \begin{itemize}
+      \item $X$ is now a ``collider'' (note direction of arrows
+      \end{itemize}
+    \item Examine the paths by which $D$ links to $Y$:
+      \begin{itemize}
+      \item The standard direct effect $D \rightarrow Y$
+      \item The ``Back-Door'' path $D \rightarrow X \leftarrow Y$
+      \end{itemize}
+    \item Key difference: a backdoor collider is automatically blocked
+      (if it or upstream variables are not conditioned on)
+      \begin{itemize}
+      \item If you condition on $X$, you open the path!
+      \item Example: conditioning on an outcome variable
+      \end{itemize}
+    \end{wideitemize}
+  \end{column}%
+  \hfill%
+  \begin{column}{.5\textwidth}
+    \begin{center}
+      \begin{tikzpicture}
+        % nodes %
+        % \node[text centered] (z) {$Z$};
+        \node[text centered] (t) {$D$};
+        \node[right=1.5 of t, text centered] (y) {$Y$};
+        \node[above = 1 of t, text centered] (u) {$X$};
+
+        % edges %
+        % \draw[->, line width= 1] (z) --  (t);
+        \draw [->, line width= 1] (t) -- (y);
+        % \draw[->,red, line width= 1,dashed] (u) --node {X} (z);
+        \draw[<-,line width= 1] (u) --(t);
+        \draw[<-,line width= 1] (u) -- (y);
+%\draw[->, red, line width=1,dashed] (z) to  [out=270,in=270, looseness=0.5] node{X} (y);
+      \end{tikzpicture}
+    \end{center}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Identification through Directed Acylic Graphs (DAGs)}
+\begin{columns}[T] % align columns
+  \begin{column}{.6\textwidth}
+    \begin{wideitemize}
+    \item<1-> The graphs looked similar, but the order of true causal path
+      mattered
+    \item<2-> Identifying colliders is a crucial aspect of identifying
+      whether an effect is identified
+    \item<3-> Key value in a DAG (to me) is laying out a model of
+      causality, and clarifying what effects need to be restricted, even in a complicated setting
+      \begin{itemize}
+      \item For example, how is the effect of $D$ on $Y$ identified here?
+      \end{itemize}
+    \item<4-> What about now?
+    \end{wideitemize}
+  \end{column}%
+  \hfill%
+  \begin{column}{.5\textwidth}
+    \begin{center}
+\only<1>{      \begin{tikzpicture}
+        % nodes %
+        % \node[text centered] (z) {$Z$};
+        \node[text centered] (t) {$D$};
+        \node[right=1.5 of t, text centered] (y) {$Y$};
+        \node[above = 1 of t, text centered] (u) {$X$};
+
+        % edges %
+        % \draw[->, line width= 1] (z) --  (t);
+        \draw [->, line width= 1] (t) -- (y);
+        % \draw[->,red, line width= 1,dashed] (u) --node {X} (z);
+        \draw[<-,line width= 1] (u) --(t);
+        \draw[<-,line width= 1] (u) -- (y);
+%\draw[->, red, line width=1,dashed] (z) to  [out=270,in=270, looseness=0.5] node{X} (y);
+      \end{tikzpicture}}
+\only<2>{      \begin{tikzpicture}
+        % nodes %
+        % \node[text centered] (z) {$Z$};
+        \node[text centered] (t) {$D$};
+        \node[right=1.5 of t, text centered] (y) {$Y$};
+        \node[above = 1 of t, text centered] (u) {$U$};
+
+        % edges %
+        % \draw[->, line width= 1] (z) --  (t);
+        \draw [->, line width= 1] (t) -- (y);
+        % \draw[->,red, line width= 1,dashed] (u) --node {X} (z);
+        \draw[<-,line width= 1] (u) --(t);
+        \draw[<-,line width= 1] (u) -- (y);
+%\draw[->, red, line width=1,dashed] (z) to  [out=270,in=270, looseness=0.5] node{X} (y);
+      \end{tikzpicture}}
+\only<3>{      \begin{tikzpicture}
+        % nodes %
+        % \node[text centered] (z) {$Z$};
+        \node[text centered] (t) {$D$};
+        \node[right=1.5 of t, text centered] (y) {$Y$};
+        \node[above = 1 of t, text centered] (u) {$X$};
+        \node[left = 1 of t, text centered] (z) {$Z$};        
+        % edges %
+        % \draw[->, line width= 1] (z) --  (t);
+        \draw [->, line width= 1] (t) -- (y);
+        % \draw[->,red, line width= 1,dashed] (u) --node {X} (z);
+        \draw[<-,line width= 1] (u) --(t);
+        \draw[->,line width= 1] (z) --(t);
+        \draw[->,bend right, line width= 1] (z) to [out=-50,in=-130]  (y);                
+        \draw[<-,line width= 1] (u) -- (y);
+%\draw[->, red, line width=1,dashed] (z) to  [out=270,in=270, looseness=0.5] node{X} (y);
+      \end{tikzpicture}}
+\only<4>{      \begin{tikzpicture}
+        % nodes %
+        % \node[text centered] (z) {$Z$};
+        \node[text centered] (t) {$D$};
+        \node[right=1.5 of t, text centered] (y) {$Y$};
+        \node[draw, above = 1 of t, text centered] (u) {$U$};
+        \node[left = 1 of t, text centered] (z) {$Z$};        
+        % edges %
+        % \draw[->, line width= 1] (z) --  (t);
+        \draw [->, line width= 1] (t) -- (y);
+        % \draw[->,red, line width= 1,dashed] (u) --node {X} (z);
+        \draw[->,line width= 1] (u) --(t);
+        \draw[->,line width= 1] (z) --(t);
+        \draw[->,line width= 1] (u) -- (y);
+%\draw[->, red, line width=1,dashed] (z) to  [out=270,in=270, looseness=0.5] node{X} (y);
+      \end{tikzpicture}}
+    \end{center}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Key steps with a DAG}
+\begin{columns}[T] % align columns
+  \begin{column}{.7\textwidth}
+    \begin{wideitemize}
+    \item Steps when using a DAG
+      \begin{enumerate}
+      \item Write down the DAG, and identify what effect you want
+      \item Write all paths between the two nodes
+      \item What is the direct ``causal'' paths (e.g. the arrows all flow in the right direction)?
+      \item How many backdoor paths are there? Are they blocked? Can they be?
+      \end{enumerate}
+    \item Crucial point: conditioning on colliders will cause more harm than good
+    \item We will revisit this setup for some empirical settings
+      \begin{itemize}
+      \item Let me know if you think there are good use cases!
+      \end{itemize}
+    \end{wideitemize}
+  \end{column}%
+  \hfill%
+  \begin{column}{.5\textwidth}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Strutural equations and causal effects (Haile 2020)}
+\begin{columns}[T] % align columns
+  \begin{column}{.7\textwidth}
+    \begin{wideitemize}
+    \item \textbf{Important}: do not lose sight of the fact that these
+      should be estimates that inform our economic model (fully formalized or not)
+    \item (Haile 2020) The reduced form equation is one where the
+      inputs are i) \emph{exogeneous} (ed note: we have not defined
+      this) and ii) unobservable (``structural errors'') and the outputs
+      are endogeneous variables. [E.g. $Y_{i} = f(D_{i}, X_{i}, \epsilon_{i})$]
+    \item The PO framework's key insight was considering the sets of
+      potential outcomes for the same individuals as a form of missing
+      data. Note that these are effectively  equivalent:
+      \begin{align*}
+        Y_{i} &= D_{i}Y_{i}(1) + (1-D_{i})Y_{i}(0)\\
+        Y_{i} &= \alpha + D_{i}(\tau + v_{i}) + u_{i}        
+      \end{align*}
+    \end{wideitemize}
+  \end{column}%
+  \hfill%
+  \begin{column}{.5\textwidth}
+  \end{column}
+\end{columns}
+\end{frame}
 
 
 \end{document}

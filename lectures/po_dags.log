@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  25 JAN 2021 21:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  31 JAN 2021 23:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1399,6 +1399,62 @@ Overfull \hbox (62.97444pt too wide) detected at line 500
 ] [18
 
 ]
+Overfull \hbox (21.43698pt too wide) detected at line 642
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[19
+
+]
+Overfull \hbox (21.43698pt too wide) detected at line 686
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[20
+
+]
+Overfull \hbox (21.43698pt too wide) detected at line 773
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[21
+
+]
+Overfull \hbox (21.43698pt too wide) detected at line 773
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[22
+
+]
+Overfull \hbox (21.43698pt too wide) detected at line 773
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[23
+
+]
+Overfull \hbox (21.43698pt too wide) detected at line 773
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[24
+
+]
+Overfull \hbox (64.76743pt too wide) detected at line 797
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[25
+
+]
+Overfull \hbox (64.76743pt too wide) detected at line 822
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[26
+
+]
 \tf@nav=\write6
 \openout6 = `po_dags.nav'.
 
@@ -1408,26 +1464,22 @@ Overfull \hbox (62.97444pt too wide) detected at line 500
 \tf@snm=\write8
 \openout8 = `po_dags.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 593.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 593.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 825.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 825.
  (./po_dags.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 593.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 593.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 825.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 825.
 Package rerunfilecheck Info: File `po_dags.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 26361 strings out of 480608
- 560833 string characters out of 5903631
+ 26420 strings out of 480608
+ 561659 string characters out of 5903631
  982659 words of memory out of 5000000
- 41491 multiletter control sequences out of 15000+600000
+ 41534 multiletter control sequences out of 15000+600000
  611147 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,12n,76p,781b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,12n,76p,781b,1095s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
 exlive/2020/texmf-dist/fonts/enc/dvips/lato/a_y72t7m.enc}{/usr/local/texlive/20
 20/texmf-dist/fonts/enc/dvips/lato/a_vc7epu.enc}</usr/local/texlive/2020/texmf-
@@ -1446,10 +1498,10 @@ ic/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helv
 etic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uh
 vr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.p
 fb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on po_dags.pdf (18 pages, 163618 bytes).
+Output written on po_dags.pdf (26 pages, 176818 bytes).
 PDF statistics:
- 191 PDF objects out of 1000 (max. 8388607)
- 146 compressed objects within 2 object streams
- 37 named destinations out of 1000 (max. 500000)
+ 235 PDF objects out of 1000 (max. 8388607)
+ 182 compressed objects within 2 object streams
+ 53 named destinations out of 1000 (max. 500000)
  47 words of extra memory for PDF output out of 10000 (max. 10000000)
 
