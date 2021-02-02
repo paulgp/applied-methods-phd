@@ -60,6 +60,9 @@
 \usepackage{graphicx}
 \usepackage[space]{grffile}
 \usepackage{booktabs}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\DeclareMathOperator{\Supp}{Supp}
 
 % These are my colors -- there are many like them, but these ones are mine.
 \definecolor{blue}{RGB}{0,114,178}
@@ -142,7 +145,7 @@
   \end{frame}
 }
 
-\title[]{\textcolor{blue}{Introduction to Applied Empirical Methods}}
+\title[]{\textcolor{blue}{Randomization: experiments, observational and Fisher}}
 \author[PGP]{}
 \institute[FRBNY]{\small{Paul Goldsmith-Pinkham}}
 \date{\today}
@@ -176,107 +179,17 @@
 \end{frame}
 
 % INTRO
-\begin{frame}{Assumed Background}
+\begin{frame}{Causality and counterfactuals}
 \begin{columns}[T] % align columns
-\begin{column}{.7\textwidth}
+\begin{column}{.58\textwidth}
   \begin{wideitemize}
-  \item This class is targetted towards researchers interested in empirical work
-  \item The course assumes quite a bit of exposure to econometrics material already
-    \begin{itemize}
-    \item I assume the first year sequence here at Yale
-    \end{itemize}
-  \item This is not because the material is deeply technical, but
-    because I want to be able to assume some basic fluency in
-    statistical concepts
+    \item 
   \end{wideitemize}
 \end{column}%
 \hfill%
 \begin{column}{.38\textwidth}
-  \makebox[\linewidth][c]{
-    \resizebox{\linewidth}{!}{
-%      \includegraphics{how-to-draw-an-owl.pdf}
-    }
-  }
 \end{column}%
 \end{columns}
-\end{frame}
-
-% INTRO
-\begin{frame}{Requirements }
-\begin{columns}[T] % align columns
-\begin{column}{.7\textwidth}
-  \begin{wideitemize}
-  \item There are no exams, I will be assigning problem sets on a (hopefully) weekly basis.
-  \item You can use any computer package you wish to use. Solutions will be handed out written in R. 
-    \begin{itemize}
-    \item See syllabus for details
-    \end{itemize}
-  \item There are no required readings, but the papers that I have
-    listed in the syllabus are relevant to the material we will cover
-    in class.
-  \item I also highly recommend the following texts:
-    \begin{itemize}
-    \item Angrist and  Pischke, Mostly Harmless Econometrics
-    \item  Cunningham, Causal Inference: The Mixtape, https://mixtape.scunning.com/
-    \item  Miller and Aronow, Foundations of Agnostic Statistics
-    \end{itemize}
-  \end{wideitemize}
-\end{column}%
-\hfill%
-\begin{column}{.38\textwidth}
-  \makebox[\linewidth][c]{
-    \resizebox{\linewidth}{!}{
-%      \includegraphics{how-to-draw-an-owl.pdf}
-    }
-  }
-\end{column}%
-\end{columns}
-\end{frame}
-
-
-% INTRO
-\begin{frame}{Important caveat}
-\begin{columns}[T] % align columns
-\begin{column}{.7\textwidth}
-  \begin{wideitemize}
-  \item This is my first time teaching this course
-    \begin{itemize}
-    \item There will be growing pains!
-    \item Especially with homeworks
-    \end{itemize}
-  \item In the end, this is a graduate course targetted at making you a good empirical researcher
-  \item My goal is to exposed to a wide range of empirical methods,
-    and understand how they connect.
-    \begin{itemize}
-    \item We will not drill down deeply into some material
-    \item I am happy to discuss it more outsie of class
-    \end{itemize}
-  \item I will also emphasize how to communicate the econometrics underlying your research ideas
-    \begin{itemize}
-    \item This inclues good graphic design!
-    \end{itemize}
-  \end{wideitemize}
-\end{column}%
-\hfill%
-\begin{column}{.38\textwidth}
-  \makebox[\linewidth][c]{
-    \resizebox{\linewidth}{!}{
-%      \includegraphics{how-to-draw-an-owl.pdf}
-    }
-  }
-\end{column}%
-\end{columns}
-\end{frame}
-
-
-\begin{frame}{Structure of the course}
-  \begin{wideitemize}
-  \item Six parts, first three are ``structure'' (12 lectures), second
-    three parts are on different ``bespoke'' methods (12 lectures)
-  \item We will begin with an overview on the structure for causal inference
-  \item N.B. I am keeping everything on the github repo and will
-    update you via Canvas notifications!
-  \end{wideitemize}
 \end{frame}
 
 
