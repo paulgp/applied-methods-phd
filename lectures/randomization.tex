@@ -145,7 +145,7 @@
   \end{frame}
 }
 
-\title[]{\textcolor{blue}{Randomization: experiments, observational and Fisher}}
+\title[]{\textcolor{blue}{Research Design, Randomization and Design-Based Inference }}
 \author[PGP]{}
 \institute[FRBNY]{\small{Paul Goldsmith-Pinkham}}
 \date{\today}
@@ -479,7 +479,7 @@
   \begin{column}{.7\textwidth}
   \begin{wideitemize}
   \item Key point: we know the exact probability distribution over
-    $\Omega$, and hence $\mathbf{Z}$.
+    $\Omega$, and hence $\mathbf{D}$.
   \item<2-> First consider with full knowledge for the true draw of
     $\mathbf{D}$ (the assignment that happened in our data)
   \item<3-> The fundamental problem of causal inference  binds
@@ -539,15 +539,18 @@
   \item We now need an estimator for $\bar{\tau} = n^{-1}\sum_{i=1}^{n}\tau_{i}$
   \item We already know under random assignment that $E(Y_{i}| D_{i} = 1) - E(Y_{i} | D_{i} = 0)$ identifies $E(\tau_{i})$
     \begin{itemize}
-    \item Take the empirical estimator of this expression: $\hat{\bar{\tau}}(\mathbf{D}, \mathbf{Y}) = \frac{\mathbf{D}'\mathbf{Y}}{\sum_{i}D_{i}} - \frac{(\mathbf{1}-\mathbf{D})'\mathbf{Y}}{\sum_{i}(1-D_{i})}$
+    \item Take the empirical estimator of this expression:
+      $\hat{\bar{\tau}}(\mathbf{D}, \mathbf{Y}) =
+      \frac{\mathbf{D}'\mathbf{Y}}{\sum_{i}D_{i}} -
+      \frac{(\mathbf{1}-\mathbf{D})'\mathbf{Y}}{\sum_{i}(1-D_{i})}$
     \item Note that this expectation operator is well-defined from the
       objects we already know -- only $D$ is random, and we know its
       marginal distribution over the sample
     \item Can show that under certain assumptions (random assignment
       is equal across $\Omega$) that this estimator is unbiased.
       \begin{itemize}
-      \item We can also now construct tests for this
-        estimator that are more efficient than model based versions in small samples
+      \item We can also now construct tests for this estimator that
+        are more efficient than model based versions in small samples
       \end{itemize}
     \end{itemize}
   \end{wideitemize}
@@ -556,27 +559,26 @@
 \begin{frame}
   
   \begin{wideitemize}
-      \item Is it an unbiased estimator in this case?
-      \begin{equation}
-        E(\hat{\bar{\tau}}(\mathbf{D}, \mathbf{Y})) = \sum_{\mathbf{d} \in \Omega} \tau_{\mathbf{d}, \mathbf{Y}} \times Pr(\mathbf{D} = \mathbf{d})
-      \end{equation}
-    \item If we assume that assignment is completely equal, then
-      $Pr(\mathbf{D} = \mathbf{d}) = 1/ |\Omega|$ and
-      \begin{align*}
-        E(\hat{\bar{\tau}}(\mathbf{D}, \mathbf{Y})) &= \frac{1}{|\Omega|}\sum_{\mathbf{d} \in \Omega} \frac{\mathbf{d}'\mathbf{Y}}{\sum_{i}d_{i}} - \frac{(\mathbf{1}-\mathbf{d})'\mathbf{Y}}{\sum_{i}(1-d_{i})}\\
-                                                    &= \frac{1}{|\Omega|}\sum_{\mathbf{d} \in \Omega} n^{-1}_{t}\sum_{i}Y_{i}(1)d_{i} - n^{-1}_{c}\sum_{i}Y_{i}(0)(1-d_{i})\\
-                                                    &= \sum_{i}Y_{i}(1)\left(\frac{1}{|\Omega|}\sum_{\mathbf{d} \in \Omega} n^{-1}_{t}d_{i}\right) -  \sum_{i}Y_{i}(0)\left(\frac{1}{|\Omega|}\sum_{\mathbf{d} \in \Omega}n^{-1}_{c}(1-d_{i})\right)\\
-                                                                                                          &= \sum_{i}Y_{i}(1)\times Pr(D_{i} = 1) -  \sum_{i}Y_{i}(0)\times Pr(D_{i} = 0)         = E(\bar{\tau})                                             
-      \end{align*}
+  \item Is it an unbiased estimator in this case?
+  \item If we assume that assignment is completely equal, then let
+    $\pi_{1}(\mathbf{D}) = n_{t}(\mathbf{D})/n$ be the share treated,
+    and $E(\pi_{1}^{-1}D_{i}) = 1$. Then,
+      \begin{align}
+        E(\hat{\bar{\tau}}(\mathbf{D}, \mathbf{Y})) &= E(\frac{\mathbf{D}'\mathbf{Y}}{\sum_{i}D_{i}} - \frac{(\mathbf{1}-\mathbf{D})'\mathbf{Y}}{\sum_{i}(1-D_{i})})\\
+                                                    &=n^{-1}E\left(\sum_{i}\pi_{1}^{-1}Y_{i}D_{i} - \sum_{i}(1-\pi_{1})^{-1}Y_{i}(1-D_{i})\right)\\
+                                                    &=n^{-1}E\left(\sum_{i}\pi_{1}^{-1}Y_{i}(1)D_{i} - \sum_{i}(1-\pi_{1})^{-1}Y_{i}(0)(1-D_{i})\right)\\
+                                                    &=n^{-1}\sum_{i}Y_{i}(1)E\left(\pi_{1}^{-1}D_{i}\right) - n^{-1}\sum_{i}Y_{i}(0)E\left((1-\pi_{1})^{-1}(1-D_{i})\right)\\
+        &=n^{-1}\sum_{i}Y_{i}(1) - Y_{i}(0) = n^{-1}\sum_{i}\tau_{i}
+        %\sum_{\mathbf{d} \in \Omega} n^{-1}_{t}(\mathbf{d})\sum_{i} Y_{i}\times Pr(\mathbf{D} = \mathbf{d})
+      \end{align}
     \end{wideitemize}
-
 \end{frame}
 
 
 \begin{frame}{Variance of $\hat{\tau}$}
   \begin{wideitemize}
   \item The variance of $\hat{\tau}$ (based on the sampling variation
-    in the random design) is known thanks to Newyman (1923)
+    in the random design) is known thanks to Neyman (1923)
     \begin{equation}
       \sigma^{2}_{\hat{\bar{\tau}}} = \frac{1}{n-1}\left(\frac{n_{t}\sigma^{2}_{0}}{n_{c}} + \frac{n_{c} \sigma^{2}_{1}}{n_{t}} + 2\sigma_{0,1}\right)
     \end{equation}
@@ -586,8 +588,8 @@
     the potential control, treatment, and the covariance between the
     two.
   \item Unfortunately, $\sigma_{0,1}$ comes from the joint
-    distribution of $\mathbf{Y}_{0}, \mathbf{Y}_{1}$, and so isn't directly knowable. Instead, we bound for a
-    conservative estimate:
+    distribution of $\mathbf{Y}_{0}, \mathbf{Y}_{1}$, and so isn't
+    directly knowable. Instead, we bound for a conservative estimate:
     \begin{equation}
       \hat{\sigma}^{2}_{\hat{\bar{\tau}}} = \frac{n}{n-1}\left(\frac{\sigma^{2}_{0}}{n_{c}} + \frac{\sigma^{2}_{0}}{n_{t}}\right)
     \end{equation}
@@ -675,7 +677,7 @@
   \item This estimator is unbiased even in settings where we don't have equal
     weighting across the sampling space
     \begin{itemize}
-    \item This is effectively the propensity score!
+    \item This is reweighting using the propensity score!
     \end{itemize}
   \end{wideitemize}
 \end{frame}
