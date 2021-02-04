@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  1 FEB 2021 14:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  4 FEB 2021 12:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1234,6 +1234,335 @@ LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
 {/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
 
 ]
+LaTeX Font Info:    Trying to load font information for OML+zplm on input line 
+285.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/omlzplm.fd
+File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
+)
+LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
+285.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/omszplm.fd
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+)
+LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 
+285.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/omxzplm.fd
+File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+)
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 285.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 285.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 285.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 285.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 285.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 285.
+LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 
+285.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/ot1zplm.fd
+File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+)
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 2
+85.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+
+
+LaTeX Warning: Font shape declaration has incorrect series value `mc'.
+               It should not contain an `m'! Please correct it.
+               Found on input line 21.
+
+
+LaTeX Warning: Font shape declaration has incorrect series value `mc'.
+               It should not contain an `m'! Please correct it.
+               Found on input line 24.
+
+
+LaTeX Warning: Font shape declaration has incorrect series value `mc'.
+               It should not contain an `m'! Please correct it.
+               Found on input line 27.
+
+
+LaTeX Warning: Font shape declaration has incorrect series value `mc'.
+               It should not contain an `m'! Please correct it.
+               Found on input line 47.
+
+)
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 285.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <7.6> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 285.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <6> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 285.
+LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
+(Font)              scaled to size 10.0pt on input line 285.
+LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
+(Font)              scaled to size 9.0pt on input line 285.
+ [3
+
+]
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 285.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 285.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 285.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 285.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 285.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 285.
+ [4
+
+] [5
+
+] [6
+
+] [7
+
+]
+<images/leamer6a.png, id=55, 571.13374pt x 182.6825pt>
+File: images/leamer6a.png Graphic file (type png)
+<use images/leamer6a.png>
+Package pdftex.def Info: images/leamer6a.png  used on input line 314.
+(pdftex.def)             Requested size: 182.00554pt x 58.21428pt.
+<images/leamer6b.png, id=57, 533.995pt x 185.69376pt>
+File: images/leamer6b.png Graphic file (type png)
+<use images/leamer6b.png>
+Package pdftex.def Info: images/leamer6b.png  used on input line 314.
+(pdftex.def)             Requested size: 182.00554pt x 63.29088pt.
+ [8
+
+ <./images/leamer6a.png> <./images/leamer6b.png>]
+<images/leamer1.png, id=65, 271.0125pt x 234.8775pt>
+File: images/leamer1.png Graphic file (type png)
+<use images/leamer1.png>
+Package pdftex.def Info: images/leamer1.png  used on input line 314.
+(pdftex.def)             Requested size: 182.00554pt x 157.74341pt.
+
+[9
+
+ <./images/leamer1.png>]
+<images/leamer2.png, id=72, 274.02374pt x 390.45876pt>
+File: images/leamer2.png Graphic file (type png)
+<use images/leamer2.png>
+Package pdftex.def Info: images/leamer2.png  used on input line 314.
+(pdftex.def)             Requested size: 156.007pt x 222.30165pt.
+
+Overfull \vbox (6.68616pt too high) detected at line 314
+ []
+
+[10
+
+ <./images/leamer2.png>]
+<images/leamer3.png, id=79, 266.9975pt x 302.12875pt>
+File: images/leamer3.png Graphic file (type png)
+<use images/leamer3.png>
+Package pdftex.def Info: images/leamer3.png  used on input line 314.
+(pdftex.def)             Requested size: 182.00554pt x 205.96115pt.
+ [11
+
+ <./images/leamer3.png>]
+<images/leamer4.png, id=86, 280.04625pt x 332.24126pt>
+File: images/leamer4.png Graphic file (type png)
+<use images/leamer4.png>
+Package pdftex.def Info: images/leamer4.png  used on input line 314.
+(pdftex.def)             Requested size: 182.00554pt x 215.93396pt.
+
+Overfull \vbox (0.31847pt too high) detected at line 314
+ []
+
+[12
+
+ <./images/leamer4.png>]
+<images/leamer5.png, id=93, 558.085pt x 276.03125pt>
+File: images/leamer5.png Graphic file (type png)
+<use images/leamer5.png>
+Package pdftex.def Info: images/leamer5.png  used on input line 314.
+(pdftex.def)             Requested size: 156.007pt x 77.16185pt.
+<images/leamer5b.png, id=94, 529.98pt x 507.8975pt>
+File: images/leamer5b.png Graphic file (type png)
+<use images/leamer5b.png>
+Package pdftex.def Info: images/leamer5b.png  used on input line 314.
+(pdftex.def)             Requested size: 143.00577pt x 137.0489pt.
+ [13
+
+ <./images/leamer5.png> <./images/leamer5b.png>]
+<images/black1.png, id=103, 633.36626pt x 396.48125pt>
+File: images/black1.png Graphic file (type png)
+<use images/black1.png>
+Package pdftex.def Info: images/black1.png  used on input line 330.
+(pdftex.def)             Requested size: 234.00655pt x 146.48401pt.
+[14
+
+ <./images/black1.png>]
+<images/angristpishke2010.png, id=110, 498.86375pt x 92.345pt>
+File: images/angristpishke2010.png Graphic file (type png)
+<use images/angristpishke2010.png>
+Package pdftex.def Info: images/angristpishke2010.png  used on input line 346.
+(pdftex.def)             Requested size: 234.00655pt x 43.3162pt.
+<images/angristpishke2010b.png, id=111, 497.86pt x 55.20625pt>
+File: images/angristpishke2010b.png Graphic file (type png)
+<use images/angristpishke2010b.png>
+Package pdftex.def Info: images/angristpishke2010b.png  used on input line 346.
+
+(pdftex.def)             Requested size: 234.00655pt x 25.94861pt.
+ [15
+
+ <./images/angristpishke2010.png> <./images/angristpishke2010b.png>]
+Overfull \hbox (108.10446pt too wide) detected at line 365
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[16
+
+]
+LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
+(Font)              scaled to size 10.95pt on input line 384.
+
+Overfull \hbox (108.10446pt too wide) detected at line 384
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[17
+
+]
+Overfull \hbox (108.10446pt too wide) detected at line 414
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+
+Overfull \vbox (2.33101pt too high) detected at line 414
+ []
+
+[18
+
+] [19
+
+]
+<images/randomized1.pdf, id=147, 979.66pt x 575.14874pt>
+File: images/randomized1.pdf Graphic file (type pdf)
+<use images/randomized1.pdf>
+Package pdftex.def Info: images/randomized1.pdf  used on input line 475.
+(pdftex.def)             Requested size: 173.33496pt x 101.75832pt.
+
+Overfull \hbox (21.43037pt too wide) detected at line 475
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[20
+
+ <./images/randomized1.pdf>]
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 535.
+
+
+Overfull \hbox (21.43037pt too wide) detected at line 535
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[21
+
+]
+Overfull \hbox (21.43037pt too wide) detected at line 535
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[22
+
+]
+Overfull \hbox (21.43037pt too wide) detected at line 535
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[23
+
+]
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 15.0049pt on input line 554.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 15.0049pt on input line 554.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <14.4> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 554.
+ [24
+
+] [25
+
+] [26
+
+]
+Overfull \hbox (21.43037pt too wide) detected at line 661
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[27
+
+]
+Overfull \hbox (21.43037pt too wide) detected at line 661
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[28
+
+]
+<images/randomized2.pdf, id=202, 979.66pt x 575.14874pt>
+File: images/randomized2.pdf Graphic file (type pdf)
+<use images/randomized2.pdf>
+Package pdftex.def Info: images/randomized2.pdf  used on input line 661.
+(pdftex.def)             Requested size: 156.0004pt x 91.5781pt.
+
+Overfull \hbox (21.43037pt too wide) detected at line 661
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[29
+
+ <./images/randomized2.pdf>] [30
+
+] [31
+
+]
+<images/eaton1.png, id=224, 782.925pt x 430.60875pt>
+File: images/eaton1.png Graphic file (type png)
+<use images/eaton1.png>
+Package pdftex.def Info: images/eaton1.png  used on input line 703.
+(pdftex.def)             Requested size: 173.33496pt x 95.33212pt.
+<images/deaton2.png, id=225, 796.9775pt x 397.485pt>
+File: images/deaton2.png Graphic file (type png)
+<use images/deaton2.png>
+Package pdftex.def Info: images/deaton2.png  used on input line 703.
+(pdftex.def)             Requested size: 173.33496pt x 86.44621pt.
+ [32
+
+ <./images/eaton1.png> <./images/deaton2.png>]
+<images/heckman1.jpeg, id=233, 2148.025pt x 1395.2125pt>
+File: images/heckman1.jpeg Graphic file (type jpg)
+<use images/heckman1.jpeg>
+Package pdftex.def Info: images/heckman1.jpeg  used on input line 707.
+(pdftex.def)             Requested size: 325.00801pt x 211.10371pt.
+
+Overfull \vbox (3.0111pt too high) detected at line 707
+ []
+
+[33
+
+ <./images/heckman1.jpeg>] [34
+
+] [35
+
+]
 \tf@nav=\write6
 \openout6 = `randomization.nav'.
 
@@ -1243,28 +1572,42 @@ LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
 \tf@snm=\write8
 \openout8 = `randomization.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 196.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 196.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 759.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 759.
  (./randomization.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 196.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 196.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 759.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 759.
 Package rerunfilecheck Info: File `randomization.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25946 strings out of 480608
- 553737 string characters out of 5903631
- 971671 words of memory out of 5000000
- 41172 multiletter control sequences out of 15000+600000
- 557207 words of font info for 36 fonts, out of 8000000 for 9000
+ 26559 strings out of 480608
+ 564368 string characters out of 5903631
+ 984671 words of memory out of 5000000
+ 41612 multiletter control sequences out of 15000+600000
+ 624462 words of font info for 158 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,11n,76p,787b,600s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lato/a_y72t7m.enc}</usr/l
-ocal/texlive/2020/texmf-dist/fonts/type1/typoland/lato/Lato-Regular.pfb>
-Output written on randomization.pdf (2 pages, 21183 bytes).
+ 58i,13n,76p,787b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
+exlive/2020/texmf-dist/fonts/enc/dvips/lato/a_vc7epu.enc}{/usr/local/texlive/20
+20/texmf-dist/fonts/enc/dvips/lato/a_y72t7m.enc}</usr/local/texlive/2020/texmf-
+dist/fonts/type1/typoland/lato/Lato-Italic.pfb></usr/local/texlive/2020/texmf-d
+ist/fonts/type1/typoland/lato/Lato-Regular.pfb></usr/local/texlive/2020/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2020/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fon
+ts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2020/texmf-dist/fonts/ty
+pe1/public/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/
+urw/helvetic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/hel
+vetic/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/u
+hvro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.
+pfb>
+Output written on randomization.pdf (35 pages, 1865730 bytes).
 PDF statistics:
- 34 PDF objects out of 1000 (max. 8388607)
- 21 compressed objects within 1 object stream
- 5 named destinations out of 1000 (max. 500000)
- 47 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 311 PDF objects out of 1000 (max. 8388607)
+ 220 compressed objects within 3 object streams
+ 71 named destinations out of 1000 (max. 500000)
+ 127 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  31 JAN 2021 23:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  2 FEB 2021 14:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1478,7 +1478,7 @@ Package rerunfilecheck Info: File `po_dags.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  26420 strings out of 480608
- 561659 string characters out of 5903631
+ 561661 string characters out of 5903631
  982659 words of memory out of 5000000
  41534 multiletter control sequences out of 15000+600000
  611147 words of font info for 126 fonts, out of 8000000 for 9000
@@ -1502,7 +1502,7 @@ ic/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helv
 etic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uh
 vr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.p
 fb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on po_dags.pdf (26 pages, 176962 bytes).
+Output written on po_dags.pdf (26 pages, 176810 bytes).
 PDF statistics:
  235 PDF objects out of 1000 (max. 8388607)
  182 compressed objects within 2 object streams
