@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  8 FEB 2021 15:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  9 FEB 2021 14:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1414,13 +1414,6 @@ Overfull \hbox (64.76741pt too wide) detected at line 458
 [12
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+lato-TLF on input l
-ine 473.
- (/usr/local/texlive/2020/texmf-dist/tex/latex/lato/TS1lato-TLF.fd
-File: TS1lato-TLF.fd 2019/06/24 Font definitions for TS1/lato-TLF.
-)
-LaTeX Font Info:    Font shape `TS1/lato-TLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 473.
 <images/mhe.jpg, id=90, 325.215pt x 500.87125pt>
 File: images/mhe.jpg Graphic file (type jpg)
 <use images/mhe.jpg>
@@ -1450,7 +1443,7 @@ Overfull \vbox (6.40898pt too high) detected at line 529
 [15
 
 ]
-<images/dehijia1.png, id=108, 613.29124pt x 322.20375pt>
+<images/dehijia1.png, id=107, 613.29124pt x 322.20375pt>
 File: images/dehijia1.png Graphic file (type png)
 <use images/dehijia1.png>
 Package pdftex.def Info: images/dehijia1.png  used on input line 533.
@@ -1492,7 +1485,7 @@ Overfull \hbox (21.43037pt too wide) detected at line 623
 [20
 
 ]
-<images/overlap1.pdf, id=137, 935.495pt x 575.14874pt>
+<images/overlap1.pdf, id=136, 935.495pt x 575.14874pt>
 File: images/overlap1.pdf Graphic file (type pdf)
 <use images/overlap1.pdf>
 Package pdftex.def Info: images/overlap1.pdf  used on input line 646.
@@ -1504,7 +1497,7 @@ Package pdftex.def Info: images/overlap1.pdf  used on input line 646.
 ] [23
 
 ]
-<images/overlap3.pdf, id=158, 935.495pt x 575.14874pt>
+<images/overlap3.pdf, id=157, 935.495pt x 575.14874pt>
 File: images/overlap3.pdf Graphic file (type pdf)
 <use images/overlap3.pdf>
 Package pdftex.def Info: images/overlap3.pdf  used on input line 708.
@@ -1538,34 +1531,34 @@ Package rerunfilecheck Info: File `propensity_scores.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 26567 strings out of 480608
- 564513 string characters out of 5903631
+ 26505 strings out of 480608
+ 563131 string characters out of 5903631
  986679 words of memory out of 5000000
- 41635 multiletter control sequences out of 15000+600000
- 645812 words of font info for 200 fonts, out of 8000000 for 9000
+ 41579 multiletter control sequences out of 15000+600000
+ 645098 words of font info for 198 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,17n,76p,810b,1041s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lato/a_rt66h3.enc}{/usr/l
-ocal/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/20
-20/texmf-dist/fonts/enc/dvips/lato/a_vc7epu.enc}{/usr/local/texlive/2020/texmf-
-dist/fonts/enc/dvips/lato/a_y72t7m.enc}</usr/local/texlive/2020/texmf-dist/font
-s/type1/typoland/lato/Lato-Italic.pfb></usr/local/texlive/2020/texmf-dist/fonts
-/type1/typoland/lato/Lato-Regular.pfb></usr/local/texlive/2020/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/p
-ublic/mathpazo/fplmr.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public
-/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvet
-ic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvr
-8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb
-></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on propensity_scores.pdf (25 pages, 374079 bytes).
+ 58i,17n,76p,811b,1041s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
+exlive/2020/texmf-dist/fonts/enc/dvips/lato/a_vc7epu.enc}{/usr/local/texlive/20
+20/texmf-dist/fonts/enc/dvips/lato/a_y72t7m.enc}</usr/local/texlive/2020/texmf-
+dist/fonts/type1/typoland/lato/Lato-Italic.pfb></usr/local/texlive/2020/texmf-d
+ist/fonts/type1/typoland/lato/Lato-Regular.pfb></usr/local/texlive/2020/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2020/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/font
+s/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2020/texmf-dist/fonts/typ
+e1/public/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/u
+rw/helvetic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helv
+etic/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uh
+vro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
+fb>
+Output written on propensity_scores.pdf (25 pages, 373484 bytes).
 PDF statistics:
- 239 PDF objects out of 1000 (max. 8388607)
- 182 compressed objects within 2 object streams
+ 236 PDF objects out of 1000 (max. 8388607)
+ 179 compressed objects within 2 object streams
  51 named destinations out of 1000 (max. 500000)
  67 words of extra memory for PDF output out of 10000 (max. 10000000)
 

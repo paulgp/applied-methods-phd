@@ -462,7 +462,7 @@
 \begin{columns}[T] % align columns
   \begin{column}{.65\textwidth}
     \begin{quote}
-      We believe regression should be the starting point for most empirical projects. This is not a theorem; undoubtedly, there are circumstances where propensity score matching provides more reliable estimates of average causal e§ects. The first reason we don' find ourselves on the propensity-score bandwagon is practical: there are many details to be filled in when implementing propensity-score matching - such as how to model the score and how to do inference - these details are not yet standardized. Different researchers might therefore reach very different conclusions, even when using the same data and covariates. Moreover, as we've seen with the Horvitz-Thompson estimands,there isn't very much theoretical daylight between regression and propensity-score weighting.
+      We believe regression should be the starting point for most empirical projects. This is not a theorem; undoubtedly, there are circumstances where propensity score matching provides more reliable estimates of average causal effects. The first reason we don't find ourselves on the propensity-score bandwagon is practical: there are many details to be filled in when implementing propensity-score matching - such as how to model the score and how to do inference - these details are not yet standardized. Different researchers might therefore reach very different conclusions, even when using the same data and covariates. Moreover, as we've seen with the Horvitz-Thompson estimands,there isn't very much theoretical daylight between regression and propensity-score weighting.
       \end{quote}
 \end{column}%
 \hfill%
@@ -544,7 +544,7 @@
       observational data and use this to estimate a causal effect
     \end{itemize}
   \item To quote Heckman, Todd and Ichimura: ``Ironically, missing data give rise to the problem of causal inference, but missing data, i.e. the unobservables producing variation in D conditional on X, are also required to solve the problem of causal inference.''
-  \item In other words -- if we're controlling for $X$, there must be additional source of variation in $X$ that we're not capturing.
+  \item In other words -- if we're controlling for $X$, there must be additional source of variation in $D$ that we're not capturing.
     \begin{itemize}
     \item Why? Think on this, then example next slide
     \end{itemize}
