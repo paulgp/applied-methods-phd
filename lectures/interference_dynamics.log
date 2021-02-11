@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  11 FEB 2021 12:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  11 FEB 2021 12:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1575,7 +1575,7 @@ Overfull \vbox (23.30125pt too high) detected at line 773
 <images/vaccine_dynamics.png, id=209, 1247.66125pt x 969.6225pt>
 File: images/vaccine_dynamics.png Graphic file (type png)
 <use images/vaccine_dynamics.png>
-Package pdftex.def Info: images/vaccine_dynamics.png  used on input line 793.
+Package pdftex.def Info: images/vaccine_dynamics.png  used on input line 796.
 (pdftex.def)             Requested size: 216.67201pt x 168.38449pt.
  [27
 
@@ -1589,12 +1589,12 @@ Package pdftex.def Info: images/vaccine_dynamics.png  used on input line 793.
 \tf@snm=\write8
 \openout8 = `interference_dynamics.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 797.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 797.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 800.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 800.
 
 (./interference_dynamics.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 797.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 797.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 800.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 800.
 Package rerunfilecheck Info: File `interference_dynamics.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
@@ -1622,7 +1622,7 @@ helvetic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helveti
 c/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro
 8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
 
-Output written on interference_dynamics.pdf (27 pages, 1941718 bytes).
+Output written on interference_dynamics.pdf (27 pages, 1942292 bytes).
 PDF statistics:
  274 PDF objects out of 1000 (max. 8388607)
  188 compressed objects within 2 object streams
