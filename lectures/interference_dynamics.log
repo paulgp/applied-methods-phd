@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  11 FEB 2021 14:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  11 FEB 2021 16:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1622,7 +1622,7 @@ helvetic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helveti
 c/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro
 8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
 
-Output written on interference_dynamics.pdf (27 pages, 1942283 bytes).
+Output written on interference_dynamics.pdf (27 pages, 1942290 bytes).
 PDF statistics:
  274 PDF objects out of 1000 (max. 8388607)
  188 compressed objects within 2 object streams
