@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  11 FEB 2021 12:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  11 FEB 2021 12:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1572,28 +1572,14 @@ Overfull \vbox (23.30125pt too high) detected at line 773
 [26
 
  <./images/sraer1.png>]
-File: images/sraer0.png Graphic file (type png)
-<use images/sraer0.png>
-Package pdftex.def Info: images/sraer0.png  used on input line 803.
-(pdftex.def)             Requested size: 216.67201pt x 184.11061pt.
+<images/vaccine_dynamics.png, id=209, 1247.66125pt x 969.6225pt>
+File: images/vaccine_dynamics.png Graphic file (type png)
+<use images/vaccine_dynamics.png>
+Package pdftex.def Info: images/vaccine_dynamics.png  used on input line 793.
+(pdftex.def)             Requested size: 216.67201pt x 168.38449pt.
+ [27
 
-Overfull \vbox (23.30125pt too high) detected at line 803
- []
-
-[27
-
-]
-File: images/sraer1.png Graphic file (type png)
-<use images/sraer1.png>
-Package pdftex.def Info: images/sraer1.png  used on input line 803.
-(pdftex.def)             Requested size: 216.67201pt x 115.55716pt.
-
-Overfull \vbox (23.30125pt too high) detected at line 803
- []
-
-[28
-
-]
+ <./images/vaccine_dynamics.png>]
 \tf@nav=\write6
 \openout6 = `interference_dynamics.nav'.
 
@@ -1603,19 +1589,20 @@ Overfull \vbox (23.30125pt too high) detected at line 803
 \tf@snm=\write8
 \openout8 = `interference_dynamics.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 807.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 807.
- (./interference_dynamics.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 807.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 807.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 797.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 797.
+
+(./interference_dynamics.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 797.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 797.
 Package rerunfilecheck Info: File `interference_dynamics.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 26618 strings out of 480608
- 566130 string characters out of 5903631
+ 26624 strings out of 480608
+ 566301 string characters out of 5903631
  980687 words of memory out of 5000000
- 41687 multiletter control sequences out of 15000+600000
+ 41694 multiletter control sequences out of 15000+600000
  632308 words of font info for 167 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,19n,76p,795b,1050s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1635,10 +1622,10 @@ helvetic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helveti
 c/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro
 8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
 
-Output written on interference_dynamics.pdf (28 pages, 1289272 bytes).
+Output written on interference_dynamics.pdf (27 pages, 1941718 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
- 192 compressed objects within 2 object streams
- 57 named destinations out of 1000 (max. 500000)
- 137 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 274 PDF objects out of 1000 (max. 8388607)
+ 188 compressed objects within 2 object streams
+ 55 named destinations out of 1000 (max. 500000)
+ 142 words of extra memory for PDF output out of 10000 (max. 10000000)
 
