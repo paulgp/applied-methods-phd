@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  8 FEB 2021 14:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  11 FEB 2021 12:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1050,7 +1050,7 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 (/usr/local/texlive/2020/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-No file interference_dynamics.aux.
+(./interference_dynamics.aux)
 \openout1 = `interference_dynamics.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 154.
@@ -1069,6 +1069,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 154.
 LaTeX Font Info:    ... okay on input line 154.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 154.
 LaTeX Font Info:    ... okay on input line 154.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1144,6 +1145,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 154.
 LaTeX Info: Redefining \pageref on input line 154.
 LaTeX Info: Redefining \nameref on input line 154.
+ (./interference_dynamics.out) (./interference_dynamics.out)
 \@outlinefile=\write5
 \openout5 = `interference_dynamics.out'.
 
@@ -1216,8 +1218,7 @@ Dictionary: translator-theorem-dictionary, Language: English
 )
 \c@mv@tabular=\count350
 \c@mv@boldtabular=\count351
-
-No file interference_dynamics.nav.
+ (./interference_dynamics.nav)
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
 (Font)              scaled to size 6.0pt on input line 154.
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
@@ -1228,10 +1229,369 @@ LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
 (Font)              scaled to size 10.0pt on input line 179.
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
 (Font)              scaled to size 4.0pt on input line 179.
-[1
+ [1
 
 {/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (86.43594pt too wide) detected at line 202
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
 [2
+
+]
+LaTeX Font Info:    Trying to load font information for OML+zplm on input line 
+232.
+ (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/omlzplm.fd
+File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
+)
+LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
+232.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/omszplm.fd
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+)
+LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 
+232.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/omxzplm.fd
+File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+)
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 232.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 232.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 232.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 232.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 232.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 232.
+LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 
+232.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/ot1zplm.fd
+File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+)
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 2
+32.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+
+
+LaTeX Warning: Font shape declaration has incorrect series value `mc'.
+               It should not contain an `m'! Please correct it.
+               Found on input line 21.
+
+
+LaTeX Warning: Font shape declaration has incorrect series value `mc'.
+               It should not contain an `m'! Please correct it.
+               Found on input line 24.
+
+
+LaTeX Warning: Font shape declaration has incorrect series value `mc'.
+               It should not contain an `m'! Please correct it.
+               Found on input line 27.
+
+
+LaTeX Warning: Font shape declaration has incorrect series value `mc'.
+               It should not contain an `m'! Please correct it.
+               Found on input line 47.
+
+)
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 232.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 232.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <6> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 232.
+LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
+(Font)              scaled to size 9.0pt on input line 232.
+ [3
+
+]
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 232.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 232.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 232.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 232.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 232.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 232.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 232.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <7> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 232.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <5> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 232.
+
+Overfull \hbox (7.70464pt too wide) detected at line 232
+[]
+ []
+
+[4
+
+]
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 266.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 266.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 266.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 266.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 266.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <7.6> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 266.
+
+Overfull \hbox (21.43037pt too wide) detected at line 266
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+
+Overfull \vbox (4.87006pt too high) detected at line 266
+ []
+
+[5
+
+]
+LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
+(Font)              scaled to size 10.95pt on input line 290.
+<images/linear_multivalued.pdf, id=49, 1002.74625pt x 575.14874pt>
+File: images/linear_multivalued.pdf Graphic file (type pdf)
+<use images/linear_multivalued.pdf>
+Package pdftex.def Info: images/linear_multivalued.pdf  used on input line 290.
+
+(pdftex.def)             Requested size: 260.00905pt x 149.13144pt.
+ [6
+
+ <./images/linear_multivalued.pdf>]
+<images/linear_multivalued2.pdf, id=64, 1002.74625pt x 575.14874pt>
+File: images/linear_multivalued2.pdf Graphic file (type pdf)
+<use images/linear_multivalued2.pdf>
+Package pdftex.def Info: images/linear_multivalued2.pdf  used on input line 290
+.
+(pdftex.def)             Requested size: 260.00905pt x 149.13144pt.
+ [7
+
+ <./images/linear_multivalued2.pdf>]
+Overfull \hbox (86.43594pt too wide) detected at line 319
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[8
+
+] [9
+
+]
+LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
+(Font)              scaled to size 10.0pt on input line 406.
+
+Overfull \vbox (1.98174pt too high) detected at line 406
+ []
+
+[10
+
+]
+Overfull \vbox (1.98174pt too high) detected at line 406
+ []
+
+[11
+
+]
+<images/consort.jpeg, id=97, 1367.1075pt x 665.48625pt>
+File: images/consort.jpeg Graphic file (type jpg)
+<use images/consort.jpeg>
+Package pdftex.def Info: images/consort.jpeg  used on input line 411.
+(pdftex.def)             Requested size: 433.34402pt x 210.9392pt.
+ [12
+
+ <./images/consort.jpeg>] [13
+
+]
+Overfull \hbox (64.76743pt too wide) detected at line 489
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[14
+
+]
+LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
+(Font)              scaled to size 7.6pt on input line 524.
+
+Overfull \hbox (5.2819pt too wide) detected at line 524
+[]
+ []
+
+<images/manski0.png, id=114, 345.29pt x 153.57375pt>
+File: images/manski0.png Graphic file (type png)
+<use images/manski0.png>
+Package pdftex.def Info: images/manski0.png  used on input line 524.
+(pdftex.def)             Requested size: 216.67201pt x 96.37pt.
+<images/manski1.png, id=116, 393.47pt x 80.3pt>
+File: images/manski1.png Graphic file (type png)
+<use images/manski1.png>
+Package pdftex.def Info: images/manski1.png  used on input line 524.
+(pdftex.def)             Requested size: 216.67201pt x 44.2178pt.
+<images/manski2.png, id=117, 397.485pt x 36.135pt>
+File: images/manski2.png Graphic file (type png)
+<use images/manski2.png>
+Package pdftex.def Info: images/manski2.png  used on input line 524.
+(pdftex.def)             Requested size: 216.67201pt x 19.69785pt.
+<images/manski3.png, id=118, 391.4625pt x 63.23625pt>
+File: images/manski3.png Graphic file (type png)
+<use images/manski3.png>
+Package pdftex.def Info: images/manski3.png  used on input line 524.
+(pdftex.def)             Requested size: 216.67201pt x 35.00099pt.
+[15
+
+ <./images/manski0.png> <./images/manski1.png> <./images/manski2.png> <./images
+/manski3.png>] [16
+
+] [17
+
+]
+<images/manski4b.png, id=139, 456.70625pt x 166.6225pt>
+File: images/manski4b.png Graphic file (type png)
+<use images/manski4b.png>
+Package pdftex.def Info: images/manski4b.png  used on input line 597.
+(pdftex.def)             Requested size: 216.67201pt x 79.04988pt.
+<images/manski5.png, id=140, 521.95pt x 132.495pt>
+File: images/manski5.png Graphic file (type png)
+<use images/manski5.png>
+Package pdftex.def Info: images/manski5.png  used on input line 597.
+(pdftex.def)             Requested size: 216.67201pt x 55.00056pt.
+<images/manski6.png, id=141, 518.93875pt x 54.2025pt>
+File: images/manski6.png Graphic file (type png)
+<use images/manski6.png>
+Package pdftex.def Info: images/manski6.png  used on input line 597.
+(pdftex.def)             Requested size: 216.67201pt x 22.63173pt.
+<images/manski7.png, id=142, 523.9575pt x 101.37875pt>
+File: images/manski7.png Graphic file (type png)
+<use images/manski7.png>
+Package pdftex.def Info: images/manski7.png  used on input line 597.
+(pdftex.def)             Requested size: 216.67201pt x 41.92288pt.
+
+Overfull \vbox (4.89395pt too high) detected at line 597
+ []
+
+[18
+
+ <./images/manski4b.png> <./images/manski5.png> <./images/manski6.png> <./image
+s/manski7.png>]
+Overfull \vbox (2.33485pt too high) detected at line 630
+ []
+
+[19
+
+] [20
+
+]
+<images/manskidrake.jpg, id=163, 501.875pt x 501.875pt>
+File: images/manskidrake.jpg Graphic file (type jpg)
+<use images/manskidrake.jpg>
+Package pdftex.def Info: images/manskidrake.jpg  used on input line 657.
+(pdftex.def)             Requested size: 216.67201pt x 216.67505pt.
+ [21
+
+ <./images/manskidrake.jpg>]
+Overfull \hbox (64.76743pt too wide) detected at line 683
+[][][] [][][][][][][] [][] [][][][][][][] 
+ []
+
+[22
+
+]
+LaTeX Font Info:    Trying to load font information for TS1+lato-TLF on input l
+ine 712.
+ (/usr/local/texlive/2020/texmf-dist/tex/latex/lato/TS1lato-TLF.fd
+File: TS1lato-TLF.fd 2019/06/24 Font definitions for TS1/lato-TLF.
+)
+LaTeX Font Info:    Font shape `TS1/lato-TLF/m/n' will be
+(Font)              scaled to size 10.95pt on input line 712.
+
+[23
+
+]
+<images/chodorowreich1.png, id=181, 492.84125pt x 107.40125pt>
+File: images/chodorowreich1.png Graphic file (type png)
+<use images/chodorowreich1.png>
+Package pdftex.def Info: images/chodorowreich1.png  used on input line 743.
+(pdftex.def)             Requested size: 216.67201pt x 47.21735pt.
+<images/chodorowreich2.png, id=182, 499.8675pt x 193.72375pt>
+File: images/chodorowreich2.png Graphic file (type png)
+<use images/chodorowreich2.png>
+Package pdftex.def Info: images/chodorowreich2.png  used on input line 743.
+(pdftex.def)             Requested size: 216.67201pt x 83.97058pt.
+<images/chodorowreich3.png, id=183, 501.875pt x 60.225pt>
+File: images/chodorowreich3.png Graphic file (type png)
+<use images/chodorowreich3.png>
+Package pdftex.def Info: images/chodorowreich3.png  used on input line 743.
+(pdftex.def)             Requested size: 216.67201pt x 26.00099pt.
+<images/chodorowreich4.png, id=184, 504.88625pt x 126.4725pt>
+File: images/chodorowreich4.png Graphic file (type png)
+<use images/chodorowreich4.png>
+Package pdftex.def Info: images/chodorowreich4.png  used on input line 743.
+(pdftex.def)             Requested size: 216.67201pt x 54.27597pt.
+
+Overfull \vbox (12.39557pt too high) detected at line 743
+ []
+
+[24
+
+ <./images/chodorowreich1.png> <./images/chodorowreich2.png> <./images/chodorow
+reich3.png> <./images/chodorowreich4.png>]
+<images/sraer0.png, id=194, 561.09625pt x 476.78125pt>
+File: images/sraer0.png Graphic file (type png)
+<use images/sraer0.png>
+Package pdftex.def Info: images/sraer0.png  used on input line 773.
+(pdftex.def)             Requested size: 216.67201pt x 184.11061pt.
+
+Overfull \vbox (23.30125pt too high) detected at line 773
+ []
+
+[25
+
+ <./images/sraer0.png>]
+<images/sraer1.png, id=202, 632.3625pt x 337.26pt>
+File: images/sraer1.png Graphic file (type png)
+<use images/sraer1.png>
+Package pdftex.def Info: images/sraer1.png  used on input line 773.
+(pdftex.def)             Requested size: 216.67201pt x 115.55716pt.
+
+Overfull \vbox (23.30125pt too high) detected at line 773
+ []
+
+[26
+
+ <./images/sraer1.png>]
+File: images/sraer0.png Graphic file (type png)
+<use images/sraer0.png>
+Package pdftex.def Info: images/sraer0.png  used on input line 803.
+(pdftex.def)             Requested size: 216.67201pt x 184.11061pt.
+
+Overfull \vbox (23.30125pt too high) detected at line 803
+ []
+
+[27
+
+]
+File: images/sraer1.png Graphic file (type png)
+<use images/sraer1.png>
+Package pdftex.def Info: images/sraer1.png  used on input line 803.
+(pdftex.def)             Requested size: 216.67201pt x 115.55716pt.
+
+Overfull \vbox (23.30125pt too high) detected at line 803
+ []
+
+[28
 
 ]
 \tf@nav=\write6
@@ -1243,35 +1603,42 @@ LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
 \tf@snm=\write8
 \openout8 = `interference_dynamics.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 200.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 200.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 807.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 807.
  (./interference_dynamics.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 200.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 200.
-
-
-Package rerunfilecheck Warning: File `interference_dynamics.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `interference_dynamics.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 807.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 807.
+Package rerunfilecheck Info: File `interference_dynamics.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25962 strings out of 480608
- 554658 string characters out of 5903631
- 973687 words of memory out of 5000000
- 41196 multiletter control sequences out of 15000+600000
- 557207 words of font info for 36 fonts, out of 8000000 for 9000
+ 26618 strings out of 480608
+ 566130 string characters out of 5903631
+ 980687 words of memory out of 5000000
+ 41687 multiletter control sequences out of 15000+600000
+ 632308 words of font info for 167 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,11n,76p,795b,387s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lato/a_y72t7m.enc}</usr/l
-ocal/texlive/2020/texmf-dist/fonts/type1/typoland/lato/Lato-Regular.pfb>
-Output written on interference_dynamics.pdf (2 pages, 23220 bytes).
+ 58i,19n,76p,795b,1050s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lato/a_rt66h3.enc}{/usr/l
+ocal/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/20
+20/texmf-dist/fonts/enc/dvips/lato/a_vc7epu.enc}{/usr/local/texlive/2020/texmf-
+dist/fonts/enc/dvips/lato/a_y72t7m.enc}</usr/local/texlive/2020/texmf-dist/font
+s/type1/typoland/lato/Lato-Italic.pfb></usr/local/texlive/2020/texmf-dist/fonts
+/type1/typoland/lato/Lato-Regular.pfb></usr/local/texlive/2020/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/
+public/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/
+helvetic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helveti
+c/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro
+8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
+
+Output written on interference_dynamics.pdf (28 pages, 1289272 bytes).
 PDF statistics:
- 34 PDF objects out of 1000 (max. 8388607)
- 21 compressed objects within 1 object stream
- 5 named destinations out of 1000 (max. 500000)
- 47 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 277 PDF objects out of 1000 (max. 8388607)
+ 192 compressed objects within 2 object streams
+ 57 named destinations out of 1000 (max. 500000)
+ 137 words of extra memory for PDF output out of 10000 (max. 10000000)
 
