@@ -190,7 +190,7 @@
     \end{itemize}
   \item Let's define some notation to start. We'll consider a sample of size $n$:
     \begin{itemize}
-    \item causal variable $D_{i}$ (can be continuous valued) $\rightarrow  \; \mathbf{X}_{n}$;
+    \item causal variable $D_{i}$ (can be continuous valued) $\rightarrow  \; \mathbf{D}_{n}$;
     \item outcome $Y_{i} \rightarrow  \; \mathbf{Y}_{n}$;
 %    \item potential outcome will be defined as $Y_{i}^{*}(D_{i})$, where $Y_{i} = Y_{i}^{*}(D_{i})$;
     \item controls $X_{i}$ (relevant for exogeneity, and can be vector valued)  $\rightarrow  \; \mathbf{X}_{n}$.
@@ -239,10 +239,10 @@
   \begin{wideitemize}
   \item The variance of the estimator of $\hat{\beta}$ is
     \begin{equation}
-      \mathbb{V}(\hat{\beta} |\mathbf{W}_{n}) = (\mathbf{W}_{n}'\mathbf{W}_{n})^{-1}\mathbf{W}_{n}\mathbb{E}(\boldsymbol{\epsilon}_{n}'\boldsymbol{\epsilon}_{n}|\mathbf{W}_{n})W_{n}' (\mathbf{W}_{n}'\mathbf{W}_{n})^{-1}
+      \mathbb{V}(\hat{\beta} |\mathbf{W}_{n}) = (\mathbf{W}_{n}'\mathbf{W}_{n})^{-1}\mathbf{W}_{n}'\mathbb{E}(\boldsymbol{\epsilon}_{n}\boldsymbol{\epsilon}_{n}'|\mathbf{W}_{n})\mathbf{W}_{n} (\mathbf{W}_{n}'\mathbf{W}_{n})^{-1}
     \end{equation}
     Everything pivots around the structure of
-    $\mathbb{E}(\boldsymbol{\epsilon}_{n}'\boldsymbol{\epsilon}_{n}|\mathbf{W}_{n}) = \Omega_{n}$. The simplest case we can consider is homoskedasticity, where $\Omega = \sigma^{2}I_{n}$.
+    $\mathbb{E}(\boldsymbol{\epsilon}_{n}\boldsymbol{\epsilon}_{n}'|\mathbf{W}_{n}) = \Omega_{n}$. The simplest case we can consider is homoskedasticity, where $\Omega = \sigma^{2}I_{n}$.
     \item This beautifully simplifies our variance:
     
     \begin{equation}
@@ -266,7 +266,7 @@
 \begin{columns}[T] % align columns
 \begin{column}{.8\textwidth}
   \begin{wideitemize}
-  \item Under heteroskedasticity (which implies that $Var(\epsilon_{i} | W_{i}) = \sigma^{i}(W_{i})$, the robust estimator comes from Eicker (1967), Huber (1967) and White (1980) [EHW]:
+  \item Under heteroskedasticity (which implies that $Var(\epsilon_{i} | W_{i}) = \sigma^{2}(W_{i})$, the robust estimator comes from Eicker (1967), Huber (1967) and White (1980) [EHW]:
     \begin{equation*}
       \hat{\mathbb{V}}(\hat{\beta})_{EHW} = (\mathbf{W}_{n}'\mathbf{W}_{n})^{-1}\sum_{i}\hat{\epsilon}_{i}^{2}W_{i}W_{i}'(\mathbf{W}_{n}'\mathbf{W}_{n})^{-1}
     \end{equation*}
@@ -297,7 +297,7 @@
     \item That's because $\beta$ is normally
       distributed, and a Normal divided by square root of the
       variance (which is chi-squared in distribution).
-    \item E.g. $T = Z / \sqrt(V/\nu)$, where $Z \sim \mathcal{N}(0,1)$, $V \sim \chi^{2}(\nu)$
+    \item E.g. $T = Z / \sqrt{V/\nu}$, where $Z \sim \mathcal{N}(0,1)$, $V \sim \chi^{2}(\nu)$
     \end{itemize}
   \item Without Normality, only holds asymptotically (asymptotically
       pivotal). Without homoskedasticity, holds asymptotically, but
@@ -336,7 +336,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulation Example}
+\begin{frame}{Simulation Example (Imbens and Kolesar)}
   \begin{itemize}
   \item Simulation: $n=30, n_{0} = 27, n_{1} = 3$
   \item Normally distributed conditional on treatment
@@ -459,12 +459,12 @@
   Key takeaways from paper:
   \begin{enumerate}
   \item Design-based uncertainty can be smaller than traditional estimates, especially when the sample is large relative to the population
-  \item Defining the relevant estimand is important for your variance estimates (e.g. causal estimates within sample, or causal estimates across populations
+  \item Defining the relevant estimand is important for your variance estimates (e.g. causal estimates within sample, or causal estimates across populations)
     \begin{itemize}
-    \item This is particularly true when your sample is a conveniece sample
+    \item This is particularly true when your sample is a convenience sample
     \item Or, when the given sample makes sense -- e.g. 50 states
     \end{itemize}
-  \item If you have a finite sample that is a non-trivial share of the population, you can improve your standard errors(9see the paper)
+  \item If you have a finite sample that is a non-trivial share of the population, you can improve your standard errors (see the paper)
   \item Don't get confused by the idea of having uncertainty in your
     estimates when using the population. This comes from design-based
     uncertainty, not sampling uncertainty
@@ -501,7 +501,7 @@
 \begin{columns}[T] % align columns
 \begin{column}{.8\textwidth}
   \begin{wideitemize}
-  \item Let the number of clusters be $K_{n}$. In this case, the
+  \item Let the number of clusters be $K$. In this case, the
     estimator for the variance of $\hat{\beta}$ (this comes from Liang
     and Zeger (1986)) is
     \begin{equation}
@@ -551,7 +551,9 @@
     \end{itemize}
   \item What does that mean intuitively? If there is heterogeneity in
     effects, it causes correlation between treatment and residual
+    \begin{itemize}
   \item Why do the two standard errors vary so much? 
+    \end{itemize}
   \end{wideitemize}
   \end{column}%
   \hfill%
@@ -601,13 +603,12 @@
   \item Consider two additional cases:
     \begin{itemize}
     \item Spatial correlation = $\rho_{ij} = f(d_{ij})$, where $d_{ij}$ is a function of some economic distance.
-    \item Social network correlation = $\rho_{ij} = f(d_{ij})$, where $d_{ij}$ is a function of distinace in a network
+    \item Social network correlation = $\rho_{ij} = f(d_{ij})$, where $d_{ij}$ is a function of path length in a network
     \end{itemize}
   \item This can matter especially when SUTVA is violated
   \item However, Barrios et al. (2012) show that, under SUTVA, if
     treatments are randomly assigned at a given cluster level, we can
-    ignore the broader spatial spillovers (e.g. the fact that there's
-    spillovers into other states)
+    ignore the broader spatial correlations
   \end{wideitemize}
   \end{column}%
   \hfill%
@@ -623,7 +624,7 @@
   \begin{wideitemize}
   \item Conley (1999) provides a flexible way to consider clustering on spatial distances.
   \item Consider our matrix $\Omega$ again. Now, $\Omega_{ij}$ is a
-    function of the distance, $d_{ij}$ between each
+    function of the distance, $d_{ij}$, between each
     person. Unfortunately, this means that every person can be
     correlated.
   \item Key assumption -- the correlation declines with
@@ -654,13 +655,13 @@
   \item Spatial correlation can be a big deal. Consider the analogy to time series.
     \begin{itemize}
     \item A big rule: worry about highly autocorrelated data! Can inflate your t-statistics substantially
-    \item Why? Because if we treat observations as indepeendent, we
-      will infer far more information than actually exists
+    \item Why? Because if we treat observations as independent, we
+      will infer more information than actually exists
     \end{itemize}
   \item Kelly (2019) claims that spatial correlation in outcomes can
     cause this same issue. Consider a regression of some modern
     outcome, e.g. city income, on a historical characteristic, such as
-    colonial boudnaries
+    colonial boundaries
     \begin{itemize}
     \item Claim in Kelly (2019) is that t-statistics in these types of regressions are grossly amplified by spatial correlation
     \item Fixable with Conley standard errors

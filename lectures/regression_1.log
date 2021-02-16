@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  16 FEB 2021 12:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  16 FEB 2021 14:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1425,14 +1425,14 @@ Overfull \vbox (10.5073pt too high) detected at line 529
 
 ]
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 561.
+(Font)              scaled to size 10.95pt on input line 563.
 
-Overfull \hbox (108.10446pt too wide) detected at line 561
+Overfull \hbox (108.10446pt too wide) detected at line 563
 [][][] [][][][][][][] [][] [][][][][][][] 
  []
 
 
-Overfull \vbox (16.69394pt too high) detected at line 561
+Overfull \vbox (0.731pt too high) detected at line 563
  []
 
 [18
@@ -1441,51 +1441,51 @@ Overfull \vbox (16.69394pt too high) detected at line 561
 <abadiecluster.png, id=132, 637.38126pt x 333.245pt>
 File: abadiecluster.png Graphic file (type png)
 <use abadiecluster.png>
-Package pdftex.def Info: abadiecluster.png  used on input line 565.
+Package pdftex.def Info: abadiecluster.png  used on input line 567.
 (pdftex.def)             Requested size: 433.34402pt x 226.568pt.
 
-Overfull \vbox (2.89867pt too high) detected at line 565
+Overfull \vbox (2.89867pt too high) detected at line 567
  []
 
 [19
 
  <./abadiecluster.png>]
-Overfull \hbox (108.10446pt too wide) detected at line 594
+Overfull \hbox (108.10446pt too wide) detected at line 596
 [][][] [][][][][][][] [][] [][][][][][][] 
  []
 
 [20
 
 ]
-Overfull \hbox (108.10446pt too wide) detected at line 618
+Overfull \hbox (108.10446pt too wide) detected at line 619
 [][][] [][][][][][][] [][] [][][][][][][] 
  []
 
 [21
 
 ]
-Overfull \hbox (108.10446pt too wide) detected at line 647
+Overfull \hbox (108.10446pt too wide) detected at line 648
 [][][] [][][][][][][] [][] [][][][][][][] 
  []
 
 [22
 
 ]
-Overfull \hbox (21.43697pt too wide) detected at line 677
+Overfull \hbox (21.43697pt too wide) detected at line 678
 [][][] [][][][][][][] [][] [][][][][][][] 
  []
 
 [23
 
 ]
-Overfull \hbox (21.43697pt too wide) detected at line 699
+Overfull \hbox (21.43697pt too wide) detected at line 700
 [][][] [][][][][][][] [][] [][][][][][][] 
  []
 
 [24
 
 ]
-Overfull \hbox (21.43697pt too wide) detected at line 724
+Overfull \hbox (21.43697pt too wide) detected at line 725
 [][][] [][][][][][][] [][] [][][][][][][] 
  []
 
@@ -1495,7 +1495,7 @@ Overfull \hbox (21.43697pt too wide) detected at line 724
 <gan_fiddle.png, id=175, 593.21625pt x 547.04375pt>
 File: gan_fiddle.png Graphic file (type png)
 <use gan_fiddle.png>
-Package pdftex.def Info: gan_fiddle.png  used on input line 742.
+Package pdftex.def Info: gan_fiddle.png  used on input line 743.
 (pdftex.def)             Requested size: 216.67201pt x 199.80704pt.
  [26
 
@@ -1509,11 +1509,11 @@ Package pdftex.def Info: gan_fiddle.png  used on input line 742.
 \tf@snm=\write8
 \openout8 = `regression_1.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 744.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 744.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 745.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 745.
  (./regression_1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 744.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 744.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 745.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 745.
 Package rerunfilecheck Info: File `regression_1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1550,7 +1550,7 @@ o8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
 ></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr
 /local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/
 texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on regression_1.pdf (26 pages, 537999 bytes).
+Output written on regression_1.pdf (26 pages, 538103 bytes).
 PDF statistics:
  258 PDF objects out of 1000 (max. 8388607)
  196 compressed objects within 2 object streams
