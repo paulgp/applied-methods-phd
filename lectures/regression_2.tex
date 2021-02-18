@@ -212,26 +212,26 @@
 
 \begin{frame}{General framework of causal relationships}
   \begin{wideitemize}
-  \item without any structure, we can describe our usual relationships
-    as $Y_{i} = F(D_{i}, X_{i},\epsilon_{i})$
+  \item Without any structure, we can describe our usual relationships
+    as $Y_{i} = F(D_{i}, W_{i},\epsilon_{i})$
     \begin{itemize}
     \item $D_{i}$ is some causal variable we care about
-    \item $X_{i}$ is controls / heterogeneity
+    \item $W_{i}$ is controls / heterogeneity
     \item $\epsilon_{i}$ is unobservable noise
     \item Very unrestricted!
     \end{itemize}
   \item This function is very challenging to estimate with
     non-seperable $\epsilon_{i}$ and if the dimension of $D_{i}$ or
-    $X_{i}$ is high
+    $W_{i}$ is high
     \begin{itemize}
-    \item Simpler: $Y_{i} = F(D_{i}, X_{i}) + \epsilon_{i}$
-    \item What do we report from this? $E\left(\frac{\partial{F}}{\partial D_{i}} \middle| X_{i} = x\right)?$ $E\left(\frac{\partial{F}}{\partial D_{i}} \right)$?
+    \item Simpler: $Y_{i} = F(D_{i}, W_{i}) + \epsilon_{i}$
+    \item What do we report from this? $E\left(\frac{\partial{F}}{\partial D_{i}} \middle| W_{i} = w\right)?$ $E\left(\frac{\partial{F}}{\partial D_{i}} \right)$?
     \end{itemize}
-  \item What does a simple linear model get us to? $Y_{i} = D_{i}\tau + X_{i}\beta + \epsilon_{i}$
+  \item What does a simple linear model get us to? $Y_{i} = D_{i}\tau + W_{i}\beta + \epsilon_{i}$
     \begin{itemize}
     \item Can be more complex! E.g.
-      $Y_{i} = D_{i}\tau + X_{i}\beta_{1} + D_{i} \times
-      X_{i}\beta_{2} + \epsilon_{i}$, etc.
+      $Y_{i} = D_{i}\tau + W_{i}\beta_{1} + D_{i} \times
+      W_{i}\beta_{2} + \epsilon_{i}$, etc.
     \item However, in this setting there is not a ``single'' number
       either
     \end{itemize}
@@ -306,7 +306,7 @@
 \begin{frame}{Frisch-Waugh-Lovell? More like Frisch-Wow-Lovell!}
   $$ Y_{i} = \tau D_{i} + \beta W_{i} + \epsilon_{i}$$
   \begin{wideitemize}
-  \item Now if we transform $\mathbf{Y}_{n}^{*} = P_{W}\mathbf{Y}_{n}$ and $\mathbf{D}_{n}^{*} = P_{W}\mathbf{D}_{n}$, we can run
+  \item Now if we transform $\mathbf{Y}_{n}^{*} = M_{W}\mathbf{Y}_{n}$ and $\mathbf{D}_{n}^{*} = M_{W}\mathbf{D}_{n}$, we can run
     $$ Y_{i}^{*} = \tau D^{*}_{i} +  \tilde{\epsilon}_{i}$$
     and get the right coefficient $\tau$! (This is the Frisch-Waugh-Lovell theorem)
   \item Consider $W$ as a discrete set of covariates. This will
@@ -356,7 +356,7 @@
   \item Maybe we could use it to do something more flexible?  When I
     plot my data, it's not totally obvious that a straight line is the
     best fit. But it's hard to see because there's so much data.
-  \item   Recall that we're acutally interested in conditional expectation functions -- e.g. E(Y | D )
+  \item   Recall that we're acutally interested in conditional expectation functions -- e.g. $E(Y | D )$
     \begin{itemize}
     \item   What's a way to  approximate this?
     \end{itemize}
@@ -369,7 +369,7 @@
     \begin{itemize}
     \item Parametric: model where data generating process is specified as finite dimensional. Hence,
       $$ Y_{i} = D_{i}\beta + \epsilon_{i}, \qquad \epsilon_{i} \sim \mathcal{N}(0, \sigma^{2})$$
-      is a fully parametric model (conditional on $X$)
+      is a fully parametric model (conditional on $D$)
     \item Non-parametric: model where the data generating process is specified as infinite dimensional. E.g.
       $$ Y_{i} = F(D_{i},\theta_{i})$$
       where $\theta_{i}$ is infinite-dimensional parameter
@@ -530,7 +530,7 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
         \begin{itemize}
         \item Exploiting Frisch-Waugh-Lovell theorem
         \end{itemize}
-        $$ Y_{i} = f(D_{i},\theta) + X_{i}\beta + \epsilon_{i}$$
+        $$ Y_{i} = f(D_{i},\theta) + W_{i}\beta + \epsilon_{i}$$
       \item In this setting, you can't residual $D_{i}$ and get back
         the function $f$ if $f$ is non-linear
         \begin{itemize}
@@ -567,6 +567,7 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
       \item We actually see a noticeable dip across income -- maybe
         driven by Medicaid eligibility thresholds?
       \item Code for this is all available here: \url{https://nppackages.github.io/binsreg/}
+      \item If you just want to fix the FWL issue: \url{https://github.com/mdroste/stata-binscatter2}
   \end{wideitemize}
   \end{column}%
   \hfill%
