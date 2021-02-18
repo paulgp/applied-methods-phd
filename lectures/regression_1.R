@@ -15,3 +15,4 @@ ggplot(data = data %>% gather(case, value, -estimator)) +
   theme(text= element_text(size=30))
 
 ggsave("imbenskolesar_coverage.pdf")
+
