@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  18 FEB 2021 12:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  18 FEB 2021 12:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1367,23 +1367,19 @@ Package pdftex.def Info: example_scatter4.pdf  used on input line 350.
 
 ]
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 385.
-
-Overfull \vbox (13.08864pt too high) detected at line 385
- []
-
-[12
+(Font)              scaled to size 10.95pt on input line 384.
+ [12
 
 ]
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 412.
+(Font)              scaled to size 10.0pt on input line 411.
 <first_binscatter.png, id=123, 882.29625pt x 648.4225pt>
 File: first_binscatter.png Graphic file (type png)
 <use first_binscatter.png>
-Package pdftex.def Info: first_binscatter.png  used on input line 412.
+Package pdftex.def Info: first_binscatter.png  used on input line 411.
 (pdftex.def)             Requested size: 216.67201pt x 159.23593pt.
 
-Overfull \vbox (5.09453pt too high) detected at line 412
+Overfull \vbox (5.09453pt too high) detected at line 411
  []
 
 [13
@@ -1391,7 +1387,7 @@ Overfull \vbox (5.09453pt too high) detected at line 412
  <./first_binscatter.png>]
 File: first_binscatter.png Graphic file (type png)
 <use first_binscatter.png>
-Package pdftex.def Info: first_binscatter.png  used on input line 436.
+Package pdftex.def Info: first_binscatter.png  used on input line 435.
 (pdftex.def)             Requested size: 216.67201pt x 159.23593pt.
  [14
 
@@ -1399,7 +1395,7 @@ Package pdftex.def Info: first_binscatter.png  used on input line 436.
 <binscatter_crump.png, id=137, 680.5425pt x 325.215pt>
 File: binscatter_crump.png Graphic file (type png)
 <use binscatter_crump.png>
-Package pdftex.def Info: binscatter_crump.png  used on input line 440.
+Package pdftex.def Info: binscatter_crump.png  used on input line 439.
 (pdftex.def)             Requested size: 433.34402pt x 207.08485pt.
  [15
 
@@ -1407,7 +1403,7 @@ Package pdftex.def Info: binscatter_crump.png  used on input line 440.
 <binscatter_insurance1.pdf, id=144, 397.485pt x 289.08pt>
 File: binscatter_insurance1.pdf Graphic file (type pdf)
 <use binscatter_insurance1.pdf>
-Package pdftex.def Info: binscatter_insurance1.pdf  used on input line 468.
+Package pdftex.def Info: binscatter_insurance1.pdf  used on input line 467.
 (pdftex.def)             Requested size: 216.67201pt x 157.58296pt.
  [16
 
@@ -1415,7 +1411,7 @@ Package pdftex.def Info: binscatter_insurance1.pdf  used on input line 468.
 <binscatter_insurance2.pdf, id=158, 397.485pt x 289.08pt>
 File: binscatter_insurance2.pdf Graphic file (type pdf)
 <use binscatter_insurance2.pdf>
-Package pdftex.def Info: binscatter_insurance2.pdf  used on input line 468.
+Package pdftex.def Info: binscatter_insurance2.pdf  used on input line 467.
 (pdftex.def)             Requested size: 216.67201pt x 157.58296pt.
  [17
 
@@ -1423,7 +1419,7 @@ Package pdftex.def Info: binscatter_insurance2.pdf  used on input line 468.
 <binscatter_insurance3.pdf, id=173, 397.485pt x 289.08pt>
 File: binscatter_insurance3.pdf Graphic file (type pdf)
 <use binscatter_insurance3.pdf>
-Package pdftex.def Info: binscatter_insurance3.pdf  used on input line 468.
+Package pdftex.def Info: binscatter_insurance3.pdf  used on input line 467.
 (pdftex.def)             Requested size: 216.67201pt x 157.58296pt.
  [18
 
@@ -1431,7 +1427,7 @@ Package pdftex.def Info: binscatter_insurance3.pdf  used on input line 468.
 <binscatter_crump_bins1.png, id=187, 383.4325pt x 324.21124pt>
 File: binscatter_crump_bins1.png Graphic file (type png)
 <use binscatter_crump_bins1.png>
-Package pdftex.def Info: binscatter_crump_bins1.png  used on input line 499.
+Package pdftex.def Info: binscatter_crump_bins1.png  used on input line 498.
 (pdftex.def)             Requested size: 216.67201pt x 183.20937pt.
  [19
 
@@ -1439,7 +1435,7 @@ Package pdftex.def Info: binscatter_crump_bins1.png  used on input line 499.
 <binscatter_crump_bins2.png, id=195, 316.18124pt x 270.00874pt>
 File: binscatter_crump_bins2.png Graphic file (type png)
 <use binscatter_crump_bins2.png>
-Package pdftex.def Info: binscatter_crump_bins2.png  used on input line 499.
+Package pdftex.def Info: binscatter_crump_bins2.png  used on input line 498.
 (pdftex.def)             Requested size: 216.67201pt x 185.03314pt.
  [20
 
@@ -1447,19 +1443,19 @@ Package pdftex.def Info: binscatter_crump_bins2.png  used on input line 499.
 <binscatter_crump_bins3.png, id=202, 310.15875pt x 258.9675pt>
 File: binscatter_crump_bins3.png Graphic file (type png)
 <use binscatter_crump_bins3.png>
-Package pdftex.def Info: binscatter_crump_bins3.png  used on input line 499.
+Package pdftex.def Info: binscatter_crump_bins3.png  used on input line 498.
 (pdftex.def)             Requested size: 216.67201pt x 180.9085pt.
  [21
 
  <./binscatter_crump_bins3.png>]
-Overfull \hbox (64.76743pt too wide) detected at line 522
+Overfull \hbox (64.76743pt too wide) detected at line 521
 [][][] [][][][][][][] [][] [][][][][][][] 
  []
 
 [22
 
 ]
-Overfull \vbox (5.28879pt too high) detected at line 553
+Overfull \vbox (5.28879pt too high) detected at line 552
  []
 
 [23
@@ -1469,10 +1465,10 @@ Overfull \vbox (5.28879pt too high) detected at line 553
 File: binscatter_insurance_controls_comparison.pdf Graphic file (type pdf)
 <use binscatter_insurance_controls_comparison.pdf>
 Package pdftex.def Info: binscatter_insurance_controls_comparison.pdf  used on 
-input line 553.
+input line 552.
 (pdftex.def)             Requested size: 216.67201pt x 157.58296pt.
 
-Overfull \vbox (5.28879pt too high) detected at line 553
+Overfull \vbox (5.28879pt too high) detected at line 552
  []
 
 [24
@@ -1482,7 +1478,7 @@ Overfull \vbox (5.28879pt too high) detected at line 553
 File: binsreg_insurance_nocontrols.pdf Graphic file (type pdf)
 <use binsreg_insurance_nocontrols.pdf>
 Package pdftex.def Info: binsreg_insurance_nocontrols.pdf  used on input line 5
-86.
+85.
 (pdftex.def)             Requested size: 216.67201pt x 157.58296pt.
  [25
 
@@ -1490,7 +1486,7 @@ Package pdftex.def Info: binsreg_insurance_nocontrols.pdf  used on input line 5
 <binsreg_insurance_controls.pdf, id=250, 397.485pt x 289.08pt>
 File: binsreg_insurance_controls.pdf Graphic file (type pdf)
 <use binsreg_insurance_controls.pdf>
-Package pdftex.def Info: binsreg_insurance_controls.pdf  used on input line 586
+Package pdftex.def Info: binsreg_insurance_controls.pdf  used on input line 585
 .
 (pdftex.def)             Requested size: 216.67201pt x 157.58296pt.
  [26
@@ -1499,7 +1495,7 @@ Package pdftex.def Info: binsreg_insurance_controls.pdf  used on input line 586
 <agent_binscatter.png, id=266, 408.52625pt x 310.15875pt>
 File: agent_binscatter.png Graphic file (type png)
 <use agent_binscatter.png>
-Package pdftex.def Info: agent_binscatter.png  used on input line 611.
+Package pdftex.def Info: agent_binscatter.png  used on input line 610.
 (pdftex.def)             Requested size: 216.67201pt x 164.50166pt.
  [27
 
@@ -1507,7 +1503,7 @@ Package pdftex.def Info: agent_binscatter.png  used on input line 611.
 <bad_table.png, id=273, 753.81625pt x 904.37875pt>
 File: bad_table.png Graphic file (type png)
 <use bad_table.png>
-Package pdftex.def Info: bad_table.png  used on input line 637.
+Package pdftex.def Info: bad_table.png  used on input line 636.
 (pdftex.def)             Requested size: 130.00452pt x 155.9641pt.
  [28
 
@@ -1522,15 +1518,15 @@ Package pdftex.def Info: bad_table.png  used on input line 637.
 File: imbenskolsear_coverage_table.png Graphic file (type png)
 <use imbenskolsear_coverage_table.png>
 Package pdftex.def Info: imbenskolsear_coverage_table.png  used on input line 7
-22.
-(pdftex.def)             Requested size: 216.67201pt x 136.36514pt.
+21.
+(pdftex.def)             Requested size: 173.33826pt x 109.08662pt.
 <imbenskolesar_coverage.pdf, id=297, 1342.01375pt x 806.01125pt>
 File: imbenskolesar_coverage.pdf Graphic file (type pdf)
 <use imbenskolesar_coverage.pdf>
-Package pdftex.def Info: imbenskolesar_coverage.pdf  used on input line 722.
-(pdftex.def)             Requested size: 216.67201pt x 130.13281pt.
+Package pdftex.def Info: imbenskolesar_coverage.pdf  used on input line 721.
+(pdftex.def)             Requested size: 195.00348pt x 117.10846pt.
 
-Overfull \vbox (64.48247pt too high) detected at line 722
+Overfull \vbox (10.57959pt too high) detected at line 721
  []
 
 [32
@@ -1539,15 +1535,15 @@ Overfull \vbox (64.48247pt too high) detected at line 722
 <gpw_figure_table.png, id=309, 1286.8075pt x 640.3925pt>
 File: gpw_figure_table.png Graphic file (type png)
 <use gpw_figure_table.png>
-Package pdftex.def Info: gpw_figure_table.png  used on input line 722.
+Package pdftex.def Info: gpw_figure_table.png  used on input line 721.
 (pdftex.def)             Requested size: 216.67201pt x 107.82948pt.
 <gpw_figure.png, id=310, 1271.75125pt x 763.85374pt>
 File: gpw_figure.png Graphic file (type png)
 <use gpw_figure.png>
-Package pdftex.def Info: gpw_figure.png  used on input line 722.
+Package pdftex.def Info: gpw_figure.png  used on input line 721.
 (pdftex.def)             Requested size: 216.67201pt x 130.13315pt.
 
-Overfull \vbox (35.94714pt too high) detected at line 722
+Overfull \vbox (35.94714pt too high) detected at line 721
  []
 
 [33
@@ -1556,7 +1552,7 @@ Overfull \vbox (35.94714pt too high) detected at line 722
 <gpw_figure2.png, id=319, 1281.78876pt x 759.83875pt>
 File: gpw_figure2.png Graphic file (type png)
 <use gpw_figure2.png>
-Package pdftex.def Info: gpw_figure2.png  used on input line 722.
+Package pdftex.def Info: gpw_figure2.png  used on input line 721.
 (pdftex.def)             Requested size: 216.67201pt x 128.44043pt.
  [34
 
@@ -1564,7 +1560,7 @@ Package pdftex.def Info: gpw_figure2.png  used on input line 722.
 <sato_sd_model.pdf, id=326, 794.97pt x 614.295pt>
 File: sato_sd_model.pdf Graphic file (type pdf)
 <use sato_sd_model.pdf>
-Package pdftex.def Info: sato_sd_model.pdf  used on input line 722.
+Package pdftex.def Info: sato_sd_model.pdf  used on input line 721.
 (pdftex.def)             Requested size: 216.67201pt x 167.42722pt.
 
 [35
@@ -1575,7 +1571,7 @@ Package pdftex.def Info: sato_sd_model.pdf  used on input line 722.
 <example_scatter_bad.pdf, id=343, 397.485pt x 289.08pt>
 File: example_scatter_bad.pdf Graphic file (type pdf)
 <use example_scatter_bad.pdf>
-Package pdftex.def Info: example_scatter_bad.pdf  used on input line 782.
+Package pdftex.def Info: example_scatter_bad.pdf  used on input line 781.
 (pdftex.def)             Requested size: 173.33496pt x 126.06636pt.
  [37
 
@@ -1583,7 +1579,7 @@ Package pdftex.def Info: example_scatter_bad.pdf  used on input line 782.
 <graph_fixed_up.pdf, id=358, 397.485pt x 289.08pt>
 File: graph_fixed_up.pdf Graphic file (type pdf)
 <use graph_fixed_up.pdf>
-Package pdftex.def Info: graph_fixed_up.pdf  used on input line 782.
+Package pdftex.def Info: graph_fixed_up.pdf  used on input line 781.
 (pdftex.def)             Requested size: 173.33496pt x 126.06636pt.
  [38
 
@@ -1591,10 +1587,10 @@ Package pdftex.def Info: graph_fixed_up.pdf  used on input line 782.
 <credit_score_bkflag.png, id=376, 904.37875pt x 705.63625pt>
 File: credit_score_bkflag.png Graphic file (type png)
 <use credit_score_bkflag.png>
-Package pdftex.def Info: credit_score_bkflag.png  used on input line 812.
+Package pdftex.def Info: credit_score_bkflag.png  used on input line 811.
 (pdftex.def)             Requested size: 173.33496pt x 135.23512pt.
 
-Overfull \hbox (21.43037pt too wide) detected at line 812
+Overfull \hbox (21.43037pt too wide) detected at line 811
 [][][] [][][][][][][] [][] [][][][][][][] 
  []
 
@@ -1604,10 +1600,10 @@ Overfull \hbox (21.43037pt too wide) detected at line 812
 <agent_effect_yearly.png, id=383, 627.34375pt x 466.74374pt>
 File: agent_effect_yearly.png Graphic file (type png)
 <use agent_effect_yearly.png>
-Package pdftex.def Info: agent_effect_yearly.png  used on input line 812.
+Package pdftex.def Info: agent_effect_yearly.png  used on input line 811.
 (pdftex.def)             Requested size: 173.33496pt x 128.96384pt.
 
-Overfull \hbox (21.43037pt too wide) detected at line 812
+Overfull \hbox (21.43037pt too wide) detected at line 811
 [][][] [][][][][][][] [][] [][][][][][][] 
  []
 
@@ -1619,7 +1615,7 @@ Overfull \hbox (21.43037pt too wide) detected at line 812
 <gpw_example.png, id=395, 980.66376pt x 765.86125pt>
 File: gpw_example.png Graphic file (type png)
 <use gpw_example.png>
-Package pdftex.def Info: gpw_example.png  used on input line 864.
+Package pdftex.def Info: gpw_example.png  used on input line 863.
 (pdftex.def)             Requested size: 173.33496pt x 135.35994pt.
  [42
 
@@ -1633,12 +1629,12 @@ Package pdftex.def Info: gpw_example.png  used on input line 864.
 \tf@snm=\write8
 \openout8 = `regression_2.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 867.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 867.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 866.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 866.
 
 (./regression_2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 867.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 867.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 866.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 866.
 Package rerunfilecheck Info: File `regression_2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
@@ -1664,7 +1660,7 @@ onts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts
 urw/helvetic/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/hel
 vetic/uhvro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/
 uplr8a.pfb>
-Output written on regression_2.pdf (42 pages, 34304536 bytes).
+Output written on regression_2.pdf (42 pages, 34304404 bytes).
 PDF statistics:
  464 PDF objects out of 1000 (max. 8388607)
  330 compressed objects within 4 object streams

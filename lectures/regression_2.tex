@@ -273,11 +273,11 @@
     \end{itemize}
   \item In the pscore setting, we would estimate
     $\tau(w) = E(Y|D_{i}=1, W=w) - E(Y | D_{i} = 0, W = w)$, and then
-    aggregate this using the distriution of the $w$ (using IPW)
+    aggregate this using the distribution of the $w$ (using IPW)
     \begin{itemize}
-    \item With OLS, this is done for us automatically.
+    \item With OLS, this is done for us automatically. How?
     \end{itemize}
-  \item In a regression, our setup is
+  \item Recall in a regression, our setup is
     $$ Y_{i} = \tau D_{i} + \beta W_{i} + \epsilon_{i}$$
   \end{wideitemize}
 \end{frame}
@@ -287,13 +287,13 @@
   \begin{wideitemize}
   \item Consider the projection of $D_{i}$ and $Y_{i}$ onto $W_{i}$ 
     \begin{itemize}
-      \item Note that if $W$ and $D$ are uncorrelated, we don't have to worry about it.
+      \item Note that if $W$ and $D$ are uncorrelated, we don't have to worry about controlling for it.
       \end{itemize}
     \item We define a projection matrix as $\mathbf{P}_{W} = \mathbf{W}_{n}(\mathbf{W}_{n}'\mathbf{W}_{n})^{-1}\mathbf{W}_{n}$
       \begin{itemize}
       \item Note that $\mathbf{P}_{W}\mathbf{W}_{n} = \mathbf{W}_{n}, \mathbf{P}_{W}\mathbf{P}_{W} = \mathbf{P}_{W}$
       \item Also note that $\mathbf{P}_{W}\mathbf{D}_{n}$ gives you
-        the predicted values from a linear of regression:
+        the predicted values from a linear regression:
         $$D_{i} = \gamma W_{i} + u_{i}$$
       \end{itemize}
     \item Finally, denote $\mathbf{M}_{W} = \mathbf{I}_{n} - \mathbf{P}_{W}$ as the annhilator matrix
@@ -306,10 +306,10 @@
 \begin{frame}{Frisch-Waugh-Lovell? More like Frisch-Wow-Lovell!}
   $$ Y_{i} = \tau D_{i} + \beta W_{i} + \epsilon_{i}$$
   \begin{wideitemize}
-  \item Now we know that if we transform $\mathbf{Y}_{n}^{*} = P_{W}\mathbf{Y}_{n}$ and $\mathbf{D}_{n}^{*} = P_{W}\mathbf{D}_{n}$, we can run
+  \item Now if we transform $\mathbf{Y}_{n}^{*} = P_{W}\mathbf{Y}_{n}$ and $\mathbf{D}_{n}^{*} = P_{W}\mathbf{D}_{n}$, we can run
     $$ Y_{i}^{*} = \tau D^{*}_{i} +  \tilde{\epsilon}_{i}$$
     and get the right coefficient $\tau$! (This is the Frisch-Waugh-Lovell theorem)
-  \item Now consider $W$ as a discrete set of covariates. This will
+  \item Consider $W$ as a discrete set of covariates. This will
     demean $D$ and $Y$ within each group. It is not too difficult to
     show that this regression estimate will get you
     \begin{equation}
@@ -379,8 +379,7 @@
     \end{itemize}
   \item Important to distinguish between \emph{nuisance} parameters
     (e.g. we don't care about actually estimating $\theta_{i}$ in the
-    robust standard error example) and parameters of interest. A scenario with parameters of interest:
-    $$ Y_{i} = f(D_{i},\theta) + \epsilon_{i}$$
+    robust standard error example) and parameters of interest. 
   \end{wideitemize}
 \end{frame}
 
@@ -704,8 +703,8 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
   \hfill%
   \begin{column}{.5\textwidth}
     \only<1>{
-        \includegraphics[width=\linewidth]{imbenskolsear_coverage_table.png}    \\
-        \includegraphics[width=\linewidth]{imbenskolesar_coverage.pdf}
+        \includegraphics[width=0.8\linewidth]{imbenskolsear_coverage_table.png}    \\
+        \includegraphics[width=0.9\linewidth]{imbenskolesar_coverage.pdf}
       }
     \only<2>{
         \includegraphics[width=\linewidth]{gpw_figure_table.png}    \\
