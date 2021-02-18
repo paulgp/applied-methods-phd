@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  18 FEB 2021 12:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  18 FEB 2021 12:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1474,36 +1474,36 @@ Overfull \vbox (5.28879pt too high) detected at line 552
 [24
 
  <./binscatter_insurance_controls_comparison.pdf>]
-<binsreg_insurance_nocontrols.pdf, id=233, 397.485pt x 289.08pt>
+<binsreg_insurance_nocontrols.pdf, id=234, 397.485pt x 289.08pt>
 File: binsreg_insurance_nocontrols.pdf Graphic file (type pdf)
 <use binsreg_insurance_nocontrols.pdf>
 Package pdftex.def Info: binsreg_insurance_nocontrols.pdf  used on input line 5
-85.
+86.
 (pdftex.def)             Requested size: 216.67201pt x 157.58296pt.
  [25
 
  <./binsreg_insurance_nocontrols.pdf>]
-<binsreg_insurance_controls.pdf, id=250, 397.485pt x 289.08pt>
+<binsreg_insurance_controls.pdf, id=254, 397.485pt x 289.08pt>
 File: binsreg_insurance_controls.pdf Graphic file (type pdf)
 <use binsreg_insurance_controls.pdf>
-Package pdftex.def Info: binsreg_insurance_controls.pdf  used on input line 585
+Package pdftex.def Info: binsreg_insurance_controls.pdf  used on input line 586
 .
 (pdftex.def)             Requested size: 216.67201pt x 157.58296pt.
  [26
 
  <./binsreg_insurance_controls.pdf>]
-<agent_binscatter.png, id=266, 408.52625pt x 310.15875pt>
+<agent_binscatter.png, id=271, 408.52625pt x 310.15875pt>
 File: agent_binscatter.png Graphic file (type png)
 <use agent_binscatter.png>
-Package pdftex.def Info: agent_binscatter.png  used on input line 610.
+Package pdftex.def Info: agent_binscatter.png  used on input line 611.
 (pdftex.def)             Requested size: 216.67201pt x 164.50166pt.
  [27
 
  <./agent_binscatter.png>]
-<bad_table.png, id=273, 753.81625pt x 904.37875pt>
+<bad_table.png, id=278, 753.81625pt x 904.37875pt>
 File: bad_table.png Graphic file (type png)
 <use bad_table.png>
-Package pdftex.def Info: bad_table.png  used on input line 636.
+Package pdftex.def Info: bad_table.png  used on input line 637.
 (pdftex.def)             Requested size: 130.00452pt x 155.9641pt.
  [28
 
@@ -1514,53 +1514,53 @@ Package pdftex.def Info: bad_table.png  used on input line 636.
 ] [31
 
 ]
-<imbenskolsear_coverage_table.png, id=296, 1427.3325pt x 898.35625pt>
+<imbenskolsear_coverage_table.png, id=301, 1427.3325pt x 898.35625pt>
 File: imbenskolsear_coverage_table.png Graphic file (type png)
 <use imbenskolsear_coverage_table.png>
 Package pdftex.def Info: imbenskolsear_coverage_table.png  used on input line 7
-21.
+22.
 (pdftex.def)             Requested size: 173.33826pt x 109.08662pt.
-<imbenskolesar_coverage.pdf, id=297, 1342.01375pt x 806.01125pt>
+<imbenskolesar_coverage.pdf, id=302, 1342.01375pt x 806.01125pt>
 File: imbenskolesar_coverage.pdf Graphic file (type pdf)
 <use imbenskolesar_coverage.pdf>
-Package pdftex.def Info: imbenskolesar_coverage.pdf  used on input line 721.
+Package pdftex.def Info: imbenskolesar_coverage.pdf  used on input line 722.
 (pdftex.def)             Requested size: 195.00348pt x 117.10846pt.
 
-Overfull \vbox (10.57959pt too high) detected at line 721
+Overfull \vbox (10.57959pt too high) detected at line 722
  []
 
 [32
 
  <./imbenskolsear_coverage_table.png> <./imbenskolesar_coverage.pdf>]
-<gpw_figure_table.png, id=309, 1286.8075pt x 640.3925pt>
+<gpw_figure_table.png, id=315, 1286.8075pt x 640.3925pt>
 File: gpw_figure_table.png Graphic file (type png)
 <use gpw_figure_table.png>
-Package pdftex.def Info: gpw_figure_table.png  used on input line 721.
+Package pdftex.def Info: gpw_figure_table.png  used on input line 722.
 (pdftex.def)             Requested size: 216.67201pt x 107.82948pt.
-<gpw_figure.png, id=310, 1271.75125pt x 763.85374pt>
+<gpw_figure.png, id=316, 1271.75125pt x 763.85374pt>
 File: gpw_figure.png Graphic file (type png)
 <use gpw_figure.png>
-Package pdftex.def Info: gpw_figure.png  used on input line 721.
+Package pdftex.def Info: gpw_figure.png  used on input line 722.
 (pdftex.def)             Requested size: 216.67201pt x 130.13315pt.
 
-Overfull \vbox (35.94714pt too high) detected at line 721
+Overfull \vbox (35.94714pt too high) detected at line 722
  []
 
 [33
 
  <./gpw_figure_table.png> <./gpw_figure.png>]
-<gpw_figure2.png, id=319, 1281.78876pt x 759.83875pt>
+<gpw_figure2.png, id=324, 1281.78876pt x 759.83875pt>
 File: gpw_figure2.png Graphic file (type png)
 <use gpw_figure2.png>
-Package pdftex.def Info: gpw_figure2.png  used on input line 721.
+Package pdftex.def Info: gpw_figure2.png  used on input line 722.
 (pdftex.def)             Requested size: 216.67201pt x 128.44043pt.
  [34
 
  <./gpw_figure2.png>]
-<sato_sd_model.pdf, id=326, 794.97pt x 614.295pt>
+<sato_sd_model.pdf, id=331, 794.97pt x 614.295pt>
 File: sato_sd_model.pdf Graphic file (type pdf)
 <use sato_sd_model.pdf>
-Package pdftex.def Info: sato_sd_model.pdf  used on input line 721.
+Package pdftex.def Info: sato_sd_model.pdf  used on input line 722.
 (pdftex.def)             Requested size: 216.67201pt x 167.42722pt.
 
 [35
@@ -1568,42 +1568,42 @@ Package pdftex.def Info: sato_sd_model.pdf  used on input line 721.
  <./sato_sd_model.pdf>] [36
 
 ]
-<example_scatter_bad.pdf, id=343, 397.485pt x 289.08pt>
+<example_scatter_bad.pdf, id=348, 397.485pt x 289.08pt>
 File: example_scatter_bad.pdf Graphic file (type pdf)
 <use example_scatter_bad.pdf>
-Package pdftex.def Info: example_scatter_bad.pdf  used on input line 781.
+Package pdftex.def Info: example_scatter_bad.pdf  used on input line 782.
 (pdftex.def)             Requested size: 173.33496pt x 126.06636pt.
  [37
 
  <./example_scatter_bad.pdf>]
-<graph_fixed_up.pdf, id=358, 397.485pt x 289.08pt>
+<graph_fixed_up.pdf, id=363, 397.485pt x 289.08pt>
 File: graph_fixed_up.pdf Graphic file (type pdf)
 <use graph_fixed_up.pdf>
-Package pdftex.def Info: graph_fixed_up.pdf  used on input line 781.
+Package pdftex.def Info: graph_fixed_up.pdf  used on input line 782.
 (pdftex.def)             Requested size: 173.33496pt x 126.06636pt.
  [38
 
  <./graph_fixed_up.pdf>]
-<credit_score_bkflag.png, id=376, 904.37875pt x 705.63625pt>
+<credit_score_bkflag.png, id=381, 904.37875pt x 705.63625pt>
 File: credit_score_bkflag.png Graphic file (type png)
 <use credit_score_bkflag.png>
-Package pdftex.def Info: credit_score_bkflag.png  used on input line 811.
+Package pdftex.def Info: credit_score_bkflag.png  used on input line 812.
 (pdftex.def)             Requested size: 173.33496pt x 135.23512pt.
 
-Overfull \hbox (21.43037pt too wide) detected at line 811
+Overfull \hbox (21.43037pt too wide) detected at line 812
 [][][] [][][][][][][] [][] [][][][][][][] 
  []
 
 [39
 
  <./credit_score_bkflag.png>]
-<agent_effect_yearly.png, id=383, 627.34375pt x 466.74374pt>
+<agent_effect_yearly.png, id=388, 627.34375pt x 466.74374pt>
 File: agent_effect_yearly.png Graphic file (type png)
 <use agent_effect_yearly.png>
-Package pdftex.def Info: agent_effect_yearly.png  used on input line 811.
+Package pdftex.def Info: agent_effect_yearly.png  used on input line 812.
 (pdftex.def)             Requested size: 173.33496pt x 128.96384pt.
 
-Overfull \hbox (21.43037pt too wide) detected at line 811
+Overfull \hbox (21.43037pt too wide) detected at line 812
 [][][] [][][][][][][] [][] [][][][][][][] 
  []
 
@@ -1612,10 +1612,10 @@ Overfull \hbox (21.43037pt too wide) detected at line 811
  <./agent_effect_yearly.png>] [41
 
 ]
-<gpw_example.png, id=395, 980.66376pt x 765.86125pt>
+<gpw_example.png, id=400, 980.66376pt x 765.86125pt>
 File: gpw_example.png Graphic file (type png)
 <use gpw_example.png>
-Package pdftex.def Info: gpw_example.png  used on input line 863.
+Package pdftex.def Info: gpw_example.png  used on input line 864.
 (pdftex.def)             Requested size: 173.33496pt x 135.35994pt.
  [42
 
@@ -1629,21 +1629,21 @@ Package pdftex.def Info: gpw_example.png  used on input line 863.
 \tf@snm=\write8
 \openout8 = `regression_2.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 866.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 866.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 867.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 867.
 
 (./regression_2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 866.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 866.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 867.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 867.
 Package rerunfilecheck Info: File `regression_2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 26503 strings out of 480608
- 564120 string characters out of 5903631
+ 26508 strings out of 480608
+ 564175 string characters out of 5903631
  979669 words of memory out of 5000000
- 41555 multiletter control sequences out of 15000+600000
- 612228 words of font info for 126 fonts, out of 8000000 for 9000
+ 41559 multiletter control sequences out of 15000+600000
+ 612396 words of font info for 127 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,11n,76p,786b,784s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
@@ -1655,15 +1655,16 @@ ist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/f
-onts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts
-/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/
-urw/helvetic/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/hel
-vetic/uhvro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/
-uplr8a.pfb>
-Output written on regression_2.pdf (42 pages, 34304404 bytes).
+onts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2020/texmf-dist/fo
+nts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts/
+type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/u
+rw/helvetic/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helv
+etic/uhvro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/u
+plr8a.pfb>
+Output written on regression_2.pdf (42 pages, 34316213 bytes).
 PDF statistics:
- 464 PDF objects out of 1000 (max. 8388607)
- 330 compressed objects within 4 object streams
+ 472 PDF objects out of 1000 (max. 8388607)
+ 337 compressed objects within 4 object streams
  85 named destinations out of 1000 (max. 500000)
  187 words of extra memory for PDF output out of 10000 (max. 10000000)
 
