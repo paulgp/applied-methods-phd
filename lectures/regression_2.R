@@ -11,4 +11,4 @@ data = data %>% zap_labels() %>% mutate(has_health_insurance = hcovany == 2)
 
 data_sample = data %>% sample_n(100000)
 
-binsreg(data_sample$has_health_insurance, data_sample$hhincome)
+binsreg(data_sample$has_health_insurance, data_sample$inctot)
