@@ -189,7 +189,7 @@
     \item These errors are the residuals from say, our linear model:
       $$E(y_{i}|x_{i}) = x_{i}\beta, \qquad \hat{\beta}_{ls} = \arg\min_{\beta} \sum_{i} (y_{i} - x_{i}\beta)^{2} = \arg\min_{\beta} (\mathbf{Y} - \mathbf{X}\beta)'(\mathbf{Y} - \mathbf{X}\beta) $$
     \item No surprise -- the least squares method is finding the ``least'' of the squares. In particular, we can use calculus to get our analytic solution, since we're trying to minimize an objective function:
-$$ -\mathbf{X}'(\mathbf{Y} - \mathbf{X}\hat{\beta})  = 0 \qquad  -\mathbf{X}'\mathbf{Y}  + \mathbf{X}'\mathbf{X}\hat{\beta}  = 0 \qquad  \hat{\beta})  = (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{Y} $$
+$$ -\mathbf{X}'(\mathbf{Y} - \mathbf{X}\hat{\beta})  = 0 \qquad  -\mathbf{X}'\mathbf{Y}  + \mathbf{X}'\mathbf{X}\hat{\beta}  = 0 \qquad  \hat{\beta}  = (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{Y} $$
 \end{itemize}
 \item The least squares does a lot of work for us by creating a nice
   objective function
