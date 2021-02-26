@@ -192,7 +192,10 @@
         \begin{itemize}
         \item This is typically not a topic great for causal inference
         \end{itemize}
-      \item Ends up being potentially very valuable!
+      \item Ends up being very valuable in causal estimation!
+        \begin{itemize}
+        \item In select circumstances
+        \end{itemize}
       \end{wideitemize}
     \end{column}%
   \hfill%
@@ -210,23 +213,20 @@
     \item A unknown and potentially complicated function of many variables
     \end{enumerate}
   \item Two simple versions of this, in a setting where we have data
-    $(Y_{i}, X_{i})$, and the dimension of $X_{i}=p$
+    $(Y_{i}, X_{i})$, and the dimension of $X_{i}$ is $p$
     \begin{enumerate}
     \item $Y_{i} = X_{i,0}\beta_{0} + \epsilon_{i},$ where $X_{i,0}$ is a
-      vector of $p_{0} \leq p$ covariates, but unfortunately you don't
-      necessarily know which variables in your data $X_{i}$ (which
-      have dimension $p$) are $X_{i,0}$. Alternatively, can write as
-      $Y_{i} = X_{i}\beta + \epsilon_{i}$, where $\beta_{k}=0$ for a
-      subset of variables
+      vector of $p_{0} \leq p$ covariates, but you don't
+      know which variables in your data $X_{i}$ are $X_{i,0}$. 
     \item $Y_{i} = f(X_{i}) + \epsilon_{i},$, and we want to
-      approximate $f$ as best we can -- we can do complicated
+      approximate $f$ as best we can --- we can do complicated
       functions of $X_{i}$ to approximate it (a la semiparametrics)
       but this gets hard when $p$ grows.
     \end{enumerate}
     \item A key idea which will come up in our later results is
       \emph{sparsity} -- e.g. $p_{0}$ is small, or for $f$ that is can
       be approximated by a small number of variables (combinations of
-      $X$
+      $X$)
   \end{wideitemize}
 \end{frame}
 
@@ -236,7 +236,7 @@
     ignore issues of endogeneity
   \item Recall that the ``true'' model (which we prespecified) had only a subset of non-zero entries
     \begin{itemize}
-    \item E.g., there are irrelevant right hand side variables
+    \item E.g., there are irrelevant regressors
     \item We would like to know which are the true right ones for purposes of interpretation
     \end{itemize}
   \item As our dataset grows, if $p$ stays fixed, OLS will eventually
@@ -266,7 +266,7 @@
       \min_{\beta} \;& n^{-1}\sum_{i=1}^{n}(Y_{i} - X_{i}\beta)^{2} + \lambda \sum_{k=1}^{p}|\beta_{k}|   \;& \text{(Lasso)}     \end{align*}
   \item In essence, Lasso added one ``thresholding'' penalty, where
     $\lambda$ is a tuning parameter chosen by the researcher.
-  \item Since we don't want things to get big, Lasso will choose to push coefficient values down
+  \item Lasso will choose to push coefficient values down to minimize objective 
     \begin{itemize}
     \item Most importantly, due to the $L_{1}$ norm, this will tend to push coefficients to \emph{zero}
     \item Why? Intuitively, if it was worth decreasing $\beta_{k}$
@@ -277,18 +277,18 @@
 
 \begin{frame}{What is Lasso? Graphically}
   \begin{columns}[T] % align columns
-    \begin{column}{.3\textwidth}
+    \begin{column}{.35\textwidth}
       \begin{wideitemize}
       \item Note that the first term in the  minimization
         $$n^{-1}\sum_{i=1}^{n}(Y_{i} - X_{i}\beta)^{2}$$
         is equivalent to
-        $$(\beta- \beta_{ols})'X'X(\beta- \beta_{ols})+ C$$
+        $$(\beta- \beta_{ols})'X'X(\beta- \beta_{ols}) + C$$
       \item Hence given a $\lambda$ constraint we're finding the
         isoquant closest to $\beta_{ols}$
       \end{wideitemize}
     \end{column}%
   \hfill%
-  \begin{column}{.7\textwidth}
+  \begin{column}{.65\textwidth}
     \includegraphics[width=\linewidth]{tibshiriani.png}
   \end{column}
 \end{columns}
@@ -401,8 +401,8 @@
       \begin{wideitemize}
       \item Consider an estimator $\hat{\theta}_{n}$ for $\theta$. Now we construct our new estimator,
         \begin{itemize}
-        \item $\hat{theta}_{n,hodge} = \hat{\theta}_{n}$ if $|\hat{theta}_{n}|  \geq n^{-1/4}$
-        \item $\hat{theta}_{n,hodge} = 0$ if $|\hat{theta}_{n}|  < n^{-1/4}$          
+        \item $\hat{\theta}_{n,hodge} = \hat{\theta}_{n}$ if $|\hat{\theta}_{n}|  \geq n^{-1/4}$
+        \item $\hat{\theta}_{n,hodge} = 0$ if $|\hat{\theta}_{n}|  < n^{-1/4}$          
         \end{itemize}
       \item This is a quasi-shrunk estimator, with superefficient
         convergence of the estimator when $\theta = 0$ and normal
@@ -552,9 +552,9 @@
     \begin{itemize}
     \item Lasso is best for constructing a lower MSE estimate of
       something.
-    \item You shouldn't always trust it for partiicular estimates of
-      all the underlying parameters in the model (and inference is
-      challenging for all of them, e.g. Leeb and Potscher's critique)
+    \item You shouldn't always trust it for particular estimates of
+      all the underlying parameters in the model (and inference can be 
+      challenging for all of them without sparsity assumptions)
     \end{itemize}
   \item Remember the problem of semiparametric models and nuisance
     parameters? Turns out this is a great problem for us to solve!
@@ -592,6 +592,7 @@ $$\hat{y} \;\; \text{vs.} \;\; \hat{\beta}$$
   \begin{wideitemize}
   \item There are a lot of results in this space, heavily influenced
     by Victor Chernozhukov.
+    
   \item  Going to touch on two points:
   \begin{enumerate}
   \item How did they address the Leeb and Potscher issue
@@ -603,7 +604,8 @@ $$\hat{y} \;\; \text{vs.} \;\; \hat{\beta}$$
     experiment)
   \end{itemize}
 \item This discussion riffs heavily on Chernozhukov, Chetverikov,
-  Demirer, Duflo, Hansen, Newey and Robins (2017,2018)
+  Demirer, Duflo, Hansen, Newey and Robins (2017,2018) and Belloni,
+  Chernozhukov, and Hansen (2014)
   \end{wideitemize}
 \end{frame}
 
@@ -632,7 +634,7 @@ $$\hat{y} \;\; \text{vs.} \;\; \hat{\beta}$$
     \item Sample splitting; account for the overfitting bias from
       high-dimensional approaches
     \end{enumerate}
-  \item Start with the ``naive'' approach
+  \item Start with a ``naive'' approach
     \begin{enumerate}
     \item Split the sample in half
     \item Estimate $\hat{g}_{0}$ using one half of the sample using the regression
@@ -659,12 +661,14 @@ $$\hat{y} \;\; \text{vs.} \;\; \hat{\beta}$$
   \begin{wideitemize}
   \item In a correctly specified RCT, this term shouldn't
     matter. However, in finite samples (or with issues with controls),
-    this could create poor performance (e.g. unbalance in treatment)
+    this could create poor performance (e.g. imbalance in treatment)
     \begin{itemize}
     \item Belloni, Chernozhukov, and Hansen (2014) discuss results
       where you can use lasso to directly choose the relevant controls
-    \item I don't encourage this approach -- a data-driven approach to
-      choosing your controls is challenging for causal inference
+    \item I don't encourage this approach in cases where you don't
+      have a positive story for identificatoin -- an exclusively
+      data-driven approach to choosing your controls is challenging
+      for causal inference
     \end{itemize}
   \item What's the solution? Double lasso! In this setting, we need to
     do Frisch-Waugh style orthogonalization. E.g., also estimate
@@ -698,21 +702,51 @@ $$\hat{y} \;\; \text{vs.} \;\; \hat{\beta}$$
     \begin{itemize}
     \item Can simply sample split many times and then average over the
       estimates
+    \item This is not necessary if you make stronger assumptions
     \end{itemize}
 \end{wideitemize}
 \end{frame}
 \begin{frame}{The DML (Double/De-biased) Machine Learning Cookbook}
   \begin{wideitemize}
-  \item In steps, the algorithm is as follows (see their AER P\&P for greater detail0
-    \begin{enumerate}
-    \item Split the sample up into K pieces
-    \item In each split sample, use the complement of the data to estimate the nuisance parameters using ML
-    \item Estimate the parameter of interest using the split data
-    \item Average the $K$ estimators
-    \end{enumerate}
+  \item We'll now walk through a simple example of estimation
+    following Belloni, Chernozhukov and Hansen (2014):
+    \begin{itemize}
+    \item A fully exogeneous binary treatment
+    \item Set of controls
+    \item Lasso estimation of $g(X)$ and $m(X)$
+    \item No splitting
+    \end{itemize}
+  \item If you want a different estimator, consult
+    Chernozhukov, Chetverikov, Demirer, Duflo, Hansen, Newey and
+    Robins (2018)
   \end{wideitemize}
 \end{frame}
 
+\begin{frame}{Simple lasso approach w/o splitting}
+  The approach, straight out of Belloni, Chernozukhov, and Hansen (2014)
+  \begin{enumerate}
+  \item Estimate lasso of $D_{i}$ on the control set $X$ and identify
+    the controls selected by the procedure (don't lasso on the
+    constant). Call this set of $X_{i}$ $I_{1}$
+    \begin{itemize}
+    \item Note -- choice of penalization term matters. Discussed in Appendix A of Belloni (2012)
+    \item I just use the \texttt{rlasso} package in R, or \texttt{rlasso} in Stata (\texttt{lassopack})
+    \end{itemize}
+  \item Estimate lasso of $Y_{i}$ on the control set $X$ and identify
+    the controls selected by the procedure (don't lasso on the
+    constant). Call this set of $X_{i}$ $I_{2}$ 
+  \item Rerun OLS with $D_{i}$ and the union of $I_{1}$ and $I_{2}$ as
+    controls (you can add in other variables too if they're not too
+    big)
+  \item That's it! Interpret the coefficient on $D_{i}$ as you will
+    \begin{itemize}
+    \item Note from Wuthrich and Zhu (2020) -- can be finite sample
+      issues. Make sure your results are robust to shifting your
+      tuning parameters
+    \end{itemize}
+  \end{enumerate}
+\end{frame}
 
 
 \end{document}
+
