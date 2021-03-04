@@ -1,4 +1,7 @@
 
+%%% Didn't love this class
+%% Material isn't super deep (can't dive too much into the IO side)
+%% Worried that the students already know the material
 
 \documentclass[notes,11pt, aspectratio=169]{beamer}
 
@@ -187,22 +190,21 @@
 
 \begin{frame}{Today's topic: multiple discrete choice}
   \begin{columns}[T] % align columns
-    \begin{column}{.6\textwidth}
+    \begin{column}{.7\textwidth}
       \begin{wideitemize}
-      \item We'll know expand the set of choices and problems that we'll think about
-      \item Much of this discussion is very IO-adjacent -- I will be
-        giving a limited impression of an IO class
+      \item We'll now examine multiple discrete choice problems 
+      \item Much of this discussion is very IO-adjacent
         \begin{itemize}
-        \item However, many of these ideas are extremely important for
-          non-IO style problems, e.g. multiple IVs and Roy models
-        \item Moreover, I think these tools are very promising for fields that have not yet exploited them
+        \item However, many of these ideas are important for
+          non-IO problems, e.g. multiple IVs and Roy models
+        \item Moreover, these tools are very promising in fields that
+          have not yet used them
         \end{itemize}
       \item Issues with choice problems that we'll discuss:
         \begin{itemize}
         \item Independence of Irrelevant Alternatives (IIA)
         \item Choice sets and consideration sets
         \item Inconsistency of fixed effects and its consequences
-        \item Unobserved heterogeneity
         \end{itemize}
       \end{wideitemize}
     \end{column}%
@@ -251,15 +253,14 @@
         $\pi(X_{i}) = Pr(Y_{i} = 1 |X _{i})$
       \item With more than two choices, the dimensionality becomes
         more complicated.  We now have
-        $\pi_{j}(X_{i}, X_{j}, X_{ij}), j=2,3$ for 3 choices. 
+        $\pi_{j}(\mathbf{X}), j=2,3$ for 3 choices. 
       \end{itemize}
-    \item How to parameterize how other choices' characteristics
+    \item How should we parameterize how other choices' characteristics
       affect each other?
-    \item Most of the models we will discuss today will
-      make very specific restrictions on how choices affect one
-      another
+    \item Most of the models we will discuss today will make very
+      specific restrictions on how choices affect one another
       \begin{itemize}
-      \item This will not be an innocuous choice, as we'll see.
+      \item These are not innocuous choices, as we'll see.
       \end{itemize}
   \end{wideitemize}
 \end{frame}
@@ -267,39 +268,36 @@
 
 \begin{frame}{The naive approach}
   \begin{wideitemize}
-  \item Before we start putting more structure on our problem, worth
-    noting simple thing
-  \item If we wanted to suss out treatment effects, we could stay in a
-    much simpler world, and focus on binary outcomes
-  \item   E.g. we have a randomly assigned treatment $T$ on , and $J$
-  choices. We could simply ask the effect of $T$ on $Pr(Y_{i} = j)$, vs all the other choices
-  for each $j$.
+  \item If we want to estimate simple treatment effects, we could
+    focus on binary outcomes
+  \item For exmaple: we have a randomly assigned treatment $T$, and
+    $J$ choices. What is the effect of $T$ on $Pr(Y_{i} = j)$?
   \begin{itemize}
-  \item A problem, of course: if we did that for every outcome, the
-    sum of our treatment effects would sum up to exactly 0.
+  \item    $\tau_{j} = Pr(Y_{i} = j | T_{i} = 1) -Pr(Y_{i} = j | T_{i} = 0)$
   \end{itemize}
 \item   There's less information about the substitution
   patterns of individuals in this form
-\item   Of course, it is still very helpful! And useful when faced with a
-  lot of choices to say, ok, let me think about the effect on one
-  margin.
-\item   However, you can't do Probability of 1 CONDITIONAL on choosing one
-  or two -- tha twould be conditioning on a dependent variable. Need a
-  model of the full set of choices if you want to do that.
+\item Of course, it is still very helpful! And useful when faced with
+  a lot of choices to focus on the effect on one margin.
+\item However, need more structure to estimate relative choice
+  substitution across outcomes
+  \begin{itemize}
+  \item E.g. what is the effect of $T$ on choosing $j$ conditional on
+    choosing $j$ or $k$
+  \end{itemize}
   \end{wideitemize}
 \end{frame}
 
 \begin{frame}{What's the estimand/counterfactual? }
   \begin{wideitemize}
-  \item   This is really a quesiton of what counterfactual question we're interested in
+  \item What counterfactual question are we interested in?
     \begin{enumerate}
-  \item How does changing one of the $X_{ij}$ affect the probability
+  \item How does changing $X_{ij}$ affect the probability
     of choosing choice $j$ relative to all other choices?
-  \item How does changing one of the $X_{ij}$ affect the probability
-    of choosing choice $j$? \emph{relative} to choice $i$?
+  \item How does changing $X_{ij}$ affect the probability
+    of choosing choice $j$ \emph{relative} to choice $k$?
   \item How does adding or subtracting one of the choices (with
-    difference in $X_{ij}$) change the $J+1$ choice probabilities,
-    and for the new choice?
+    difference in $X_{ij}$) change the $J+1$ choice probabilities?
   \end{enumerate}
 \item An important question is under what settings are these questions
   identified. In the examples we'll look at, there are answers that
@@ -307,10 +305,10 @@
   parametric assumptions.
   \begin{itemize}
   \item See Berry and Haile (2016) for a discussion of identification
-    in product markets in non-parametric settings. They show that
-    there are two specific conditions that need to hold in the
-    structure of the problem, but allow for very general structure in
-    the distribution of the shocks.
+    in product markets in non-parametric settings.
+  \item They show that there are two specific conditions that need to
+    hold in the structure of the problem, but allow for very general
+    structure in the distribution of the shocks.
   \end{itemize}
   \end{wideitemize}
 \end{frame}
@@ -318,13 +316,9 @@
 \begin{frame}{Modeling multiple choices}
     \begin{wideitemize}
     \item A second way to view this is as an structural (economic)
-      choice problem (pioneered by McFadden).  Most models of limited
-      dependent variables (e.g. binary) assume a latent
-      index. Consider a set of utilities $U_{ij}$ (unobserved) such
-      that the
-
+      choice problem (pioneered by McFadden). Consider a set of
+      utilities $U_{ij}$ (unobserved) such that the
       $$Y_{i} = \arg\max_{j \in \Omega}U_{ij}$$
-
     \item E.g., person $i$ chooses $j$ if it's the choice that
       maximizes the utility amongst all $J+1$ choices.
       \begin{itemize}
@@ -337,10 +331,8 @@
       \item $\epsilon_{ij}$ are independent across choices and
         individuals, and distributed Type-I extreme value
       \end{enumerate}
-
       then we get the McFadden conditional logit model:
       $$Pr(Y_{i} = j | X_{ij}) = \frac{\exp(X_{ij}\beta)}{\sum_{k}\exp(X_{ik}\beta)}.$$
-      
   \end{wideitemize}
 \end{frame}
 
@@ -386,7 +378,7 @@
   \begin{wideitemize}
   \item Another way to see this problem: consider the probability of
     choosing $j$, conditional on choosing just $j$ and $k$:
-    $$Pr(Y_{i} = j | Y_{i} \in \{j,k\}) = \frac{\exp{X_{ij}\beta}}{\exp{X_{ij}\beta} + \exp{X_{ij}\beta}} $$
+    $$Pr(Y_{i} = j | Y_{i} \in \{j,k\}) = \frac{\exp{(X_{ij}\beta})}{\exp{(X_{ij}\beta)} + \exp{(X_{ik}\beta})} $$
   \item Note that none of the other choices show up in this
     probability choice -- irrespective of how ``similar'' the other
     choices are to $j$ or $k$.
@@ -394,7 +386,7 @@
     \item In other words, if a characteristic of the other products changes,
       the relative share between $j$ and $k$ will stay same
     \end{itemize}
-  \item The canonical example of this is Train's ``car, red bus and
+  \item The canonical example of this is the ``car, red bus and
     blue bus'' example.
     \begin{itemize}
     \item  Presumably a person is purely indifferent
@@ -411,9 +403,9 @@
   \begin{wideitemize}
     \item Better substitution patterns
 
-    \item Note that this is both an economics problem -- e.g. we have
-    economic intuition about the market substitution patterns, and we
-    don't think identical cross elasticities makes sense
+    \item Note that this is an economics problem -- e.g. we have
+      economic intuition about the market substitution patterns, and
+      we don't think identical cross-elasticities makes sense
     
     \item It's also a statistical problem -- there is a very strong
     statistical functional form we have assummed, which was
@@ -429,23 +421,23 @@
 
 \begin{frame}{Nested Logit and Correlated Multivariate Probit}
   \begin{wideitemize}
-  \item One view of the intuition of the problem comes from the
-    indepdnence of the $\epsilon$ across choices
+  \item One part of the problem comes from the independence of the
+    $\epsilon$ across choices
     \begin{itemize}
-    \item Recall that these epsilon effectively rationalize seeing
+    \item Recall that these $\epsilon$ effectively rationalize seeing
       non-zero choices in both directions, conditional on charcteristics
     \end{itemize}
   \item Recall the blue and red bus case:
     \begin{itemize}
-    \item Getting two new draws for the busses is not an intuitive
+    \item Getting two independent $\epsilon$ draws for the busses is not an intuitive
       view of bus demand
     \item Instead, the blue and bus likely have highly
       correlated epsilon draws (if not identical)
     \item The issue, of course, is what the correlation is within sets 
     \end{itemize}
-  \item With the nested Logit approach, you can identify sets
-    (specified by the researcher), and allow data-driven measures of
-    correlation of the $\epsilon$ within these sets.
+  \item With the nested Logit approach, you can specify sets (as the
+    researcher), and allow data-driven measures of correlation of the
+    $\epsilon$ within these sets.
   \item The key is that the errors are uncorrelated across choice sets, which preserves
     the simple logit structure (see Goldberg (1995) for an example application)
   \end{wideitemize}
@@ -459,7 +451,7 @@
       \item E.g. $\epsilon_{i} = (\epsilon_{i0},\epsilon_{i1},\ldots, \epsilon_{iJ}) \sim \mathcal{N}(0, \Sigma)$
       \item Directly estimate $\Sigma$
       \end{itemize}
-    \item This problem gets very hard with many choices (parameter space grows at rate $J^{2}$)
+    \item This problem gets hard with many choices (parameter space grows at rate $J^{2}$)
     \item Importantly, do need to normalize one of the variance terms,
       since the variance matrix is only identified up to scale of one
       of the terms.
@@ -510,11 +502,12 @@
     \begin{itemize}
     \item E.g. the choices are highly correlated
     \end{itemize}
-  \item This is beyond just IIA -- this matters when considering
-    counterfactuals in which you add new choices
+  \item This is beyond just IIA's effect of cross-price elasticities
+    -- this matters when considering counterfactuals where you add new
+    choices
     \begin{itemize}
     \item Let $X_{i}$ define the \emph{characteristic space}
-    \item Conceptually, if a new product is added in the
+    \item If a new product is added in the
       characteristic space, we think that they should crowd one
       another. With logit errors, they do not
     \end{itemize}
@@ -534,10 +527,11 @@
     \begin{itemize}
     \item Call the subset of choices a consumer focuses on the
       \emph{consideration} set
+    \item These can be known (observed) or usually, unknown
     \end{itemize}
-  \item Issue is that if we assert consideration sets are the full
-    choice set for all individuals, when we see individuals choose
-    certain goods, we view this as reflecting their preferences
+  \item If we assert consideration sets are the full choice set for
+    all individuals, when we see individuals choose certain goods, we
+    view this as reflecting their preferences
     \begin{itemize}
     \item Or in other words, the counterfactual we generate from this
       model would imply a certain response
@@ -551,7 +545,8 @@
 
 \begin{frame}{Choice sets and consideration sets}
   \begin{wideitemize}
-  \item The general way to view consideration sets point is
+  \item The general way to view consideration sets in choice problems
+    is
   \begin{equation*}
     s_{j}(p) = \sum_{C \in P(j)} \pi_{C}(p) s_{j}^{*}(p | C),
   \end{equation*}
@@ -619,8 +614,8 @@
   \item One issue that arises in many non-linear binary choice model is that many
     features do not carry over from linear models
     \begin{itemize}
-    \item Obvious example was the complication in interpreting coefficients
-    \item A bigger issue comes from fixed effects, and specifically their inconsistency      
+    \item E.g. interpreting coefficients is more challenging
+    \item A bigger issue comes from  inconsistency of fixed effects
     \end{itemize}
 \vspace{-5pt}    
   \item Consider estimating a panel fixed effects model with binary choice:
@@ -631,7 +626,7 @@
     where we are interested in the parameter $\beta$. If we have a
     short panel (e.g. few time periods), we cannot consistently
     estimate $\alpha_{i}$. However, in the linear case, this does not
-    affect estimation.
+    affect estimation of $\beta$
   \item Unique result (Chamberlain (1987,2010)): for binary
     outcome case, the only model that
     consistently estimates $\beta$ is a conditional logit
@@ -644,14 +639,13 @@
   \end{wideitemize}
 \end{frame}
 
-
-
 \begin{frame}{Underlying structure of discrete choice is valuable in IV settings}
   \begin{wideitemize}
   \item Much of this discussion centered on IO style applications
   \item But this discussion shows up when thinking about Roy style models
   \item When we discuss instruments and individuals' choice to take up
-    a policy or not, if the policy is multi-dimensional, this types of models play a huge role
+    a policy or not, if the policy is multi-dimensional, this types of
+    models play a huge role
   \item Recall our discussion of propensity scores for treatment effects
     \begin{itemize}
     \item If individuals choose between multiple treatment options,
