@@ -6,6 +6,8 @@
 1. https://github.com/paulgp/applied-methods-phd
 2. https://yale.instructure.com/courses/64286 [Yale students only]
 
+Course videos are available on [Youtube](https://www.youtube.com/playlist?list=PLWWcL1M3lLlojLTSVf2gGYQ_9TlPyPbiJ)
+
 ## Course Description
 This course is primarily designed for graduate students interested in econometric methods used in empirical research. The goal of this class is to provide an overview of different empirical methods, with an emphasis on practical implementation.  I will provide a set of lecture slides and notes. There are additional background papers that are largely optional.
 
