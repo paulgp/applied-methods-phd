@@ -518,7 +518,6 @@
 \end{frame}
 
 
-
 %%% PIVOT TO HAZARD MODELS
 \begin{frame}{Pivoting to hazard models}
   \begin{wideitemize}
@@ -553,6 +552,7 @@
   \end{wideitemize}
 \end{frame}
 
+
 \begin{frame}{Why the hazard function? (Van Den Berg (2001))}
     \begin{columns}[T] % align columns
     \begin{column}{.4\textwidth}
@@ -577,8 +577,8 @@
     \end{center}
   \end{column}
 \end{columns}
-
 \end{frame}
+
 
 \begin{frame}{Simple hazard example}
   \begin{wideitemize}
@@ -618,139 +618,306 @@
   \end{wideitemize}
 \end{frame}
 
+\begin{frame}{Non-parametric estimations of survival with censoring}
+  \begin{columns}[T] % align columns
+    \begin{column}{.5\textwidth}
+  \begin{wideitemize}
+  \item<1-> In the full sample of the housing example, we were plotting the density of the
+    variable $t_{i} = \min\{y_{i}, c_{i}\}$ 
+  \begin{itemize}
+  \item e.g., the true failure time or when it is censored
+  \end{itemize}
+\item<2-> However there's a lot of censoring in this full sample. How
+  accurately does this map to the probability of someone staying in a
+  home?
+  \begin{itemize}
+  \item E.g. can I use this to estimate $S(t) = Pr( Y_{i} > t)$?
+  \end{itemize}
+\item<2-> Short answer: not directly. Need to adjust for censoring and can do so
+  non-parametrically
+  \begin{itemize}
+  \item We'll use the Kaplan-Meier estimator 
+  \end{itemize}
+  \end{wideitemize}
+    \end{column}%
+  \hfill%
+  \begin{column}{.5\textwidth}
+    \only<1>{\includegraphics[width=\linewidth]{images/housing_duration_full.png}}
+    \only<2>{\includegraphics[width=\linewidth]{images/housing_duration_full_naive_survival.png}}
+  \end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Kaplan-Meier: non-parametric estimations of surival}
+  \begin{columns}[T] % align columns
+    \begin{column}{.8\textwidth}
+      \begin{itemize}
+      \item Kaplan-Meier estimator exploits the fact that the survival
+        up to period $t$, $S(t)$, can be thought of as the joint
+        probability of $t$ non-exits in a row:
+        $S(t) = \prod_{j = 1}^{t}(1-h(j))$
+      \item Then, this implies that
+        $f(t) = h_{t}\prod_{j = 1}^{t-1}(1-h(j))$ and $f(1) = h(t)$.
+      \item We need to just estimate $h(\cdot)$ for every time period.
+        Let $a_{j} = \sum_{i} 1(Y_{i} \geq t) $,
+        $e_{j} = \sum_{i} 1(Y_{i} = j \cap Y_{i} \leq c_{i})$
+      \begin{align*}
+        L(h) &= \prod_{i=1}^{n} f(y_{i})^{d_{i}}S(c_{i})^{1-d_{i}} \\
+             &= \prod_{j} h_{j}^{e_{j}}(1-h_{j})^{a_{j}-e_{j}}
+      \end{align*}
+    \item Our MLE is $\hat{h}_{j} = e_{j}/a_{j}$
+      \begin{itemize}
+      \item Can consider standard errors and testing around these
+        estimates
+      \end{itemize}
+  \end{itemize}
+    \end{column}%
+  \hfill%
+  \begin{column}{.2\textwidth}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Kaplan-Meier: non-parametric estimations of surival}
+  \begin{columns}[T] % align columns
+    \begin{column}{0.3\textwidth}
+      \begin{itemize}
+      \item Ignoring the censoring makes a big difference  
+      \end{itemize}
+    \end{column}%
+  \hfill%
+  \begin{column}{.7\textwidth}
+    \includegraphics[width=\linewidth]{images/housing_duration_full_naive_survival_v_KM.png}
+  \end{column}
+\end{columns}
+\end{frame}
+
+
 \begin{frame}{Hazard modeling data sampling}
   \begin{wideitemize}
-  \item Note that ignoring the censoring will bias your estimates of $\theta$
+  \item Clearly, ignoring the censoring will bias your estimates -
+    either of $\theta$ in a parameterized model, or of $h(t)$ in
+    non-parametric estimates
     \begin{itemize}
     \item There are two ways one could naively ignore it -- toss any
       data that's censored, or treat the censoring as real data
-    \item Both will give over estimates of $\theta$ in the exponential case
+    \item Both will give over-estimates of $\theta$ in the exponential case
     \end{itemize}
   \item To see the intuition, let $t_{i} = min(y_{i}, c_{i})$, and
     note the likelihood.
-      \begin{align*}
-        L(\theta) &= \prod_{i=1}^{n} h(t_{i}|\theta)^{d_{i}} S(t_{i}|\theta)
-      \end{align*}
-    \item Now assume the exponential and solve for the MLE
-      $\hat{\theta} = \overline{d}/\overline{t}$. Consider how
-      the estimates change if you either throw out data, or mislabel
-      the censoring
-      \begin{itemize}
-      \item If you ignore the censoring, $\overline{d} \rightarrow 1$,
-        and $\overline{t}$ doesn't change. Upward bias in
-        $\hat{\theta}$
-      \item If you drop the censored obs, then the MLE is
-        $\bar{\theta} = \sum d_{i} / \sum d_{i} t_{i}$ Note that the
-        numerator remains unchanged, but the denominator
-        decreases. Upward bias in $\hat{\theta}$
-      \end{itemize}
+    \begin{align*}
+      L(\theta) &= \prod_{i=1}^{n} h(t_{i}|\theta)^{d_{i}} S(t_{i}|\theta)
+    \end{align*}
+  \item Now assume the exponential and solve for the MLE
+    $\hat{\theta} = \overline{d}/\overline{t}$. Consider how
+    the estimates change if you either throw out data, or mislabel
+    the censoring
+    \begin{itemize}
+    \item If you ignore the censoring, $\overline{d} \rightarrow 1$,
+      and $\overline{t}$ doesn't change. Upward bias in
+      $\hat{\theta}$
+    \item If you drop the censored obs, then the MLE is
+      $\bar{\theta} = \sum d_{i} / \sum d_{i} t_{i}$ Note that the
+      numerator remains unchanged, but the denominator
+      decreases. Upward bias in $\hat{\theta}$
+    \end{itemize}
   \end{wideitemize}
-  \end{frame}
-
-
-  \begin{frame}{Value of hazard modeling}
-    \begin{wideitemize}
-    \item So far, the main value of the modeling is to add parametric
-      structure to capture the univariate features of duration
-      \begin{itemize}
-      \item E.g., we want to know the properties of a censored random variable
-      \end{itemize}
-    \item However, in many cases we want to know the effect of some
-      variable on the duration
-      \begin{itemize}
-      \item E.g. $Y = D\beta + \epsilon$
-      \end{itemize}
-    \item What is the downside of simply running a regression like
-      above? As Van Den Berg discusses above:
-      \begin{itemize}
-      \item Hazard rate will more concisely capture a meaningful
-        characteristic
-      \item Time-varying characteristics are more easily accomodated
-        (e.g., how does the above linear regression incorporate a
-        changing minimum wage schedule?)
-      \item The simple linear regression approach doesn't deal with
-        censoring well
-      \end{itemize}
-    \end{wideitemize}
-  \end{frame}
-
-  \begin{frame}{A defense of regression}
-    \begin{wideitemize}
-    \item An aside in defense of a simple linear regression approach
-    \item While hazard modeling is tightly connected to economic
-      models, it can feel non-transparent (as many non-linear models
-      do)
-    \item Simple linear regression models \emph{can} address censoring in two ways:
-      \begin{itemize}
-      \item Indicators of ``survived to year $K$'' , so long as year
-        $K$ is not censored
-      \item quantile regression
-      \end{itemize}
-    \item It is possible to use these combinations to do a number of
-      robust analyses
-      \begin{itemize}
-      \item In fact, I would highly recommend that any hazard modeling
-        done is also supported by simple linear regression as well
-      \end{itemize}
-    \item However any linear regression needs to be \emph{extremely}
-      aware of the data sampling process
-    \end{wideitemize}
-  \end{frame}
-
-  \begin{frame}{The workhorse of hazard modeling - Proportional Hazard}
-    \begin{wideitemize}
-    \item In some settings, there is theory driving the hazard
-      modeling, and that should determine your approach
-      \begin{itemize}
-      \item in more reduced form settings, you need a workhorse model that
-      is flexible
-      \end{itemize}
-    \item In hazard models, this model is the Cox proportional hazards model:
-      \begin{equation}
-        \theta(t | x) = \phi(t) \theta_{0}(x) , 
-      \end{equation}
-      where $\theta_{0} = \exp(x\beta)$ usually. $\phi(t)$ is the
-      \emph{baseline} hazard, and gives the underlying shape of the
-      hazard function.
-    \item The characteristics of individuals $x$, move around the
-      level of the hazard curve, but do not change the overall shape
-      (e.g. $\theta_{0}$ is not directly a function of time, other
-      than through $x$)
-    \item In more complicated settings, we can allow for unobserved
-      heterogeneity $v$ in what is known as the \emph{mixed} proportional
-      hazards model:
-      \begin{equation}
-        \theta(x|t, v) = \phi(t) \theta_{0}(x) v
-      \end{equation}
-      
-    \end{wideitemize}
-  \end{frame}
-  
-  \begin{frame}{Unobserved heterogeneity}
-      \begin{equation}
-        \theta(x|t, v) = \phi(t) \theta_{0}(x) v
-      \end{equation}
-    
-      \begin{wideitemize}
-      \item   Key result from Lancaster that is easy to understand - hazard rate could be time varying (which is interesting from a theoreteical point) or it could be unobserved heterogeneity
-      \item Consider the following example. Suppose there are two
-        types of people in the population, ``movers'' and ``stayers'',
-        movers are share $p$ and stayers $1-p$. Movers have a of
-        $\theta_{m}$ = 2. Stayers have a lower lower rate of
-        $\lambda_{s} = 1$.
-      \item As time goes on, the share of each in the remaining
-        population changes, shifting the overall hazard rate
-        \begin{itemize}
-        \item However, it's not that hazard rates are changing, but
-          instead a compositional impact of unobserved heterogeneity
-        \end{itemize}
-      \item Using multi-spell data is a way to address this issue,
-        similar to panel data with unobserved heterogeneity
-        \begin{itemize}
-        \item See Van Den Berg (2001) and Rose (2020) for details on cites
-        \end{itemize}
-      \end{wideitemize}
 \end{frame}
+
+
+\begin{frame}{Value of hazard modeling}
+  \begin{wideitemize}
+  \item So far, the main value of the modeling is to add parametric
+    structure to capture the univariate features of duration
+    \begin{itemize}
+    \item E.g., we want to know the properties of a censored random variable
+    \end{itemize}
+  \item However, in many cases we want to know the effect of some
+    variable on the duration
+    \begin{itemize}
+    \item E.g. $Y = D\beta + \epsilon$
+    \end{itemize}
+  \item What is the downside of simply running a regression like
+    above? As Van Den Berg discusses above:
+    \begin{itemize}
+    \item Hazard rate will more concisely capture a meaningful
+      characteristic
+    \item Time-varying characteristics are more easily accomodated
+      (e.g., how does the above linear regression incorporate a
+      changing minimum wage schedule?)
+    \item The simple linear regression approach doesn't deal with
+      censoring well
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{A defense of regression}
+  \begin{wideitemize}
+  \item An aside in defense of a simple linear regression approach
+  \item While hazard modeling is tightly connected to economic
+    models, it can feel non-transparent (as many non-linear models
+    do)
+  \item Simple linear regression models \emph{can} address censoring in two ways:
+    \begin{itemize}
+    \item Indicators of ``survived to year $K$'' , so long as year
+      $K$ is not censored
+    \item quantile regression
+    \end{itemize}
+  \item It is possible to use these combinations to do a number of
+    robust analyses
+    \begin{itemize}
+    \item In fact, I would highly recommend that any hazard modeling
+      done is also supported by simple linear regression as well
+    \end{itemize}
+  \item However any linear regression needs to be \emph{extremely}
+    aware of the data sampling process
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{The workhorse of hazard modeling - Proportional Hazard}
+  \begin{wideitemize}
+  \item In some settings, there is theory driving the hazard
+    modeling, and that should determine your approach
+    \begin{itemize}
+    \item in more reduced form settings, you need a workhorse model that
+      is flexible
+    \end{itemize}
+  \item In hazard models, this model is the Cox proportional hazards model:
+    \begin{equation}
+      \theta(t | x) = \phi(t) \theta_{0}(x) , 
+    \end{equation}
+    where $\theta_{0} = \exp(x\beta)$ usually. $\phi(t)$ is the
+    \emph{baseline} hazard, and gives the underlying shape of the
+    hazard function.
+  \item The characteristics of individuals $x$, move around the
+    level of the hazard curve, but do not change the overall shape
+    (e.g. $\theta_{0}$ is not directly a function of time, other
+    than through $x$)
+  \item In more complicated settings, we can allow for unobserved
+    heterogeneity $v$ in what is known as the \emph{mixed} proportional
+    hazards model:
+    \begin{equation}
+      \theta(x|t, v) = \phi(t) \theta_{0}(x) v
+    \end{equation}
+    
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Unobserved heterogeneity}
+  \begin{equation}
+    \theta(x|t, v) = \phi(t) \theta_{0}(x) v
+  \end{equation}
+  
+  \begin{wideitemize}
+  \item   Key result from Lancaster that is easy to understand - hazard rate could be time varying (which is interesting from a theoreteical point) or it could be unobserved heterogeneity
+  \item Consider the following example. Suppose there are two
+    types of people in the population, ``movers'' and ``stayers'',
+    movers are share $p$ and stayers $1-p$. Movers have a of
+    $\theta_{m}$ = 2. Stayers have a lower lower rate of
+    $\lambda_{s} = 1$.
+  \item As time goes on, the share of each in the remaining
+    population changes, shifting the overall hazard rate
+    \begin{itemize}
+    \item However, it's not that hazard rates are changing, but
+      instead a compositional impact of unobserved heterogeneity
+    \end{itemize}
+  \item Using multi-spell data is a way to address this issue,
+    similar to panel data with unobserved heterogeneity
+    \begin{itemize}
+    \item See Van Den Berg (2001) and Rose (2020) for details on cites
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Estimation}
+  \begin{wideitemize}
+  \item This approach, as with the simple hazard model, uses likelihood methods
+  \item The key complications are:
+    \begin{itemize}
+    \item The baseline hazard model
+    \item The heterogeneity
+    \end{itemize}
+  \item How to deal with the baseline hazard? $\lambda(t)$ is a
+    nuisance parameter for the estimation of the $\theta_{0}$.
+  \item The Cox approach ($v = 1$) for the nuisance parameter
+    exploits the proportionality: at any given event, the
+    \emph{partial likelihood} for unit $i$ that fails at period
+    $t$ is
+    \begin{align*}
+      L_{i}(\beta) &= \frac{\phi(t)\theta_0(X_{i}\beta)}{\sum_{j : Y_{j} > Y_{i}} \phi(t)\theta_0(X_{j}\beta)}\\
+                   &= \frac{\theta_0(X_{i}\beta)}{\sum_{j: Y_{j} > Y_{i}} \theta_0(X_{j}\beta)}
+    \end{align*}
+    (this is analogous to the solution in conditional logit)
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Simplifying the intuition}
+  \begin{columns}[T] % align columns
+    \begin{column}{0.3\textwidth}
+\only<1>{  \begin{wideitemize}
+    \item In the case on a non-time-varying treatment (e.g. a baseline
+      covariate) that is binary (or discrete), we don't need to get quite so complicated
+    \item What if we just compared Kaplan-Meier survival functions?
+      \begin{itemize}
+      \item Let's compare boom and bust houses
+      \end{itemize}
+    \end{wideitemize}}
+  \only<2>{
+    \begin{itemize}
+    \item Very intuitive and straightforward to compare hazards
+    \item Doesn't look like proportional hazards is a reasonable
+      assumption
+      \begin{itemize}
+      \item This is a standard model fit check
+      \end{itemize}
+    \item Key downside: doesn't accomodate unobserved heterogeneity,
+      nor time-varying characteristics
+    \end{itemize}}
+    \end{column}%
+  \hfill%
+  \begin{column}{.7\textwidth}
+    \only<1>{\includegraphics[width=\linewidth]{images/housing_duration_survival_KM_boom_bust.png}}
+    \only<2>{\includegraphics[width=\linewidth]{images/housing_duration_hazard_KM_boom_bust.png}}    
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Sometimes you have to get complicated}
+  \begin{columns}[T] % align columns
+    \begin{column}{0.9\textwidth}
+      \begin{wideitemize}
+      \item Sometimes a more complicated model is worthwhile, and you can't do a simple comparison
+        \begin{itemize}
+        \item Time-varying treatments being an obvious case
+        \end{itemize}
+      \item Key tension (discussed in Abbring and Van Den Berg (2003))
+        -- when is the \emph{timing} of the time-varying treatments?
+        \begin{itemize}
+        \item Anticipation of treatments will confound your estimates
+        \end{itemize}
+      \item Additional complicating factor: competing risks
+        \begin{itemize}
+        \item What if there are multiple simultaneous states one could transition to?
+        \item e.g. Unemployment could go to employment, or leaving the labor force
+        \item e.g. Mortgage could go to default or prepayment
+        \item Our strategies above ignore this and assume the risks
+          are independent
+          \begin{itemize}
+          \item This is clearly a strong assumption
+          \end{itemize}
+        \end{itemize}
+      \item See Honore and Lleras-Muney (2006) for a discussion on the
+        fundamental identification issue in competing risks
+      \end{wideitemize}
+    \end{column}%
+    \hfill%
+    \begin{column}{.7\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
 
 \begin{frame}{Finally, some examples}
   \begin{wideitemize}
@@ -778,9 +945,9 @@
 \end{frame}
 
 
-\begin{frame}{more examples}
+\begin{frame}{More examples}
   \begin{wideitemize}
-    \item Yang (2016) - recidivism
+  \item Yang (2016) - recidivism
     \begin{itemize}
     \item $t=0$: release from jail
     \item Spell ends: recidivism
