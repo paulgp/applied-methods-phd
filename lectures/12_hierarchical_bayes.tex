@@ -303,23 +303,23 @@
   \end{wideitemize}
 \end{frame}
 
-\begin{frame}{Bayes rule and the Likelihood}
+\begin{frame}{Bayes' rule and the Likelihood}
   \begin{wideitemize}
   \item Recall from our (and your previous classes') discussion of the
     likelihood, that for a given model of i.i.d. data $(Y_{i},X_{i})_{i=1}^{n}$ with model parameters $\theta$, we write down our likelihood:
     \begin{equation*}
-      L(\theta) = \prod_{i=1}^{n}f_{\theta}(Y_{i} | X_{i}) 
+      L(\theta) = \prod_{i=1}^{n}f_{\theta}(Y_{i} , X_{i}) 
     \end{equation*}
-  \item But really, this is just the joint probability of the data -- e.g. $f(Y | X)$. If we are willing to be Bayesian, e.g., view the parameter $\theta$ as a random variable, we can even say $f(Y | X, \theta)$
+  \item But really, this is just the joint probability of the data -- e.g. $f(Y , X)$. If we are willing to be Bayesian, e.g., view the parameter $\theta$ as a random variable, we can even say $f(Y , X |  \theta)$
     \begin{itemize}
     \item Then, by Bayes' rule, we know we can write
       \begin{equation*}
-        f(\theta | Y, X) = \frac{f(Y | X, \theta) \times p(\theta)}{f(Y|X)}
+        f(\theta | Y, X) = \frac{f(Y , X | \theta) \times p(\theta)}{f(Y,X)}
       \end{equation*}
     \end{itemize}
     \item Note that this can be written as
       \begin{equation*}
-        f(\theta | Y, X) \propto f(Y | X, \theta) \times p(\theta),
+        f(\theta | Y, X) \propto f(Y,  X | \theta) \times p(\theta),
       \end{equation*}
       because the denominator will only rescale the probability
       distribution to ensure that it is well-defined (integrates to 1)
@@ -328,16 +328,12 @@
 
 \begin{frame}{Bayes' Rule and the Likelihood}
       \begin{equation*}
-        f(\theta | Y, X) \propto f(Y | X, \theta) \times p(\theta),
+        f(\theta | Y, X) \propto f(Y X| \theta) \times p(\theta),
       \end{equation*}
   \begin{wideitemize}
   \item $f(\theta | Y, X)$ is known as the posterior of $\theta$,
-    while $p(\theta$ is known as the prior. Tying this all together is
-    the likliehood -- $f(Y|X, \theta)$
-    \begin{itemize}
-    \item Note that this is a very particular setup where we continue to condition on $X$.
-    \item We could also consider the joint data process $f(Y, X | \theta)$
-    \end{itemize}
+    while $p(\theta)$ is known as the prior. Tying this all together is
+    the likliehood -- $f(Y, X | \theta)$
   \item This is a simple application of Bayes' rule. However, it adds
     two crucial features to the likelihood:
     \begin{itemize}
@@ -351,7 +347,7 @@
   \end{wideitemize}
 \end{frame}
 
-%
+
 \begin{frame}{Simple Bernouilli example}
   \begin{wideitemize}
   \item Let's start with a very simple example. We are considering a
@@ -390,7 +386,8 @@
     \item Let's assume a Beta prior with $\alpha_{p} = 1$ and $\beta_{p} = 1$ (mean of 0.5)
     \end{itemize}
   \item Then, the posterior is
-    $$ f(p | X) \propto f(X | p) \times 1  = p^{\sum_{i}X_{i} + \alpha_{p}}(1-p)^{n - \sum_{i}X_{i} + \beta_{p}}$$
+    $$ f(p | X) \propto p^{\sum_{i}X_{i} + \alpha_{p}}(1-p)^{n - \sum_{i}X_{i} + \beta_{p}}$$
+%$
     \begin{itemize}
     \item This is a \emph{Beta} distribution with
       parameters $\alpha = \sum_{i}X_{i} + \alpha_{p} - 1$ and
@@ -419,7 +416,7 @@
     \item Let's assume a prior with mean zero, and variance 100
     \end{itemize}
   \item Hence, we construct our posterior as:
-    $$ f(\mu | X) \propto f(X | \mu) \times p(\mu) =  \exp\left(-\sum_{i}\frac{(x_{i} - \mu)^{2}}{2 \sigma^{2}}\right) \times \exp\left(-\frac{(\mu - 0)^{2}}{2 \times 100}\right) $$
+    $$ f(\mu | X) \propto f(X | \mu) \times p(\mu) \propto  \exp\left(-\sum_{i}\frac{(x_{i} - \mu)^{2}}{2 \sigma^{2}}\right) \times \exp\left(-\frac{(\mu - 0)^{2}}{2 \times 100}\right) $$
   \item The trick is to combine terms, and then drop out any that do
     not involve $\mu$. Then, complete the square.
   \end{wideitemize}
@@ -613,8 +610,8 @@
     \end{itemize}
   \item We can just consider parameters
     \begin{align*}
-      \hat{tau}_{l} &\sim \mathcal{N}(\tau_{l}, \hat{se}_{l}^{2})\\
-      tau_{l} &\sim \mathcal{N}(\tau, \sigma_{\tau}^{2})
+      \hat{\tau}_{l} &\sim \mathcal{N}(\tau_{l}, \hat{se}_{l}^{2})\\
+      \tau_{l} &\sim \mathcal{N}(\tau, \sigma_{\tau}^{2})
     \end{align*}
   \item Now we just need a prior on $\tau$ and $\sigma_{\tau}^{2}$,
     and we can do full Bayes!
@@ -658,8 +655,7 @@
   \item<1-> These estimates are \emph{noisy}
   \item<2-> Simple approach: shrink these estimates towards the overall
     mean of our estimates, weighted by how noisy these estimates are
-    (e.g. the standard error of the estimate)
-  \item<3-> This has substantial impact -- which will make our estimates much more precise, but also create bias for the very noisy estimates    
+  \item<3-> This has substantial impact -- makes our estimates more precise, but also create bias for the very noisy estimates    
   \end{wideitemize}
 \end{column}
 \begin{column}{0.5\textwidth}
