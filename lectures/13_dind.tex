@@ -773,7 +773,7 @@
   \begin{wideitemize}
     \item Remember our main equation did not necessarily specify that $D_{it}$ had to be binary. 
       \begin{equation}
-      Y_{it} = \alpha_{i} + \gamma_{t} + \sum_{t=T_{0}, t\not=T_{1}}^{T_{2}}\delta_{t} D_{it} + \epsilon_{it},
+      Y_{it} = \alpha_{i} + \gamma_{t} + \sum_{t=1, t\not=t_{0}}^{T}\delta_{t} D_{it} + \epsilon_{it},
     \end{equation}
   \item However, if it is continuous, we are making an additional
     strong functional form assumption that the effect of $D_{it}$ on our
@@ -784,7 +784,7 @@
     \begin{itemize}
     \item Bin the continuous $D_{it}$ into quartiles $\{\widetilde{D}_{itk}\}_{k=1}^{4}$ and estimate the effect across those groups:
       \begin{equation}
-        Y_{it} = \alpha_{i} + \gamma_{t} + \sum_{t=T_{0}, t\not=T_{1}}^{T_{2}}\sum_{k=1}^{4}\delta_{t,k} \widetilde{D}_{it,k} + \epsilon_{it}.
+        Y_{it} = \alpha_{i} + \gamma_{t} + \sum_{t=1, t\not=t_{0}}^{T}\sum_{k=1}^{4}\delta_{t,k} \widetilde{D}_{it,k} + \epsilon_{it}.
       \end{equation}
     \item What does the ordering of $\delta_{t,k}$ look like? Is it at least monotonic?
     \end{itemize}
@@ -1022,30 +1022,21 @@
   \end{wideitemize}
 \end{frame}
 
-\begin{frame}
-  Issues to keep in mind:
-
-  1) what is inference -- e.g. if you do PA vs. NJ, you can't really talk about design based inference. Just sampling. CIte andreas hagmann work
-
-  2) Inference: What's your ``experiment''? Is it feasible to think
-  about this in a design based framework? Roth and Sant'anna, Athey
-  and Imbens (2018) propose some. Worth going back in time to at least
-  point out the issue from BDM
-
-  3) Are pre-trends really pre-trends? Roth says no. Additionally, uniform confidence intervals
-
-
-\end{frame}
 
 \begin{frame}{Finally, a discussion on inference}
   \begin{wideitemize}
-  \item First, let's start with the old school fact that you must know if you are working with panel data and Dind
-  \item \textbf{You must cluster on the unit of policy implementation if possible}. See Bertrand, Duflo and Mullainathan (2004)
+  \item First, let's start with the old school fact that you must know
+    if you are working with panel data and Dind
+  \item \textbf{You must cluster on the unit of policy implementation
+      if possible}. See Bertrand, Duflo and Mullainathan (2004)
     \begin{itemize}
+    \item Why? Outcomes and the treatment tend to be severely
+      autocorrelated within unit
     \item I say ``if possible'' since clearly in Card and Krueger that
       is infeasible
     \end{itemize}
-  \item If the policy variation is implemented at the industry level, you should not cluster at the firm level
+  \item If the policy variation is implemented at the industry level,
+    you should not cluster at the firm level
   \item If the policy variation is implemented at the firm level, you
     cannot use robust standard errors
   \end{wideitemize}
@@ -1054,7 +1045,7 @@
 \begin{frame}{Small clusters}
   \begin{wideitemize}
   \item The Card and Krueger case was too extreme, but there are approaches for dealing with a small number of clusters
-  \item This apporach typically involves  bootstrapping, and can handle small number of treated groups relative to the overall population
+  \item This approach typically involves  bootstrapping, and can handle small number of treated groups relative to the overall population
   \item See Andreas Hagemann's work for a place to start
   \end{wideitemize}
 \end{frame}

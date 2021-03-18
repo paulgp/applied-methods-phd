@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  18 MAR 2021 12:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  18 MAR 2021 14:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1645,27 +1645,25 @@ Package pdftex.def Info: images/bacon_3.png  used on input line 996.
 
 ] [54
 
-] [55
-
 ]
-<images/freyaldenhoven1.png, id=438, 635.37375pt x 145.54375pt>
+<images/freyaldenhoven1.png, id=432, 635.37375pt x 145.54375pt>
 File: images/freyaldenhoven1.png Graphic file (type png)
 <use images/freyaldenhoven1.png>
-Package pdftex.def Info: images/freyaldenhoven1.png  used on input line 1075.
+Package pdftex.def Info: images/freyaldenhoven1.png  used on input line 1066.
 (pdftex.def)             Requested size: 411.44397pt x 94.25142pt.
- [56
+ [55
 
  <./images/freyaldenhoven1.png>]
-<images/freyaldenhoven2.png, id=446, 533.995pt x 380.42125pt>
+<images/freyaldenhoven2.png, id=441, 533.995pt x 380.42125pt>
 File: images/freyaldenhoven2.png Graphic file (type png)
 <use images/freyaldenhoven2.png>
-Package pdftex.def Info: images/freyaldenhoven2.png  used on input line 1075.
+Package pdftex.def Info: images/freyaldenhoven2.png  used on input line 1066.
 (pdftex.def)             Requested size: 205.72198pt x 146.5584pt.
- [57
+ [56
 
- <./images/freyaldenhoven2.png>] [58
+ <./images/freyaldenhoven2.png>] [57
 
-] [59
+] [58
 
 ]
 \tf@nav=\write6
@@ -1677,20 +1675,20 @@ Package pdftex.def Info: images/freyaldenhoven2.png  used on input line 1075.
 \tf@snm=\write8
 \openout8 = `13_dind.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1109.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1109.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1100.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1100.
  (./13_dind.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1109.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1109.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1100.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1100.
 
 Package rerunfilecheck Info: File `13_dind.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 26628 strings out of 480608
- 565227 string characters out of 5903631
+ 26624 strings out of 480608
+ 565190 string characters out of 5903631
  979659 words of memory out of 5000000
- 41639 multiletter control sequences out of 15000+600000
+ 41637 multiletter control sequences out of 15000+600000
  616418 words of font info for 138 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,16n,76p,781b,876s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1711,10 +1709,10 @@ public/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/
 helvetic/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helveti
 c/uhvro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr
 8a.pfb>
-Output written on 13_dind.pdf (59 pages, 3441992 bytes).
+Output written on 13_dind.pdf (58 pages, 3441198 bytes).
 PDF statistics:
- 540 PDF objects out of 1000 (max. 8388607)
- 386 compressed objects within 4 object streams
- 119 named destinations out of 1000 (max. 500000)
+ 535 PDF objects out of 1000 (max. 8388607)
+ 382 compressed objects within 4 object streams
+ 117 named destinations out of 1000 (max. 500000)
  177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
