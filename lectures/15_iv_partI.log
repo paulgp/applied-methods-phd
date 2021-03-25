@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  23 MAR 2021 13:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  25 MAR 2021 13:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**\input 14_synthetic_dind.tex
- (./14_synthetic_dind.tex
+**\input 15_iv_partI.tex
+ (./15_iv_partI.tex
 (/usr/local/texlive/2020/texmf-dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2019/09/29 v3.57 A class for typesetting presentations
 (/usr/local/texlive/2020/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
@@ -1050,25 +1050,25 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 (/usr/local/texlive/2020/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-(./14_synthetic_dind.aux)
-\openout1 = `14_synthetic_dind.aux'.
+(./15_iv_partI.aux)
+\openout1 = `15_iv_partI.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1128,7 +1128,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box104
-Package hyperref Info: Link coloring OFF on input line 157.
+Package hyperref Info: Link coloring OFF on input line 156.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -1142,55 +1142,55 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count349
 )
-LaTeX Info: Redefining \ref on input line 157.
-LaTeX Info: Redefining \pageref on input line 157.
-LaTeX Info: Redefining \nameref on input line 157.
- (./14_synthetic_dind.out) (./14_synthetic_dind.out)
+LaTeX Info: Redefining \ref on input line 156.
+LaTeX Info: Redefining \pageref on input line 156.
+LaTeX Info: Redefining \nameref on input line 156.
+ (./15_iv_partI.out) (./15_iv_partI.out)
 \@outlinefile=\write5
-\openout5 = `14_synthetic_dind.out'.
+\openout5 = `15_iv_partI.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/ppl/m/n --> OT1/cmss/m/n on input line 157.
+(Font)                  OT1/ppl/m/n --> OT1/cmss/m/n on input line 156.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/ppl/b/n --> OT1/cmss/b/n on input line 157.
+(Font)                  OT1/ppl/b/n --> OT1/cmss/b/n on input line 156.
 \symnumbers=\mathgroup7
 \sympureletters=\mathgroup8
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/ppl/m/n on input line 157.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 157.
+(Font)                  OT1/cmss/m/n --> OT1/ppl/m/n on input line 156.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/zplm/b/n --> OT1/phv/b/n on input line 157.
+(Font)                  OT1/zplm/b/n --> OT1/phv/b/n on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/zplm/b/n --> OT1/phv/b/n on input line 157.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 157.
+(Font)                  OT1/zplm/b/n --> OT1/phv/b/n on input line 156.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/phv/m/n on input line 157.
+(Font)                  OT1/cmss/m/n --> OT1/phv/m/n on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/phv/m/n on input line 157.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 157.
+(Font)                  OT1/cmss/bx/n --> OT1/phv/m/n on input line 156.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/ppl/m/it --> OT1/phv/m/it on input line 157.
+(Font)                  OT1/ppl/m/it --> OT1/phv/m/it on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/ppl/b/it --> OT1/phv/m/it on input line 157.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 157.
+(Font)                  OT1/ppl/b/it --> OT1/phv/m/it on input line 156.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 157.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 157.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 156.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/phv/m/n --> OT1/phv/b/n on input line 157.
+(Font)                  OT1/phv/m/n --> OT1/phv/b/n on input line 156.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/phv/m/it --> OT1/phv/b/it on input line 157.
+(Font)                  OT1/phv/m/it --> OT1/phv/b/it on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/ppl/b/n on input line 157.
+(Font)                  OT1/cmss/b/n --> OT1/ppl/b/n on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/phv/b/n --> OT1/phv/b/n on input line 157.
+(Font)                  OT1/phv/b/n --> OT1/phv/b/n on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/phv/m/n --> OT1/phv/b/n on input line 157.
+(Font)                  OT1/phv/m/n --> OT1/phv/b/n on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/phv/m/it --> OT1/phv/b/it on input line 157.
+(Font)                  OT1/phv/m/it --> OT1/phv/b/it on input line 156.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 157.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 156.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/translator/translator-basic-dicti
 onary-English.dict
@@ -1218,53 +1218,53 @@ Dictionary: translator-theorem-dictionary, Language: English
 )
 \c@mv@tabular=\count350
 \c@mv@boldtabular=\count351
- (./14_synthetic_dind.nav)
+ (./15_iv_partI.nav)
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 157.
+(Font)              scaled to size 6.0pt on input line 156.
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 181.
+(Font)              scaled to size 14.4pt on input line 180.
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 181.
+(Font)              scaled to size 8.0pt on input line 180.
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 181.
+(Font)              scaled to size 10.0pt on input line 180.
 LaTeX Font Info:    Trying to load font information for OML+zplm on input line 
-181.
+180.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
-181.
+180.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 
-181.
+180.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 181.
+(Font)              scaled to size 10.42007pt on input line 180.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 181.
+(Font)              scaled to size 7.91925pt on input line 180.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 181.
+(Font)              scaled to size 6.25204pt on input line 180.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 181.
+(Font)              scaled to size 10.42007pt on input line 180.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 181.
+(Font)              scaled to size 7.91925pt on input line 180.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 181.
+(Font)              scaled to size 6.25204pt on input line 180.
 LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 
-181.
+180.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 1
-81.
+80.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
@@ -1291,205 +1291,178 @@ LaTeX Warning: Font shape declaration has incorrect series value `mc'.
 
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 181.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 180.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <7.6> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 181.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 180.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <6> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 181.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 180.
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
-(Font)              scaled to size 4.0pt on input line 181.
+(Font)              scaled to size 4.0pt on input line 180.
  [1
 
 {/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 197.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 194.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 194.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 194.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 194.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 194.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 194.
 
 [2
 
-]
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 228.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 228.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 228.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 228.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 228.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 228.
-<images/noto1.png, id=27, 530.98375pt x 376.40625pt>
-File: images/noto1.png Graphic file (type png)
-<use images/noto1.png>
-Package pdftex.def Info: images/noto1.png  used on input line 228.
-(pdftex.def)             Requested size: 173.33496pt x 122.8762pt.
- [3
-
- <./images/noto1.png>] [4
-
-]
-<images/badcredit3.png, id=47, 321.2pt x 236.885pt>
-File: images/badcredit3.png Graphic file (type png)
-<use images/badcredit3.png>
-Package pdftex.def Info: images/badcredit3.png  used on input line 273.
-(pdftex.def)             Requested size: 216.67201pt x 159.8001pt.
-
-Overfull \vbox (1.61504pt too high) detected at line 273
- []
-
-[5
-
- <./images/badcredit3.png>] [6
+] [3
 
 ]
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
-(Font)              scaled to size 7.6pt on input line 325.
+(Font)              scaled to size 9.0pt on input line 227.
+ [4
 
-Overfull \hbox (151.4349pt too wide) detected at line 325
-[][][] [][][][][][][] [][] [][][][][][][] 
- []
+]
+<images/angristiva.png, id=37, 720.6925pt x 221.82875pt>
+File: images/angristiva.png Graphic file (type png)
+<use images/angristiva.png>
+Package pdftex.def Info: images/angristiva.png  used on input line 234.
+(pdftex.def)             Requested size: 433.34402pt x 133.38258pt.
+ [5
+
+ <./images/angristiva.png>]
+<images/angristivb.png, id=45, 747.79375pt x 266.9975pt>
+File: images/angristivb.png Graphic file (type png)
+<use images/angristivb.png>
+Package pdftex.def Info: images/angristivb.png  used on input line 234.
+(pdftex.def)             Requested size: 433.34402pt x 154.7242pt.
+ [6
+
+ <./images/angristivb.png>]
+<images/angristivc.png, id=52, 741.77126pt x 106.3975pt>
+File: images/angristivc.png Graphic file (type png)
+<use images/angristivc.png>
+Package pdftex.def Info: images/angristivc.png  used on input line 234.
+(pdftex.def)             Requested size: 433.34402pt x 62.15866pt.
+<images/angristivd.png, id=53, 734.745pt x 208.78pt>
+File: images/angristivd.png Graphic file (type png)
+<use images/angristivd.png>
+Package pdftex.def Info: images/angristivd.png  used on input line 234.
+(pdftex.def)             Requested size: 433.34402pt x 123.1377pt.
 
 [7
 
-]
-LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 349.
-<images/abadie2010a.png, id=67, 614.295pt x 586.19pt>
-File: images/abadie2010a.png Graphic file (type png)
-<use images/abadie2010a.png>
-Package pdftex.def Info: images/abadie2010a.png  used on input line 349.
-(pdftex.def)             Requested size: 216.67201pt x 206.76169pt.
+ <./images/angristivc.png> <./images/angristivd.png>]
+<images/mheiva.png, id=62, 456.70625pt x 190.7125pt>
+File: images/mheiva.png Graphic file (type png)
+<use images/mheiva.png>
+Package pdftex.def Info: images/mheiva.png  used on input line 241.
+(pdftex.def)             Requested size: 433.34402pt x 180.9634pt.
  [8
 
- <./images/abadie2010a.png>] [9
+ <./images/mheiva.png>]
+LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
+(Font)              scaled to size 10.95pt on input line 267.
+ [9
 
 ] [10
 
-] [11
-
 ]
-Overfull \hbox (64.76741pt too wide) detected at line 463
-[][][] [][][][][][][][][] [][][][][][][] 
- []
+LaTeX Font Info:    Font shape `OT1/lato-TLF/b/n' will be
+(Font)              scaled to size 10.0pt on input line 349.
+ [11
 
-[12
+] [12
 
-]
+] [13
 
-LaTeX Font Warning: Font shape `OT1/cmss/b/n' undefined
-(Font)              using `OT1/cmss/m/n' instead on input line 490.
+] [14
 
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <10.95> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 490.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <8> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 490.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <6> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 490.
+] [15
 
-Overfull \hbox (64.76741pt too wide) detected at line 490
-[][][] [][][][][][][][][] [][][][][][][] 
- []
+] [16
 
+] [17
 
-Overfull \vbox (3.3749pt too high) detected at line 490
- []
-
-[13
-
-]
-Overfull \hbox (108.09785pt too wide) detected at line 517
-[][][] [][][][][][][][][] [][][][][][][] 
- []
-
-[14
-
-]
-<images/abadie2010b.png, id=108, 620.3175pt x 592.2125pt>
-File: images/abadie2010b.png Graphic file (type png)
-<use images/abadie2010b.png>
-Package pdftex.def Info: images/abadie2010b.png  used on input line 535.
-(pdftex.def)             Requested size: 216.67201pt x 206.85277pt.
-
-Overfull \vbox (3.83728pt too high) detected at line 535
- []
-
-[15
-
- <./images/abadie2010b.png>]
-<images/abadie2010c.png, id=115, 620.3175pt x 589.20125pt>
-File: images/abadie2010c.png Graphic file (type png)
-<use images/abadie2010c.png>
-Package pdftex.def Info: images/abadie2010c.png  used on input line 535.
-(pdftex.def)             Requested size: 216.67201pt x 205.80096pt.
- [16
-
- <./images/abadie2010c.png>]
-<images/abadie2010d.png, id=122, 649.42625pt x 622.325pt>
-File: images/abadie2010d.png Graphic file (type png)
-<use images/abadie2010d.png>
-Package pdftex.def Info: images/abadie2010d.png  used on input line 557.
-(pdftex.def)             Requested size: 216.67201pt x 207.6279pt.
- [17
-
- <./images/abadie2010d.png>] [18
+] [18
 
 ] [19
 
-] [20
+]
+LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
+(Font)              scaled to size 10.0pt on input line 558.
+ [20
 
 ] [21
 
+] [22
+
+]
+LaTeX Font Info:    Font shape `OT1/lato-TLF/b/n' will be
+(Font)              scaled to size 10.95pt on input line 622.
+
+Overfull \vbox (11.32036pt too high) detected at line 622
+ []
+
+[23
+
+] [24
+
+] [25
+
+] [26
+
+] [27
+
 ]
 \tf@nav=\write6
-\openout6 = `14_synthetic_dind.nav'.
+\openout6 = `15_iv_partI.nav'.
 
 \tf@toc=\write7
-\openout7 = `14_synthetic_dind.toc'.
+\openout7 = `15_iv_partI.toc'.
 
 \tf@snm=\write8
-\openout8 = `14_synthetic_dind.snm'.
+\openout8 = `15_iv_partI.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 629.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 629.
- (./14_synthetic_dind.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 629.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 629.
-Package rerunfilecheck Info: File `14_synthetic_dind.out' has not changed.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 692.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 692.
+ (./15_iv_partI.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 692.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 692.
+Package rerunfilecheck Info: File `15_iv_partI.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
  ) 
 Here is how much of TeX's memory you used:
- 26337 strings out of 480608
- 560103 string characters out of 5903631
- 979679 words of memory out of 5000000
- 41443 multiletter control sequences out of 15000+600000
- 618989 words of font info for 143 fonts, out of 8000000 for 9000
+ 26441 strings out of 480608
+ 562223 string characters out of 5903631
+ 980667 words of memory out of 5000000
+ 41539 multiletter control sequences out of 15000+600000
+ 619029 words of font info for 133 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,13n,76p,791b,737s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,13n,76p,785b,1042s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
-exlive/2020/texmf-dist/fonts/enc/dvips/lato/a_vc7epu.enc}{/usr/local/texlive/20
-20/texmf-dist/fonts/enc/dvips/lato/a_y72t7m.enc}</usr/local/texlive/2020/texmf-
-dist/fonts/type1/typoland/lato/Lato-Italic.pfb></usr/local/texlive/2020/texmf-d
-ist/fonts/type1/typoland/lato/Lato-Regular.pfb></usr/local/texlive/2020/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2020/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fon
-ts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2020/texmf-dist/fonts/ty
-pe1/public/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/
-urw/helvetic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/hel
-vetic/uhvbo8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/
-uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro8a
-.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on 14_synthetic_dind.pdf (21 pages, 702294 bytes).
+exlive/2020/texmf-dist/fonts/enc/dvips/lato/a_y72t7m.enc}{/usr/local/texlive/20
+20/texmf-dist/fonts/enc/dvips/lato/a_vc7epu.enc}</usr/local/texlive/2020/texmf-
+dist/fonts/type1/typoland/lato/Lato-Bold.pfb></usr/local/texlive/2020/texmf-dis
+t/fonts/type1/typoland/lato/Lato-Italic.pfb></usr/local/texlive/2020/texmf-dist
+/fonts/type1/typoland/lato/Lato-Regular.pfb></usr/local/texlive/2020/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist/font
+s/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2020/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/t
+ype1/public/mathpazo/fplmr.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/
+public/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/
+helvetic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helveti
+c/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro
+8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
+
+Output written on 15_iv_partI.pdf (27 pages, 510451 bytes).
 PDF statistics:
- 211 PDF objects out of 1000 (max. 8388607)
- 153 compressed objects within 2 object streams
- 43 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 246 PDF objects out of 1000 (max. 8388607)
+ 183 compressed objects within 2 object streams
+ 55 named destinations out of 1000 (max. 500000)
+ 72 words of extra memory for PDF output out of 10000 (max. 10000000)
 
