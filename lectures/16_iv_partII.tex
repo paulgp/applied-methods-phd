@@ -179,25 +179,25 @@
 \maketitle
 \end{frame}
 
-\begin{frame}{Roadmap for Today / Next Class}
+\begin{frame}{Roadmap for Today}
     \begin{enumerate}
-    \item (identification) Reiterating why it's easy to screw up exclusion. Discuss two examples:
+    \item Reiterating why it's easy to screw up exclusion. Discuss two examples:
       \begin{itemize}
       \item lottery
       \item Weather
       \end{itemize}
     \item Marginal treatment effects
     \item Discuss why better LATE than never      
-    \item (identification) How monotonicity can fail
-    \item (identification) montoonicity in more complicated settings ( Fuzzy DD)
-    \item (estimation) Characterizing compliers
-    \item Next class: (estimation) overid bias (jackknife)
-    \item Next class: (estimation) weak iv bias (pre-test)
-    \item Next class: (estimation) IVQTE
-    \item Next class: (estimation) Lasso IV
+    \item How monotonicity can fail
+    \item Characterizing compliers
     \end{enumerate}
 
 \end{frame}
+
+%    \item Next class: (estimation) overid bias (jackknife)
+%    \item Next class: (estimation) weak iv bias (pre-test)
+%    \item Next class: (estimation) IVQTE
+%    \item Next class: (estimation) Lasso IV
 
 \begin{frame}{Why is the exclusion restriction challenging?}
   \begin{columns}[T] % align columns
@@ -385,7 +385,7 @@
       \begin{wideitemize}
       \item Let's now revisit the choice of treatment. (Heckman and Vytlacil (1999, PNAS))
         \begin{itemize}
-        \item Let $D_{i}^{*} = \mu_{D}(Z_{i}) - \epsilon_{Di}$, $D_{i} = 1(D_{i}^{*} \ge 0)$
+        \item Let $D_{i}^{*} = \mu_{D}(Z_{i}) - U_{Di}$, $D_{i} = 1(D_{i}^{*} \ge 0)$
           \item E.g. $D_{i}^{*}$ is net utility gain from choosing $D_{i}$
           \end{itemize}
         \item $Y_{i} = Y_{i1}D_{i} + Y_{i0}(1-D_{i}) = \mu_{1}(\epsilon_{i1})D_{i} + \mu_{0}(\epsilon_{i0})(1-D_{i})$
@@ -417,14 +417,14 @@
         \item $\Delta^{ATT}(D = 1) = E(\Delta | D = 1)$
         \item $\Delta^{LATE}(P(z), P(z')) = \frac{E(Y| p(z)) - E(Y| p(z'))}{p(z) - p(z')}$
           \begin{itemize}
-          \item Consider $E(Y | p(z)) = P(z) E(Y_{1} | P(z), D = 1) + (1-  P(z)) E(Y_{1} | P(z), D = 1)$
+          \item Consider $E(Y | p(z)) = P(z) E(Y_{1} | P(z), D = 1) + (1-  P(z)) E(Y_{0} | P(z), D = 0)$
           \item This can be written as (by first fundamental theorem of calculus):
             \begin{align*}
-              E(Y | p(z)) &= \int_{0}^{P(z)}E(Y_{1} | \widetilde{U} = u) du + \int_{P(z)}^{1}E(Y_{1} | \widetilde{U} = u) du
+              E(Y | p(z)) &= \int_{0}^{P(z)}E(Y_{1} | \widetilde{U} = u) du + \int_{P(z)}^{1}E(Y_{0} | \widetilde{U} = u) du
             \end{align*}
           \item Hence:
             \begin{align*}
-              E(Y | p(z)) - E(Y | p(z'))  &= \int_{P(z')}^{P(z)}E(Y_{1} | \widetilde{U} = u) du -  \int_{P(z')}^{P(z)}E(Y_{1} | \widetilde{U} = u) du\\
+              E(Y | p(z)) - E(Y | p(z'))  &= \int_{P(z')}^{P(z)}E(Y_{1} | \widetilde{U} = u) du -  \int_{P(z')}^{P(z)}E(Y_{0} | \widetilde{U} = u) du\\
               \Delta^{LATE}(P(z), P(z')) &= E(\Delta | P(z') \leq \widetilde{U}_{D} \leq P(z))
             \end{align*}
 
@@ -688,7 +688,7 @@
       \item Consider $X_{i}$ binary:
         \begin{align*}
           Pr(X_{i} | D_{i}(1) > D_{i}(0)) &= \frac{P(D_{i}(1) > D_{i}(0) | X_{i}) \times Pr(X_{i})}{Pr(D_{i}(1) > D_{i}(0))}\\
-          &= \frac{\left(E(D_{i} | Z_{i} = 1, X_{i}) - E(D_{i} | Z_{i} = 0, X_{i})\right) \times Pr(X_{i})}{E(D_{i} | Z_{i} = 1, X_{i}) - E(D_{i} | Z_{i} = 0, X_{i})}
+          &= \frac{\left(E(D_{i} | Z_{i} = 1, X_{i}) - E(D_{i} | Z_{i} = 0, X_{i})\right) \times Pr(X_{i})}{E(D_{i} | Z_{i} = 1) - E(D_{i} | Z_{i} = 0)}
         \end{align*}
       \item Note that if we scale by $Pr(X_{i})$, we get the relative
         probability of $X_{i}$ compared to the overall pop
@@ -729,15 +729,38 @@
 \end{frame}
 
 \begin{frame}{Abadie (2002) OLS distributions}
+  \begin{columns}[T] % align columns
+    \begin{column}{0.3\textwidth}
+      \begin{wideitemize}
+      \item Good reason to think veteran status affected earnings
+      \item We see negligible differences in the OLS data
+      \item But veteran status is not randomly assigned
+      \end{wideitemize}
+\end{column}
+\begin{column}{0.7\textwidth}
   \begin{center}
-    \includegraphics[width=0.7\linewidth]{images/abadie_kappa1.png}
+    \includegraphics[width=\linewidth]{images/abadie_kappa1.png}
   \end{center}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{Abadie (2002) complier distributions}
+  \begin{columns}[T] % align columns
+    \begin{column}{0.3\textwidth}
+      \begin{wideitemize}
+      \item In complier distribution, we see gap in lower part of
+        distribution -- better for non-vets than vets
+      \item Tests in Abadie (2002) fail to find evidence of
+        differences in the distribution, however
+      \end{wideitemize}
+\end{column}
+\begin{column}{0.7\textwidth}
   \begin{center}
-    \includegraphics[width=0.7\linewidth]{images/abadie_kappa2.png}
+    \includegraphics[width=\linewidth]{images/abadie_kappa2.png}
   \end{center}
+\end{column}
+\end{columns}
 \end{frame}
 
 
