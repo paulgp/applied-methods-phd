@@ -250,7 +250,7 @@ beta_hat = delta / tau_hat
 ggplot(data = tibble(beta_hat, tau_hat)) + 
   geom_histogram(aes(x = tau_hat), bins = 100) +
   theme_minimal() +
-  labs(x= "Tau Hat", y = "") +
+  labs(x= "Pi Hat", y = "") +
   theme(text = element_text(size = 24),
         plot.title.position = "plot")
 ggsave("images/weak_iv_tauhat_hist.png")
@@ -286,7 +286,7 @@ beta_hat = delta / tau_hat
 ggplot(data = tibble(beta_hat, tau_hat)) + 
   geom_point(aes(y = beta_hat, x = tau_hat)) +
   theme_minimal() +
-  labs(x = "Tau Hat", y = "Beta hat")+
+  labs(x = "Pi Hat", y = "Beta hat")+
   theme(text = element_text(size = 24),
         plot.title.position = "plot")
 ggsave("images/weak_iv_tauhat_betahat_strong.png")
