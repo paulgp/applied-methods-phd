@@ -1,0 +1,1495 @@
+\documentclass[notes,11pt, aspectratio=169]{beamer}
+
+\usepackage{pgfpages}
+% These slides also contain speaker notes. You can print just the slides,
+% just the notes, or both, depending on the setting below. Comment out the want
+% you want.
+\setbeameroption{hide notes} % Only slide
+%\setbeameroption{show only notes} % Only notes
+%\setbeameroption{show notes on second screen=right} % Both
+
+\usepackage{helvet}
+\usepackage[default]{lato}
+\usepackage{array}
+\usepackage{tgbonum}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\setbeamertemplate{note page}{\pagecolor{yellow!5}\insertnote}
+\usetikzlibrary{positioning}
+\usetikzlibrary{snakes}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{matrix,shapes,arrows,fit,tikzmark}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{lipsum}
+\usepackage{multimedia}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bbm}
+\newcolumntype{d}[0]{D{.}{.}{5}}
+
+\usepackage{changepage}
+\usepackage{appendixnumberbeamer}
+\newcommand{\beginbackup}{
+   \newcounter{framenumbervorappendix}
+   \setcounter{framenumbervorappendix}{\value{framenumber}}
+   \setbeamertemplate{footline}
+   {
+     \leavevmode%
+     \hline
+     box{%
+       \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{footlinecolor}%
+%         \insertframenumber  \hspace*{2ex} 
+       \end{beamercolorbox}}%
+     \vskip0pt%
+   }
+ }
+\newcommand{\backupend}{
+   \addtocounter{framenumbervorappendix}{-\value{framenumber}}
+   \addtocounter{framenumber}{\value{framenumbervorappendix}} 
+}
+
+
+\usepackage{graphicx}
+\usepackage[space]{grffile}
+\usepackage{booktabs}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\DeclareMathOperator{\Supp}{Supp}
+
+
+\newtheorem{assN}{Assumption}
+% These are my colors -- there are many like them, but these ones are mine.
+\definecolor{blue}{RGB}{0,114,178}
+\definecolor{red}{RGB}{213,94,0}
+\definecolor{yellow}{RGB}{240,228,66}
+\definecolor{green}{RGB}{0,158,115}
+
+\hypersetup{
+  colorlinks=false,
+  linkbordercolor = {white},
+  linkcolor = {blue}
+}
+
+
+%% I use a beige off white for my background
+\definecolor{MyBackground}{RGB}{255,253,218}
+
+%% Uncomment this if you want to change the background color to something else
+%\setbeamercolor{background canvas}{bg=MyBackground}
+
+%% Change the bg color to adjust your transition slide background color!
+\newenvironment{transitionframe}{
+  \setbeamercolor{background canvas}{bg=yellow}
+  \begin{frame}}{
+    \end{frame}
+}
+
+\setbeamercolor{frametitle}{fg=blue}
+\setbeamercolor{title}{fg=black}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{itemize items}{-}
+\setbeamercolor{itemize item}{fg=blue}
+\setbeamercolor{itemize subitem}{fg=blue}
+\setbeamercolor{enumerate item}{fg=blue}
+\setbeamercolor{enumerate subitem}{fg=blue}
+\setbeamercolor{button}{bg=MyBackground,fg=blue,}
+
+
+
+% If you like road maps, rather than having clutter at the top, have a roadmap show up at the end of each section 
+% (and after your introduction)
+% Uncomment this is if you want the roadmap!
+% \AtBeginSection[]
+% {
+%    \begin{frame}
+%        \frametitle{Roadmap of Talk}
+%        \tableofcontents[currentsection]
+%    \end{frame}
+% }
+\setbeamercolor{section in toc}{fg=blue}
+\setbeamercolor{subsection in toc}{fg=red}
+\setbeamersize{text margin left=1em,text margin right=1em} 
+
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{10pt}}{\enditemize}
+
+\usepackage{environ}
+\NewEnviron{videoframe}[1]{
+  \begin{frame}
+    \vspace{-8pt}
+    \begin{columns}[onlytextwidth, T] % align columns
+      \begin{column}{.70\textwidth}
+        \begin{minipage}[t][\textheight][t]
+          {\dimexpr\textwidth}
+          \vspace{8pt}
+          \hspace{4pt} {\Large \sc \textcolor{blue}{#1}}
+          \vspace{8pt}
+          
+          \BODY
+        \end{minipage}
+      \end{column}%
+      \hfill%
+      \begin{column}{.38\textwidth}
+        \colorbox{green!20}{\begin{minipage}[t][1.2\textheight][t]
+            {\dimexpr\textwidth}
+            Face goes here
+          \end{minipage}}
+      \end{column}%
+    \end{columns}
+  \end{frame}
+}
+
+\title[]{\textcolor{blue}{Canonical Research Designs V:\\ Bartik and Simulated Instruments }}
+\author[PGP]{}
+\institute[FRBNY]{\small{\begin{tabular}{c}
+  Paul Goldsmith-Pinkham  \\
+\end{tabular}}}
+
+\date{\today}
+
+\begin{document}
+
+%%% TIKZ STUFF
+\tikzset{   
+        every picture/.style={remember picture,baseline},
+        every node/.style={anchor=base,align=center,outer sep=1.5pt},
+        every path/.style={thick},
+        }
+\newcommand\marktopleft[1]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-a) at (-.3em,.3em) {};%
+}
+\newcommand\markbottomright[2]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-b) at (0em,0em) {};%
+}
+\tikzstyle{every picture}+=[remember picture] 
+\tikzstyle{mybox} =[draw=black, very thick, rectangle, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{fancytitle} =[draw=black,fill=red, text=white]
+%%%% END TIKZ STUFF
+
+% Title Slide
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}{Roadmap for Today}
+  \begin{wideitemize}
+  \item In some cases, the source of exogeneous variation (either in an IV setting, or just OLS) is straightforward
+    \begin{itemize}
+    \item There is a single policy or source of variation
+    \end{itemize}
+  \item However, in other settings, there are more complicated sources of variation exploited to identify effects. Today we'll focus on two:
+    \begin{itemize}
+    \item Bartik (shift-share) instruments: three recent
+      papers on commonly used identification approach
+    \item Simulated instruments: reframe an older literature in a new light
+    \end{itemize}
+  \item Key historical feature of these approaches is that they had an ``intuitive'' feature of identification, but formal properties were not established for several decades
+    \begin{itemize}
+    \item Analagous to staggered DinD lit!
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+
+
+\begin{frame}{Bartik instruments are used everywhere}
+    %Local Markets and National Categories
+  \begin{center}
+    \begin{tikzpicture}[rectangle,draw=cyan,thick]
+      \node (pq1) {Labor supply + immigration};
+      \node [dashed,right=of pq1] (pq2) {Trade};
+      \node [dashed,right=of pq2] (pq4) {Finance, innovation,\\ others...};
+      \node [dashed,above=of pq2] (bartik) {Bartik};
+      \path[->,thick,blue] (bartik) edge  (pq1)
+      (bartik) edge  (pq2)
+      (bartik) edge  (pq4);
+    \end{tikzpicture}
+  \end{center}
+  \begin{itemize}
+  \item Thread that links all Bartik applications:
+    \begin{itemize}
+    \item local markets composed of many ``categories''
+    \item need for identification
+    \end{itemize}
+    \smallskip
+  \item Approach has been used since the early 90:
+    \begin{itemize}
+    \item sometimes called ``shift-share'' or ``industry mix'' instruments
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Examples of Bartik instruments in many subfields}
+  \begin{description}
+  \item[Immigration:] Altonji and Card (1991), Card (2001)
+    \smallskip
+  \item[Bank Lending:] Amiti and Weinstein (2018), Greenstone, Mas and Nguyen (2015)
+    \smallskip    
+  \item[Market Size + Demography:] Acemoglu and Linn (2004), Jaravel (2018)
+    \smallskip    
+  \item[Labor Supply Elasticity:] Blanchard and Katz (1992), \textbf{Bartik} (1991)
+    \smallskip
+  \item[Fiscal Multipliers:] Nakamura and Steinsson (2014)
+    \smallskip    
+  \item[Trade + Labor:] Autor, Dorn, and Hanson (2013), Autor, Dorn and Hanson (2018), etc. 
+    \smallskip    
+  \item[Foreign Aid:] Nunn and Qian (2014)
+    \smallskip
+  \item[Portfolio Allocation:] Calvet, Campbell, and Sodini (2009)
+    \smallskip
+  \item[Trade + Prices:] Piveteau and Smagghue (2017), de Roux et al. (2017)
+    \smallskip    
+  \item[Automation:] Acemoglu and Restrepo (2017)
+  \end{description}
+\end{frame}
+
+\begin{frame}{Many paths lead to Bartik}
+  \begin{itemize}
+  \item Diverse literature leads to many motivations and justifications for Bartik approach
+    \medskip
+  \item Two distinct approaches in the literature:
+    \begin{enumerate}
+    \item Applied micro statistical approach: interested in a reduced
+      form causal relationship; need an instrument that is
+      uncorrelated with error term; make argument that Bartik
+      instrument is defensible \smallskip
+    \item Structural approach: interested in particular parameters
+      from model; assumptions of model motivate certain estimating
+      equations
+    \end{enumerate}
+    \medskip
+  \item So what is the Bartik approach anyway?
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Motivation: local labor market approaches + reduced form}
+
+  Consider a local labor market regression like the following:  
+  \begin{align}
+    y_l &= \beta_0 + \beta x_l + \epsilon_l \notag 
+  \end{align}
+
+  \begin{itemize}
+    \setlength\itemsep{1em}
+  \item $\mathbb{E}[x_l\epsilon_l] \neq 0$   $\Rightarrow$ need an instrument to estimate $\beta$ 
+  \item E.g. Autor, Dorn and Hanson (2013) setting:
+    \begin{itemize}
+      \setlength\itemsep{1em}
+    \item $l$: location (commuting zone)
+    \item $y_l$: manufacturing employment \textit{growth}
+    \item  $x_l$: import exposure to China \textit{growth}
+    \item $\beta$: effect of rise of China on manufacturing employment
+    \item an instrument for location-level exposure to trade with China
+    \end{itemize}
+\end{itemize}
+
+
+\end{frame}
+
+
+%------------
+\begin{frame}
+\frametitle{The Bartik instrument}
+
+Accounting identity \#1:
+\begin{align}
+  x_l &=  \sum_{k=1}^{K} z_{lk} g_{lk} \notag  
+\end{align}
+\begin{itemize}
+\setlength\itemsep{1em}
+  \item $z_{lk}$: location-industry shares  ($Z_l$)
+  \item $g_{lk} $: location-industry growth (in imports) rates ($G_l$) 
+  \end{itemize}
+Accounting identity \#2:
+
+$$\underbrace{ g_{lk}}_{\text{location-industry}} = \underbrace{  \textcolor{blue}{g}_{ \textcolor{blue}{k}}}_{\text{industry}} + \underbrace{  \textcolor{red}{\tilde{g}_{lk}}   }_{\substack{\text{idiosyncratic} \\ \text{location- industry}}} $$ 
+
+Infeasible Bartik:
+$$B_l = \sum_{k=1}^{K}z_{lk} \textcolor{blue}{g_{k}}$$
+
+\end{frame}
+
+
+%------
+\begin{frame}
+\frametitle{This gives us a simple 2SLS structure}
+
+\begin{align}
+  y_l&= \beta_0 + \beta x_l + \epsilon_l \notag \\
+  x_l&= \pi_0 + \pi_{1} B_l + u_l \notag \\  
+  B_l &=  \sum_{k=1}^{K}z_{lk} \textcolor{blue}{g_{k}} \notag \\
+  g_{lk} &=   \textcolor{blue}{g}_{ \textcolor{blue}{k}}+  \textcolor{red}{\tilde{g}_{lk}}  \notag 
+\end{align}
+
+
+
+China shock: e.g., Autor, Dorn and Hanson (2013)  
+\begin{itemize}
+\item $z_{lk}$: location (l) industry (k) composition
+\item $g_{lk}$:  location (l)  industry (k) growth in imports from China
+\item $\textcolor{blue}{g_k}$: industry $k$  growth of imports (from China)
+\end{itemize}
+
+
+\end{frame}
+
+
+%%%%%
+
+
+\begin{frame}
+\addtocounter{framenumber}{-1}
+\frametitle{Other instruments have this structure}
+
+\begin{align}
+  y_l&= \beta_0 + \beta x_l + \epsilon_l \notag \\
+  x_l&= \pi_0 + \pi_{1} B_l + u_l \notag \\  
+B_l &=  \sum_{k=1}^{K}z_{lk} \textcolor{blue}{g_{k}} \notag \\
+g_{lk} &=   \textcolor{blue}{g}_{ \textcolor{blue}{k}}+  \textcolor{red}{\tilde{g}_{lk}}  \notag 
+\end{align}
+
+Immigrant enclave: e.g., Altonji and Card (1991)
+\begin{itemize}
+\item $z_{lk}$: share of people from foreign $k$ living in $l$ (in a base period)
+\item $g_{lk}$:  growth in number of people from $k$ to $l$
+\item $\textcolor{blue}{g_k}$: growth in people from $k$ nationally
+\end{itemize}
+
+
+\end{frame}
+
+
+%------
+\begin{frame}
+\addtocounter{framenumber}{-1}
+\frametitle{Other instruments have this structure}
+
+\begin{align}
+  y_l&= \beta_0 + \beta x_l + \epsilon_l \notag \\
+  x_l&= \pi_0 + \pi_{1} B_l + u_l \notag \\  
+B_l &=  \sum_{k=1}^{K}z_{lk} \textcolor{blue}{g_{k}} \notag \\
+g_{lk} &=   \textcolor{blue}{g}_{ \textcolor{blue}{k}}+  \textcolor{red}{\tilde{g}_{lk}}  \notag 
+\end{align}
+
+Bank-lending relationships: e.g., Greenstone, Mas and Nguyen (2015)
+\begin{itemize}
+\item $z_{lk}$: location (l) share of loan origination from bank $k$
+\item $g_{lk}$:  loan growth in location $l$ by bank $k$
+\item $\textcolor{blue}{g_k}$: part of loan growth due to bank supply shock
+\end{itemize}
+
+
+\end{frame}
+
+%------
+\begin{frame}
+\addtocounter{framenumber}{-1}
+\frametitle{Other instruments have this structure}
+
+\begin{align}
+  y_l&= \beta_0 + \beta x_l + \epsilon_l \notag \\
+  x_l&= \pi_0 + \pi_{1} B_l + u_l \notag \\  
+B_l &=  \sum_{k=1}^{K}z_{lk} \textcolor{blue}{g_{k}} \notag \\
+g_{lk} &=   \textcolor{blue}{g}_{ \textcolor{blue}{k}}+  \textcolor{red}{\tilde{g}_{lk}}  \notag 
+\end{align}
+
+Market size and demography: e.g., Acemoglu and Linn (2004)
+\begin{itemize}
+\item $z_{lk}$: spending share on drug $l$ from age group $k$
+\item $g_{lk}$:  growth in spending of group $k$ on drug $l$
+\item $\textcolor{blue}{g_k}$: growth in spending of group $k$ (due to population aging)
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{What's necessary for consistency?}
+
+\begin{align}
+  y_l&= \beta_0 + \beta x_l + \epsilon_l \notag \\
+  x_l&= \pi_0 + \pi_{1} B_l + u_l \notag \\  
+  B_l &=  \sum_{k=1}^{K}z_{lk} \textcolor{blue}{g_{k}} \notag \\
+  g_{lk} &=   \textcolor{blue}{g}_{ \textcolor{blue}{k}}+  \textcolor{red}{\tilde{g}_{lk}}  \notag 
+\end{align}
+
+\begin{itemize}
+\item We need $B_{l}$ to be a valid instrument
+\item Requires two conditions with constant effects:
+  \begin{enumerate}
+  \item Relevance: $\pi_{1} \not=0$, e.g. $Cov(B_{l}, x_{l}) \not= 0$
+  \item Exclusion: $E(B_{l}\epsilon_{l}) = 0$
+  \end{enumerate}
+\item Key flaw in this literature until recently: economic +
+  statistical content of exclusion has been vague and sometimes confused
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Key thing to remember from today}
+  \begin{itemize}
+  \item Assuming independence or exogeneity on the basis of a model
+    does not necessarily make it true
+    \begin{itemize}
+    \item E.g. Hausman instruments in IO models -- model may assume
+      that exclusion restriction is satisfied, but not necessarily
+      true in reality
+    \end{itemize}
+  \item Assuming that two things are independent because they don't
+    seem ``related'' doesn't make it true 
+    \begin{itemize}
+    \item Bartik literature many times argues that national nature of
+      shocks ``decouples'' the instrument from local market
+      conditions. However, it still exploits local
+      characteristics. Need to make very specific arguments to
+      validate claim (will come to this).
+    \end{itemize}
+  \item When evaluating an identification strategy, you should be able
+    to describe counterfactual claims using the measure. This is
+    typically not concrete in Bartik -- try to make it concrete!
+    What is exactly changing in China? Why is it random? 
+  \end{itemize}
+\end{frame}
+
+
+
+%-----
+\begin{frame}
+\frametitle{More general econometric set-up}
+\begin{align}
+y_{lt} & =\mathbf{D}_{lt}\beta_0 +x_{lt}\beta+\epsilon_{lt}, \notag \\
+x_{lt} & =\mathbf{D}_{lt}\tau+ B_{lt}\gamma+\eta_{lt}\notag \\
+\mathbf{D}_{lt} &= \text{\footnotesize{controls, f.e.}} \notag \\
+g_{lkt} &=   \textcolor{blue}{g_{ kt}} + \textcolor{red}{\tilde{g}_{lkt}}  \notag \\
+B_{lt} &= \sum_{k=1}^K z_{lk0} \textcolor{blue}{g_{kt}}, \notag \\
+\{\{  &  x_{lt},\mathbf{D}_{lt},\epsilon_{lt} \}_{t=1}^T\}_{l=1}^L, \text{ iid, } L\rightarrow \infty \notag
+\end{align}
+
+
+
+  Assumptions for IV in terms of $B_{lt}$:
+  \begin{itemize}
+	\setlength\itemsep{1em}
+  \item Exogeneity: $\mathbb{E}\left[B_{lt}\epsilon_{lt}\middle| \mathbf{D}_{lt}\right] = 0$
+  \item Relevance: $\text{Cov}\left[B_{lt}, x_{lt} \middle| \mathbf{D}_{lt}\right] \not= 0$
+  \end{itemize}
+  
+    Question:
+  \begin{itemize}
+  \item What do these statements about $B_{lt}$ imply about $z_{lk0}$ and $\textcolor{blue}{g_{kt}}$?
+%\item Vice-versa?
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Recent Literature on this topic}
+  \begin{wideitemize}
+  \item Three papers addressed this question, and can be split into two grouping
+  \item The division between papers can be split based on focus on $z_{lk0}$ vs. $g_{kt}$
+    \begin{enumerate}
+    \item Goldsmith-Pinkham, Sorkin and Swift (2020) focus on $z_{lk0}$ and make an analogy to difference-in-differences
+    \item Adao, Kolesar and Morales (2019) and Borusyak, Hull and Jaravel (2020) focus on $g_{kt}$, and make a strong connection to the design based approach (e.g. these are as-if random shocks)
+    \end{enumerate}
+  \item I will focus on GPSS, but the important fact is to pick a concrete explanation for identification
+    \begin{itemize}
+    \item Key problem, historically, in this literature, was the lack
+      of a coherent defense of the identifying variation
+    \item Ideally, this choice should be made ex ante! I.e. don't run the tests and then choose...
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+
+% ----
+
+
+\begin{frame}
+{  \Large
+  \begin{center}
+    Bartik Instruments: What, When, Why and How\\
+    Goldsmith-Pinkham, Sorkin and Swift
+  \end{center}
+}
+  \addtocounter{framenumber}{-1}
+
+Outline:
+\begin{itemize}
+\setlength\itemsep{1em}
+\item \textbf{Understanding the identifying assumption}
+\item Opening the black box
+\item Testing the plausibility of the identifying assumption
+\end{itemize}
+
+\end{frame}
+
+
+%----
+\begin{frame}
+\frametitle{Three  special cases}
+
+\begin{enumerate}
+  \setlength\itemsep{1em}
+\item One time period, two industries
+\item T time periods, two industries
+\item One time period, K industries
+\end{enumerate}
+
+\end{frame}
+
+
+
+%------
+\begin{frame}[label=twoindustries]
+\frametitle{Special case \#1: One time period, two industries}
+\begin{itemize}
+	\setlength\itemsep{1em}
+\item $z_{l2}= 1-z_{l1}$ 
+\item Bartik:  \begin{align*}B_l &= z_{l1} \textcolor{blue}{g_1} + z_{l2} \textcolor{blue}{g_2}  =z_{l1} \textcolor{blue}{g_1} + (1-z_{l1}) \textcolor{blue}{g_2} \notag \\
+&=\textcolor{blue}{g_2}+ (\textcolor{blue}{g_1} - \textcolor{blue}{g_2}) z_{l1} \notag
+\end{align*}
+\end{itemize} 
+First-stage:
+\begin{align*}
+x_l &= \gamma_0 + \gamma B_l + \eta_l \notag \\
+%x_l &= \gamma_0 + \gamma (\hat{g}_2+ (\hat{g}_1 - \hat{g}_2) z_{l1}) + \eta_l \notag \\
+x_l &= \underbrace{\gamma_0+\gamma \textcolor{blue}{g_2}}_{\text{constant}} + \underbrace{\gamma (\textcolor{blue}{g_1} - \textcolor{blue}{g_2})}_{\text{coefficient}} z_{l1} + \eta_l \notag 
+\end{align*}
+
+The instrument is $z_{l1}$, while $\textcolor{blue}{g_k}$ affects relevance
+
+\hyperlink{whyolsisbiased}{\beamergotobutton{Why OLS is biased}}
+
+
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+%---------
+\begin{frame}
+\frametitle{Special case \#2:  T time periods, two industries }
+
+
+
+Panel Bartik:
+
+$$B_{lt} = z_{l10} \textcolor{blue}{g_{1t}}  +z_{l20} \textcolor{blue}{g_{2t}} = \textcolor{blue}{g_{2t}} + \underbrace{ \textcolor{blue}{\Delta_{gt}}}_{g_{1t}-g_{2t}} z_{l10}$$
+
+
+
+
+First stage:
+\begin{align}
+x_{lt} & =\tau_{l}+\tau_{t}+ \gamma B_{lt} +\eta_{lt} \notag\\
+x_{lt} & =\tau_{l}+\underbrace{(\tau_{t}+\gamma \textcolor{blue}{g_{2t}})}_{\tilde{\tau_{t}}}+\underbrace{\gamma  \textcolor{blue}{\Delta_{gt}}}_{\tilde{\gamma}_{t}}z_{l10}+\eta_{lt} \notag
+\end{align}
+
+
+
+
+\begin{itemize}
+\item Industry shares times time period is the instrument
+\item (Updated industry shares: similar)
+\end{itemize}
+
+
+\end{frame}
+
+
+
+%---------
+\begin{frame}
+\frametitle{Special case \#2:  T time periods, two industries }
+
+\begin{itemize}
+	\setlength\itemsep{1em}
+\item Analogy to continuous difference-in-differences 
+	\begin{itemize}
+	\setlength\itemsep{1em}
+	\item $\textcolor{blue}{\Delta_{gt}}$ is size of policy 
+	\item $z_{l10}$ is exposure to policy
+	\end{itemize} 
+\item Sometimes a ``pre-period'' before policy: test for parallel pre-trends 
+	\begin{itemize}
+	\setlength\itemsep{1em}
+	\item E.g., in ADH, what happens from 1970 to 1990?
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+%----
+\begin{frame}[label=kindustries]
+\frametitle{Special case \#3: One time period, K industries}
+
+\begin{itemize}
+	\setlength\itemsep{1em}
+\item $\textcolor{blue}{G}$: $K \times 1$ vector of $\textcolor{blue}{g_k}$
+\item $Z$: $L \times K$, matrix of $Z_l$
+\item $Y^\perp$, $X^\perp$, $B = (Z \textcolor{blue}{G})$: $L \times 1$, vectors of $y_l^\perp$, $x_l^\perp$ and $B_l$
+\item $\Omega$: $K\times K$
+\end{itemize}
+
+
+
+\begin{align*}
+  \hat{\beta}_{Bartik} &= \frac{B^\prime  Y^\perp}{B^\prime X^\perp}\\
+  \hat{\beta}_{GMM} &= \frac{(X^{\perp \prime}Z)\Omega (Z'Y^\perp)}{(X^{\perp \prime} Z)\Omega (Z'X^\perp)}
+\end{align*} 
+
+ If $\Omega = (\textcolor{blue}{G} \textcolor{blue}{G}^\prime)$, then $\hat{\beta}_{Bartik}=\hat{\beta}_{GMM}$   
+
+\end{frame}
+
+%-----
+\begin{frame}
+\frametitle{Full general result with $T$ time periods and $K$ industries}
+
+Two estimators are numerically identical:
+\begin{itemize}
+\item TSLS with Bartik instrument
+\item GMM with industry shares $\times$ time period as instruments and a particular weight matrix 
+\end{itemize}
+\begin{align*}
+  \hat{\beta}_{Bartik} &= \frac{\mathbf{B}^\prime  \widetilde{\mathbf{Y}}^\perp}{\mathbf{B}^\prime \widetilde{\mathbf{X}}^\perp}\\
+  \hat{\beta}_{GMM} &= \frac{(\mathbf{X}^{\perp \prime}\widetilde{\mathbf{Z}})\Omega (\widetilde{\mathbf{Z}}'\mathbf{Y}^\perp)}{(\mathbf{X}^{\perp \prime} \widetilde{\mathbf{Z}})\Omega (\widetilde{\mathbf{Z}}'\mathbf{X}^\perp)}
+\end{align*} 
+$\Omega = (\textcolor{blue}{\mathbf{G}}
+\textcolor{blue}{\mathbf{G}}^\prime)$, and $\widetilde{\mathbf{Z}}$ is
+an $LT \times KT$ stacked vector of $Z_{0}$ interacted with time fixed
+effects and $\textcolor{blue}{\mathbf{G}}$ is a $KT \times 1$ stacked
+vector of growth rates $g_{kt}$.
+
+\end{frame}
+
+
+
+%----
+\begin{frame}
+\frametitle{When is the estimator consistent for the estimand of interest?}
+\begin{center}
+\textbf{What is the identification condition?}
+\end{center}
+
+$$\hat{\beta}_{Bartik}=  \frac{  \sum_{l=1}^L \sum_{t=1}^T \sum_{k=1}^K  z_{lkt} \textcolor{blue}{g_{kt}} y_{lt}^\perp    }{   \sum_{l=1}^L \sum_{t=1}^T \sum_{k=1}^K  z_{lkt} \textcolor{blue}{g_{kt}} x_{lt}^\perp   }  $$
+
+Two ideas:
+\begin{itemize}
+\item ``Shares'' (this paper): talk about properties of $z_{lkt}$
+	\begin{itemize}
+	\item Conditional exogeneity
+	\end{itemize}
+\item ``Shocks'' (Borusyak, Hull and Jaravel (2018)): talk about properties of $g_{kt}$
+	\begin{itemize}
+	\item Random, and a large number (equivalent industry-level regression)
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+%----
+%----
+\begin{frame}
+\frametitle{When are these views plausible? What do they mean?}
+
+
+\textbf{Shares}
+
+\textit{Conditional} exogeneity:
+\begin{itemize}
+\item Typically: exogenous to changes in error term, not levels of outcome
+\item Standard in diff-in-diff (exclusion): in a period, exposure to an industry matters for outcome only through $x$
+\end{itemize}
+
+
+\textbf{Shocks}
+
+\begin{itemize}
+\item Large number of industries (shares are misspecified, need it to average out)
+\item Random shocks across industries
+\end{itemize}
+
+\end{frame}
+
+%----
+\begin{frame}
+\frametitle{Is ADH about shocks or shares?}
+
+Shocks:
+\begin{itemize}
+\item  Explains why $g_{kt}^{high-income}$ rather than $g_{kt}^{US}$  (hard to rationalize under shares)
+\item Natural in a trade model: why would imports from China rise (in a trade model)?  Independent industry-specific shocks
+\end{itemize}
+
+Shares:
+\begin{itemize}
+\item Explains why $z_{lkt-1}$ rather than $z_{lkt}$ (hard to rationalize under shocks)
+\item Explains why it is important for identification to study local labor markets (as opposed to parameter of interest where we want to think about spillovers)
+\end{itemize}
+
+\medskip
+
+Bottom line: a little hard to tell what exactly ADH are assuming; ADH approach does not appear to satisfy testable assumptions under GPSS, but do appear to under BHJ.
+\end{frame}
+
+
+
+
+
+
+
+%%---
+\begin{frame}[label=rotemberg]
+\frametitle{Decomposing Bartik (GPSS 2020)}
+\begin{center}
+(Special case of Rotemberg (1983), proposition 1)
+\end{center}
+\vspace{0.2in}
+
+
+
+
+$$\hat{\beta}_{Bartik} =\sum_k  \hat{\alpha}_k \hat{\beta}_k , \text{      } \sum_k \hat{\alpha}_k=1$$   
+IV estimate using only the $k^{th}$ instrument:
+$$\hat{\beta}_k = (Z_k^\prime X)^{-1} Z_k^\prime Y$$
+``Rotemberg'' weight:
+$$ \hat{\alpha}_k = \frac{ \textcolor{blue}{g_k} Z_k^\prime X}{\sum_{k=1}^K \textcolor{blue}{g_k} Z_k^\prime X}$$
+
+
+
+\hyperlink{rotproof}{\beamergotobutton{Proof}}
+
+\end{frame}
+
+
+
+
+%----
+\begin{frame}
+\frametitle{Interpretation: sensitivity to misspecification elasticity}
+\begin{center}
+  Conley, Hansen and Rossi (2012); Andrews, Gentzkow and Shapiro (2017)\\
+  Local misspecification:  $\epsilon_{lt} = L^{-1/2}V_{lt} + \tilde{\epsilon}_{lt}, \enskip Cov(V_{lt}, Z_{lt}) \not=0$,
+\end{center}
+
+\begin{itemize}
+ \item $   \sqrt{L}\left(\hat{\beta} - \beta_0\right) \xrightarrow{\enskip d \enskip} \tilde{\beta}, \qquad \mathbb{E}\left[\tilde{\beta}\right] = \text{bias (misspecification) of Bartik instrument}$
+ \item $   \sqrt{L}\left(\hat{\beta}_{k} - \beta_0\right) \xrightarrow{\enskip d \enskip} \tilde{\beta}_{k}, \qquad \mathbb{E}\left[\tilde{\beta}_{k}\right] = \text{bias (misspecification) of  $k$th  instrument}$
+
+\end{itemize}
+
+Suppose $\beta_0 \neq 0$.  Percentage bias:
+\begin{equation}
+  \frac{\mathbb{E}[\tilde{\beta}]}{\beta_{0}} = \sum_{k}\alpha_{k}\frac{\mathbb{E}[\tilde{\beta}_{k}]}{\beta_{0}} \notag
+\end{equation} 
+Industry with high $\alpha_k$: 
+\begin{itemize}
+\item an industry where it matters whether it is misspecified (endogenous) 
+	\begin{itemize}
+\item  because it is ``important'' in the estimate
+	\end{itemize}
+\end{itemize}
+
+
+\end{frame}
+
+
+
+%----
+\begin{frame}[label=top5weights]
+\textbf{Top five industries (out of 397)}
+
+
+
+\begin{center}
+\begin{tabular}{lllllllllllll}
+\toprule
+& $\hat{\alpha}_k$ & $g_k^{\text{high-income}}$ & $\hat{\beta}_k$  \\ \cmidrule(lr){2-4} 
+Games and Toys & 0.182 & 174.841 & -0.151  \\  
+Electronic Computers & 0.182 & 85.017 & -0.620  \\ 
+Household Audio and Video & 0.130 & 118.879 & 0.287  \\ 
+Computer Equipment & 0.076 & 28.110 & -0.315  \\ 
+Telephone Apparatus & 0.058 & 37.454 & -0.305  \\ 
+\bottomrule 
+& \multicolumn{2}{l}{$0.628 \big/ 1.379$}   & -0.230 &\\
+\end{tabular}
+\end{center}
+  
+\footnotesize
+\medskip
+\begin{quote}
+The \textbf{main source of variation in exposure is} within-manufacturing specialization in industries subject to different degrees of import competition...there is differentiation according to \textbf{local labor market reliance on labor-intensive industries}...By 2007, China accounted for over 40 percent of US imports in four four-digit SIC industries (\textbf{luggage, rubber and plastic footwear, games and toys, and die-cut paperboard}) and over 30 percent in 28 other industries, including \textbf{apparel, textiles, furniture, leather goods, electrical appliances, and jewelry}.
+\end{quote}
+\begin{center}
+--- Autor, Dorn and Hanson (2013) , pg. 2123
+\end{center}
+\hyperlink{correlmatrix}{\beamergotobutton{Correlation matrix}} 
+\end{frame}
+
+
+%------
+\begin{frame}[plain]
+\addtocounter{framenumber}{-1}
+\frametitle{Outline}
+
+
+\begin{itemize}
+\setlength\itemsep{1em}
+\item Understanding the identifying assumption
+	\begin{itemize}
+	\item \textit{If fixed $K$ and $T$, and} $L \rightarrow \infty$,\textit{ then in terms of industry composition}
+	\end{itemize}
+\item Opening the black box
+	\begin{itemize}
+	\item \textit{Which industries are ``important'' in estimates}
+	\end{itemize}
+\item \textbf{Testing the plausibility of the identifying assumption}
+\end{itemize}
+
+
+
+\end{frame}
+
+
+%----
+\begin{frame}
+\frametitle{Three tests of the identifying condition (under GPSS (2020)}
+
+\begin{enumerate}
+\item Confounds (or correlates)
+\item Pre-trends 
+\item Alternative estimators and overidentification
+\end{enumerate}
+
+\begin{wideitemize}
+\item There are \emph{also} tests for BHJ -- similar to assuming
+  strict ignorability, you can test for balance on observables
+  (like the confounds above) of industries and locations
+\end{wideitemize}
+
+\end{frame}
+
+
+
+%-----
+\begin{frame}
+\frametitle{Test \#1: Correlates of initial industry composition}
+
+\begin{itemize}
+\setlength\itemsep{1em}
+\item How are initial characteristics ($D_{l0}$ less F.E.) related to $Z_{l0}$?
+\item Look at high-Rotemberg weight industries (and aggregate)
+\end{itemize} 
+
+Not definitive:
+\begin{itemize}
+\setlength\itemsep{1em}
+\item Shows source of variation
+\item Can address by controlling for observables ($D_{l0} \times \text{time}$)
+\end{itemize}
+
+\end{frame}
+
+
+%-----
+\begin{frame}[fragile,label=pca]
+\frametitle{Test \#1: Correlates }
+
+
+\scriptsize
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{l*{7}{c}}
+\toprule
+     &\multicolumn{1}{c}{Games}     &\multicolumn{1}{c}{Electronic}&\multicolumn{1}{c}{Household audio}&\multicolumn{1}{c}{Computer}&\multicolumn{1}{c}{Telephone}&\multicolumn{1}{c}{China }\\
+& and toys & computers & and video & equipment & apparatus & to other \\
+\midrule
+Share Empl in Manufacturing&   0.01&    0.21&     0.08&     0.21&    -0.07&        0.57\\
+                &   (0.03)& (0.18)&   (0.08)&   (0.15)&   (0.06)&      (0.07)\\
+\marktopleft{a1} Share College Educated&   -0.08&      0.20&     0.01&     0.22&    -0.07&     0.30\\
+                &     (0.03)& (0.11)&   (0.04)&   (0.10)&   (0.06)&   (0.06) \markbottomright{a1}{red}  \\
+Share Foreign Born& 0.01&   -0.01&    -0.02&    -0.01&    -0.08&          0.15\\
+                &  (0.01)& (0.04)&   (0.01)&   (0.04)&   (0.03)&      (0.03)\\
+Share Empl of Women& 0.05&       -0.04&    -0.08&    -0.02&    -0.02&      0.10\\
+                &  (0.03)&   (0.12)&   (0.05)&   (0.12)&   (0.07)&    (0.06)\\
+Share Empl in Routine&0.04&    -0.37&     0.06&    -0.36&    -0.01&         -0.08\\
+                &  (0.03)&   (0.14)&   (0.05)&   (0.12)&   (0.07)&    (0.13)\\
+Avg Offshorability&    0.02&   0.33&     0.00&     0.29&     0.23&       -0.24\\
+                & (0.02)&   (0.10)&   (0.05)&   (0.08)&   (0.04)&     (0.09)\\
+\midrule
+1980 Population Weighted&      Yes&      Yes&      Yes&      Yes&      Yes&      Yes\\
+N               &    1,444&    1,444&    1,444&    1,444&    1,444&    1,444\\
+$ R^2$          &    0.02&    0.08&     0.01&     0.08&     0.05&       0.22\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+\uncover<2->{\tikz[overlay,remember picture,inner sep=1pt]
+\node[draw=red, line width=0.9mm, rounded corners,fit=(marker-a1-a.north west) (marker-a1-b.south east)] {};}
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+%-----
+
+\begin{frame}[label=overidtest]
+\frametitle{Test \#2: Pre-trends}
+
+
+\begin{equation*}
+  \Delta \text{Manufacturing Emp}_{lt} = \alpha +  \sum_{s} \mathbb{1}(s=t) \gamma_{k,s} z_{lk, 1980}+ \epsilon_{lt}
+\end{equation*}
+
+
+  \begin{itemize}
+\item Four time periods:   1970-1980, 1980-1990, 1990-2000, 2000-2007
+  \item Convert $\hat{\gamma}_{k,t}$ to levels (1970 = 100)
+\item $k$ is top five Rotemberg weight industries in 1980, and ``aggregate'' 
+	\begin{itemize}
+	\item Aggregate: 1980 shares, aggregated using $g_{k,1990-2000}^{\text{high-income}}$
+	\end{itemize}
+
+  \end{itemize}
+``Pre-period'' prior to 1990
+
+\end{frame}
+
+
+
+
+
+
+
+
+%%%%%%%%%
+% 3571
+%%%%%%
+%---
+\begin{frame}[label=ind3571_gr1980]
+\addtocounter{framenumber}{-1}
+\textbf{Electronic computers, fixed 1980 industry shares, Rotemberg weight $ 0.183 $}
+
+
+\begin{center}
+		\includegraphics[scale=0.73]{images/share_emp_ind_bhj_3571_pre_trends_index1980.pdf}
+\end{center}
+
+
+
+
+\end{frame}
+
+
+
+%%%
+% 3944
+%%%
+
+%---
+\begin{frame}[label=ind3944_gr1980]
+\textbf{Games and toys, fixed 1980 industry shares, Rotemberg weight $0.138$}
+
+
+\begin{center}
+		\includegraphics[scale=0.73]{images/share_emp_ind_bhj_3944_pre_trends_index1980.pdf}
+\end{center}
+
+
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+%%%
+% 3651
+%%%%%
+%---
+\begin{frame}[label=ind3651_gr1980]
+\addtocounter{framenumber}{-1}
+\textbf{Household audio and video, fixed 1980 industry shares, Rotemberg weight $ 0.085$}
+
+
+\begin{center}
+		\includegraphics[scale=0.73]{images/share_emp_ind_bhj_3651_pre_trends_index1980.pdf}
+\end{center}
+
+
+
+
+\end{frame}
+
+
+
+%%%
+% 3661
+%%%
+
+%---
+\begin{frame}[label=ind3661_gr1980]
+\addtocounter{framenumber}{-1}
+\textbf{Telephone apparatus, fixed 1980 industry shares, Rotemberg weight $0.066 $}
+
+
+\begin{center}
+		\includegraphics[scale=0.730]{images/share_emp_ind_bhj_3661_pre_trends_index1980.pdf}
+\end{center}
+
+
+
+
+\end{frame}
+
+
+
+%%%
+% 3577
+%%%
+
+%---
+\begin{frame}[label=ind3577_gr1980]
+\addtocounter{framenumber}{-1}
+\textbf{Computer equipment, fixed 1980 industry shares, Rotemberg weight $0.060 $}
+
+
+\begin{center}
+		\includegraphics[scale=0.730]{images/share_emp_ind_bhj_3577_pre_trends_index1980.pdf}
+\end{center}
+
+
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+%%%
+% aggregate
+%%%
+
+%---
+\begin{frame}[label=aggregate_gr1980]
+\addtocounter{framenumber}{-1}
+\textbf{Aggregate, fixed 1980 industry shares}
+
+
+\begin{center}
+		\includegraphics[scale=0.73]{images/z_pre_trends_index1980.pdf}
+\end{center}
+
+
+
+\end{frame}
+
+
+
+%-----
+
+\begin{frame}[label=overidtest]
+\frametitle{Test \#3: Alternative estimators and overidentification tests}
+
+Basic insight: many instruments 
+\begin{itemize}
+\item Estimators (maximum likelihood): LIML, Hausman, Newey, Woutersen, Chao and Swanson (2012) HFUL (heteroskedasticity-Fuller (1977))
+\item Estimators (two-step):  TSLS (problematic), Bartik TSLS, MBTSLS (Anatolyev (2013), and Kolesar et al (2015)) 
+\end{itemize} 
+Interpretation:
+\begin{itemize}
+\item Gap between maximum likelihood and two-step estimators is evidence of misspecification 
+\end{itemize}
+Also, overidentification tests, which provides evidence of misspecification
+%
+%Note, in Angrist and Krueger (1991), MBTSLS and LIML are very similar
+
+
+
+\end{frame}
+
+%-----
+
+\begin{comment}
+
+\begin{frame}[label=overidtest]
+\frametitle{Test \#3b: Overidentification tests}
+
+Basic insight: many instruments 
+\begin{itemize}
+\item Test statistics: for HFUL, Chao, Hausman, Newey, Swanson and Woutersen (2014) test statistic; for TSLS, Sargan; for LIML (Cragg-Donald)
+\end{itemize} 
+Interpretation:
+\begin{itemize}
+\item Overid test failure is evidence of misspecification
+\end{itemize}
+%Note, in Angrist and Krueger (1991), overid tests fail to reject
+
+
+
+\end{frame}
+
+\end{comment}
+
+%----
+\begin{frame}[fragile,label=sh_results]
+\frametitle{Test \#3: Alternative estimators and overidentification}
+
+
+\small
+\begin{table}[htbp]
+\label{table:olsiv_bartik}
+\begin{center}
+  \begin{tabular}{l*{4}{c}}
+\toprule
+  & \multicolumn{1}{c}{$\Delta$ Emp} & Over ID Test\\
+\midrule
+OLS  & -0.17 &  \\
+    & \textcolor{gray!75}{(0.04)}&         & \\
+TSLS (Bartik)  & -0.62 &  \\
+              &  \textcolor{gray!75}{(0.11) }&         & \\
+TSLS           & -0.22 & 872.69\\
+              &  \textcolor{gray!75}{(0.06)}        & [0.00]\\
+MBTSLS  & -0.33 & \\
+    &  \textcolor{gray!75}{(0.05)}&         & \\
+LIML  & -2.07 & 1348.50\\
+    &  \textcolor{gray!75}{(3.52)}&          [0.00]\\
+HFUL & -1.13 &  1141.08\\
+    &  \textcolor{gray!75}{(0.04)}&         [0.00]\\
+\midrule
+Year and Census Division FE&            Yes\\
+Controls        &           Yes\\
+Observations    &      1,444\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Simulated Instruments}
+  \begin{wideitemize}
+  \item Pivoting now to simulated instruments
+  \item Running example -- effect of Medicaid on Y (e.g. child mortality)
+  \item Eligibility depends on:
+    \begin{itemize}
+    \item State-year (legislative changes)
+    \item Individual characteristics: Income less disregards (child care and work expenses), adults (if married, unemployed husband can maintain eligibility), number of children, whether first-time mother, etc.  
+    \end{itemize} 
+    Actual eligibility is clearly endogenous:
+    \begin{itemize}
+    \item Poorer people are more likely to be eligible, ``worse'' potential outcomes
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Build an instrument}
+
+\begin{itemize}
+\item  Idea: isolate (changes in) eligibility coming from policy changes
+  \begin{itemize}
+  \item Take a fixed population (say, 1986 CPS)
+  \item Compute ``share eligible'' in each state-year 
+  \end{itemize} 
+\item		Parameterizes (in one-dimension) how generous the policy is
+\item Benefits:
+  \begin{itemize}
+  \item   Intuitive: isolate variation that you think is exogenous  
+  \item ``Split-sample'': Can compute simulated eligibility in one sample, and outcomes in another sample
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Set up}
+\begin{wideitemize}
+\item $Y_{i}$: outcome (e.g. utilization of health care, whether baby is low birthweight)
+\item $D_{i}$: treatment (e.g. Medicaid eligibility)
+  \begin{itemize}
+  \item Today: $D_{i} \in \{0,1\}$ 
+  \end{itemize}
+\item $D_{i} \equiv g(S_{i}, X_{i})$: \emph{known} eligibility function $g(\cdot, \cdot)$\\
+  \hspace{10pt} $S_{i}$: location  (e.g. state)\\
+  \hspace{10pt} $X_{i}$: characteristics driving eligibility (e.g. income, age, \# of children)\\
+  \hspace{10pt} $\mathcal{X}$: simplifying case - discrete support of $X_{i}$\\  
+\item \emph{$g(s,x)$ can be highly non-linear in $x$}
+\end{wideitemize}
+\end{frame}
+
+%-----
+\begin{frame}
+\frametitle{Aronow, Goldsmith-Pinkham, \& Sorkin: treatment effect heterogeneity}
+
+It is natural to imagine that we are not in a constant effects world:
+\begin{itemize}
+\item In observables: differential effects by income
+\item In unobservables: differential effects by latent health and etc.
+\end{itemize} 
+Two questions with TE heterogeneity:
+\begin{itemize}
+\item How plausible is it that monotonicity holds?  
+\item What is the LATE? (And is the LATE of economic interest?) 
+\end{itemize}
+
+\end{frame}
+
+% Some Notation
+\begin{frame}{Fundamental problem of causal inference}
+  \begin{wideitemize}
+  \item $Y_{i}(D_{i})$ denote potential outcomes for individual $i$ 
+  \item $Y_{i}(1) - Y_{i}(0)$: individual treatment effect of eligibility
+  \item Observe $Y_{i} = D_{i}Y_{i}(1) + (1-D_{i})Y_{i}(0)$ 
+  \end{wideitemize}
+  Solution:
+  \begin{wideitemize}
+  \item Assume state \textit{policies} are as good as
+    random...
+    \begin{itemize} 
+    \item Concern that $X_{i}$ is correlated with the
+      potential outcomes;
+    \item Poor individual more likely to be eligible, but may have worse outcomes ($Y_{i}(D_{i})$);
+    \end{itemize}
+  \item How to get state policy variation without endogeneity from composition? 
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Quote - Currie \& Gruber (1996)}
+  ``\textbf{Our IV strategy
+  ... treats the legislative environment ... as a source of exogenous identification.}''
+\end{frame}
+
+
+\begin{frame}{  The simulated instrument}
+ 
+    \begin{equation*}
+      Z_{i} = \sum_{x \in \mathcal{X}}g(S_{i}, x) \underbrace{Pr(X_{i} = x)}_{\text{non-stoch func}}      
+    \end{equation*}
+    \begin{itemize}
+    \item $Pr(X_i=x)$ is, e.g., distribution of characteristics in 1986 CPS
+    \end{itemize} 
+   TSLS:
+    \begin{align*}
+      Y_{i} &= \alpha + \beta D_{i} + \epsilon_{i} \\
+      D_{i} &= \pi_0 + \pi_{1} Z_{i} + \eta_{i}.
+    \end{align*}
+    Standard constant effects assumptions:
+    \begin{equation*}
+      \underbrace{Cov(Z_{i},\epsilon_{i})}_{\text{\textcolor{red}{exclusion}}} = 0, \qquad       \underbrace{Cov(Z_{i},D_{i})}_{\text{\textcolor{blue}{relevance}}} \not= 0
+    \end{equation*}
+\end{frame}
+
+
+\begin{frame}{TSLS Estimator and Heterogeneity}
+  \begin{wideitemize}
+  \item  TSLS estimator:
+  \begin{align*}
+    \hat{\beta}_{sim} &= \frac{\widehat{Cov}(Z_{i}, Y_{i})}{\widehat{Cov}(Z_{i}, D_{i})}.
+  \end{align*}
+\item What average TE is $\hat{\beta}_{sim}$? Most researchers appeal
+  to monotonicity for LATE:
+  \begin{assN}
+    Let $\mathcal{Z}$ be the set of values of $Z_{i}$. For all
+    $z, z' \in \mathcal{Z}$, either $D_{i}(z) \geq D_{i}(z')$ or
+    $D_{i}(z) \leq D_{i}(z')$.
+  \end{assN}
+\item How plausible is this?
+  \end{wideitemize}
+\end{frame}
+
+
+%-----
+\begin{frame}
+\frametitle{Idea \#1: monotonicity is very likely to be violated}
+
+Recall why we need an instrument: 
+\begin{itemize}
+\item Eligibility depends on ``high-dimensional'' observables
+\item States change many dimensions of eligibility at once 
+\item If it were just income, we'd do an RD in income 
+\end{itemize}
+
+Hence:
+\begin{itemize}
+	\item When a state expands eligibility \textbf{on average}, it can make some groups ineligible 
+		\begin{itemize}
+	\item Law changes represent ``menu of treatments'' 
+		\end{itemize}
+	\item Violate monotonicity in \textbf{observables}; can document empirical prevalence (!)
+	\end{itemize}
+
+
+Why you probably shouldn't use simulated instruments (in this setting): potentially uninterpretable estimates in presence of TE heterogeneity
+\end{frame}
+
+%---
+\begin{frame}
+\frametitle{Idea \#2: we have a selection on observables design}
+
+\begin{itemize}
+\item Basic assumption in the simulated instrument design: state legislative policy changes don't depend on characteristics of the population 
+\item \textbf{Strengthen (?) this assumption:} characteristics don't \textbf{respond} to policy changes (i.e., become poorer to become eligible for Medicaid) 
+	\begin{itemize}
+	\item This form of response affects interpretation of IV estimate 
+	\end{itemize}
+\item If you buy this (which you might not in some settings!): 
+	\begin{itemize}
+	\item You can compare outcomes of ``types'' of people (vectors of characteristics) who are eligible in some state-years and not in others
+	\end{itemize}
+\end{itemize} 
+
+\end{frame}
+
+
+\begin{frame}{Monotonicity assumption is strong, and testable}
+  \begin{wideitemize}
+  \item Since $g(\cdot, \cdot)$ is known for all $x$ and $s$, can
+    look for $x, x' \in \mathcal{X}$ where $Z_{i}(s) > Z_{i'}(s')$ for
+    $x$ and $x'$ but $D_{i}(z) > D_{i}(z')$ for $x$ and
+    $D_{i}(z) < D_{i}(z')$
+  \item Simple example: states where eligibility is not ordered
+    \begin{itemize}
+    \item $\mathcal{X} = \{1,2,3,4,5\}$, $Pr(X_{i} = x) = 1/5$
+    \item Types 1,2,5 are eligible in $s$, and 1,3,4,5 are eligible in $s'$.
+    \item Then, $\forall i$, $Z_{i}(s') > Z_{i}(s)$.
+    \item But, for $X_{i} = 3$, $D_{i}(s) < D_{i}(s')$, while for
+      $X_{i} = 2$, $D_{i}(s') < D_{i}(s)$
+    \end{itemize}
+  \item Implication: motonoicity is violated, and $\hat{\beta}_{sim}$
+    combines positive and negative eligibility effects.
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{How important are these violations?}
+  \begin{wideitemize}
+  \item Cohodes, Grossman, Kleiner and Lovenheim (2016) study long-term impact of Medicaid
+    expansions on childrens' educational outcomes
+  \item Information on eligibility for fixed distribution of 1986 CPS 
+  \item Define an eligibility ``type'':
+  	\begin{itemize}
+	\item A unique pattern of state-year (from 1980-2007) eligibility for a respondent in the 1986 CPS 
+	\item 48,036 children in the 1986 CPS, $18,881$ eligibility types 
+	\end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+
+%-----
+\begin{frame}
+\frametitle{Quantifying violations of monotonicity}
+
+\begin{itemize}
+\item Take state-years where the value of the instrument changes (i.e., state policy becomes more/less generous)
+\item Ask for each eligibility type whether its eligibility moved in the direction of the instrument
+\item Weight by the eligibility type share of the national population
+	\begin{itemize}
+	\item In the CPS, small samples at state level
+	\end{itemize}
+\end{itemize}
+
+
+\end{frame}
+
+
+%----
+\begin{frame}
+\frametitle{Idea \#2.5: What you can sometimes do instead}
+
+With infinite data and outcomes observed in same dataset as eligibility (no split sample): 
+	\begin{itemize}
+	\item Compute type specific treatment effects 
+		\begin{itemize}
+		\item Simple comparison of means, no IV! 
+		\end{itemize}
+	\item Report TE for populations of interest where eligibility varies across state-years
+		\begin{itemize}
+		\item I.e., if we expanded the income threshold nationally, what would happen...
+		\end{itemize} 
+	\item Because monotonicity violation is in observables, not hard to fix (!)
+	\end{itemize} 
+In practice: use the propensity score....
+\end{frame}
+
+%-----
+\begin{frame}
+\frametitle{Caveats}
+
+This is about Currie and Gruber (1996a, b) and not Gruber and Saez (2002):
+\begin{itemize}
+\item Gruber and Saez is an individual-level instrument so the monotonicity point doesn't apply
+\item Gruber and Saez is all about characteristics (income) responding endogenously
+\end{itemize} 
+Not clear how useful/implementable idea \#2.5 is:
+\begin{itemize}
+\item Need outcomes and eligibility in same dataset
+\end{itemize} 
+In progress:
+\begin{itemize}
+\item A complete empirical example
+\item Even if you can't do \#2.5, can bound TE heterogeneity so that still have interpretable estimates
+\item Formalism is a bit sloppy: currently just for cross-section, and not panel with two-way F.E.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Borusyak and Hull: formalizing this point even further}
+  \begin{wideitemize}
+  \item Borusyak and Hull (2021) bring this point even further,
+    emphasizing this propensity score setup in a wider range of settings
+  \item They allow for potential \emph{interference} across designs as well (due to, for example, spatial correlation in things like railroads)
+  \item BH approach builds on the BHJ/AKM notion of random shocks
+    being combined using non-random exposure
+    \begin{itemize}
+    \item Key p-score result is the same, but the build out a more
+      general (and more efficient) set of structures
+    \item Additional, in cases with interference (like railroad
+      upgrades), BH show how to ``recenter'' the pscore to account for
+      interference
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+
+
+\end{document}
