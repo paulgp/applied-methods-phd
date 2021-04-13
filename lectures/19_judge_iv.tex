@@ -484,7 +484,7 @@
     \end{itemize}
   \item But note the following equivalency from our GMM/2SLS estimator:
     \begin{equation}
-      \hat{\beta}_{2SLS} = \frac{D'Z(Z'Z)^{-1}Z'Y}{D'\underbrace{Z(Z'Z)^{-1}Z'}_{P_{Z}}D} = \frac{\hat{D}'Y}{\hat{D}'D} 
+      \hat{\beta}_{2SLS} = \frac{D'\mathcal{Q}(\mathcal{Q}'\mathcal{Q})^{-1}\mathcal{Q}'Y}{D'\underbrace{\mathcal{Q}(\mathcal{Q}'\mathcal{Q})^{-1}\mathcal{Q}'}_{P_{\mathcal{Q}}}D} = \frac{\hat{D}'Y}{\hat{D}'D} 
     \end{equation}
   \item Using many instruments and using the predicted first stage
     as your instrument are the same thing (adding controls just adds residualization)
