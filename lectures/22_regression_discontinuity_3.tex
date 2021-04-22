@@ -527,7 +527,11 @@
     \item How would you do this?
     \end{itemize}
   \item Note how you would do it in a simple OLS setting:
-    $$y_{i} = \alpha + W_{i}\alpha_{1} + Z_{i}\gamma_{0} + 1(Z_{i} > 0)\tau_{SRD} + Z_{i}W_{i}\gamma_{1} + 1(Z_{i} > 0)W_{i}\tau_{SRD,diff} + \epsilon_{i} $$
+    \begin{align*}
+      y_{i} &= \alpha_{0} +  Z_{i}\gamma_{0} + Z_{i}1(Z_{i} > 0)\delta_{0} + 1(Z_{i} > 0)\tau_{SRD} \\
+            &+ W_{i}\alpha_{1} +  W_{i}Z_{i}\gamma_{0} + W_{i}Z_{i}1(Z_{i} > 0)\delta_{0} + W_{i}1(Z_{i} > 0)\tau_{SRD,diff} + \epsilon_{i}
+    \end{align*}
+              
     $\tau_{SRD,diff}$ would give you the difference -- this approach
     is easy if you pick a bandwidth and use a uniform kernel
   \item But now we have all these better tools (and we need them in a
