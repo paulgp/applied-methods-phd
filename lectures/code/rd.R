@@ -69,18 +69,24 @@ ggsave("images/lee_rd_binscatter_es.png")
 out = rdplot(lee08$voteshare, lee08$margin, nbins = c(20, 20), binselect = "qs", x.lim = c(-25, 25), y.lim = c(30, 70))
 out$rdplot$layers[[2]] <- NULL
 out$rdplot$layers[[2]] <- NULL
-out$rdplot
+out$rdplot +
+  theme(text = element_text(size=24)) + theme_minimal() + 
+  labs(y = "Vote Share in t+1", x = "Margin of Victory in t", title = "")
 ggsave("images/lee_rd_binscatter_qs.png")
 
 out = rdplot(lee08$voteshare, lee08$margin, binselect = "qs", x.lim = c(-25, 25), y.lim = c(30, 70))
 out$rdplot$layers[[2]] <- NULL
 out$rdplot$layers[[2]] <- NULL
-out$rdplot
+out$rdplot +
+  theme(text = element_text(size=24)) + theme_minimal() + 
+  labs(y = "Vote Share in t+1", x = "Margin of Victory in t", title = "")
 ggsave("images/lee_rd_binscatter_qs_choice.png")
 out = rdplot(lee08$voteshare, lee08$margin, binselect = "qsmv", x.lim = c(-25, 25), y.lim = c(30, 70))
 out$rdplot$layers[[2]] <- NULL
 out$rdplot$layers[[2]] <- NULL
-out$rdplot
+out$rdplot +
+  theme(text = element_text(size=24)) + theme_minimal() + 
+  labs(y = "Vote Share in t+1", x = "Margin of Victory in t", title = "")
 ggsave("images/lee_rd_binscatter_qsmv_choice.png")
 
 est = rdrobust(lee08$voteshare, lee08$margin)
@@ -113,3 +119,7 @@ ggsave("images/lee_rd_binscatter_output_robust.png")
 
 oreo = data.frame(logearn = log(cghs$earnings), year14 = cghs$yearat14)
 ggplot(data = oreo) + geom_point(aes(y = logearn, x = year14))
+
+rdrobust(oreo$logearn, oreo$year14, c = 1947)
+RDHonest(logearn ~ year14, data = oreo, cutoff = 1947, M = 0.01, 
+         opt.criterion = "MSE")
