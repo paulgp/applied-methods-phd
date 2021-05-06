@@ -187,7 +187,7 @@
     \begin{itemize}
     \item This may be a causal object, or purely a statistical one
     \end{itemize}
-    \item Remember that we need to know where this object is knowable
+    \item Remember that we need to know whether this object is knowable
       given the data generating process
       \begin{itemize}
       \item This is not a question of any given sample, but rather a
@@ -390,7 +390,7 @@
           \item Under monotonicity of selection (
             $S_{i}(1) \geq S_{i}(0)$, it is possible to provide sharp
             bounds on the treatment effect
-          \item Let $\tau = E(Y^{*}(1) - Y^{*}(0) | S(0) = 1, S(1) = 0)$, our estimand of interest, and $p_{0} = \frac{Pr(S = 1 | D = 1) - Pr(S = 1| D = 0)}{Pr(S = 1 | D = 1)}$
+          \item Let $\tau = E(Y^{*}(1) - Y^{*}(0) | S(0) = 1, S(1) = 1)$, our estimand of interest, and $p_{0} = \frac{Pr(S = 1 | D = 1) - Pr(S = 1| D = 0)}{Pr(S = 1 | D = 1)}$ 
           \item Then, we can bound $\tau \in [\Delta_{0}^{LB}, \Delta_{0}^{UB}]$
             \begin{itemize}
             \item $\Delta_{0}^{LB} = E(Y | D = 1, S = 1, Y \leq y_{1-p_{0}}) - E(Y | D = 0, S = 1)$
@@ -423,9 +423,9 @@
     \item This is very similar to the always-take and complier analogy
       \begin{itemize}
       \item The bounds are exploiting the ``worst case'' scenarios --
-        if the group of compliers are the ``best'' $Y(1)$, then
+        if the group of ``shifters'' are the ``best'' $Y(1)$, then
         trimming the top provides a lower bound.
-      \item If the compliers are the worst, then trimming the bottom
+      \item If the ``shifters'' are the worst, then trimming the bottom
         provides the upper bound
       \end{itemize}
     \item Using covariates can be used to narrow these bounds by shrinking the size of $p_{0}$
@@ -516,13 +516,13 @@
       \begin{columns}[onlytextwidth, T] % align columns
         \begin{column}{.9\textwidth}
           \begin{wideitemize}
-          \item Consider the data $(y, v, v_{0}, v_{1})$, where $v$ is
+          \item Consider the data $(y, v, v_{0}, v_{1},x)$, where $v$ is
             the true measure you'd like, which is reported with
-            intervals $[v_{0},v_{1}]$. (Easy to add covariates)
+            intervals $[v_{0},v_{1}]$. 
           \item Manski and Tamer (2002) assume:
             \begin{enumerate}
-            \item $E(Y|v) $ is weakly monotonic in $v$
-            \item $E(Y|v, v_{0},v_{1})= E(Y|v)$
+            \item $E(Y|v,x) $ is weakly monotonic in $v$
+            \item $E(Y|v, x,v_{0},v_{1})= E(Y|v,x)$
             \end{enumerate}
           \item In these settings, it is possible to put sharp bounds
             on the coefficients of a linear model
