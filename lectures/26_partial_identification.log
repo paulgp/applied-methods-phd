@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  4 MAY 2021 13:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  6 MAY 2021 12:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**\input 25_machine_learning_3.tex
- (./25_machine_learning_3.tex
+**\input 26_partial_identification.tex
+ (./26_partial_identification.tex
 (/usr/local/texlive/2020/texmf-dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2019/09/29 v3.57 A class for typesetting presentations
 (/usr/local/texlive/2020/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
@@ -1051,8 +1051,8 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 (/usr/local/texlive/2020/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-(./25_machine_learning_3.aux)
-\openout1 = `25_machine_learning_3.aux'.
+(./26_partial_identification.aux)
+\openout1 = `26_partial_identification.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 157.
 LaTeX Font Info:    ... okay on input line 157.
@@ -1146,9 +1146,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 157.
 LaTeX Info: Redefining \pageref on input line 157.
 LaTeX Info: Redefining \nameref on input line 157.
- (./25_machine_learning_3.out) (./25_machine_learning_3.out)
+ (./26_partial_identification.out) (./26_partial_identification.out)
 \@outlinefile=\write5
-\openout5 = `25_machine_learning_3.out'.
+\openout5 = `26_partial_identification.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/ppl/m/n --> OT1/cmss/m/n on input line 157.
@@ -1219,7 +1219,7 @@ Dictionary: translator-theorem-dictionary, Language: English
 )
 \c@mv@tabular=\count351
 \c@mv@boldtabular=\count352
- (./25_machine_learning_3.nav)
+ (./26_partial_identification.nav)
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
 (Font)              scaled to size 6.0pt on input line 157.
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
@@ -1303,204 +1303,198 @@ LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
 
 {/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 201.
+(Font)              scaled to size 10.95pt on input line 208.
 
 [2
 
 ]
-
-pdfTeX warning: pdflatex (file ./images/unsupervisedml_venn2.pdf): PDF inclusio
-n: found PDF version <1.6>, but at most version <1.5> allowed
-<images/unsupervisedml_venn2.pdf, id=28, 1523.6925pt x 809.0225pt>
-File: images/unsupervisedml_venn2.pdf Graphic file (type pdf)
-<use images/unsupervisedml_venn2.pdf>
-Package pdftex.def Info: images/unsupervisedml_venn2.pdf  used on input line 20
-6.
-(pdftex.def)             Requested size: 433.34402pt x 230.08002pt.
-
-Overfull \vbox (20.0107pt too high) detected at line 206
- []
-
-[3
-
- <./images/unsupervisedml_venn2.pdf>]
-
-pdfTeX warning: pdflatex (file ./images/unsupervisedml_venn.pdf): PDF inclusion
-: found PDF version <1.6>, but at most version <1.5> allowed
-<images/unsupervisedml_venn.pdf, id=48, 1523.6925pt x 809.0225pt>
-File: images/unsupervisedml_venn.pdf Graphic file (type pdf)
-<use images/unsupervisedml_venn.pdf>
-Package pdftex.def Info: images/unsupervisedml_venn.pdf  used on input line 206
-.
-(pdftex.def)             Requested size: 433.34402pt x 230.08002pt.
-
-Overfull \vbox (6.41069pt too high) detected at line 206
- []
-
-[4
-
- <./images/unsupervisedml_venn.pdf>]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 235.
+(Font)              scaled to size 11.40997pt on input line 233.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 235.
+(Font)              scaled to size 8.33606pt on input line 233.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 235.
+(Font)              scaled to size 11.40997pt on input line 233.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 235.
+(Font)              scaled to size 8.33606pt on input line 233.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 235.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 233.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 235.
-LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 235.
- [5
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 233.
+ [3
+
+] [4
+
+] [5
+
+] [6
+
+] [7
 
 ]
-Overfull \hbox (173.33496pt too wide) detected at line 263
+Overfull \hbox (173.33496pt too wide) detected at line 349
 [][][][][][][][][] [][] [][][][][][][]
- []
-
-[6
-
-]
-<images/gentzkowshapiro_1.png, id=82, 454.69875pt x 452.69125pt>
-File: images/gentzkowshapiro_1.png Graphic file (type png)
-<use images/gentzkowshapiro_1.png>
-Package pdftex.def Info: images/gentzkowshapiro_1.png  used on input line 288.
-(pdftex.def)             Requested size: 216.67201pt x 215.71442pt.
- [7
-
- <./images/gentzkowshapiro_1.png>]
-LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 314.
-LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 314.
-
-Overfull \vbox (1.0144pt too high) detected at line 314
  []
 
 [8
 
 ]
-<images/shel_silverstein.jpg, id=98, 433.62pt x 355.3275pt>
-File: images/shel_silverstein.jpg Graphic file (type jpg)
-<use images/shel_silverstein.jpg>
-Package pdftex.def Info: images/shel_silverstein.jpg  used on input line 320.
-(pdftex.def)             Requested size: 216.67201pt x 177.54944pt.
- [9
+<images/lee_1.png, id=65, 658.46pt x 622.325pt>
+File: images/lee_1.png Graphic file (type png)
+<use images/lee_1.png>
+Package pdftex.def Info: images/lee_1.png  used on input line 379.
+(pdftex.def)             Requested size: 216.67201pt x 204.77913pt.
 
- <./images/shel_silverstein.jpg>]
-<images/gentzkowshapiro_2.png, id=104, 540.0175pt x 297.11pt>
-File: images/gentzkowshapiro_2.png Graphic file (type png)
-<use images/gentzkowshapiro_2.png>
-Package pdftex.def Info: images/gentzkowshapiro_2.png  used on input line 343.
-(pdftex.def)             Requested size: 216.67201pt x 119.2091pt.
- [10
+Overfull \vbox (10.86882pt too high) detected at line 379
+ []
 
- <./images/gentzkowshapiro_2.png>]
-<images/gentzkowshapiro_3.png, id=112, 468.75125pt x 406.51875pt>
-File: images/gentzkowshapiro_3.png Graphic file (type png)
-<use images/gentzkowshapiro_3.png>
-Package pdftex.def Info: images/gentzkowshapiro_3.png  used on input line 343.
-(pdftex.def)             Requested size: 216.67201pt x 187.90031pt.
+[9
 
-[11
+ <./images/lee_1.png>]
+Overfull \hbox (173.33496pt too wide) detected at line 407
+[][][][][][][][][] [][] [][][][][][][]
+ []
 
- <./images/gentzkowshapiro_3.png>]
-<images/bandiera_1.png, id=119, 658.46pt x 593.21625pt>
-File: images/bandiera_1.png Graphic file (type png)
-<use images/bandiera_1.png>
-Package pdftex.def Info: images/bandiera_1.png  used on input line 369.
-(pdftex.def)             Requested size: 216.67201pt x 195.20076pt.
- [12
+[10
 
- <./images/bandiera_1.png>]
-<images/blei_1.png, id=126, 615.29875pt x 559.08875pt>
-File: images/blei_1.png Graphic file (type png)
-<use images/blei_1.png>
-Package pdftex.def Info: images/blei_1.png  used on input line 394.
-(pdftex.def)             Requested size: 216.67201pt x 196.8698pt.
+]
+LaTeX Font Info:    Font shape `OT1/lato-TLF/m/n' will be
+(Font)              scaled to size 9.0pt on input line 434.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 434.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 434.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 434.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 434.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 434.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 434.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 434.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <7> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 434.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <5> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 434.
+ [11
 
-Overfull \vbox (4.4888pt too high) detected at line 394
+]
+Overfull \hbox (130.00452pt too wide) detected at line 464
+[][][][][][][][][] [][] [][][][][][][]
+ []
+
+[12
+
+]
+<images/semenova_1.png, id=91, 536.0025pt x 581.17125pt>
+File: images/semenova_1.png Graphic file (type png)
+<use images/semenova_1.png>
+Package pdftex.def Info: images/semenova_1.png  used on input line 486.
+(pdftex.def)             Requested size: 216.67201pt x 234.92967pt.
+
+Overfull \vbox (18.31418pt too high) detected at line 486
  []
 
 [13
 
- <./images/blei_1.png>]
-<images/bandiera_2.png, id=134, 679.53876pt x 404.51125pt>
-File: images/bandiera_2.png Graphic file (type png)
-<use images/bandiera_2.png>
-Package pdftex.def Info: images/bandiera_2.png  used on input line 417.
-(pdftex.def)             Requested size: 216.67201pt x 128.97714pt.
+ <./images/semenova_1.png>]
+<images/manski_tamer_1.png, id=100, 465.74pt x 434.62375pt>
+File: images/manski_tamer_1.png Graphic file (type png)
+<use images/manski_tamer_1.png>
+Package pdftex.def Info: images/manski_tamer_1.png  used on input line 512.
+(pdftex.def)             Requested size: 216.67201pt x 202.19742pt.
  [14
 
- <./images/bandiera_2.png>]
-File: images/bandiera_2.png Graphic file (type png)
-<use images/bandiera_2.png>
-Package pdftex.def Info: images/bandiera_2.png  used on input line 436.
-(pdftex.def)             Requested size: 216.67201pt x 128.97714pt.
- [15
+ <./images/manski_tamer_1.png>]
+LaTeX Font Info:    Font shape `OT1/lato-TLF/m/it' will be
+(Font)              scaled to size 10.0pt on input line 544.
+
+Overfull \hbox (173.33496pt too wide) detected at line 544
+[][][][][][][][][] [][] [][][][][][][]
+ []
+
+[15
 
 ] [16
 
 ]
-<images/pepe_1.png, id=151, 503.8825pt x 649.42625pt>
-File: images/pepe_1.png Graphic file (type png)
-<use images/pepe_1.png>
-Package pdftex.def Info: images/pepe_1.png  used on input line 484.
-(pdftex.def)             Requested size: 216.67201pt x 279.25775pt.
+<images/manski_molinari_1.png, id=117, 897.3525pt x 758.835pt>
+File: images/manski_molinari_1.png Graphic file (type png)
+<use images/manski_molinari_1.png>
+Package pdftex.def Info: images/manski_molinari_1.png  used on input line 612.
+(pdftex.def)             Requested size: 216.67201pt x 183.2241pt.
+ [17
 
-Overfull \vbox (62.64226pt too high) detected at line 484
+ <./images/manski_molinari_1.png>]
+<images/manksi_molinari_2.png, id=124, 683.55376pt x 725.71124pt>
+File: images/manksi_molinari_2.png Graphic file (type png)
+<use images/manksi_molinari_2.png>
+Package pdftex.def Info: images/manksi_molinari_2.png  used on input line 642.
+(pdftex.def)             Requested size: 216.67201pt x 230.02872pt.
+
+Overfull \vbox (13.41322pt too high) detected at line 642
  []
 
-[17
+[18
 
- <./images/pepe_1.png>] [18
+ <./images/manksi_molinari_2.png>]
+<images/manski_book.jpeg, id=131, 403.5075pt x 602.25pt>
+File: images/manski_book.jpeg Graphic file (type jpg)
+<use images/manski_book.jpeg>
+Package pdftex.def Info: images/manski_book.jpeg  used on input line 663.
+(pdftex.def)             Requested size: 216.67201pt x 323.39061pt.
 
-]
+Overfull \vbox (106.77512pt too high) detected at line 663
+ []
+
+[19
+
+ <./images/manski_book.jpeg>]
 \tf@nav=\write6
-\openout6 = `25_machine_learning_3.nav'.
+\openout6 = `26_partial_identification.nav'.
 
 \tf@toc=\write7
-\openout7 = `25_machine_learning_3.toc'.
+\openout7 = `26_partial_identification.toc'.
 
 \tf@snm=\write8
-\openout8 = `25_machine_learning_3.snm'.
+\openout8 = `26_partial_identification.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 501.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 501.
- (./25_machine_learning_3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 501.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 501.
-Package rerunfilecheck Info: File `25_machine_learning_3.out' has not changed.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 666.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 666.
+ (./26_partial_identification.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 666.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 666.
+Package rerunfilecheck Info: File `26_partial_identification.out' has not chang
+ed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 26324 strings out of 480608
- 561044 string characters out of 5903631
- 978687 words of memory out of 5000000
- 41457 multiletter control sequences out of 15000+600000
- 603531 words of font info for 106 fonts, out of 8000000 for 9000
+ 26363 strings out of 480608
+ 561119 string characters out of 5903631
+ 979695 words of memory out of 5000000
+ 41481 multiletter control sequences out of 15000+600000
+ 619667 words of font info for 148 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,11n,76p,795b,722s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,11n,76p,799b,728s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
 exlive/2020/texmf-dist/fonts/enc/dvips/lato/a_vc7epu.enc}{/usr/local/texlive/20
 20/texmf-dist/fonts/enc/dvips/lato/a_y72t7m.enc}</usr/local/texlive/2020/texmf-
 dist/fonts/type1/typoland/lato/Lato-Italic.pfb></usr/local/texlive/2020/texmf-d
 ist/fonts/type1/typoland/lato/Lato-Regular.pfb></usr/local/texlive/2020/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/f
-onts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts
-/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/
-urw/helvetic/uhvro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/pa
-latino/uplr8a.pfb>
-Output written on 25_machine_learning_3.pdf (18 pages, 1497318 bytes).
+ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2020/texmf-dist/f
+onts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2020/texmf-dist/fonts/
+type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type
+1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/h
+elvetic/uhvro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/palatin
+o/uplr8a.pfb>
+Output written on 26_partial_identification.pdf (19 pages, 1324678 bytes).
 PDF statistics:
- 211 PDF objects out of 1000 (max. 8388607)
- 145 compressed objects within 2 object streams
- 37 named destinations out of 1000 (max. 500000)
- 97 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 189 PDF objects out of 1000 (max. 8388607)
+ 137 compressed objects within 2 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 77 words of extra memory for PDF output out of 10000 (max. 10000000)
 
