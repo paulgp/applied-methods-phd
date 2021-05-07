@@ -189,7 +189,7 @@ ECON 550, ECON 551
     \item ``Statistics and Causal Inference'', Holland 1986
     \item ``The Identification Zoo: Meanings of Identification in Econometrics'', Lewbel, 2019
     \end{itemize}
-  \item Randomization: Experiments, Non-experimental, and Fisher
+  \item Research Design, Randomization, and Design-Based Inference
     \begin{itemize}
     \item ``Causality and design-based inference'', Bowers, J. \& Leavitt, T. (2020)
     \item ``Instruments, Randomization, and
@@ -224,7 +224,7 @@ ECON 550, ECON 551
   \end{enumerate}
 \item \underline{Linear Regression}
   \begin{enumerate}
-  \item Bootstrap, Randomization Inference + Clustering
+  \item Inference
     \begin{itemize}
     \item ``Robust Standard Errors in Small Samples: Some Practical Advice.'' Imbens and Koles\'ar  (2016)
     \item ``GMM estimation with cross sectional dependence'' Conley (1999)
@@ -234,7 +234,7 @@ ECON 550, ECON 551
     \item Abadie et al. ``When Should You Adjust Standard Errors for Clustering?'' 2017
     \item Athey et al. ``Using Wasserstein Generative Adversarial Networks for the Design of Monte Carlo Simulations''
     \end{itemize}
-  \item Binscatter, Figures, and Graphical design 
+  \item Seimparametrics and Visualization
     \begin{itemize}
     \item ``On Binscatter'' Cattaneo et al. (2019)
     \item ``Validation of Visual Statistical Inference, Applied to Linear Models'', Majumder, Hoffman and Cook (2014)
@@ -247,7 +247,7 @@ ECON 550, ECON 551
     \item Koenker and Hallock. Quantile Regression. 2001
     \item Koenker. Quantile Regression: 40 Years On. 2017
     \end{itemize}
-  \item Regularized linear regression
+  \item Penalized linear regression
     \begin{itemize}
     \item ``Regression shrinkage and selection via the lasso'' Tibshiriani (1996)
     \item ``The adaptive lasso and its oracle properties'', Zou (2006)
@@ -265,17 +265,17 @@ ECON 550, ECON 551
   \end{enumerate}
 \item \underline{Likelihood Methods}
   \begin{enumerate}
-  \item Discrete Choice Models I 
+  \item Binardy Discrete Choice, GLM and Computational Methods
     \begin{itemize}
     \item ``Discrete Choice Methods with Simulation'' Train (2009) \url{https://eml.berkeley.edu/books/choice2.html}
     \end{itemize}
-  \item Discrete Choice Models II
+  \item Multiple Discrete Choices
     \begin{itemize}
     \item ``Maximum score estimation of the stochastic utility model of choice'', Manski (1975)
     \item ``Analysis of covariance with qualitative data'' Chamberlain (1980)
     \item ``Binary Response Models for Panel Data: Identification and Information'' Chamberlain (2010)
     \end{itemize}
-  \item MLE + Duration models
+  \item Duration models
     \begin{itemize}
     \item ``Econometric Methods for the Duration of Unemployment'', Lancaster (1979)
     \item ``Generalised residuals and heterogeneous duration models: With applications to the Weilbull model'', Lancaster (1985)
@@ -283,7 +283,7 @@ ECON 550, ECON 551
     \item ``Economic duration data and hazard functions'', Kiefer (1988)
     \item ``Duration Models: Specification, Identification and Multiple Durations'', Van Den Berg (2001)
     \end{itemize}
-  \item Hierarchical modeling + Shrinkage Estimation
+  \item Hierarchical modeling + Bayesian Shrinkage
     \begin{itemize}
     \item ``The Impacts of Neighborhoods on Intergenerational Mobility II: County-Level Estimates'' Chetty and Hendren (2018)
     \item ``Understanding the average impact of microcredit expansions: A bayesian hierarchical analysis of seven randomized experiments'' Meager (2019)
@@ -303,7 +303,7 @@ ECON 550, ECON 551
     \item ``Fuzzy differences-in-differences'' de Chaisemartin and d'Haultfoeuille (2018)
     \item ``Semiparametric difference-in-differences estimators'' Abadie (2005)
     \end{itemize}
-  \item Synthetic control + difference-in-difference
+  \item Event Studies, Synthetic Control + Synthetic DinD
     \begin{itemize}
     \item ``Using synthetic controls: Feasibility, data requirements, and methodological aspects'' Abadie (2019)
     \item ``Synthetic control methods for comparative case studies: Estimating the effect of California’s tobacco control program'' Abadie, Diamond and Hainmueller (2010)
@@ -330,6 +330,18 @@ ECON 550, ECON 551
       for identifying and bounding treatment effects'' Heckman and
       Vytlacil (1999)
     \end{itemize}
+  \item Instrumental Variables (Part III)
+    \begin{itemize}
+    \item ``On the structure of IV estimands'' Andrews (2019)
+    \item ``Weak instruments in instrumental variables regression: Theory and practice'' Andrews, Stock and Sun (2019)
+    \item ``Jackknife instrumental variables estimation'' Angrist, Imbens and Krueger (1999)
+    \item ``Random effects estimators with many instrumental variables'' Chamberlain and Imbens (2004)
+    \item ``Tolerating defiance? Local average treatment effects without monotonicity'' de Chaisemartin
+    \item ``Weak Instruments in Instrumental Variables Regression: Theory and Practice'', Andrews, Stock and Sun (2018)
+    \item ``Local instrumental variables and latent variable models
+      for identifying and bounding treatment effects'' Heckman and
+      Vytlacil (1999)
+    \end{itemize}
   \item Bartik + Simulated Instruments
     \begin{itemize}
     \item ``Bartik Instruments: What, When, Why and How'' Goldsmith-Pinkham, Sorkin and Swift (2020)
@@ -338,7 +350,7 @@ ECON 550, ECON 551
     \item ``Non-random exposure to exogenous shocks: Theory and applications'' Borusyak and Hull (2021)
     \item ``The Estimation of Treatment Effects in Simulated Instrument Designs'', Aronow, Goldsmith-Pinkham and Sorkin (mimeo) 
     \end{itemize}
-  \item Judge IV
+  \item Examiner Designs aka Judge IV 
     \begin{itemize}
     \item ``Consumer bankruptcy and financial health'' Dobbie, Goldsmith-Pinkham and Yang (2016)
     \item ``The criminal and labor market impacts of incarceration.'' Mueller-Smith (2015)
@@ -346,7 +358,7 @@ ECON 550, ECON 551
     \item ``Racial bias in bail decisions'' Arnold, Dobbie, and Yang (2018)
     \item ``Family Welfare Cultures'', Dahl, Kostol and Mogstad (2014)
     \end{itemize}
-  \item Regression Discontinuity I: Nonparametrics
+  \item Regression Discontinuity I: Identification and Groundwork
     \begin{itemize}
     \item ``Identification and estimation of treatment effects with a regression-discontinuity design'' Hahn, Todd and Van Der Klaauw (2001)
     \item ``A Practical Introduction to Regression Discontinuity Designs: Foundations'', Cattaneo, Idrobo and Titiunik, (2020)
@@ -357,7 +369,8 @@ ECON 550, ECON 551
     \item ``Robust nonparametric confidence intervals for regression-discontinuity designs'' Calanico et al. (2014)
     \item ``Regression discontinuity designs using covariates'' Calanico et al (2019)
     \end{itemize}
-  \item Regression Discontinuity II: Methods
+  \item Regression Discontinuity II: The Checklist
+  \item Regression Discontinuity III: Extensions
     \begin{itemize}
     \item ``Approximate Permutation Tests and Induced Order Statistics in the Regression Discontinuity Design'', Canay and Kamat (2017)
     \item ``Manipulation of the running variable in the regression discontinuity design: A density test'', McCrary (2008)

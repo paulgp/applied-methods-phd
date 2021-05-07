@@ -65,7 +65,7 @@ This is a partial list of various interesting and useful books that will be touc
    7. [**Examiner Designs aka Judge IV**](https://github.com/paulgp/applied-methods-phd/blob/main/lectures/19_judge_iv.pdf)
    8. [**Regression Discontinuity I: Identification and Groundwork**](https://github.com/paulgp/applied-methods-phd/blob/main/lectures/20_regression_discontinuity_1.pdf)
    9. [**Regression Discontinuity II: The Checklist**](https://github.com/paulgp/applied-methods-phd/blob/main/lectures/21_regression_discontinuity_2.pdf)
-   10. [**Regression Discontinuity III: Extensions***](https://github.com/paulgp/applied-methods-phd/blob/main/lectures/22_regression_discontinuity_3.pdf)
+   10. [**Regression Discontinuity III: Extensions**](https://github.com/paulgp/applied-methods-phd/blob/main/lectures/22_regression_discontinuity_3.pdf)
 5. **Machine Learning**
    1. [**Supervised Machine Learning I: Prediction**](https://github.com/paulgp/applied-methods-phd/blob/main/lectures/23_machine_learning_1.pdf)
    2. [**Supervised Machine Learning II: Heterogeneous Treatment Effects**](https://github.com/paulgp/applied-methods-phd/blob/main/lectures/24_machine_learning_2.pdf)
