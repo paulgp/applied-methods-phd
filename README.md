@@ -33,7 +33,7 @@ I expect these assignments to be coded from "scratch." I will specify when canne
 ## Main References:
 This is a partial list of various interesting and useful books that will be touched during the course. 
 
-* Joshua Angrist and J\"orn-Steffen Pischke,  *Mostly Harmless Econometrics*
+* Joshua Angrist and Jörn-Steffen Pischke,  *Mostly Harmless Econometrics*
 * Scott Cunningham,  *Causal Inference: The Mixtape*,  https://mixtape.scunning.com/
 * Benjamin T. Miller and Peter M. Aronow, *Foundations of Agnostic Statistics*
 * Kieran Healy, *Data Visualization: A Practical Introduction*, https://socviz.co/
