@@ -38,7 +38,7 @@ This is a partial list of various interesting and useful books that will be touc
 * Benjamin T. Miller and Peter M. Aronow, *Foundations of Agnostic Statistics*
 * Kieran Healy, *Data Visualization: A Practical Introduction*, https://socviz.co/
 
-## Lectures ([Full Syllabus]())
+## Lectures ([Full Syllabus](https://github.com/paulgp/applied-methods-phd/blob/main/syllabus.pdf))
 
 1. **Causality, Statistics, and Economics**
 	1. [**Potential Outcomes and Directed Acyclic Graphs**](https://github.com/paulgp/applied-methods-phd/blob/main/lectures/01_po_dags.pdf)
