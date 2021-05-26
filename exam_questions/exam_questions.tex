@@ -1,0 +1,179 @@
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+  {\Large \textsc{Comprehensive Exam Practice Questions}}
+  MGMT 737
+\end{center}
+\begin{center}
+Spring 2021
+\end{center}
+
+
+In answering these questions, full marks are given for explanations,
+not just right answers. Good luck!
+
+\begin{enumerate}
+\item In Angrist, Imbens and Rubin (1996), they study as an
+  application the effect of military service on civilian
+  mortality. The relevant variables are:
+  \begin{itemize}
+  \item $Z_{i}$: binary variable that person $i$ received a low draft lottery number (such
+    that they more likely to be drafted)
+  \item $D_{i}$: binary indicator that person $i$ served in the military
+  \item $Y_{i}$: binary indicator that person $i$ died between 1974 and 1983 given lottery
+  \end{itemize}
+  \begin{enumerate}
+    \item Write these variables in potential outcome notation. Describe, in words, what each potential outcome means. (Hint: there should be 4 total)
+    \item Under what assumptions would a regression of $Y_{i}$ on $D_{i}$ yield the causal effect of military service on mortality rates? Write out this estimand using potential outcomes.
+    \item Define the exclusion restriction for draft lottery numbers in terms of potential outcomes.
+    \item List an example violation of this restriction.
+    \item Under what assumptions would a regression of $Y_{I}$ on $Z_{i}$ yield the causal effect of draft lottery numbers on mortality rates? Write out this estimand using potential outcomes.
+    \item Finally, under what additional assumptions could you use an
+      instrumental variables approach with the draft lottery numbers
+      to identify the effect of military service on mortality? Be
+      precise in defining your assumptions in terms of potential
+      outcomes.
+    \item Imagine that the exclusion restriction is violated. Under
+      what settings would this not cause significant bias in the IV
+      estimator?
+    \end{enumerate}
+  \item Lee (2008) considers the impact of a Democrat winning on subsquent victory using a regression discontinuitiy design
+  \begin{itemize}
+  \item $Z_{i}$: running variable -- vote share margin of victory (RD at $Z_{i} = 0$)
+  \item $D_{i}$: winning election
+  \item $Y_{i}$: subseuquent victory in an election
+    \begin{enumerate}
+    \item Write out the estimand for the RD above
+    \item Describe a way in which this design could be violated
+    \item How would you estimate this effect? Describe the estimation
+      procedure (not just what function you would use, but how it
+      would be implemented. You do not need to be precise
+      mathematically).
+    \item A graduate student colleague of yours suggests running a
+      linear regresion on both sides of the regression, using the full
+      dataset, and then taking the predicted value at the cutoff for
+      each regression. What issues might you have with that? Feel free
+      to draw a picture.
+    \item What issues arise with discrete running variables? How would
+      you solve them?
+    \end{enumerate}
+  \end{itemize}
+  \item Consider a random sample of individuals $i= 1, \ldots, n$,
+    with treatment status $D_{i}$ and outcome $Y_{i}$.
+    \begin{enumerate}
+    \item Write out the individual treatment effects estimands using the potential outcome notation.
+    \item Write the DAG for this effect
+    \item Now imagine that $i= 1, \ldots, n$ instead indexes pairs of
+      roommates in a college dorm, with $Y_{i} = (Y_{i1}, Y_{i2})$. If
+      we thought treatments from roommates had spillover effects, how
+      would you write the potential outcome? Define the different
+      potential estimands you could construct using this notation
+      (Hint: there should be 4).
+    \item Write out the DAG for this setup.
+    \item Would a regression of outcomes on the number of people in a
+      room who are treated ($X_{i} = D_{i1} + D_{i2}$) capture any of
+      these effects? Explain.
+    \end{enumerate}
+  \item Consider the effect of going to college $D_{i}$ on earnings
+    $Y_{i}$.
+    \begin{enumerate}
+    \item We are given a number of covariates, $X_{i}$, and told that
+      conditional on $X_{i}$, strict ignorability holds for $D_{i}$
+      and the outcome. Write out what that means in potential outcome notation.
+    \item Write down a DAG where this holds.
+    \item How would you implement a p-score procedure to estimate the
+      average treamtent effect of $D_{i}$ on $Y_{i}$, using the strict
+      ignorability condition?
+    \item You're now given data on occupation for these individuals
+      ($W_{i}$). We might expect that occupation causes changes in
+      earnings, and the choice of occupation is causally shifted by
+      the decision to go to college. Add this variable to the DAG.
+    \item What would happen to our causal estimate if we now added
+      $W_{i}$ as a control to our estimation procedure?
+    \end{enumerate}
+  \item We consider the roll-out of a COVID-19 lockdown across some
+    states, but not others. For $t \geq 0$, $D_{it} = 1$ for states in
+    the treatment group, and $D_{it} = 0$ for the control states. For
+    $t < 0$, $D_{it} = 0$ for everyone. We're interested in the effect
+    on economic activity $Y_{i}$, and will use difference-in-differences.
+    \begin{enumerate}
+    \item Write out a simple parametric model that would let you
+      identify the effect of this policy, while not necessarily
+      assuming random assignment of $D_{i}$, given two time
+      perods. What assumption is necessary?
+    \item Write out the regression for how you would estimate a single
+      treatment effect in the post-period for the treatment. (you may have done this in the last problem)
+    \item What if $D_{it}$ had been randomly assigned? What could you do instead?
+    \item Describe a test you can do to test the validity of this
+      model. What do you need? What are some potential issues with
+      this test?
+    \item Now, you get access to policies that have been implemented
+      at different times (a staggered roll-out). Describe in words how
+      having a staggered roll-out provides a more robust
+      identification approach.
+    \item What issues might arise if you ran the same regression as in
+      part b) above with the staggered roll-outs?  Describe in words,
+      or with algebra, or with a graph (or all three). 
+    \end{enumerate}
+\end{enumerate}
+  
+\end{document}
