@@ -33,12 +33,12 @@ I expect these assignments to be coded from "scratch." I will specify when canne
 ## Main References:
 This is a partial list of various interesting and useful books that will be touched during the course. 
 
-* Joshua Angrist and J\"orn-Steffen Pischke,  *Mostly Harmless Econometrics*
+* Joshua Angrist and Jörn-Steffen Pischke,  *Mostly Harmless Econometrics*
 * Scott Cunningham,  *Causal Inference: The Mixtape*,  https://mixtape.scunning.com/
 * Benjamin T. Miller and Peter M. Aronow, *Foundations of Agnostic Statistics*
 * Kieran Healy, *Data Visualization: A Practical Introduction*, https://socviz.co/
 
-## Lectures ([Full Syllabus]())
+## Lectures ([Full Syllabus](https://github.com/paulgp/applied-methods-phd/blob/main/syllabus.pdf))
 
 1. **Causality, Statistics, and Economics**
 	1. [**Potential Outcomes and Directed Acyclic Graphs**](https://github.com/paulgp/applied-methods-phd/blob/main/lectures/01_po_dags.pdf)
