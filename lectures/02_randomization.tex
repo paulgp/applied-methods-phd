@@ -562,9 +562,10 @@
   \item Is it an unbiased estimator in this case?
   \item If we assume that assignment is completely equal, then let
     $\pi_{1}(\mathbf{D}) = n_{t}(\mathbf{D})/n$ be the share treated,
-    and $E(\pi_{1}^{-1}D_{i}) = 1$. Then,
+    and $E(\pi_{1}^{-1}D_{i}) = 1$.
+    \item We'll show 
       \begin{align}
-        E(\hat{\bar{\tau}}(\mathbf{D}, \mathbf{Y})) &= E(\frac{\mathbf{D}'\mathbf{Y}}{\sum_{i}D_{i}} - \frac{(\mathbf{1}-\mathbf{D})'\mathbf{Y}}{\sum_{i}(1-D_{i})})\\
+        E(\hat{\bar{\tau}}(\mathbf{D}, \mathbf{Y})) &= E\left(\frac{\mathbf{D}'\mathbf{Y}}{\sum_{i}D_{i}} - \frac{(\mathbf{1}-\mathbf{D})'\mathbf{Y}}{\sum_{i}(1-D_{i})}\right)\\
                                                     &=n^{-1}E\left(\sum_{i}\pi_{1}^{-1}Y_{i}D_{i} - \sum_{i}(1-\pi_{1})^{-1}Y_{i}(1-D_{i})\right)\\
                                                     &=n^{-1}E\left(\sum_{i}\pi_{1}^{-1}Y_{i}(1)D_{i} - \sum_{i}(1-\pi_{1})^{-1}Y_{i}(0)(1-D_{i})\right)\\
                                                     &=n^{-1}\sum_{i}Y_{i}(1)E\left(\pi_{1}^{-1}D_{i}\right) - n^{-1}\sum_{i}Y_{i}(0)E\left((1-\pi_{1})^{-1}(1-D_{i})\right)\\
