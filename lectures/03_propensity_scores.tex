@@ -364,25 +364,28 @@
 \end{columns}
 \end{frame}
 
-\begin{frame}{Key points on propensity scores}
+\begin{frame}{True vs. estimated propensity scores?}
 \begin{columns}[T] % align columns
-\begin{column}{.8\textwidth}
+\begin{column}{.9\textwidth}
   \begin{wideitemize}
   \item True propensity scores are only known sometimes (e.g. randomized experiments)
-  \item When estimating, valuable to estimate in a way that is
-    flexible and will converge to the truth in the limit --
-    e.g. semi-parametric estimation of $\pi$
+  \item In most non-experimental settings, the p-score is unknown and must be estimated
+  \item When estimating, we have two cases:
     \begin{itemize}
-    \item E.g. a linear model of $\pi$ will inherently be wrong b/c
-      bounded between 0 and 1
+    \item If $X$ is discrete, we know that $\hat{pi}(X)$ can be an exact approximation (why?)
+    \item If $X$ is \emph{not} discrete (or high-dimensional), how should we approximate it?
     \end{itemize}
-  \item Key result: \emph{even if you know the true function
-      $\pi(\mathbf{X})$}, better to use the estimated function than the truth (Imbens, Hirano and Ridder (2002))
+  \item We need to estimate $\pi(X)$ in a way that is flexible and
+    will converge to the truth in the limit -- e.g. semi-parametric
+    estimation of $\pi$
     \begin{itemize}
-    \item Intuition: the deviations from the ``true'' propensity score
-      ($\hat{\pi}(\mathbf{X}) - \pi(\mathbf{X})$) are informative for
-      the estimation of the treatment effects (a la extra moment
-      restrictions in GMM)
+    \item Note a linear model of $\pi$ will inherently be wrong b/c probabilities are bounded between 0 and 1
+    \item Practical implication: logit estimation of $\pi(X)$ is
+      reasonable, allowing for flexible specification of $X$
+      \begin{itemize}
+      \item As dimension of $X$ grows, ML / lasso style models grow in
+        value
+      \end{itemize}
     \end{itemize}
     \end{wideitemize}
 \end{column}%
@@ -393,7 +396,32 @@
 \end{columns}
 \end{frame}
 
+\begin{frame}{True vs. estimated propensity scores?}
+\begin{columns}[T] % align columns
+\begin{column}{.9\textwidth}
+  \begin{wideitemize}
+  \item Important result: \emph{even if you know the true function
+      $\pi(\mathbf{X})$}, better to use the estimated function than
+    the truth (Imbens, Hirano and Ridder (2002))
+    \begin{itemize}
+    \item Intuition: the deviations from the ``true'' propensity score
+      ($\hat{\pi}(\mathbf{X}) - \pi(\mathbf{X})$) are informative for
+      the estimation of the treatment effects (a la extra moment
+      restrictions in GMM)
+    \end{itemize}
+  \item Clear tension -- as dimension of controls increases, the noisiness in $\pi$ grows as well
+    \begin{itemize}
+    \item Is it reasonable to consider this a good research design?
+    \end{itemize}
+    \item We will consider this in a basic way on the homework
+    \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.4\textwidth}
 
+\end{column}%
+\end{columns}
+\end{frame}
 
 
 \begin{frame}{Contrasting propensity scores with regression}
@@ -447,6 +475,7 @@
     \item Debatable in finite samples but Imbens Hirano \& Ridder
       (2003) shows that if pscore is unknown, using the estimated
       non-parametric pscore is semiparametric efficient
+    \item We will revisit in linear regression
     \end{itemize}
   \end{wideitemize}
 \end{column}%
