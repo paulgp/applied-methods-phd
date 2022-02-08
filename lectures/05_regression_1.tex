@@ -274,6 +274,7 @@
     \begin{equation*}
            \hat{\mathbb{V}}(\hat{\beta})_{homoskedastic} = \frac{\hat{\sigma}^{2}}{n_{0}} + \frac{\hat{\sigma}^{2}}{n_{1}}, \qquad \hat{\mathbb{V}}(\hat{\beta})_{EHW} = \frac{\hat{\sigma}^{2}(0)}{n_{0}} + \frac{\hat{\sigma}^{2}(1)}{n_{1}}
          \end{equation*}
+       \item Key question for later: how do we estimate $\hat{\sigma}^{2}(x)$?
   \end{wideitemize}
   \end{column}%
   \hfill%
@@ -343,7 +344,7 @@
   \item Relative variance varies from 0.5 to 2
   \end{itemize}
   \begin{center}
-  \includegraphics[width=0.7\linewidth]{imbenskolesar_coverage.pdf}
+  \includegraphics[width=0.7\linewidth]{images/imbenskolesar_coverage.pdf}
   \end{center}
 \end{frame}
 
@@ -375,6 +376,14 @@
     \texttt{clubSandwich}, and Kolesar's github repo:
     \texttt{https://github.com/kolesarm/Robust-Small-Sample-Standard-Errors}
   \item Key point is that these are all approximations in finite sample
+  \item What are the options for estimating $\hat{\sigma}^{2}(x)$?  
+    \begin{align*}
+      u_{j} &= Y_{j} - X_{j}\beta, h = \mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}' & \\
+      \hat{\sigma}^{2} &= \frac{1}{n-k} \sum_{j} u_{j}^{2} \qquad \qquad&  \text{(robust)}\\
+      \hat{\sigma}^{2} &=  \frac{1}{n}\sum_{j} u_{j}^{2}(1-h_{jj}) \qquad \qquad& \text{(HC2)}\\
+      \hat{\sigma}^{2} &=  \frac{1}{n}\sum_{j} u_{j}^{2}(1-h_{jj})^{2} \qquad \qquad& \text{(HC3)}\\
+    \end{align*}
+    
   \end{wideitemize}
 \end{frame}
 
@@ -563,7 +572,7 @@
 \end{frame}
 
 \begin{frame}{Abadie et al}
-  \includegraphics[width=\linewidth]{abadiecluster.png}
+  \includegraphics[width=\linewidth]{images/abadiecluster.png}
 \end{frame}
 
 
@@ -737,7 +746,7 @@
   \end{column}
   \hfill%
   \begin{column}{.5\textwidth}
-    \includegraphics[width=\linewidth]{gan_fiddle.png}
+    \includegraphics[width=\linewidth]{images/gan_fiddle.png}
   \end{column}
   \end{columns}
 \end{frame}
