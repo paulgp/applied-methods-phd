@@ -254,10 +254,10 @@
   \hfill%
   \begin{column}{.5\textwidth}
     \only<1>{
-      \includegraphics[width=\linewidth]{example_scatter1.pdf}
+      \includegraphics[width=\linewidth]{images/example_scatter1.pdf}
       }
     \only<2>{
-      \includegraphics[width=\linewidth]{example_scatter2.pdf}
+      \includegraphics[width=\linewidth]{images/example_scatter2.png}
       }
   \end{column}
 \end{columns}
@@ -315,9 +315,52 @@
     \begin{equation}
       \tau = \frac{E(\sigma^{2}_{D}(W_{i})\tau(W_{i}))}{E(\sigma^{2}_{D}(W_{i}))}, \qquad \sigma^{2}_{D}(W_{i}) = E((D_{i} - E(D_{i}|W_{i}))^{2} | W_{i})
     \end{equation}
-    See Section 3.3.1 in Mostly Harmless for a derivation
+    See Section 3.3.1 in MHE or Section 2.1 in Goldsmith-Pinkham, Hull
+    and Kolesar (GHK, 2021) for a derivation
   \end{wideitemize}
 \end{frame}
+
+\begin{frame}{An aside on regression estimand vs. ATE}
+  $$ Y_{i} = \tau D_{i} + \beta W_{i} + \epsilon_{i}$$
+  \begin{wideitemize}
+  \item Consider the estimand that this partially linear regression gets you:
+    \begin{equation}
+      \tau = \frac{E(\sigma^{2}_{D}(W_{i})\tau(W_{i}))}{E(\sigma^{2}_{D}(W_{i}))}, \qquad \sigma^{2}_{D}(W_{i}) = E((D_{i} - E(D_{i}|W_{i}))^{2} | W_{i})
+    \end{equation}
+  \item This is a \emph{variance-weighted} estimand. Is there a good reason to focus on this estimand?
+    \pause
+  \item The traditional natural estimand is the ATE. This is estimable
+    in linear regression using a trick noted in Imbens and Wooldridge
+    (and discussed in GHK)
+    $$ Y_{i} = \alpha + \tau D_{i} + \beta_{0}W_{i} + \beta_{1} D_{i}(W_{i}-E(W_{i})) + \epsilon_{i}$$
+  \item What are the trade-offs between ATE vs. variance weighted?
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{An aside on regression estimand vs. ATE, continued}
+  \begin{columns}[T] % align columns
+    \begin{column}{.5\textwidth}
+  \begin{wideitemize}
+  \item GHK show that when treatment effect heterogeneity is minimal
+    (or uncorrelated with controls), the variance weighted approach is ``optimal'' in a particular sense
+    \begin{itemize}
+    \item Punchline: variance-weighting can be good!
+    \item Caution: important to think about what this means with many strata, or \emph{many treatments}
+    \end{itemize}
+  \item GHK highlight with multiple (unorded and exclusive)
+    treatments, contamination bias can occur
+  \end{wideitemize}
+  \end{column}%
+  \hfill%
+  \begin{column}{.5\textwidth}
+    \only<2>{
+      \includegraphics[width=\linewidth]{images/ghk.png}
+      }
+  \end{column}
+\end{columns}
+\end{frame}
+
+
 
 
 \begin{frame}{Exploiting FWL for visualization}
@@ -340,10 +383,10 @@
   \hfill%
   \begin{column}{.5\textwidth}
     \only<1>{
-      \includegraphics[width=\linewidth]{example_scatter3.pdf}
+      \includegraphics[width=\linewidth]{images/example_scatter3.png}
       }
     \only<2>{
-      \includegraphics[width=\linewidth]{example_scatter4.pdf}
+      \includegraphics[width=\linewidth]{images/example_scatter4.png}
       }
   \end{column}
 \end{columns}
@@ -404,7 +447,7 @@
   \end{column}%
   \hfill%
   \begin{column}{.5\textwidth}
-\includegraphics[width=\linewidth]{first_binscatter.png}
+\includegraphics[width=\linewidth]{images/first_binscatter.png}
 Chetty et al. (2011) - Kindergarten scores on adult earnings
   \end{column}
 \end{columns}
@@ -428,14 +471,14 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
   \end{column}%
   \hfill%
   \begin{column}{.5\textwidth}
-\includegraphics[width=\linewidth]{first_binscatter.png}
+\includegraphics[width=\linewidth]{images/first_binscatter.png}
 Chetty et al. (2011) - Kindergarten scores on adult earnings
   \end{column}
 \end{columns}
 \end{frame}
 
 \begin{frame}{How a binscatter graph is made (Cattaneo et al. (2019)}
-  \includegraphics[width=\linewidth]{binscatter_crump.png}
+  \includegraphics[width=\linewidth]{images/binscatter_crump.png}
 \end{frame}
 
 
@@ -451,16 +494,16 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
   \hfill%
   \begin{column}{.5\textwidth}
     \only<1>{
-      \includegraphics[width=\linewidth]{binscatter_insurance1.pdf}
-    Goldsmith-Pinkham (last night) - income on health insurance, 10 bins      
+      \includegraphics[width=\linewidth]{images/binscatter_insurance1.pdf}
+      income on health insurance, 10 bins      
       }
     \only<2>{
-      \includegraphics[width=\linewidth]{binscatter_insurance2.pdf}
-    Goldsmith-Pinkham (last night) - income on health insurance, 20 bins            
+      \includegraphics[width=\linewidth]{images/binscatter_insurance2.pdf}
+    income on health insurance, 20 bins            
       }
     \only<3>{
-      \includegraphics[width=\linewidth]{binscatter_insurance3.pdf}
-    Goldsmith-Pinkham (last night) - income on health insurance, 50 bins            
+      \includegraphics[width=\linewidth]{images/binscatter_insurance3.pdf}
+    income on health insurance, 50 bins            
       }
   \end{column}
 \end{columns}
@@ -484,13 +527,13 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
   \hfill%
   \begin{column}{.5\textwidth}
     \only<1>{
-      \includegraphics[width=\linewidth]{binscatter_crump_bins1.png}
+      \includegraphics[width=\linewidth]{images/binscatter_crump_bins1.png}
       }
     \only<2>{
-      \includegraphics[width=\linewidth]{binscatter_crump_bins2.png}
+      \includegraphics[width=\linewidth]{images/binscatter_crump_bins2.png}
       }
     \only<3>{
-      \includegraphics[width=\linewidth]{binscatter_crump_bins3.png}
+      \includegraphics[width=\linewidth]{images/binscatter_crump_bins3.png}
       }
   \end{column}
 \end{columns}
@@ -544,7 +587,7 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
   \begin{column}{.5\textwidth}
     \only<2>{
       Comparison of methods:
-      \includegraphics[width=\linewidth]{binscatter_insurance_controls_comparison.pdf}
+      \includegraphics[width=\linewidth]{images/binscatter_insurance_controls_comparison.pdf}
       Controls: age, sex, and state of residence
       }
   \end{column}
@@ -574,11 +617,11 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
   \begin{column}{.5\textwidth}
     \only<1>{
       Comparison of methods:
-      \includegraphics[width=\linewidth]{binsreg_insurance_nocontrols.pdf}
+      \includegraphics[width=\linewidth]{images/binsreg_insurance_nocontrols.pdf}
       }
     \only<2>{
       Comparison of methods:
-      \includegraphics[width=\linewidth]{binsreg_insurance_controls.pdf}
+      \includegraphics[width=\linewidth]{images/binsreg_insurance_controls.pdf}
       Controls: age, sex, and state of residence
       (Note, level is off b/c program currently does not recenter correctly with covariates)
       }
@@ -606,7 +649,7 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
   \end{column}%
   \hfill%
   \begin{column}{.5\textwidth}
-      \includegraphics[width=\linewidth]{agent_binscatter.png}
+      \includegraphics[width=\linewidth]{images/agent_binscatter.png}
   \end{column}
 \end{columns}
 \end{frame}
@@ -632,7 +675,7 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
   \end{column}%
   \hfill%
   \begin{column}{.3\textwidth}
-          \includegraphics[width=\linewidth]{bad_table.png}
+          \includegraphics[width=\linewidth]{images/bad_table.png}
   \end{column}
 \end{columns}
 \end{frame}
@@ -695,7 +738,7 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
   \begin{columns}[T] % align columns
     \begin{column}{.5\textwidth}
       \begin{wideitemize}
-      \item<1-> Several examples of tables vs. regression iprovements
+      \item<1-> Several examples of tables vs. regression improvements
       \item<1-> Imbens and Kolesar siulations
       \item<2-> Regression output!
       \item<3-> Can compress a lot of information
@@ -705,18 +748,18 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
   \hfill%
   \begin{column}{.5\textwidth}
     \only<1>{
-        \includegraphics[width=0.8\linewidth]{imbenskolsear_coverage_table.png}    \\
-        \includegraphics[width=0.9\linewidth]{imbenskolesar_coverage.pdf}
+        \includegraphics[width=0.8\linewidth]{images/imbenskolsear_coverage_table.png}    \\
+        \includegraphics[width=0.9\linewidth]{images/imbenskolesar_coverage.pdf}
       }
     \only<2>{
-        \includegraphics[width=\linewidth]{gpw_figure_table.png}    \\
-        \includegraphics[width=\linewidth]{gpw_figure.png}
+        \includegraphics[width=\linewidth]{images/gpw_figure_table.png}    \\
+        \includegraphics[width=\linewidth]{images/gpw_figure.png}
       }
     \only<3>{
-        \includegraphics[width=\linewidth]{gpw_figure2.png}
+        \includegraphics[width=\linewidth]{images/gpw_figure2.png}
       }
     \only<4>{
-        \includegraphics[width=\linewidth]{sato_sd_model.pdf}
+        \includegraphics[width=\linewidth]{images/sato_sd_model.pdf}
       }
   \end{column}
 \end{columns}
@@ -774,9 +817,9 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
   \end{column}%
   \hfill%
   \begin{column}{.4\textwidth}
-    \only<1>{    \includegraphics[width=\linewidth]{example_scatter_bad.pdf}
+    \only<1>{    \includegraphics[width=\linewidth]{images/example_scatter_bad.png}
     }
-    \only<2>{    \includegraphics[width=\linewidth]{graph_fixed_up.pdf}
+    \only<2>{    \includegraphics[width=\linewidth]{images/graph_fixed_up.png}
       }
   \end{column}
 \end{columns}
@@ -804,9 +847,9 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
   \end{column}%
   \hfill%
   \begin{column}{.4\textwidth}
-    \only<1>{    \includegraphics[width=\linewidth]{credit_score_bkflag.png}
+    \only<1>{    \includegraphics[width=\linewidth]{images/credit_score_bkflag.png}
       }
-    \only<2>{    \includegraphics[width=\linewidth]{agent_effect_yearly.png}
+    \only<2>{    \includegraphics[width=\linewidth]{images/agent_effect_yearly.png}
       }
   \end{column}
 \end{columns}
@@ -859,7 +902,7 @@ Chetty et al. (2011) - Kindergarten scores on adult earnings
   \end{column}%
   \hfill%
   \begin{column}{.4\textwidth}
-    \includegraphics[width=\linewidth]{gpw_example.png}
+    \includegraphics[width=\linewidth]{images/gpw_example.png}
   \end{column}
 \end{columns}
 \end{frame}
