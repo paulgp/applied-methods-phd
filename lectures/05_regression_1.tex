@@ -378,10 +378,10 @@
   \item Key point is that these are all approximations in finite sample
   \item What are the options for estimating $\hat{\sigma}^{2}(x)$?  
     \begin{align*}
-      u_{j} &= Y_{j} - X_{j}\beta, h = \mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}' & \\
-      \hat{\sigma}^{2} &= \frac{1}{n-k} \sum_{j} u_{j}^{2} \qquad \qquad&  \text{(robust)}\\
-      \hat{\sigma}^{2} &=  \frac{1}{n}\sum_{j} u_{j}^{2}(1-h_{jj}) \qquad \qquad& \text{(HC2)}\\
-      \hat{\sigma}^{2} &=  \frac{1}{n}\sum_{j} u_{j}^{2}(1-h_{jj})^{2} \qquad \qquad& \text{(HC3)}\\
+      u_{j} &= Y_{j} - W_{j}\beta, h = \mathbf{W}(\mathbf{W}'\mathbf{W})^{-1}\mathbf{W}' & \\
+          \hat{\mathbb{V}}(\hat{\beta})_{robust} &= (\mathbf{W}'\mathbf{W})^{-1}\sum_{j}(n/n-k) u_{j}^{2}W_{i}'W_{i}(\mathbf{W}'\mathbf{W})^{-1} \qquad \qquad&  \text{(robust)}\\
+       \hat{\mathbb{V}}(\hat{\beta})_{HC2} &= (\mathbf{W}'\mathbf{W})^{-1}\sum_{j} (1/(1-h_{jj}))u_{j}^{2}W_{i}'W_{i}(\mathbf{W}'\mathbf{W})^{-1} \qquad \qquad& \text{(HC2)}\\
+       \hat{\mathbb{V}}(\hat{\beta})_{HC3} &= (\mathbf{W}'\mathbf{W})^{-1}\sum_{j} (1/(1-h_{jj})^{2})u_{j}^{2}W_{i}'W_{i}(\mathbf{W}'\mathbf{W})^{-1} \qquad \qquad& \text{(HC3)}\\
     \end{align*}
     
   \end{wideitemize}
