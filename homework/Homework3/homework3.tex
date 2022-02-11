@@ -74,14 +74,23 @@ numbers in the paper, but the full replication set is available if you are inter
   \begin{enumerate}
   \item Write a function to esitmate the linear regression of networth change against a constant and the Saiz elasticiy. Report the coefficient on the elasticity. 
   \item Next, estimate the homoskedastic SE, heteroskedasticity-robust SE, HC2, and HC3 standard errors for the elasticity estimate.
-  \item Now, we will estimate the three standard errors from Abadie et al. (2020) [see section 4]. I will walk you through the estimation. Let $V^{\text{causal}} = \Gamma^{-1}(\rho\Delta^{\text{cond}} + (1-\rho)\Delta^{\text{ehw}})\Gamma^{-1}$, $V^{\text{causal,sample}} = \Gamma^{-1}\Delta^{\text{cond}}\Gamma^{-1}$, $V^{descr} = (1-\rho)\Gamma^{-1}\Delta^{\text{ehw}}\Gamma^{-1},$ and $V^{\text{ehw}} = \Gamma^{-1}\Delta^{\text{ehw}}\Gamma^{-1}.$ Our elasticity measure is $X_{i}$, and the outcome is $Y_{i}$.
+  \item Now, we will estimate the three standard errors from Abadie et al. (2020) [see section 4]. I will walk you through the estimation. Let $V^{\text{causal}} = \Gamma^{-1}(\rho\Delta^{\text{cond}} + (1-\rho)\Delta^{\text{ehw}})\Gamma^{-1}$, $V^{\text{causal,sample}} = \Gamma^{-1}\Delta^{\text{cond}}\Gamma^{-1}$, $V^{descr} = (1-\rho)\Gamma^{-1}\Delta^{\text{ehw}}\Gamma^{-1},$ and $V^{\text{ehw}} = \Gamma^{-1}\Delta^{\text{ehw}}\Gamma^{-1}.$ Our elasticity measure is $X_{i}$, and the outcome is $Y_{i}$. Let $Z$ denote our constant (and potentially an additional control).
     \begin{itemize}
     \item Estimate $\hat{\epsilon}_{i}$ as the standard residual from
-      the linear regression.
-    \item Estimate $\hat{\Gamma} = n^{-1}\sum_{i}(X_{i} - \bar{X})^{2}$
-    \item Estimate $\hat{\Delta}^{\text{ehw}} = n^{-1}\sum_{i}(X_{i} - \bar{X})\hat{\epsilon}^{2}_{i}(X_{i} - \bar{X})$.
-    \item Estimate $\rho = n/N$ using the following fact: the data is observed at the county level, and in the United States, there are 3,006 counties. Recall that (in my notation) $n$ is the number of observations in the sample, and $N$ is the ``population.'' Using this measure, estimate $V^{descr} = (1-\rho)\Gamma^{-1}\Delta^{\text{ehw}}\Gamma^{-1}$.
-    \item Finally, calculate $V^{\text{causal}}$ and $V^{\text{causal,sample}}$ using $\hat{\Delta}^{ehw}$ in the place of $\Delta^{\text{cond}}$. (We cannot estimate $\Delta^{cond}$ feasibly, so we use the EHW estimator which is conservative.
+      the linear regression of $Y$ on $X$ and $Z$
+    \item Estimate the short regression of $X$ on $Z$ ($X$ as the outcome, $Z$ as the right hand side)  to calculate $\hat{\gamma}$, the projection of $X$ on $Z$ (note that when $Z$ is a constant, this is just the mean of $X$).
+    \item Estimate $\hat{\Gamma} = n^{-1}\sum_{i}(X_{i} - \hat{\gamma}Z_{i})^{2}$
+    \item Estimate $\hat{\Delta}^{\text{ehw}} = n^{-1}\sum_{i}(X_{i} - \hat{\gamma}Z_{i})\hat{\epsilon}^{2}_{i}(X_{i} - \hat{\gamma}Z_{i})$.
+    \item Now, estimate $V^{EHW} = (1/n) * \hat{\Gamma}^{-1}   \hat{\Delta}^{\text{ehw}} \hat{\Gamma}^{-1}$. Check that this coincides with your previous EHW estimates (it should differ slightly b/c of no degree of freedom corrections, but quite close).
+    \item Estimate $\rho = n/N$ using the following fact: the data is observed at the county level, and in the United States, there are 3,006 counties. Recall that (in my notation) $n$ is the number of observations in the sample, and $N$ is the ``population.'' Using this measure, estimate $V^{descr} = (1-\rho)V^{EHW}$ and report the standard error. Note the relative size of each.
+    \item Next, calculate:
+      \begin{equation}
+        \hat{G} = \left( n^{-1}\sum_{i}(X_{i} - \hat{\gamma}Z_{i})\hat{\epsilon}_{i}Z_{i}'\right)\left(n^{-1}\sum_{i}Z_{i}Z_{i}'\right)^{-1}
+      \end{equation}
+      Note that this is exactly zero in our current case.
+    \item Now, let $\hat{\Delta}^{Z} = n^{-1}\sum_{i}((X_{i} - \hat{\gamma}Z_{i})\hat{\epsilon}_{i} - \hat{G}Z_{i})^{2}$. Note that this should be equal to $\hat{\Delta}^{EHW}$. 
+    \item Finally, calculate $V^{\text{causal}}$ and $V^{\text{causal,sample}}$ using $\hat{\Delta}^{Z}$ in the place of $\Delta^{\text{cond}}$ and and report the standard errors. (We cannot estimate $\Delta^{cond}$ feasibly, so we use $\Delta^{Z}$ in its place.) Note that in this setting, we have identical estimates for the causal estimates b/c we cannot do better than the EHW estimate.
+    \item Now reimplement this approach, but include state fixed effects as controls in $Z$. Report your estimates for the standard errors using $V^{EHW}$, $V^{descr}$, $V^{causal}$ and $V^{causal,sample}$ in this setting.
     \end{itemize}
   \end{enumerate}
 \item \textbf{Binscatter}: For this problem, use the dataset
