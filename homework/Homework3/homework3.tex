@@ -1,0 +1,103 @@
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+  {\Large \textsc{Problem Set 3}}
+  MGMT 737
+\end{center}
+
+For both analyses this week, you will be using data from Mian and
+Sufi's 2014 Econometrica article, \textit{What Explains the 2007-2009
+  Drop in Employment?}. The analyses will not match the exact
+numbers in the paper, but the full replication set is available if you are interested in exploring it.
+
+\begin{enumerate}
+\item \textbf{Standard Errors} For this problem, use the dataset \texttt{networth\_delta\_elas.csv}, where \texttt{county\_fips} is the county FIPS code, \texttt{statename} is the state FIPS code, \texttt{elasticity} is the Saiz elasticity measure, \texttt{total} is the number of households in each county, and \texttt{netwp\_h} is the change in net worth within a county from 2006 to 2009.
+  \begin{enumerate}
+  \item Write a function to esitmate the linear regression of networth change against a constant and the Saiz elasticiy. Report the coefficient on the elasticity. It should be XX.
+  \item Next, estimate the homoskedastic SE, heteroskedasticity-robust SE, HC2, and HC3 standard errors for the elasticity estimate.
+  \item Now, we will estimate the three standard errors from Abadie et al. (2020) [see section 4]. I will walk you through the estimation. Let $V^{\text{causal}} = \Gamma^{-1}(\rho\Delta^{\text{cond}} + (1-\rho)\Delta^{\text{ehw}})\Gamma^{-1}$, $V^{\text{causal,sample}} = \Gamma^{-1}\Delta^{\text{cond}}\Gamma^{-1}$, $V^{descr} = (1-\rho)\Gamma^{-1}\Delta^{\text{ehw}}\Gamma^{-1},$ and $V^{\text{ehw}} = \Gamma^{-1}\Delta^{\text{ehw}}\Gamma^{-1}.$ Our elasticity measure is $X_{i}$, and the outcome is $Y_{i}$.
+    \begin{itemize}
+    \item Estimate $\hat{\epsilon}_{i}$ as the standard residual from
+      the linear regression.
+    \item Estimate $\hat{\Gamma} = n^{-1}\sum_{i}(X_{i} - \bar{X})^{2}$
+    \item Estimate $\hat{\Delta}^{\text{ehw}} = n^{-1}\sum_{i}(X_{i} - \bar{X})\hat{\epsilon}^{2}_{i}(X_{i} - \bar{X})$.
+    \item Estimate $\rho = n/N$ using the following fact: the data is observed at the county level, and in the United States, there are 3,006 counties. Recall that (in my notation) $n$ is the number of observations in the sample, and $N$ is the ``population.'' Using this measure, estimate $V^{descr} = (1-\rho)\Gamma^{-1}\Delta^{\text{ehw}}\Gamma^{-1}$.
+    \item Finally, calculate $V^{\text{causal}}$ and $V^{\text{causal,sample}}$ using $\hat{\Delta}^{ehw}$ in the place of $\Delta^{\text{cond}}$. (We cannot estimate $\Delta^{cond}$ feasibly, so we use the EHW estimator which is conservative.
+    \end{itemize}
+  \end{enumerate}
+\item \textbf{Binscatter}: For this problem, use the dataset
+  \texttt{networth\_delta\_elas.csv}, where \texttt{county\_fips} is
+  the county FIPS code, \texttt{statename} is the state FIPS code,
+  \texttt{year} is the year, \texttt{elasticity} is the Saiz
+  elasticity measure, \texttt\texttt{total} is the number of
+  households in each county, and \texttt{hpi} is Zillow House Price
+  value. For this problem, you may use your own regression estimate
+  function, or a pre-existing function to estimate the regression.
+  \begin{enumerate}
+  \item Calculate annual house price appreciation (hpa) within each county, and regress HPA on the elasticity measure interacted with year, using your constructed function. I.e. $\texttt{hpa}_{it} = \alpha_{t} + \sum_{s}\texttt{elasticity}_{i}\times 1(year_{t} = s)\beta_{t}$ Plot the $\beta_{t}$ coefficient for each year across time. Report the coefficient measuring the effect of elasticity in 2008.
+  \item Construct 10 decile dummies for the elasticity and reestimate the regression, pooling the years 2008-2010, and using the ten dummies in the place of the continuous elasticity measure. Plot these decile effects such that each point reflects an approximation to the conditional expectation function. Report the value for the first decile.
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}
+
+  
