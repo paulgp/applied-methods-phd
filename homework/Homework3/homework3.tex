@@ -74,7 +74,7 @@ numbers in the paper, but the full replication set is available if you are inter
   \begin{enumerate}
   \item Write a function to esitmate the linear regression of networth change against a constant and the Saiz elasticiy. Report the coefficient on the elasticity. 
   \item Next, estimate the homoskedastic SE, heteroskedasticity-robust SE, HC2, and HC3 standard errors for the elasticity estimate.
-  \item Now, we will estimate the three standard errors from Abadie et al. (2020) [see section 4]. I will walk you through the estimation. Let $V^{\text{causal}} = \Gamma^{-1}(\rho\Delta^{\text{cond}} + (1-\rho)\Delta^{\text{ehw}})\Gamma^{-1}$, $V^{\text{causal,sample}} = \Gamma^{-1}\Delta^{\text{cond}}\Gamma^{-1}$, $V^{descr} = (1-\rho)\Gamma^{-1}\Delta^{\text{ehw}}\Gamma^{-1},$ and $V^{\text{ehw}} = \Gamma^{-1}\Delta^{\text{ehw}}\Gamma^{-1}.$ Our elasticity measure is $X_{i}$, and the outcome is $Y_{i}$. Let $Z$ denote our constant (and potentially an additional control).
+  \item Now, we will estimate the three standard errors from Abadie et al. (2020) [see section 4]. I will walk you through the estimation. Let $V^{\text{causal}} = n^{-1}\Gamma^{-1}(\rho\Delta^{\text{cond}} + (1-\rho)\Delta^{\text{ehw}})\Gamma^{-1}$, $V^{\text{causal,sample}} = \Gamma^{-1}\Delta^{\text{cond}}\Gamma^{-1}$, $V^{descr} = n^{-1}(1-\rho)\Gamma^{-1}\Delta^{\text{ehw}}\Gamma^{-1},$ and $V^{\text{ehw}} = n^{-1}\Gamma^{-1}\Delta^{\text{ehw}}\Gamma^{-1}.$ Our elasticity measure is $X_{i}$, and the outcome is $Y_{i}$. Let $Z$ denote our constant (and potentially an additional control).
     \begin{itemize}
     \item Estimate $\hat{\epsilon}_{i}$ as the standard residual from
       the linear regression of $Y$ on $X$ and $Z$
