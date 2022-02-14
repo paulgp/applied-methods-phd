@@ -370,7 +370,7 @@
 
 \begin{frame}{Doing this in practice}
   \begin{wideitemize}
-  \item These are solveable and packages exist. Stata uses the HC2
+  \item These are solveable and packages exist. Stata uses the EHW 
     standard errors by default. For the Bell-Maccaffrey adjustments,
     see \texttt{reg\_sandwich}. For R, see \texttt{estimatR},
     \texttt{clubSandwich}, and Kolesar's github repo:
@@ -429,12 +429,12 @@
   \item   Three estimands (apologies in advance, my $n,N$ are reversed from the paper):
   \begin{enumerate}
   \item $\theta^{descr} = N^{-1}_{1}\sum_{i=1}^{N}D_{i}Y_{i} - N^{-1}_{0}\sum_{i=1}^{N}(1-D_{i})Y_{i}$
-  \item $\theta^{causal, sample} = n^{-1}\sum_{i=1}^{n}R_{i}(Y^{*}_{i}(1) - Y_{i}^{*}(0))$
+  \item $\theta^{causal, sample} = n^{-1}\sum_{i=1}^{N}R_{i}(Y^{*}_{i}(1) - Y_{i}^{*}(0))$
   \item $\theta^{causal} = N^{-1}\sum_{i=1}^{N}(Y^{*}_{i}(1) - Y_{i}^{*}(0))$    
   \end{enumerate}
 \item We have a single estimator we can consider:
   \begin{equation*}
-    \hat{\theta} = n^{-1}_{1}\sum_{i=1}^{n}R_{i}D_{i}Y_{i} - n^{-1}_{0}\sum_{i=1}^{n}R_{i}(1-D_{i})Y_{i}
+    \hat{\theta} = n^{-1}_{1}\sum_{i=1}^{N}R_{i}D_{i}Y_{i} - n^{-1}_{0}\sum_{i=1}^{N}R_{i}(1-D_{i})Y_{i}
   \end{equation*}
 \item Key point of paper -- the variance of this estimator depends on:
   \begin{enumerate}
