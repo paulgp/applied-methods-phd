@@ -436,6 +436,70 @@
   \end{wideitemize}
   \end{frame}
 
+  \begin{frame}{Aside: GLM + Poisson Regression with Counts}
+    \begin{wideitemize}
+    \item Consider $Y \geq 0$. We are almost always interested in the
+      estimand of $dE(Y | X) / dX$. If we estimate this with simple linear regression, what are potential issues?
+      \begin{itemize}
+      \item Error term will be highly right-skewed $\rightarrow$
+        Skewness leads to outliers that are super influential with
+        OLS! (recall quantile reg)
+      \item Likely heteroskedasticity $\rightarrow$ Poor performance
+        in finite samples of point estimates and CI (especially given
+        skeweness)
+      \end{itemize}
+    \item What are solutions people use? $\log(Y)$ What are issues here?
+      \begin{itemize}
+      \item Interpretation of parameters
+      \item What if $Y = 0?$
+      \end{itemize}
+    \item What about $\log(1+Y)$?
+      \begin{itemize}
+      \item Solves the second problem, but makes the first problem even worse!
+      \item Many people use this... (guilty)
+      \end{itemize}
+    \end{wideitemize}
+  \end{frame}
+
+
+  \begin{frame}{Aside: GLM + Poisson Regression with Counts}
+    \begin{wideitemize}
+    \item So what's the alternative? Poisson regression
+      \begin{itemize}
+      \item Key to this model is estimating $\log(E(Y|X)) = X\beta$,
+        rather than $E(\log(Y)|X)$. You get a simple semi-elasticity
+        measure for the parameters, and $Y$ can be zero.
+      \end{itemize}
+    \item What are the typical concerns?
+      \begin{enumerate}
+      \item       If $Y | X$ is truly distributed
+      Poisson, conditional on $X$, then $Var(Y|X) = E(Y|X)$ which is a
+      restrictive model assumption (just comes from the Poisson
+      distribution's features)
+      \begin{itemize}
+      \item However, it's not relevant for the parameter estimates of
+        $\beta$. The estimates are still consistent.
+      \item Robust standard errors (using sandwich covariance
+        estimators) will give correct coverage as well
+      \end{itemize}
+    \item Fixed effects in non-linear models?
+      \begin{itemize}
+      \item Typical concern is that in non-linear models, fixed
+        effects that are not consistently estimated with bias estimate
+        of main parameters (unlike in OLS)
+      \item Turns out not to be an issue in Poisson, as fixed effects
+        can be concentrated out (see PPMLHDFE in Stata and glmhdfe in
+        R)
+      \end{itemize}
+    \item Can even use instrumental variables! (See Mullahy (1999) and
+      Windmeijer and Santos Silva (1997))
+    \end{enumerate}
+  \item See Cohn, Liu and Wardlaw (2021) for a nice discussion in finance settings
+    \end{wideitemize}
+  \end{frame}
+
+
+  
   % $
   \begin{frame}{How do we estimate these problems?}
     \begin{wideitemize}
