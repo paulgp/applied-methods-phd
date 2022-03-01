@@ -214,6 +214,55 @@
   \end{wideitemize}
 \end{frame}
 
+
+\begin{frame}{First, some examples}
+  \begin{wideitemize}
+  \item Lancaster (1979) - unemployment spells
+    \begin{itemize}
+    \item $t=0$: unemployment begins
+    \item Spell ends: employment
+    \end{itemize}
+  \item Galiani, Gertler and Schargrodsky (2005) - privatizing water service 
+    \begin{itemize}
+    \item $t=0$: the year 1990
+    \item Spell ends: water service privatized      
+    \end{itemize}
+  \item Palmer (2015) - mortgage default
+    \begin{itemize}
+    \item $t = 0$: Mortgage origination
+    \item Spell ends: mortgage default
+    \end{itemize}
+  \item Rose (2020) - supervised release
+    \begin{itemize}
+    \item $t = 0$: Release 
+    \item Spell ends:  New arrest or revocation
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+
+\begin{frame}{More examples}
+  \begin{wideitemize}
+  \item Yang (2016) - recidivism
+    \begin{itemize}
+    \item $t=0$: release from jail
+    \item Spell ends: recidivism
+    \end{itemize}
+  \item Carlson et al. (2015) - bankruptcy
+    \begin{itemize}
+    \item $t = 0$ retirement from NFL
+    \item Spell ends: bankruptcy filing
+    \end{itemize}
+  \item Goldsmith-Pinkham \& Gilbukh (2021) - moving houses
+    \begin{itemize}
+    \item $t = 0$ buy a home
+    \item Spell ends: buy a new home
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+
+
 \begin{frame}{Running example}
   \begin{wideitemize}
   \item One very common duration is the duration of tenure in housing
@@ -229,8 +278,6 @@
     \item The business cycle
     \item Whether or not they are homeowners
     \end{itemize}
-  \item We'll use this example throughout (Gilbukh and
-    Goldsmith-Pinkham (2021))
   \end{wideitemize}
 \end{frame}
 
@@ -243,7 +290,7 @@
     \end{itemize}
   \item What kind of data do we observe?
     \begin{itemize}
-    \item First example is best case: we see everything!
+    \item First example is best case but given unbounded nature of $T$, unrealistic for everything
     \item For a given observation, we see spell start and spell end
     \end{itemize}
   \end{wideitemize}
@@ -355,7 +402,7 @@
     \item Easy to envision data sampling like this -- checking in on a
       pool of individuals, and identifying whether they stuck around
     \end{itemize}
-  \item This leaves us with substatnailly less information, but so
+  \item This leaves us with less information, but so
     long as the censoring (e.g. the time of check-in) is sufficiently
     random, also addressable
   \end{wideitemize}
@@ -548,7 +595,7 @@
     \item Can be time varying
     \item Summarizes all characteristics of $F$
     \end{itemize}
-  \item Effectively think of it as a simplifying assumption 
+  \item Effectively think of it as a transformation of the distribution 
   \end{wideitemize}
 \end{frame}
 
@@ -617,6 +664,25 @@
     \end{itemize}
   \end{wideitemize}
 \end{frame}
+
+\begin{frame}{Hazard modeling data sampling}
+  \begin{wideitemize}
+    \item With stock sampling, where you sample from the \emph{stock} of individuals (rather than the flow)
+      \begin{itemize}
+      \item A given draw is sampled to have lived for $s_{i}$ periods
+      \end{itemize}
+    \item Then,  the likelihood is
+      \begin{align*}
+        L(\theta) &= \prod_{i=1}^{n} \frac{f(y_{i}|\theta)}{S(s_{i}|\theta)} = \prod_{i=1}^{n} h(y_{i}|\theta) \frac{S(y_{i}|\theta)}{S(s_{i}|\theta)}\\
+      \end{align*}
+    \item With right censoring (not censored $\rightarrow$ $d_{i} = 1$) such that we do not track the observations, the likelihood is
+      \begin{align*}
+        L(\theta) &= \prod_{i=1}^{n} \left(\frac{f(y_{i}|\theta)}{S(s_{i}|\theta)}\right)^{d_{i}}\left(S(s_{i}|\theta)\right)^{(1-d_{i})}
+      \end{align*}
+  \end{wideitemize}
+\end{frame}
+
+
 
 \begin{frame}{Non-parametric estimations of survival with censoring}
   \begin{columns}[T] % align columns
@@ -915,54 +981,6 @@
     \begin{column}{.7\textwidth}
     \end{column}
   \end{columns}
-\end{frame}
-
-
-
-\begin{frame}{Finally, some examples}
-  \begin{wideitemize}
-  \item Lancaster (1979) - unemployment spells
-    \begin{itemize}
-    \item $t=0$: unemployment begins
-    \item Spell ends: employment
-    \end{itemize}
-  \item Galiani, Gertler and Schargrodsky (2005) - privatizing water service 
-    \begin{itemize}
-    \item $t=0$: the year 1990
-    \item Spell ends: water service privatized      
-    \end{itemize}
-  \item Palmer (2015) - mortgage default
-    \begin{itemize}
-    \item $t = 0$: Mortgage origination
-    \item Spell ends: mortgage default
-    \end{itemize}
-  \item Rose (2020) - jail time
-    \begin{itemize}
-    \item $t = 0$: Release into house arrest
-    \item Spell ends:  
-    \end{itemize}
-  \end{wideitemize}
-\end{frame}
-
-
-\begin{frame}{More examples}
-  \begin{wideitemize}
-  \item Yang (2016) - recidivism
-    \begin{itemize}
-    \item $t=0$: release from jail
-    \item Spell ends: recidivism
-    \end{itemize}
-  \item Carlson et al. (2015) - bankruptcy
-    \begin{itemize}
-    \item $t = 0$ retirement from NFL
-    \item Spell ends: bankruptcy filing
-    \end{itemize}
-  \item Goldsmith-Pinkham \& Gilbukh (2021) - moving houses
-    \begin{itemize}
-    \item $t = 0$ buy a home
-    \item Spell ends: buy a new home
-    \end{itemize}
-  \end{wideitemize}
 \end{frame}
 
 
