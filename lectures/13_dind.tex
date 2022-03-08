@@ -193,14 +193,10 @@
           variation in $X$ is either caused by or approximated by a
           randomized experiment.
         \end{itemize}
-      \item<2> Dinardo and Lee (2011) have a famous handbook chapter
-        entitled ``Program Evaluation and Research Design'' where they
-        make a distinction between two types of research designs
       \end{wideitemize}
     \end{column}%
     \hfill%
     \begin{column}{.5\textwidth}
- \only<2>{     \includegraphics[width=\linewidth]{images/dinardolee.png}}
     \end{column}%
   \end{columns}
 \end{frame}
@@ -210,15 +206,12 @@
   \begin{columns}[T] % align columns
     \begin{column}{0.7\textwidth}
       \begin{wideitemize}
-      \item D-condition designs fall clearly into the ``PGP''
-        description of a research design -- knowledge of the DGP leads
-        to a variation in the data generating our identification
-      \item S-conditions fall less clearly into this context (as we
-        will discuss).
+      \item This ideal is not necessarily achievable in all scenarios
+      \item Recall the reason for wanting a randomied experiment: we want to estimate \emph{counterfactual} outcomes
+      \item Alternative way to do this: model the outcome (absent treatment) directly
         \begin{itemize}
         \item The relationship between X and Y can be clearly
-          articulated, but how it is potentially approximated by a
-          random experiment is less obvious
+          articulated, but the ``experimental design'' analogy is more fraught/complicated
         \end{itemize}
       \item This issue will become clear as we discuss our first topic
       \end{wideitemize}
@@ -290,7 +283,7 @@
 \end{frame}
 
 
-\begin{frame}{Basic setup }
+\begin{frame}{Setup }
   \begin{wideitemize}
   \item Assume we have $n$ units ($i$) and $T$ time periods $(t)$
   \item Consider a binary policy $D_{it}$, and we are interested
@@ -333,7 +326,6 @@
         \item Where can we get unbiased estimates?
         \end{itemize}
       \item With two time periods we can make a lot more progress!
-        \pause
       \end{wideitemize}
     \end{column}%
     \hfill%
@@ -438,7 +430,6 @@
   \begin{wideitemize}
   \item Note that for the above model, we made a stronger assumption about trends
     \begin{itemize}
-    \item  The Dinardo and Lee ``S-assumptions'' start to bite
     \item We assumed that
       $Y_{it}(d) - Y_{i,t-k}(d) = \gamma_{t} - \gamma_{t-k}$ for all
       $k$ and $d$
@@ -653,7 +644,6 @@
     \item As a result, any within-state correlation of errors will be
       correlated with treatment status
     \end{itemize}
-
   \item Given the limited number of states, time periods, and
     treatments, more valuable to view this as a case study
     \begin{itemize}
@@ -1019,6 +1009,44 @@
   \item Irrespective of the exact paper, the key point is that we are
     generating a counterfactual and need to be careful that our
     estimator does so correctly
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Taking a step back on design}
+  \begin{columns}[T] % align columns
+    \begin{column}{0.4\textwidth}
+      \begin{wideitemize}
+      \item The previous discussion all sits on the ``model-based'' approach for difference-in-differences
+        \begin{itemize}
+        \item E.g. Correctly modeling $E(Y(0))$ (the counterfactual)
+        \item Challenging when thinking about logs vs. levels, for example
+        \end{itemize}
+      \item Alternative approach: random timing?
+      \item<2-> Key point: we can define a propensity score where the treatment is considered ``random''
+      \end{wideitemize}
+    \end{column}%
+    \hfill%
+    \begin{column}{.5\textwidth}
+      \only<1>{\includegraphics[width=0.9\linewidth]{images/dind_randomtiming.png}}
+      \only<2>{\includegraphics[width=0.9\linewidth]{images/dind_randomtiming2.png}}      
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Taking a step back on design}
+  \begin{wideitemize}
+  \item In the panel setting, it's worth considering whether you can just consider the policy ``as-if'' random, conditional on some controls
+  \item Can you make units sufficiently comparable?
+    \begin{itemize}
+    \item E.g. if all firms greater than 100 employees are treated,
+      could you compare firms just below 100 and just above 100 (to
+      come in RD!)
+    \item This would \emph{not} require a functional form assumption
+    \end{itemize}
+  \item Are there controls such that the groups appear ``observationally identical'' in the pre-period?
+    \begin{itemize}
+    \item Synthetic control + propensity score methods (to come)
+    \end{itemize}
   \end{wideitemize}
 \end{frame}
 
