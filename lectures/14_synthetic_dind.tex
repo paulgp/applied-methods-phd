@@ -325,7 +325,7 @@
 \end{frame}
 
 
-\begin{frame}{Synthetic Control example - Abadie }
+\begin{frame}{Synthetic Control example - (Abadie et al. (2010)) }
   \begin{columns}[T] % align columns
     \begin{column}{0.5\textwidth}
       \begin{wideitemize}
@@ -575,31 +575,49 @@
   \end{wideitemize}
 \end{frame}
 
-\begin{frame}{Double Robustness}
+\begin{frame}{Synthetic Diff-in-diff}
+  \begin{columns}[T] % align columns
+    \begin{column}{0.5\textwidth}
   \begin{wideitemize}
-  \item   In our approaches with DinD, I hightlighted that we were really
-  leaning on the parametric assumption -- namely that we could
-  estimate the outcome given the $\alpha_{i}$ and $\gamma_{t}$.
-  \begin{itemize}
-  \item   This may not feel super robust
-  \end{itemize}
-\item   In our analysis with pscore methods, we estimated models of the
-  counterfactual that just used averages of the controls to get an
-  estimate for the counterfactual. E.g. weighted sums
-\item   This could be wrong if the treatment is not random
-  (e.g. biased!). That is, in part, what the model is trying to
-  account for.
-\item Key result from Arkhangelsky et al. (2019) is that these methods
-  are robust if either assumption is right (weights are right, or
-  model is right) -- e.g. double robust
+  \item Key difference is twofold:
+    \begin{enumerate}
+    \item Pre-trend means do not need to match ``exactly''
+    \item Weighting is not equivalent across all time periods
+    \end{enumerate}
+  \item Conceptually -- different ways to generate the counterfactual given a model 
   \end{wideitemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+  \only<1>{  \includegraphics[width=\linewidth]{images/synthdid.png}}
+  \only<2>{  \includegraphics[width=\linewidth]{images/synthdid_eq1.png}\\
+     \includegraphics[width=\linewidth]{images/synth_eq2.png}} 
+\end{column}
+\end{columns}
 \end{frame}
 
+\begin{frame}{Synthetic Diff-in-diff}
+  \begin{columns}[T] % align columns
+    \begin{column}{0.5\textwidth}
+  \begin{wideitemize}
+  \item So far, synth dind method discussion focused on single adoption period. 
+    \begin{enumerate}
+    \item Staggered adoption in synthetic control isn't meaningful
+    \item How can you adopt it?
+    \end{enumerate}
+  \item Conceptually -- split up the adoption timings a la Calloway \& Sant'anna and others
+  \end{wideitemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+  \only<1>{  \includegraphics[width=\linewidth]{images/synthdid_staggered1.png}}
+  \only<2>{  \includegraphics[width=\linewidth]{images/synthdid_staggered2.png}}
+\end{column}
+\end{columns}
+\end{frame}
 
 
 \begin{frame}{So what about synthetic methods?}
   \begin{wideitemize}
-  \item Many authors (mainly econometricians) argue that this is a burgeoning innovative field
+  \item Many authors argue that this is a burgeoning innovative field
     \begin{itemize}
     \item It is a very cool method!
     \end{itemize}
@@ -621,11 +639,27 @@
   \end{wideitemize}
 \end{frame}
 
-\begin{frame}{Highly recommend exploring}
+
+
+\begin{frame}{My recommendation / takeaway}
   \begin{wideitemize}
-  \item Read Cunningham (2021) chapter
-  \item Explore augsynth and synthdid  packages (original synth package is tough to use)
-  \item Abadie (2020) JEL chapter
+  \item Synthetic control is the ideal approach when faced with a single treatment
+    \begin{itemize}
+    \item By far the most natural approach in this setting, and is a practical approach
+    \item Typcial approach -- get a good synthetic control for a given
+      treatment. If none exists, stop. Ben-Michael, Feller and
+      Rothstein (2021) provide a better approach, which adjusts for
+      imperfect pre-match.
+    \end{itemize}
+  \item Synthetic DiD seems very promising as a generalization
+    \begin{itemize}
+    \item Key question is convincing readers why this shoudl work better than traditional method
+    \item My view: empirical papers will first need to show how / why
+      their method works with both diff-in-diff and synth diff-in-diff
+    \end{itemize}
+  \item Key point: \emph{all of this relies on a model of the control outcome}
+  \item Three packages to explore: augsynth/tidysynth andsynthdid
+    packages (original synth package is tough to use)
   \end{wideitemize}
 \end{frame}
 \end{document}
