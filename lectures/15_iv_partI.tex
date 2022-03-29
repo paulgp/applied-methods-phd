@@ -245,7 +245,7 @@
   \item Consider a simple supply and demand curve setup
     \begin{align}
       \text{quantity}_{d} &= \alpha_{1} + \text{price}\gamma_{1} + W_{1}\tau_{1} + u_{1}\\
-      \text{quantity}_{s} &= \alpha_{2} + \text{price}\gamma_2{2} + W_{2}\tau_{2} + u_{2}
+      \text{quantity}_{s} &= \alpha_{2} + \text{price}\gamma_{2} + W_{2}\tau_{2} + u_{2}
     \end{align}
   \item Equilibrium values of price and quantity are such that these
     equations equal
@@ -650,12 +650,54 @@
   \item Slightly more challenging (notationally) to generalize to a multivalued
     treatment in a non-parametric way
     \begin{itemize}
-    \item Key concept is an average causal reponse curve --
+    \item Key concept is an \textbf{average causal reponse curve} --
       effectively a combination of weighted derivatives, depending on
       where the instrument shifts participation
-    \item See Angrist Imbens (1995, JASA)
+    \item  Angrist + Imbens (1995, JASA)
     \end{itemize}
   \end{wideitemize}
+\end{frame}
+
+
+\begin{frame}{Average Causal Response Curve}
+  \begin{wideitemize}
+  \item Consider a regression of (log) weekly earnings ($Y_{i}$) on
+    years of schooling ($S_{i}$) with controls $W_{i}$, where we use
+    the quarter-of-birth     ($Z_{i}$) to instrument for schooling
+    \begin{equation*}
+      Y_{i} = W_{i}\gamma + S_{i}\tau + \epsilon_{i}
+    \end{equation*}
+  \item Recall the potential outcome notation for years of schooling $\in \{0,\ldots, J\}$
+    \begin{itemize}
+    \item We can then consider relative comparisons: $\tau_{j,j-1} = E(Y_{i}(j) - Y_{i}(j-1))$
+    \item Note that if this were a linear effect, $\tau_{j,j-1} = 0.5\tau_{j,j-2}$, etc.
+    \end{itemize}
+  \item Now consider the potential years of schooling defined by $Z_{i}$: $S_{i}(Z_{i})$
+    \begin{itemize}
+    \item Can consider this binary (first quarter vs. later)
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Average Causal Response Curve}
+  \begin{wideitemize}
+  \item Under independence assumptions and monotonicity
+    ($S_{i}(1) -S_{i}(0) \geq 0$ or vice versa) for each person,
+    \begin{equation*}
+      \frac{E(Y_{i} | Z_{i} = 1) - E(Y_{i} | Z_{i} = 0)}{E(S_{i} | Z_{i} = 1) - E(S_{i} | Z_{i} = 0)} = \sum_{j=1}^{J}\omega_{j}E(Y_{i}(j) - Y_{i}(j-1) | S_{i}(1) \geq j > S_{i}(0))
+    \end{equation*}
+    where
+    \begin{equation*}
+      \omega_{j} = \frac{Pr(S_{i}(1) \geq j > S_{0})}{\sum_{i=1}^{J} Pr(S_{i}(1) \geq i > S_{0})}.
+      \end{equation*}
+    \item $\omega_{j}$ can be consistently estimated using the data
+  \item Key takeaway: weighting up non-parametric treatments as a
+    function of where the instrument induces response
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Average Causal Response Curve weights}
+ \includegraphics[width=0.8\linewidth]{images/angrist_imbens_acr_weight.png}
 \end{frame}
 
 \begin{frame}{Next class}
