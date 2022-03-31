@@ -388,10 +388,10 @@
         \item Let $D_{i}^{*} = \mu_{D}(Z_{i}) - U_{Di}$, $D_{i} = 1(D_{i}^{*} \ge 0)$
           \item E.g. $D_{i}^{*}$ is net utility gain from choosing $D_{i}$
           \end{itemize}
-        \item $Y_{i} = Y_{i1}D_{i} + Y_{i0}(1-D_{i}) = \mu_{1}(\epsilon_{i1})D_{i} + \mu_{0}(\epsilon_{i0})(1-D_{i})$
+        \item $Y_{i} = Y_{i1}D_{i} + Y_{i0}(1-D_{i}) = \mu_{1}(X_{i}, U_{i1})D_{i} + \mu_{0}(X_{i}, U_{i0})(1-D_{i})$
           \begin{itemize}
           \item Hence if $U_{Di}$ is correlated with
-            $ \epsilon_{1i},\epsilon_{0i}$, this will cause sorting!
+            $ U_{1i},U_{0i}$, this will cause sorting!
           \item Omitting characteristics $X_{i}$ for simplicity
           \end{itemize}
         \item Finally, let $P(z) = Pr(D = 1 | Z = z) = F_{U_{D}}(\mu_{D}(z))$ and $\tilde{U}_{D} = F_{U_{D}}(U_{D})$
@@ -429,7 +429,7 @@
             \end{align*}
 
           \end{itemize}
-        \item $\Delta^{LIV}(P(z)) = \frac{\partial E(Y | P(Z) = P(z))}{\partial P(z)} = \lim_{P(z') \rightarrow P(z')} \Delta^{LATE}$
+        \item $\Delta^{LIV}(P(z)) = \frac{\partial E(Y | P(Z) = P(z))}{\partial P(z)} = \lim_{P(z') \rightarrow P(z)} \Delta^{LATE}$
         \end{enumerate}
       \end{wideitemize}
 \end{column}
