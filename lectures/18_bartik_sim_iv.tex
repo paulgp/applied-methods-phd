@@ -191,7 +191,8 @@
     \begin{itemize}
     \item Bartik (shift-share) instruments: three recent
       papers on commonly used identification approach
-    \item Simulated instruments: reframe an older literature in a new light
+    \item Simulated instruments: reframe an older literature in a new
+      light using Borusyak and Hull (2022) paper
     \end{itemize}
   \item Key historical feature of these approaches is that they had an ``intuitive'' feature of identification, but formal properties were not established for several decades
     \begin{itemize}
@@ -502,42 +503,18 @@ B_{lt} &= \sum_{k=1}^K z_{lk0} \textcolor{blue}{g_{kt}}, \notag \\
     \item Goldsmith-Pinkham, Sorkin and Swift (2020) focus on $z_{lk0}$ and make an analogy to difference-in-differences
     \item Adao, Kolesar and Morales (2019) and Borusyak, Hull and Jaravel (2020) focus on $g_{kt}$, and make a strong connection to the design based approach (e.g. these are as-if random shocks)
     \end{enumerate}
-  \item I will focus on GPSS, but the important fact is to pick a concrete explanation for identification
+  \item Key problem, historically, in this literature, was the lack
+    of a coherent defense of the identifying variation
     \begin{itemize}
-    \item Key problem, historically, in this literature, was the lack
-      of a coherent defense of the identifying variation
-    \item Ideally, this choice should be made ex ante! I.e. don't run the tests and then choose...
+      \item These papers provide a way of doing this! But you have to pick one approach
     \end{itemize}
   \end{wideitemize}
 \end{frame}
 
 
-% ----
-
-
-\begin{frame}
-{  \Large
-  \begin{center}
-    Bartik Instruments: What, When, Why and How\\
-    Goldsmith-Pinkham, Sorkin and Swift
-  \end{center}
-}
-  \addtocounter{framenumber}{-1}
-
-Outline:
-\begin{itemize}
-\setlength\itemsep{1em}
-\item \textbf{Understanding the identifying assumption}
-\item Opening the black box
-\item Testing the plausibility of the identifying assumption
-\end{itemize}
-
-\end{frame}
-
-
 %----
 \begin{frame}
-\frametitle{Three  special cases}
+\frametitle{Understanding the identifying assumption in GPSS: Three  special cases}
 
 \begin{enumerate}
   \setlength\itemsep{1em}
@@ -695,13 +672,15 @@ $$\hat{\beta}_{Bartik}=  \frac{  \sum_{l=1}^L \sum_{t=1}^T \sum_{k=1}^K  z_{lkt}
 
 Two ideas:
 \begin{itemize}
-\item ``Shares'' (this paper): talk about properties of $z_{lkt}$
+\item ``Shares'' : talk about properties of $z_{lkt}$
 	\begin{itemize}
 	\item Conditional exogeneity
+        \item \emph{model based} -- diff-in-diff style approach
 	\end{itemize}
 \item ``Shocks'' (Borusyak, Hull and Jaravel (2018)): talk about properties of $g_{kt}$
 	\begin{itemize}
 	\item Random, and a large number (equivalent industry-level regression)
+        \item \emph{design-based} (in spirit) -- IV strategy
 	\end{itemize}
 \end{itemize}
 
@@ -726,7 +705,17 @@ Two ideas:
 
 \begin{itemize}
 \item Large number of industries (shares are misspecified, need it to average out)
-\item Random shocks across industries
+\item Random shocks across industries -- need the shocks to be conditionally random
+\end{itemize}
+
+
+\textbf{How do we choose?}
+\begin{itemize}
+\item The shocks approach is more design-based (which can be
+  appealing), but requires an argument why shocks are randomly
+  assigned
+\item The shares approach is model-based, so suffers from same issues
+  as dind, but may more naturally work in your setting.
 \end{itemize}
 
 \end{frame}
@@ -843,30 +832,6 @@ The \textbf{main source of variation in exposure is} within-manufacturing specia
 \begin{center}
 --- Autor, Dorn and Hanson (2013) , pg. 2123
 \end{center}
-\hyperlink{correlmatrix}{\beamergotobutton{Correlation matrix}} 
-\end{frame}
-
-
-%------
-\begin{frame}[plain]
-\addtocounter{framenumber}{-1}
-\frametitle{Outline}
-
-
-\begin{itemize}
-\setlength\itemsep{1em}
-\item Understanding the identifying assumption
-	\begin{itemize}
-	\item \textit{If fixed $K$ and $T$, and} $L \rightarrow \infty$,\textit{ then in terms of industry composition}
-	\end{itemize}
-\item Opening the black box
-	\begin{itemize}
-	\item \textit{Which industries are ``important'' in estimates}
-	\end{itemize}
-\item \textbf{Testing the plausibility of the identifying assumption}
-\end{itemize}
-
-
 
 \end{frame}
 
@@ -890,244 +855,12 @@ The \textbf{main source of variation in exposure is} within-manufacturing specia
 \end{frame}
 
 
-
-%-----
-\begin{frame}
-\frametitle{Test \#1: Correlates of initial industry composition}
-
-\begin{itemize}
-\setlength\itemsep{1em}
-\item How are initial characteristics ($D_{l0}$ less F.E.) related to $Z_{l0}$?
-\item Look at high-Rotemberg weight industries (and aggregate)
-\end{itemize} 
-
-Not definitive:
-\begin{itemize}
-\setlength\itemsep{1em}
-\item Shows source of variation
-\item Can address by controlling for observables ($D_{l0} \times \text{time}$)
-\end{itemize}
-
-\end{frame}
-
-
-%-----
-\begin{frame}[fragile,label=pca]
-\frametitle{Test \#1: Correlates }
-
-
-\scriptsize
-
-\begin{table}[htbp]
-\begin{center}
-\begin{tabular}{l*{7}{c}}
-\toprule
-     &\multicolumn{1}{c}{Games}     &\multicolumn{1}{c}{Electronic}&\multicolumn{1}{c}{Household audio}&\multicolumn{1}{c}{Computer}&\multicolumn{1}{c}{Telephone}&\multicolumn{1}{c}{China }\\
-& and toys & computers & and video & equipment & apparatus & to other \\
-\midrule
-Share Empl in Manufacturing&   0.01&    0.21&     0.08&     0.21&    -0.07&        0.57\\
-                &   (0.03)& (0.18)&   (0.08)&   (0.15)&   (0.06)&      (0.07)\\
-\marktopleft{a1} Share College Educated&   -0.08&      0.20&     0.01&     0.22&    -0.07&     0.30\\
-                &     (0.03)& (0.11)&   (0.04)&   (0.10)&   (0.06)&   (0.06) \markbottomright{a1}{red}  \\
-Share Foreign Born& 0.01&   -0.01&    -0.02&    -0.01&    -0.08&          0.15\\
-                &  (0.01)& (0.04)&   (0.01)&   (0.04)&   (0.03)&      (0.03)\\
-Share Empl of Women& 0.05&       -0.04&    -0.08&    -0.02&    -0.02&      0.10\\
-                &  (0.03)&   (0.12)&   (0.05)&   (0.12)&   (0.07)&    (0.06)\\
-Share Empl in Routine&0.04&    -0.37&     0.06&    -0.36&    -0.01&         -0.08\\
-                &  (0.03)&   (0.14)&   (0.05)&   (0.12)&   (0.07)&    (0.13)\\
-Avg Offshorability&    0.02&   0.33&     0.00&     0.29&     0.23&       -0.24\\
-                & (0.02)&   (0.10)&   (0.05)&   (0.08)&   (0.04)&     (0.09)\\
-\midrule
-1980 Population Weighted&      Yes&      Yes&      Yes&      Yes&      Yes&      Yes\\
-N               &    1,444&    1,444&    1,444&    1,444&    1,444&    1,444\\
-$ R^2$          &    0.02&    0.08&     0.01&     0.08&     0.05&       0.22\\
-\bottomrule
-\end{tabular}
-\end{center}
-\end{table}
-
-\uncover<2->{\tikz[overlay,remember picture,inner sep=1pt]
-\node[draw=red, line width=0.9mm, rounded corners,fit=(marker-a1-a.north west) (marker-a1-b.south east)] {};}
-
-
-\end{frame}
-
-
-
-
-
-
-
-
 %-----
 
 \begin{frame}[label=overidtest]
-\frametitle{Test \#2: Pre-trends}
+\frametitle{Alternative estimators and overidentification tests}
 
-
-\begin{equation*}
-  \Delta \text{Manufacturing Emp}_{lt} = \alpha +  \sum_{s} \mathbb{1}(s=t) \gamma_{k,s} z_{lk, 1980}+ \epsilon_{lt}
-\end{equation*}
-
-
-  \begin{itemize}
-\item Four time periods:   1970-1980, 1980-1990, 1990-2000, 2000-2007
-  \item Convert $\hat{\gamma}_{k,t}$ to levels (1970 = 100)
-\item $k$ is top five Rotemberg weight industries in 1980, and ``aggregate'' 
-	\begin{itemize}
-	\item Aggregate: 1980 shares, aggregated using $g_{k,1990-2000}^{\text{high-income}}$
-	\end{itemize}
-
-  \end{itemize}
-``Pre-period'' prior to 1990
-
-\end{frame}
-
-
-
-
-
-
-
-
-%%%%%%%%%
-% 3571
-%%%%%%
-%---
-\begin{frame}[label=ind3571_gr1980]
-\addtocounter{framenumber}{-1}
-\textbf{Electronic computers, fixed 1980 industry shares, Rotemberg weight $ 0.183 $}
-
-
-\begin{center}
-		\includegraphics[scale=0.73]{images/share_emp_ind_bhj_3571_pre_trends_index1980.pdf}
-\end{center}
-
-
-
-
-\end{frame}
-
-
-
-%%%
-% 3944
-%%%
-
-%---
-\begin{frame}[label=ind3944_gr1980]
-\textbf{Games and toys, fixed 1980 industry shares, Rotemberg weight $0.138$}
-
-
-\begin{center}
-		\includegraphics[scale=0.73]{images/share_emp_ind_bhj_3944_pre_trends_index1980.pdf}
-\end{center}
-
-
-
-
-\end{frame}
-
-
-
-
-
-
-
-
-%%%
-% 3651
-%%%%%
-%---
-\begin{frame}[label=ind3651_gr1980]
-\addtocounter{framenumber}{-1}
-\textbf{Household audio and video, fixed 1980 industry shares, Rotemberg weight $ 0.085$}
-
-
-\begin{center}
-		\includegraphics[scale=0.73]{images/share_emp_ind_bhj_3651_pre_trends_index1980.pdf}
-\end{center}
-
-
-
-
-\end{frame}
-
-
-
-%%%
-% 3661
-%%%
-
-%---
-\begin{frame}[label=ind3661_gr1980]
-\addtocounter{framenumber}{-1}
-\textbf{Telephone apparatus, fixed 1980 industry shares, Rotemberg weight $0.066 $}
-
-
-\begin{center}
-		\includegraphics[scale=0.730]{images/share_emp_ind_bhj_3661_pre_trends_index1980.pdf}
-\end{center}
-
-
-
-
-\end{frame}
-
-
-
-%%%
-% 3577
-%%%
-
-%---
-\begin{frame}[label=ind3577_gr1980]
-\addtocounter{framenumber}{-1}
-\textbf{Computer equipment, fixed 1980 industry shares, Rotemberg weight $0.060 $}
-
-
-\begin{center}
-		\includegraphics[scale=0.730]{images/share_emp_ind_bhj_3577_pre_trends_index1980.pdf}
-\end{center}
-
-
-
-
-\end{frame}
-
-
-
-
-
-
-
-
-%%%
-% aggregate
-%%%
-
-%---
-\begin{frame}[label=aggregate_gr1980]
-\addtocounter{framenumber}{-1}
-\textbf{Aggregate, fixed 1980 industry shares}
-
-
-\begin{center}
-		\includegraphics[scale=0.73]{images/z_pre_trends_index1980.pdf}
-\end{center}
-
-
-
-\end{frame}
-
-
-
-%-----
-
-\begin{frame}[label=overidtest]
-\frametitle{Test \#3: Alternative estimators and overidentification tests}
-
-Basic insight: many instruments 
+Basic insight in GPSS: many instruments 
 \begin{itemize}
 \item Estimators (maximum likelihood): LIML, Hausman, Newey, Woutersen, Chao and Swanson (2012) HFUL (heteroskedasticity-Fuller (1977))
 \item Estimators (two-step):  TSLS (problematic), Bartik TSLS, MBTSLS (Anatolyev (2013), and Kolesar et al (2015)) 
@@ -1139,8 +872,6 @@ Interpretation:
 Also, overidentification tests, which provides evidence of misspecification
 %
 %Note, in Angrist and Krueger (1991), MBTSLS and LIML are very similar
-
-
 
 \end{frame}
 
@@ -1159,10 +890,6 @@ Interpretation:
 \begin{itemize}
 \item Overid test failure is evidence of misspecification
 \end{itemize}
-%Note, in Angrist and Krueger (1991), overid tests fail to reject
-
-
-
 \end{frame}
 
 \end{comment}
@@ -1201,294 +928,549 @@ Observations    &      1,444\\
 \end{center}
 \end{table}
 
-
-
 \end{frame}
 
 
-\begin{frame}{Simulated Instruments}
+
+
+% INTRO
+
+\begin{frame}{Switching gears: Economists have a nose for randomness}
+\begin{columns}[T] % align columns
+\begin{column}{.5\textwidth}
   \begin{wideitemize}
-  \item Pivoting now to simulated instruments
-  \item Running example -- effect of Medicaid on Y (e.g. child mortality)
-  \item Eligibility depends on:
+  \item Paraphrasing a Yale prof:
+    \begin{quote}
+      Economists are really good at doing \emph{almost} the right
+      thing in empirical work.\\
+      \hfill -Anonymous Yale Professor
+    \end{quote}
+  \item Economists are clever at finding things that look convincingly
+    ``random''
     \begin{itemize}
-    \item State-year (legislative changes)
-    \item Individual characteristics: Income less disregards (child care and work expenses), adults (if married, unemployed husband can maintain eligibility), number of children, whether first-time mother, etc.  
-    \end{itemize} 
-    Actual eligibility is clearly endogenous:
-    \begin{itemize}
-    \item Poorer people are more likely to be eligible, ``worse'' potential outcomes
+    \item Sometimes, it is easy to know how to use this randomness
+    \item \textbf{This paper is about when it is hard}
     \end{itemize}
   \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.5\textwidth}
+  \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/twitter.png}
+    }}
+\end{column}%
+\end{columns}
 \end{frame}
 
-
-
-\begin{frame}
-\frametitle{Build an instrument}
-
-\begin{itemize}
-\item  Idea: isolate (changes in) eligibility coming from policy changes
-  \begin{itemize}
-  \item Take a fixed population (say, 1986 CPS)
-  \item Compute ``share eligible'' in each state-year 
-  \end{itemize} 
-\item		Parameterizes (in one-dimension) how generous the policy is
-\item Benefits:
-  \begin{itemize}
-  \item   Intuitive: isolate variation that you think is exogenous  
-  \item ``Split-sample'': Can compute simulated eligibility in one sample, and outcomes in another sample
-  \end{itemize}
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}{Set up}
-\begin{wideitemize}
-\item $Y_{i}$: outcome (e.g. utilization of health care, whether baby is low birthweight)
-\item $D_{i}$: treatment (e.g. Medicaid eligibility)
-  \begin{itemize}
-  \item Today: $D_{i} \in \{0,1\}$ 
-  \end{itemize}
-\item $D_{i} \equiv g(S_{i}, X_{i})$: \emph{known} eligibility function $g(\cdot, \cdot)$\\
-  \hspace{10pt} $S_{i}$: location  (e.g. state)\\
-  \hspace{10pt} $X_{i}$: characteristics driving eligibility (e.g. income, age, \# of children)\\
-  \hspace{10pt} $\mathcal{X}$: simplifying case - discrete support of $X_{i}$\\  
-\item \emph{$g(s,x)$ can be highly non-linear in $x$}
-\end{wideitemize}
-\end{frame}
-
-%-----
-\begin{frame}
-\frametitle{Aronow, Goldsmith-Pinkham, \& Sorkin: treatment effect heterogeneity}
-
-It is natural to imagine that we are not in a constant effects world:
-\begin{itemize}
-\item In observables: differential effects by income
-\item In unobservables: differential effects by latent health and etc.
-\end{itemize} 
-Two questions with TE heterogeneity:
-\begin{itemize}
-\item How plausible is it that monotonicity holds?  
-\item What is the LATE? (And is the LATE of economic interest?) 
-\end{itemize}
-
-\end{frame}
-
-% Some Notation
-\begin{frame}{Fundamental problem of causal inference}
+\begin{frame}{Borusyak and Hull (2022) on exploiting randomness in IV}
+\begin{columns}[T] % align columns
+\begin{column}{.6\textwidth}
   \begin{wideitemize}
-  \item $Y_{i}(D_{i})$ denote potential outcomes for individual $i$ 
-  \item $Y_{i}(1) - Y_{i}(0)$: individual treatment effect of eligibility
-  \item Observe $Y_{i} = D_{i}Y_{i}(1) + (1-D_{i})Y_{i}(0)$ 
+  \item Two key parts to this paper:
+    \begin{enumerate}
+    \item Highlighting how seemingly complicated \underline{research designs} can be framed as generalized propensity scores
+    \item How complicated \underline{research designs} can suffer from \emph{interference} 
+    \end{enumerate}
+  \item There are many interesting results that spiral out from these
+    two insights, but these are the key kernels (third piece is
+    thinking about uncertainty using randomization inference, but deeply
+    tied to other pieces))
+  \item Will first start with showing how complicated research designs $\rightarrow$ propensity scores
   \end{wideitemize}
-  Solution:
+\end{column}%
+\hfill%
+\begin{column}{.38\textwidth}
+  \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/abstract.png}
+    }}
+\end{column}%
+\end{columns}
+\end{frame}
+
+\begin{frame}{Research designs from simple to complex}
+\begin{columns}[T] % align columns
+\begin{column}{.75\textwidth}
   \begin{wideitemize}
-  \item Assume state \textit{policies} are as good as
-    random...
-    \begin{itemize} 
-    \item Concern that $X_{i}$ is correlated with the
-      potential outcomes;
-    \item Poor individual more likely to be eligible, but may have worse outcomes ($Y_{i}(D_{i})$);
-    \end{itemize}
-  \item How to get state policy variation without endogeneity from composition? 
-  \end{wideitemize}
-\end{frame}
-
-\begin{frame}{Quote - Currie \& Gruber (1996)}
-  ``\textbf{Our IV strategy
-  ... treats the legislative environment ... as a source of exogenous identification.}''
-\end{frame}
-
-
-\begin{frame}{  The simulated instrument}
- 
+  \item Consider the trivial research design, following an RCT that
+    randomly assigns $x_{i} \in \{0, 1\}$, and we want to estimate the
+    effect of $x_{i}$ on $y_{i}$:
     \begin{equation*}
-      Z_{i} = \sum_{x \in \mathcal{X}}g(S_{i}, x) \underbrace{Pr(X_{i} = x)}_{\text{non-stoch func}}      
+      y_{i} = \alpha + x_{i}\beta + \epsilon_{i}
     \end{equation*}
+  \item The research design is effectively a coin flip:
+    $E(x_{i}) = p$, and each $x_{i}$ is independent for each $i$
     \begin{itemize}
-    \item $Pr(X_i=x)$ is, e.g., distribution of characteristics in 1986 CPS
-    \end{itemize} 
-   TSLS:
-    \begin{align*}
-      Y_{i} &= \alpha + \beta D_{i} + \epsilon_{i} \\
-      D_{i} &= \pi_0 + \pi_{1} Z_{i} + \eta_{i}.
-    \end{align*}
-    Standard constant effects assumptions:
-    \begin{equation*}
-      \underbrace{Cov(Z_{i},\epsilon_{i})}_{\text{\textcolor{red}{exclusion}}} = 0, \qquad       \underbrace{Cov(Z_{i},D_{i})}_{\text{\textcolor{blue}{relevance}}} \not= 0
-    \end{equation*}
-\end{frame}
-
-
-\begin{frame}{TSLS Estimator and Heterogeneity}
-  \begin{wideitemize}
-  \item  TSLS estimator:
-  \begin{align*}
-    \hat{\beta}_{sim} &= \frac{\widehat{Cov}(Z_{i}, Y_{i})}{\widehat{Cov}(Z_{i}, D_{i})}.
-  \end{align*}
-\item What average TE is $\hat{\beta}_{sim}$? Most researchers appeal
-  to monotonicity for LATE:
-  \begin{assN}
-    Let $\mathcal{Z}$ be the set of values of $Z_{i}$. For all
-    $z, z' \in \mathcal{Z}$, either $D_{i}(z) \geq D_{i}(z')$ or
-    $D_{i}(z) \leq D_{i}(z')$.
-  \end{assN}
-\item How plausible is this?
-  \end{wideitemize}
-\end{frame}
-
-
-%-----
-\begin{frame}
-\frametitle{Idea \#1: monotonicity is very likely to be violated}
-
-Recall why we need an instrument: 
-\begin{itemize}
-\item Eligibility depends on ``high-dimensional'' observables
-\item States change many dimensions of eligibility at once 
-\item If it were just income, we'd do an RD in income 
-\end{itemize}
-
-Hence:
-\begin{itemize}
-	\item When a state expands eligibility \textbf{on average}, it can make some groups ineligible 
-		\begin{itemize}
-	\item Law changes represent ``menu of treatments'' 
-		\end{itemize}
-	\item Violate monotonicity in \textbf{observables}; can document empirical prevalence (!)
-	\end{itemize}
-
-
-Why you probably shouldn't use simulated instruments (in this setting): potentially uninterpretable estimates in presence of TE heterogeneity
-\end{frame}
-
-%---
-\begin{frame}
-\frametitle{Idea \#2: we have a selection on observables design}
-
-\begin{itemize}
-\item Basic assumption in the simulated instrument design: state legislative policy changes don't depend on characteristics of the population 
-\item \textbf{Strengthen (?) this assumption:} characteristics don't \textbf{respond} to policy changes (i.e., become poorer to become eligible for Medicaid) 
-	\begin{itemize}
-	\item This form of response affects interpretation of IV estimate 
-	\end{itemize}
-\item If you buy this (which you might not in some settings!): 
-	\begin{itemize}
-	\item You can compare outcomes of ``types'' of people (vectors of characteristics) who are eligible in some state-years and not in others
-	\end{itemize}
-\end{itemize} 
-
-\end{frame}
-
-
-\begin{frame}{Monotonicity assumption is strong, and testable}
-  \begin{wideitemize}
-  \item Since $g(\cdot, \cdot)$ is known for all $x$ and $s$, can
-    look for $x, x' \in \mathcal{X}$ where $Z_{i}(s) > Z_{i'}(s')$ for
-    $x$ and $x'$ but $D_{i}(z) > D_{i}(z')$ for $x$ and
-    $D_{i}(z) < D_{i}(z')$
-  \item Simple example: states where eligibility is not ordered
-    \begin{itemize}
-    \item $\mathcal{X} = \{1,2,3,4,5\}$, $Pr(X_{i} = x) = 1/5$
-    \item Types 1,2,5 are eligible in $s$, and 1,3,4,5 are eligible in $s'$.
-    \item Then, $\forall i$, $Z_{i}(s') > Z_{i}(s)$.
-    \item But, for $X_{i} = 3$, $D_{i}(s) < D_{i}(s')$, while for
-      $X_{i} = 2$, $D_{i}(s') < D_{i}(s)$
+    \item $\beta$ is identified thanks to this coin flip design
     \end{itemize}
-  \item Implication: motonoicity is violated, and $\hat{\beta}_{sim}$
-    combines positive and negative eligibility effects.
+  \item This is true even when we have covariates, $w_{i}$ that stratify the experiment. We just need to control for $w_{i}$ correctly:  $E(x_{i}|w_{i}) = p(w_{i})$ and we can estimate the ATE directly
+    % \begin{equation}
+    %   \beta = \sum_{i} y_{i}x_{i}/p(w_{i}) -y_{i}(1-x_{i})/(1-p(w_{i}))
+    % \end{equation}
+  \item Effectively, the (potentially) endogenous $w_{i}$ affects
+    treatment, but if we condition correctly, we can still identify a
+    causal effect
   \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.25\textwidth}
+  \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/coinflip.jpeg}
+    }}
+\end{column}%
+\end{columns}
 \end{frame}
 
-\begin{frame}{How important are these violations?}
+
+\begin{frame}{Research designs from simple to complex- Medicaid eligibility}
+\begin{columns}[T] % align columns
+\begin{column}{.75\textwidth}
   \begin{wideitemize}
-  \item Cohodes, Grossman, Kleiner and Lovenheim (2016) study long-term impact of Medicaid
-    expansions on childrens' educational outcomes
-  \item Information on eligibility for fixed distribution of 1986 CPS 
-  \item Define an eligibility ``type'':
-  	\begin{itemize}
-	\item A unique pattern of state-year (from 1980-2007) eligibility for a respondent in the 1986 CPS 
-	\item 48,036 children in the 1986 CPS, $18,881$ eligibility types 
-	\end{itemize}
+  \item Now imagine the eligibility rules for Medicaid were being  randomly assigned
+    \begin{itemize}
+    \item Drawn from a bag just like marbles, completely randomly
+    \end{itemize}
+  \item We can now estimate the effect of Medicaid eligibility on things like child mortality
+    \begin{itemize}
+    \item Issue: eligibility is also a function of many \emph{endogenous} features
+    \end{itemize}
+    \item We consider a known
+      function, $f_{i}$, and eligibility rules, $g_{i}$, such that
+      $x_{i} = f(g_{i}, w_{i})$ maps the $w_{i}$ characteristics using
+      the randomly drawn eligilibility rules
+      \begin{itemize}
+      \item Much like $w_{i}$ strata case, but more complex b/c can be high-dimensional / non-linear
+      \end{itemize}
+  \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.25\textwidth}
+  \only<1>{  \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/marbles.jpeg}
+    }}}
+\end{column}%
+\end{columns}
+\end{frame}
+
+\begin{frame}{Simulated instruments as a  way to get a handle on this}
+\begin{columns}[T] % align columns
+\begin{column}{.5\textwidth}
+  \begin{wideitemize}
+  \item The challenge is that $g_{i}$ is a complicated variable -- it
+    is a set of rules of that potentially complicated and hard to map
+    to an ``instrument'' or ``treatment''
+  \item You don't want to just use $x_{i}$ because it contains endogenous $w_{i}$
+  \item Currie and Gruber (1996) solution: construct a variable
+    $z_{i} = \sum_{j} f(g_{i}, w_{j})$ which takes $w$ from a random
+    population (outside the state) and uses it to construct a
+    ``predicted'' $x$
+    \begin{itemize}
+    \item Intuitively, hold fixed the $g_{i}$ and average over some
+      distribution of $w_j$
+    \end{itemize}
+  \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.5\textwidth}
+    \only<1>{  \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/savingbabies.png}
+    }}}
+    \only<2>{  \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/savingbabies2.png}
+    }}}
+\end{column}%
+\end{columns}
+\end{frame}
+
+\begin{frame}{This paper's approach vs. simulated instrument}
+\begin{columns}[T] % align columns
+\begin{column}{.9\textwidth}
+  \begin{wideitemize}
+  \item This is not the most efficient way to exploit this variation
+  \item Remember our propensity score example: if we could just
+    condition directly on $w_{i}$, then we would not worry about
+    endogeneity
+    \begin{itemize}
+    \item The solution, then, is to construct a propensity score and condition on that!
+    \end{itemize}
+  \item Intuitively, ``the eligibility rules for Medicaid were being randomly assigned''
+    \begin{itemize}
+    \item In other words, we assert a counterfactual distribution over
+      the policy rules $Pr(g)$
+    \item This allows us to construct the propensity score for a given individual
+    \end{itemize}
+    \begin{equation*}
+      p(w_{i}) = Pr(x_{i} | w_{i}) = \sum_{g} f_{i}(g, w_{i}) Pr(g)
+    \end{equation*}
+  \item With pscore in hand, estimation is straightforward, and known to be semiparametrically efficient!
+  \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.25\textwidth}
+\end{column}%
+\end{columns}
+\end{frame}
+
+\begin{frame}{Recentering vs. Controlling?}
+\begin{columns}[T] % align columns
+\begin{column}{.9\textwidth}
+  \begin{wideitemize}
+  \item The paper makes a big point about the recentering concept
+    \begin{itemize}
+    \item I'm not sure why one would do this vs. just controlling
+    \end{itemize}
+  \item This is particularly true in this setting (rather than with
+    interference)
+  \item My suggestion when reading the paper: just think of this as
+    conditioning on propensity scores
+    \begin{itemize}
+    \item Can revisit if you are worried about interference
+    \end{itemize}
+  \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.25\textwidth}
+\end{column}%
+\end{columns}
+\end{frame}
+
+\begin{frame}{The return on propensity scores in an empirical example}
+  \begin{wideitemize}
+  \item Medicaid Empirical example in this paper: ACA medicaid expansion
+  \item ACA expanded Medicaid in only some states thanks to NFIB v. Seblius allowing choice by states
+  \item Interested in understanding compositional shifts in health care across states
+    \begin{itemize}
+    \item Use ACS micro data and consider structural equation
+      \begin{align*}
+        y_{it} &= x_{it}\beta + \alpha_{s(i)} + \alpha_{t} + \epsilon_{it}
+      \end{align*}
+    \item $y_{it} $ are different health insurance take-up; $x_{it}$ is Medicaid eligibility for individual $i$
+    \end{itemize}
+  \item ``Simulated'' IV: dummy for whether state expanded Medicaid $z_{sim}$
+  \item Borusyak and Hull IV: construct a person-level indicator for
+    whether a person is eligible under their state's law $z_{bh}$
+    \begin{itemize}
+    \item Also identify the $p(w)$ that they are eligible on average across others states' laws
+    \item They recenter ($\tilde{z}_{bh} = z_{bh} - p(w)$) but you could just control...
+    \end{itemize}
   \end{wideitemize}
 \end{frame}
 
+\begin{frame}{The return on propensity scores in an empirical example}
+\begin{columns}[T] % align columns
+\begin{column}{.25\textwidth}
+  \begin{wideitemize}
+  \item \textbf{Much} more precise
+  \item Makes sense!
+  \item Seems like we should use it...
+  \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.8\textwidth}
+    \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/medicaid.pdf}
+    }}
 
-%-----
-\begin{frame}
-\frametitle{Quantifying violations of monotonicity}
-
-\begin{itemize}
-\item Take state-years where the value of the instrument changes (i.e., state policy becomes more/less generous)
-\item Ask for each eligibility type whether its eligibility moved in the direction of the instrument
-\item Weight by the eligibility type share of the national population
-	\begin{itemize}
-	\item In the CPS, small samples at state level
-	\end{itemize}
-\end{itemize}
-
-
+\end{column}%
+\end{columns}
 \end{frame}
 
 
-%----
-\begin{frame}
-\frametitle{Idea \#2.5: What you can sometimes do instead}
-
-With infinite data and outcomes observed in same dataset as eligibility (no split sample): 
-	\begin{itemize}
-	\item Compute type specific treatment effects 
-		\begin{itemize}
-		\item Simple comparison of means, no IV! 
-		\end{itemize}
-	\item Report TE for populations of interest where eligibility varies across state-years
-		\begin{itemize}
-		\item I.e., if we expanded the income threshold nationally, what would happen...
-		\end{itemize} 
-	\item Because monotonicity violation is in observables, not hard to fix (!)
-	\end{itemize} 
-In practice: use the propensity score....
+\begin{frame}{Discussion: When beautiful theory  meets data roadblocks}
+  \begin{wideitemize}
+  \item Many times, the data necessary to calculate eligibility and
+    the outcomes of interest are not in the same dataset. This is
+    especially true in simulated IV settings (I know from experience)
+    \begin{itemize}
+    \item Appendix D.2 talks about these issues but it's a little vague
+    \end{itemize}
+  \item Clarify ideas: Cohodes et al. (2016) consider effects of
+    Medicaid in the 1980s on long-term education outcomes
+    \begin{itemize}
+    \item Parental income (the relevant $w_{i}$ for eligbility during childhood) is not known in the same dataset for $y_{i}$.
+    \item $x_{i}$ is average eligibility for types born in state $s$ at age $a$ of race $r$ in period $t$.
+    \item They just want the variation that comes from state laws, not the demographics
+    \item Construct Sim. IV that takes the average share of
+      individuals in national population that would be eligible under
+      states' laws
+    \end{itemize}
+  \item Hopefully you're getting it now! Proposal from paper:
+    \begin{itemize}
+    \item Construct $Pr(x_{i} | \tilde{w})$ that randomizes over \emph{states} and control (or recenter)
+    \end{itemize}
+  \item Note: this type of within-state demographic info is actually
+    used in Mahoney (2015) for bankruptcy simulated instruments!
+  \end{wideitemize}
 \end{frame}
 
-%-----
+\begin{frame}{Discussion: Heterogeneity in the underlying data}
+  \begin{wideitemize}
+  \item Something harder to take from the paper
+    \begin{itemize}
+    \item How to consider aggregation issues
+    \end{itemize}
+  \item State-level variation, but maybe some individuals experienced Medicaid expansion, while other experienced contraction
+    \begin{itemize}
+    \item Less likely in Medicaid case, but possible in other settings
+    \end{itemize}
+  \item E.g. monotonicity violation when there is heterogeneous treatment
+    \begin{itemize}
+    \item Paper discusses some points on this in Appendix, but would be useful to be a bit more concrete in some examples
+    \item Something I tried to work on with Aronow and Sorkin but ran into serious data issues!
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Second kernel of the paper: interference}
+\begin{columns}[T] % align columns
+\begin{column}{.75\textwidth}
+  \begin{wideitemize}
+
+  \item Medicaid example is simple to think about, and clarifies idea that:
+    \begin{enumerate}
+    \item Can convert high-dimensional variation into simple treatment effects
+    \item Can be more \emph{efficient} (e.g. smaller s.e.) 
+    \end{enumerate}
+  \item However, you can take this much further.
+  \item Consider the design of a railroad. Imagine the world in which
+    a railroad designer randomly threw darts on a map to decide where
+    to construct train lines
+    \begin{itemize}
+    \item Similar to the analogy of ``drawing'' the Medicaid
+      eligibility rules
+    \item But now, how do we think about the ``random'' piece
+      interacting with different places?
+    \item Let's start with something simple first
+    \end{itemize}
+  \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.25\textwidth}
+    \only<1>{ \vfill \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/darts_map.jpeg}
+    }}}
+\end{column}%
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{ Interference in network settings }
+\begin{columns}[T] % align columns
+\begin{column}{.9\textwidth}
+  \begin{wideitemize}
+  \item Consider a setting where the researcher want to measure the impact of a
+    randomized experiment on a network
+    \begin{itemize}
+    \item In other words, for a given person $i$, and observed network $W$, we randomly treat some subset of individuals on the network.
+    \item We want to know what the effect of having more treated
+      individuals connected to you $x_{i}$ is on $y_{i}$
+    \end{itemize}
+  \item Insight from paper: since the position in \emph{network} affects probability of being connected to individuals, some individuals will inherently get more exposure!
+    \begin{itemize}
+    \item Analogous to the friendship paradox
+    \end{itemize}
+  \item Need to construct an analogous propensity score for the
+    network setting, and control for that
+    \begin{itemize}
+    \item Since we have a true RCT, this is not too hard!
+    \item (But we do have to make decisions about what the spillover is)
+    \item Aronow and Samii (2017) made serious progress on the network
+      context
+    \end{itemize}
+  \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.45\textwidth}
+    % \only<1>{  \makebox[\linewidth][c]{
+    % \resizebox{\linewidth}{!}{
+    %   \includegraphics{darts_map.jpeg}
+    % }}}
+\end{column}%
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{ Interference in spatial settings}
+\begin{columns}[T] % align columns
+\begin{column}{.95\textwidth}
+  \begin{wideitemize}
+  \item Things can be more confusing than an RCT, but this same insight applies
+    \begin{itemize}
+    \item Even with random shocks (darts on a board), some locations / people attract more treatment than others
+    \item Consider the application from the paper
+    \end{itemize}
+  \item Estimate the impact of market access growth ($MA$) on land values growth ($V$) in China
+    \begin{itemize}
+    \item $MA$ is influenced by transportation networks, and measures aggregated access to other populations
+      \begin{equation*}
+        MA_{it} = \sum_{j}\tau(\mathbf{g}_{t}, loc_{i}, loc_{j})^{-1}pop_{j}
+      \end{equation*}
+    \end{itemize}
+  \item Want to estimate the effect of $MA_{it}$ using ``random'' variation in network changes!
+    \begin{itemize}
+    \item Can we just run the OLS? No!
+    \end{itemize}
+  \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.45\textwidth}
+    % \only<1>{  \makebox[\linewidth][c]{
+    % \resizebox{\linewidth}{!}{
+    %   \includegraphics{darts_map.jpeg}
+    % }}}
+\end{column}%
+\end{columns}
+\end{frame}
+
+\begin{frame}{ Stylized Example of Market Access on a Square Island}
+\begin{columns}[T] % align columns
+\begin{column}{.55\textwidth}
+  \begin{wideitemize}
+  \item Take a square with square villages and randomly assign roads
+  \item How does market access change?
+  \item<2-> If we rerandomize, does it look different?
+  \item<3-> As with the network, some places get more market access than others on average!
+    \item<3-> Need to account for this propensity difference
+  \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.45\textwidth}
+    \only<1>{  \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/square1.png}
+    }}}
+    \only<2>{  \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/square2.png}
+    }}}
+    \only<3>{  \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/square3.png}
+    }}}
+\end{column}%
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{ China: defining the counterfactual distribution}
+\begin{columns}[T] % align columns
+\begin{column}{.55\textwidth}
+  \begin{wideitemize}
+  \item In the stylized example, lines are laid randomly, making it easy to define the propensity scores
+    \begin{itemize}
+    \item What about in China?
+    \end{itemize}
+  \item What is the plausible counterfactual?
+  \item<2-> Paper proposes an idea, and analagous to other examples
+    \begin{itemize}
+    \item Use \emph{planned} lines are randomized between unbuilt but planned, and built lines
+    \item Calculate distribution of propensity score by constructing $MA_{i}$ under each counterfactual scenario
+    \end{itemize}
+  \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.45\textwidth}
+    \only<1>{  \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/china1.png}
+    }}}
+    \only<2>{  \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/china2.png}
+    }}}
+\end{column}%
+\end{columns}
+\end{frame}
+
+\begin{frame}{China railroads: the punchline}
+\begin{columns}[T] % align columns
+\begin{column}{.25\textwidth}
+  \begin{wideitemize}
+  \item There was substantial bias from using OLS!
+  \item Makes sense -- geography is king...
+  \item No effect in randomized setting
+  \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.8\textwidth}
+    \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/china_estimates.pdf}
+    }}
+\end{column}%
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{ Defining the counterfactual distribution}
+\begin{columns}[T] % align columns
+\begin{column}{.9\textwidth}
+  \begin{wideitemize}
+  \item If one takes issue with the counterfactuals, that is
+    reasonable (but of course, challenging to prove one way or the other)
+  \item Key issue: this paper is just making \textbf{text} what was
+    already \textbf{subtext}
+    \begin{itemize}
+    \item There was always an assumption about some counterfactual comparison in these designs!
+    \end{itemize}
+  \item The issue is that many of these paper do not understand how to describe the randomization aspect of their research design
+    \begin{itemize}
+    \item Consequentially, they cannot describe the ``as-if random''
+      component coherently
+    \item If a researcher has an alternative proposal, they should try that and see what estimates are available!
+    \end{itemize}
+  \item Also suggests that reserchers can show a ``range'' of
+    estimates under different scenarios
+  \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.45\textwidth}
+    % \only<1>{  \makebox[\linewidth][c]{
+    % \resizebox{\linewidth}{!}{
+    %   \includegraphics{darts_map.jpeg}
+    % }}}
+\end{column}%
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Key takeaways from paper}
+  \begin{wideitemize}
+  \item Provide a toolbox for contexts when economists have found good
+    ``as-if'' random variation (and can describe the counterfactual
+    distribution)
+  \item Show that in cases where treatment is not influenced by
+    others' treatment status, approach maps very tightly with
+    traditional propensity methods, and can be much more efficient
+  \item In spatial and network cases where treatment spillovers exist,
+    show how to adjust for bias arising from units location on network
+    or graph (or relevant characteristic)
+  \end{wideitemize}
+\end{frame}
+
 \begin{frame}
 \frametitle{Caveats}
 
-This is about Currie and Gruber (1996a, b) and not Gruber and Saez (2002):
+\begin{wideitemize}
+\item   We focused on Currie and Gruber (1996a, b) cases of simulated instruments, but there are other cases of ``simulated instruments'' 
 \begin{itemize}
 \item Gruber and Saez is an individual-level instrument so the monotonicity point doesn't apply
 \item Gruber and Saez is all about characteristics (income) responding endogenously
-\end{itemize} 
-Not clear how useful/implementable idea \#2.5 is:
-\begin{itemize}
-\item Need outcomes and eligibility in same dataset
-\end{itemize} 
-In progress:
-\begin{itemize}
-\item A complete empirical example
-\item Even if you can't do \#2.5, can bound TE heterogeneity so that still have interpretable estimates
-\item Formalism is a bit sloppy: currently just for cross-section, and not panel with two-way F.E.
 \end{itemize}
-
+\item These are tax elasticities and not clear that exclusion restriction holds
+\item This tax literature is strongly tied to functional form or additional assumptions (see Blomquist, Newey, Kumar and Liang (2021))
+\end{wideitemize}
 \end{frame}
 
-\begin{frame}{Borusyak and Hull: formalizing this point even further}
-  \begin{wideitemize}
-  \item Borusyak and Hull (2021) bring this point even further,
-    emphasizing this propensity score setup in a wider range of settings
-  \item They allow for potential \emph{interference} across designs as well (due to, for example, spatial correlation in things like railroads)
-  \item BH approach builds on the BHJ/AKM notion of random shocks
-    being combined using non-random exposure
-    \begin{itemize}
-    \item Key p-score result is the same, but the build out a more
-      general (and more efficient) set of structures
-    \item Additional, in cases with interference (like railroad
-      upgrades), BH show how to ``recenter'' the pscore to account for
-      interference
-    \end{itemize}
-  \end{wideitemize}
-\end{frame}
 
 
 
