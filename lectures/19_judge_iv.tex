@@ -422,7 +422,25 @@
         \includegraphics[width=\linewidth]{images/leniency_res.png}
       \end{column}%
     \end{columns}
-\end{frame}
+  \end{frame}
+
+  \begin{frame}{ Important note: Leave-out}
+    \begin{itemize}
+    \item In practice, individuals use the ``leave-one-out'' mean,
+      rather than the actual average
+    \item Why? Because if you include your own observation, that will
+      be endogeneously correlated
+    \item The ``leave-one-out'' leniency is the mechanical solution
+      that deals with the many instrument problem
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{ Recall Many IV bias is pernicious}
+    \only<1>{    \includegraphics[width=0.7\linewidth]{images/manyiv_hull1.png}    }
+    \only<2>{    \includegraphics[width=0.7\linewidth]{images/manyiv_hull2.png}    }
+    \only<3>{    \includegraphics[width=0.7\linewidth]{images/manyiv_hull3.png}    }    
+  \end{frame}
+  
 
 \begin{frame}{Nothing stops us from doing the same with outcomes!}
     \begin{columns}[onlytextwidth, T] % align columns
@@ -592,18 +610,69 @@
   \end{columns}
 \end{frame}
 
+
+\begin{frame}{Kitagama (2015) result}
+  \begin{columns}[onlytextwidth, T] % align columns
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+      \item Consider binary endogeneous treatment $D$ and a discrete instrument $Z$.
+      \item Joint \emph{testable} assumption: instrument is valid and monotonicity. Why?
+        \begin{itemize}
+        \item Consider $p(y,d) = Pr(Y = y, D = d | Z = 1)$, $q(y,d) = Pr(Y = y, D = d | Z = 0)$
+        \item Let $P$ and $B$ be the probability over sets
+        \item Imbens and Rubin (1997) show
+          \vspace{-10pt}
+          \begin{align*}
+            P(B, 1) - Q(B,1) &= Pr(Y_{1} \in B, D_{1} > D_{0})\\
+            P(B, 0) - Q(B,0) &= Pr(Y_{0} \in B, D_{1} > D_{0})\\                        
+          \end{align*}
+        \end{itemize}
+        \vspace{-10pt}                
+      \item Testable implication:
+          \vspace{-10pt}        
+          \begin{align*}
+            P(B, 1) - Q(B,1) &\geq 0\\
+            P(B, 0) - Q(B,0) &\geq 0
+          \end{align*}
+      \end{itemize}
+    \end{column}%
+    \hfill%
+    \begin{column}{.5\textwidth}
+            \only<1>{\includegraphics[width=\linewidth]{images/kitagawa_valid.png}}
+            \only<2>{      \includegraphics[width=\linewidth]{images/kitagawa_invalid.png}}
+    \end{column}%
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Extension to Examiner designs (Frandsen et al.)}
+  \begin{columns}[onlytextwidth, T] % align columns
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+      \item Now, with multiple judges, we don't know the ``true'' $z$ values
+      \item Need to instead consider how this moves with noise
+      \item Mapping from judges to ``leniency'' and then use Kitagawa test
+        \item Package available: \texttt{testjfe} in Stata
+      \end{itemize}
+    \end{column}%
+    \hfill%
+    \begin{column}{.5\textwidth}
+    \end{column}%
+  \end{columns}
+\end{frame}
+
+
 \begin{frame}{Brief aside on inference}
   \begin{wideitemize}
   \item The many instruments field is still working on heteroskedasticty and complicated inference settings
   \item This stuff is challenging!
   \item However, given that the random assignment is effectively a set
-    of judges to a given individual, robust standard errors (or
-    clustering within whatever court assigns the judge) seems most appropriate
+    of judges to a given individual, robust standard errors seems most appropriate
   \item However, the norm (requested by referees, etc.) appears to be judge clustering 
     \begin{itemize}
     \item   Not totally clear why
     \end{itemize}
-  \item Currently working on research to try to fill this gap
+  \item Currently working on research to try to fill this gap, work
+    should be out in June.... (scheduled for talk on this)
   \end{wideitemize}
 \end{frame}
 
