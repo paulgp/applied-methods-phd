@@ -239,8 +239,10 @@
       \end{column}%
       \hfill%
       \begin{column}{.4\textwidth}
-        \only<1>{\includegraphics[width=\linewidth]{images/rd_ability.png}}        
-        \only<2>{\includegraphics[width=\linewidth]{images/rd_maimonides.png}}
+        \only<1>{\includegraphics[width=\linewidth]{images/rd_ability.png}}
+        \only<2>{\includegraphics[width=\linewidth]{images/rd_ability3.png}}        
+        \only<3>{\includegraphics[width=\linewidth]{images/rd_ability2.png}}                
+        \only<4>{\includegraphics[width=\linewidth]{images/rd_maimonides.png}}
       \end{column}%
     \end{columns}
 \end{frame}
@@ -292,6 +294,7 @@
   \item Under this assumption,  $\tau_{CATE} = E(Y_{i}(1) - Y_{i}(0) | Z_{i} = 0) = \lim_{z \downarrow 0}E(Y_{i} | Z_{i}= z) - \lim_{z \uparrow 0}E(Y_{i} | Z_{i}= z)$
     \begin{itemize}
     \item Note, this is a very particular subgroup of indiviudals, right at the cutoff
+    \item Measure zero!
     \end{itemize}
   \item Next class, we'll discuss a design-based approach for thinking about this:
     \begin{itemize}
@@ -336,7 +339,7 @@
     \begin{itemize}
     \item $\hat{E}(Y) = n^{-1}\sum_{i} Y_{i}$
     \end{itemize}
-  \item However, you can consider non-paramterics for a wide range of estimation problems
+  \item However, you can consider non-parametric estimation for a wide range of problems
     \begin{itemize}
     \item The challenge becomes limitations in data
     \item Let's make this concrete
@@ -447,10 +450,10 @@
 \begin{frame}{Challenges with non-parametric estimation}
   \begin{wideitemize}
   \item   Consider the problem of kernel estimation with two variables (or more)
-  \item   The number of datapoints necessary grows exponentilaly with the
+  \item   The number of datapoints necessary grows exponentially with the
     dimension of the problem
   \item   This downside to non-parametrics becomes particularly clear once you
-  consider non-paramteric \emph{regression} 
+  consider non-parametric \emph{regression} 
   \end{wideitemize}
 \end{frame}
 
@@ -484,7 +487,7 @@
     \begin{equation}
       \hat{\mu}(z) = \min_{\alpha, \beta}\sum_{i | z-h < Z_{i} < z} (Y_{i} - \alpha - \beta (Z_{i} - z))^{2} K_{h}(z - Z_{i})
     \end{equation}
-    where $K_{h}(u) = h^{-1} K(u/h)$ is our kernel weight. Two examples worth knowing:
+    where $K_{h}(u) = h^{-1} K(u/h)$ is our kernel weight. Three examples worth knowing:
     \begin{itemize}
     \item Uniform: $K(u) = 0.5$ ($u$ runs from -1 to 1)
     \item Triangular: $K(u) = (1-|u|)$ ($u$ runs from -1 to 1)
