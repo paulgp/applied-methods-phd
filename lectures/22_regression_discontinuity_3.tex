@@ -432,6 +432,28 @@
     \end{columns}
 \end{frame}
 
+\begin{frame}{Comparing RDHonest and rdrobust}
+    \begin{columns}[onlytextwidth, T] % align columns
+      \begin{column}{.3\textwidth}
+        \begin{wideitemize}
+        \item First, let's look at the plot
+        \item RDRobust estimate is 5.9 (2.5,8.5)
+        \item RDHonest estimate varies depending on choice of second
+          derivative bound. For $M=0.1$: 5.9 (2.9, 8.8)
+        \item What would you pick for $M$?
+        \end{wideitemize}
+      \end{column}%
+      \hfill%
+      \begin{column}{.7\textwidth}
+        \only<1->{\includegraphics[width=\linewidth]{images/rdplot_lee.png}}
+        \only<2->{\includegraphics[width=\linewidth]{images/rdrobust_est_lee.png}}
+        \only<3->{\includegraphics[width=\linewidth]{images/rdhonest_est_lee_M1.png}}
+        \only<4->{\includegraphics[width=\linewidth]{images/cases_rd.png}}                
+      \end{column}%
+    \end{columns}
+\end{frame}
+
+
 
 \begin{frame}{What if we can't shrink our bandwidth? Discrete Regression Discontinuity}
     \begin{columns}[onlytextwidth, T] % align columns
