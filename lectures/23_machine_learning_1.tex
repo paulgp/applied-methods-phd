@@ -266,7 +266,7 @@
     \begin{itemize}
     \item There are a number of useful hybrid methods that combine different versions of this
     \item These models vary in their success and in their computational tractability as $K$ gets large
-    \item LASSO and ridge (and elastic net) have algorithmically had much success due to their solvability
+    \item LASSO and ridge (and elastic net) have algorithmically had much success due to their tractability
     \end{itemize}
   \end{wideitemize}
 \end{frame}
@@ -289,6 +289,23 @@
       \end{itemize}
   \end{wideitemize}
 \end{frame}
+
+
+\begin{frame}{What is the contrast being made? Breiman (2001)}
+    \begin{columns}[onlytextwidth, T] % align columns
+      \begin{column}{.5\textwidth}
+        \begin{wideitemize}
+          \item What is the focus of our analysis?
+        \end{wideitemize}
+      \end{column}%
+      \hfill%
+      \begin{column}{.5\textwidth}
+        \includegraphics[width=\linewidth]{images/breiman_box1.png}
+        \includegraphics[width=\linewidth]{images/breiman_box2.png}        
+      \end{column}%
+    \end{columns}
+\end{frame}
+
 
 \begin{frame}{A primer on terminology}
     \begin{columns}[onlytextwidth, T] % align columns
@@ -327,7 +344,6 @@
     \item However, averaging over many of these noisy estimates will
       quickly get at the right value
     \end{itemize}
-  \item This concept applies 
   \end{wideitemize}
 \end{frame}
 
@@ -445,7 +461,7 @@
       \begin{wideitemize}
       \item In essence this approach is like exhaustively dummying but:
         \begin{itemize}
-        \item The cutpoitns are chosen through the data
+        \item The cutpoints are chosen through the data
         \item the interactions and cuts are penalized to avoid full
           saturation
         \end{itemize}
@@ -493,6 +509,85 @@
         \only<2>{\includegraphics[width=\linewidth]{images/pd_dist_contour_0_1.pdf}}        
       \end{column}%
     \end{columns}
+\end{frame}
+
+\begin{frame}{Three key insights from ML (Breiman (2001))}
+  \begin{columns}[onlytextwidth, T] % align columns
+    \begin{column}{.5\textwidth}
+  \begin{wideitemize}
+  \item<1-> Once you are fitting to predict outcome as accurately as
+    possible, there are potentially many equally good models that will put weight on different inputs
+    (\textbf{Rashomon})
+  \item<2-> Simple and transparent models tend to be less accurate (\textbf{Occam})
+  \item<3-> Dimensionality is a \emph{benefit} in ML (unlike traditional non-parametrics) (\textbf{Bellman})
+  \end{wideitemize}
+      \end{column}%
+      \hfill%
+      \begin{column}{.4\textwidth}
+        \only<1>{\includegraphics[width=\linewidth]{images/rashomon.jpeg}}
+        \only<2>{\includegraphics[width=\linewidth]{images/occam.png}}
+        \only<3>{\includegraphics[width=\linewidth]{images/bellman.jpg}}        
+      \end{column}%
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Implications of Rashomon}
+  \begin{wideitemize}
+  \item Formally,
+    \begin{quote} What I call the Rashomon Effect is
+      that there is often a multitude of different descriptions
+      [equations fx] in a class of functions giving about the same
+      minimum error rate.
+    \end{quote}
+  \item One important implication of this is model averaging can be
+    very successful, since the paths to getting similar error rates
+    can be independent (``bagging'')
+  \item \emph{significantly} cautions interpretation of weights from
+    model inputs
+  \item Also means that models may be highly sensitive!
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Implications of Rashomon (D'amour (2021))} 
+  \includegraphics[width=0.8\linewidth]{images/rashomon_stresstest.png}
+\end{frame}
+
+\begin{frame}{Implications of Occam}
+  \begin{wideitemize}
+  \item Many of the most effective models are hard to ``explain''
+    \begin{itemize}
+    \item e.g., what drives the Random Forest model?
+    \end{itemize}
+  \item Is there a given input that matters? In OLS, we can look at coefficients
+  \item This is a serious challenge in ML models (especially once
+    combined with Rashomon)
+    \begin{itemize}
+    \item Better to use ML to substitiute for ``nuisance'' parameters
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+
+\begin{frame}{Implications of Bellman}
+  \begin{wideitemize}
+  \item Recall that for a fixed sample $n$, if we increase the number
+    of features (covariates) $K$, we will get noisier and noisier
+    estimates with something like OLS (or non-parametric estimation)
+  \item This is what Richard Bellman termed ``the curse of dimensionality''
+  \item This curse is a blessing for many ML applications; why?
+    \begin{itemize}
+    \item The curse shows up in estiamting underlying parameters
+    \item When focusing on the outcome, $y$, the solutions often
+      improve as you increase the dimensionality
+    \item This is due, implicitly, to penalization, and avoiding a
+      focus on unbiasedness
+    \end{itemize}
+  \item Hence, key insight: rather than throw out data, use shrinkage
+    (via penalization, or priors) to maintain an effective prediction
+    \begin{itemize}
+    \item This insight goes back to Stein (1956)!
+    \end{itemize}
+  \end{wideitemize}
 \end{frame}
 
 
