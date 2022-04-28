@@ -302,7 +302,7 @@
 
 \begin{frame}{Causal trees (Athey and Imbens (2016)}
     \begin{columns}[onlytextwidth, T] % align columns
-      \begin{column}{.5\textwidth}
+      \begin{column}{.8\textwidth}
         \begin{wideitemize}
         \item Key insight of this paper: when you choose what to split
           on, you are picking something that is ``unusual'' relative
@@ -310,21 +310,63 @@
           \begin{itemize}
           \item This induces bias!
           \end{itemize}
-        \item Hence, the CT approach splits the sample again -- first
-          using part of the sample to pick the tree leaves, then
-          testing the effects within the leaves using the left-out
-          sample
+        \item To see this, first focus on estimation of means, and 
+          consider a simple example where $X$ is a simple dummy
+          variable. You can either split on it, or not split on it.
           \begin{itemize}
-          \item This gives you three samples: two training, and one true test
+          \item Imagine you split on it if $\bar{Y}_{1} - \bar{Y}_{0} > c$, some cutoff
+          \end{itemize}
+        \item On average, while each one is consistent, if you split
+          only when the difference is large, you'll be selecting on a
+          subset that will be biased relative to the population
+        \item Key idea: split the sample into a training and test sample
+          \begin{itemize}
+          \item Use the training sample to decide on where to split
+          \item Use the test to calculate means and evaluate the fit
           \end{itemize}
         \end{wideitemize}
       \end{column}%
       \hfill%
       \begin{column}{.5\textwidth}
-        \includegraphics[width=\linewidth]{images/Tree_Lo.pdf}
       \end{column}%
     \end{columns}
 \end{frame}
+
+\begin{frame}{Causal trees (Athey and Imbens (2016)}
+    \begin{columns}[onlytextwidth, T] % align columns
+      \begin{column}{.7\textwidth}
+        \begin{wideitemize}
+        \item Algorithmically, the approach trades off between the following issues:
+          \begin{itemize}
+          \item Tree / Forest approaches overfit within sample
+            \begin{itemize}
+            \item Shows up in depth
+            \item Shows up in means of splits
+            \end{itemize}
+          \item The algorithm focuses just on splitting within a leaf
+            \begin{itemize}
+            \item Ignores the fact that making many splits will create
+              a lot of overall variance (that may not be meaningful)
+            \end{itemize}
+          \end{itemize}
+        \item Sample splitting will address these issues
+          \begin{itemize}
+          \item Sample split to get consistent estimates
+          \item Sample split to penalize too much depth and overall variance
+          \end{itemize}
+        \item Key payout: results will be pointwise consistent!
+          \begin{itemize}
+          \item In Wager and Athey's Causal Forests, will also have
+            asymptotically normal distributions as well
+          \end{itemize}
+        \end{wideitemize}
+      \end{column}%
+      \hfill%
+      \begin{column}{.5\textwidth}
+      \end{column}%
+    \end{columns}
+\end{frame}
+
 
 \begin{frame}{Causal trees (Athey and Imbens (2016)}
     \begin{columns}[onlytextwidth, T] % align columns
@@ -348,7 +390,7 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{GATES and CLAN}
+\begin{frame}{GATES and CLAN (Chernozhukov et al. (2020)}
   \begin{wideitemize}
   \item The causal tree approach is a beautiful approach in solving
     the bias and infernece issues
@@ -360,6 +402,8 @@
       as any standard regression approach
     \item But this fails to account for the fact that these bins may
       change in different samples
+    \item Consider how much your CATE changes if the cutoff point had
+      changed slightly
     \end{itemize}
   \item Chernozhukov et al. (2020) highlight this issue, and propose a
     much more general approach
@@ -370,15 +414,10 @@
   \end{wideitemize}
 \end{frame}
 
-\begin{frame}{GATES and CLAN}
+\begin{frame}{GATES and CLAN  (Chernozhukov et al. (2020)}
   \begin{wideitemize}
-  \item This approach has a lot of technical details
-    \begin{itemize}
-    \item I will not be able to do it justice today
-    \end{itemize}
-  \item However, the key concept, as highlighted in the paper, is that
-    instead of trying to identify the CATEs directly, identify the key
-    features of the CATEs instead
+  \item The key concept is that instead of trying to identify the
+    CATEs directly, identify the key features of the CATEs instead
     \begin{itemize}
     \item More precisely, identify how much heterogeneity there is in
       the underlying estimates
@@ -388,18 +427,48 @@
   \item The key approach starts with the following concept:
     \begin{itemize}
     \item Randomly split the sample into a main and auxiliary sample
-    \item In the auxiliary sample, estimate the control mean, $B(X)$
-      and the treatment effect $\tau(X)$ using any ML method.
-    \item With these predictions, we will now proceed
-    \end{itemize}
+    \item In the auxiliary sample, estimate the control mean, $B(X)$,
+      and the treatment effect $S(X)$ (note that $S(X)$ will just be
+      the treatment mean minus the control mean)
+    \end{itemize}      
+  \item This really just entails prediction of the control and
+    treatment means for each group using an ML method
+  \item Hence, we estimate $\hat{B}(X)$ and $\hat{S}(X)$ using a
+    training sample, and then use the test sample to predict the
+    actual values
   \end{wideitemize}
 \end{frame}
+
+\begin{frame}{BLP  (Chernozhukov et al. (2020)}
+    \begin{columns}[onlytextwidth, T] % align columns
+      \begin{column}{.5\textwidth}
+  \begin{wideitemize}
+  \item Crucially, the punchline is that $\hat{B}(X)$ and $\hat{S}(X)$
+    will be biased, the inputs from the training sample are
+    uncorrelated with the estimation error
+  \item This implies that for a given observation in the training
+    sample, $\hat{B}(X_{i})$ and $\hat{S}(X_{i})$ are useful summary
+    statistics (projections) for that observation.
+  \item What the paper shows is that if you take these measures and
+    run the following regression, you can identify whether there is
+    meaningful heterogeneity
+  \end{wideitemize}
+      \end{column}%
+      \hfill%
+      \begin{column}{.5\textwidth}
+        \only<1>{\includegraphics[width=\linewidth]{images/chernozhukov_Blp.png}}
+        \only<2>{\includegraphics[width=\linewidth]{images/chernozhukov_Blp2.png}}
+      \end{column}%
+    \end{columns}
+\end{frame}
+
 
 \begin{frame}{GATES and CLAN}
     \begin{columns}[onlytextwidth, T] % align columns
       \begin{column}{.5\textwidth}
   \begin{wideitemize}
-  \item The problem is that $\tau(X)$ is very high-dimensional 
+  \item If we identify heterogeneity, we'd like to know which $X$
+    drive it.  The problem is that $\tau(X)$ is very high-dimensional
   \item The GATES approach says -- what if we grouped the effects into
     bins $G$, increasing in effect size.
     \begin{itemize}
@@ -442,9 +511,10 @@
 \begin{frame}{Implementation in practice}
   \begin{wideitemize}
   \item Chernozhukov et al. (2020) outline the algorithm in detail in the paper
-  \item Best I have found is Max Eber has code here: \url{https://github.com/maximilianeber/ml-treat}
-  \item Otherwise... good luck! I think this is very doable, if you've
-    done it once, but there's a serious learning curve
+  \item Code is available here from Mert Demirer
+    (\url{https://github.com/demirermert/MLInference/blob/master/Heterogeneity/EL1.R})
+  \item We will be implementing this for the homework
+  \item Important note -- still need conditional exogeneity / strict ignorability!
   \end{wideitemize}
   
 \end{frame}
