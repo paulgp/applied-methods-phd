@@ -104,10 +104,10 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
   instruments will be as before (same sex and twins). Implement the procedure below for both instruments.
   \begin{enumerate}
   \item Let
-    $P(y,d) = n_{1} \sum_{i : Z_{i} = 1} 1(Y_{i} = y, D_{i} = d)$,
+    $P(y,d) = n_{1}^{-1} \sum_{i : Z_{i} = 1} 1(Y_{i} = y, D_{i} = d)$,
     where $n_{1}$ is the number of observations where $Z_{i} = 1$ in
     the sample, and
-    $Q(y,d) = n_{0} \sum_{i : Z_{i} = 0} 1(Y_{i} = y, D_{i} = d)$,
+    $Q(y,d) = n_{0}^{-1} \sum_{i : Z_{i} = 0} 1(Y_{i} = y, D_{i} = d)$,
     where $n_{1}$ is the number of observations where $Z_{i} = 0$ in
     the sample. $n = n_{0} + n_{1}$ Estimate $P(y,d)$ and $Q(y,d)$ and
     report them for the 4 possible pairs of $(y,d)$.
