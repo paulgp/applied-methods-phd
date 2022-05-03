@@ -185,13 +185,13 @@
   \item We have, so far, discussed ML in the context of two assumptions:
     \begin{enumerate}
     \item Our data was a relatively well-defined (\emph{feature} matrix $X$ and outcome $y$)
-    \item We had an outcome to go with each set of predictors
+    \item We had an outcome ($y$) to go with each set of predictors
     \end{enumerate}
   \item Today we'll talk about settings where these are relaxed
   \item Data that is 
     \begin{itemize}
-    \item unstructured 
-    \item unlabeled (e.g. unsupervised approaches)
+    \item unstructured (e.g. some data $\mathcal{X}$ that we need to turn into a matrix $X$)
+    \item unlabeled (no outcome $y$ defined)
     \end{itemize}
   \item The key challenge with this literature is keeping eye on the prize:
     \begin{itemize}
@@ -468,21 +468,70 @@
     \item It turns out that the parameters of the model are
       unidentified, generically
       \begin{itemize}
-      \item The priors are necessary for estimation!
+      \item The joint probability of the corpus from model is given by
+        $P = B\Theta$, where $B$ is the matrix of $\beta$
+        ($p \times K$), and $\Theta$ is $K \times n$
+      \item Concretely, imagine $p = 1, and K = 2$
       \end{itemize}
-    \item As a result, choice of prior can move your results 
+    \item The priors are necessary for estimation!
       \begin{itemize}
-      \item Many empiricists might feel uncomfortable with this
+      \item As a result, choice of prior can move your results
+      \item Many empiricists might feel uncomfortable with this        
       \end{itemize}
     \end{wideitemize}
       \end{column}%
       \hfill%
       \begin{column}{.5\textwidth}
-        \includegraphics[width=\linewidth]{images/pepe_1.png}
+        \only<1->{\includegraphics[width=\linewidth]{images/pepe_1.png}}
+        \only<2->{\includegraphics[width=\linewidth]{images/lda_unidentified.png}        }
       \end{column}%
     \end{columns}
   \end{frame}
 
+  \begin{frame}{Example 3: TFIDF + Cosine Similarity}
+    \begin{columns}[onlytextwidth, T] % align columns
+      \begin{column}{.5\textwidth}
+        \begin{wideitemize}
+        \item Define a concept called TFIDF: term-frequency inverse document frequency
+          \begin{equation}
+            TF_{pw} = \frac{c_{pw}}{\sum_{k}c_{pk}}
+          \end{equation}
+          which is the frequency that word $w$ shows up in document $p$ relative to the other words.
+        \item Define $IDF_{w}$ as
+          \begin{equation}
+            IDF_{w} = \log\left(\frac{d}{d \text{with word } w}\right)
+          \end{equation}
+        \item Then $TFIDF_{pw}$ is  the product of those two.
+        \end{wideitemize}
+      \end{column}%
+      \hfill%
+      \begin{column}{.5\textwidth}
+        \only<1->{\includegraphics[width=\linewidth]{images/kelly_cosine.png}}
+      \end{column}%
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}{Example 3: TFIDF + Cosine Similarity}
+    \begin{columns}[onlytextwidth, T] % align columns
+      \begin{column}{.5\textwidth}
+        \begin{wideitemize}
+        \item This paper constructs BIDF, which is a backwards looking version of IDF:
+          \begin{equation}
+            IDF_{wp} = \log\left(\frac{\text{patents priors to p}}{\text{1+ patents prior to p that include w}}\right)
+          \end{equation}
+        \item Finally, they look at the cosine distance between these TFBIDF for a given patent.
+          \item They can identify ``new'' patents using this!
+        \end{wideitemize}
+      \end{column}%
+      \hfill%
+      \begin{column}{.5\textwidth}
+        \only<1->{\includegraphics[width=\linewidth]{images/kelly_cosine.png}}
+      \end{column}%
+    \end{columns}
+  \end{frame}
+
+  
+  
   \begin{frame}{My Main takeaway}
     \begin{wideitemize}
     \item This is a really powerful way to take new data and apply to problems
