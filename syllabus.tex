@@ -68,7 +68,7 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
 {\Large \textsc{MGMT 737: Applied Empirical Methods}}
 \end{center}
 \begin{center}
-Spring 2021
+Spring 2022
 \end{center}
 %\date{September 26, 2014}
 
@@ -76,8 +76,8 @@ Spring 2021
 \rule{6in}{0.4pt}
 \begin{minipage}[t]{.75\textwidth}
 \begin{tabular}{llcccll}
-\textbf{Instructor:} & Paul Goldsmith-Pinkham & & &  & \textbf{Time:} & TTh, 1-2:20pm  \\
-\textbf{Email:} &  \href{mailto:paul.goldsmith-pinkham@yale.edu}{paul.goldsmith-pinkham@yale.edu} & & & & \textbf{Place:} & Online
+\textbf{Instructor:} & Paul Goldsmith-Pinkham & & &  & \textbf{Time:} & TTh, 2:40-4pm  \\
+\textbf{Email:} &  \href{mailto:paul.goldsmith-pinkham@yale.edu}{paul.goldsmith-pinkham@yale.edu} & & & &  & 
 \end{tabular}
 \end{minipage}
 \rule{6in}{0.4pt}
@@ -99,9 +99,7 @@ Spring 2021
 graduate students interested in econometric methods used in empirical
 research. The goal of this class is to provide an overview of
 different empirical methods, with an emphasis on practical
-implementation.  I will provide a set of lecture slides and
-notes. There are additional background papers that are largely
-optional.
+implementation.  I will provide a set of lecture slides. There are additional background papers that are optional, but are important if you want concrete details on the results.
 
 More generally, this is a course where I focus on providing my
 understanding and intuition of empirical methods, as they are used by
@@ -166,9 +164,10 @@ the following resources in R for guidance (Many thanks to Max Kasy for organizin
 This is a partial list of various interesting and useful books that will be touched during the course. 
 \begin{itemize}
 \item Joshua Angrist and J\"orn-Steffen Pischke, {\textit{Mostly Harmless Econometrics}}
-\item Scott Cunningham, {\textit{Causal Inference: The Mixtape}},  \url{https://mixtape.scunning.com/}
 \item Peter M. Aronow and Benjamin T. Miller, {\textit{Foundations of Agnostic Statistics}}
+\item Imbens and Rubin, {\textit{Causal Inference for Statistics, Social, and Biomedical Sciences}}
 \item Kieran Healy, {\textit{Data Visualization: A Practical Introduction}}, \url{https://socviz.co/}
+\item Scott Cunningham, {\textit{Causal Inference: The Mixtape}},  \url{https://mixtape.scunning.com/}
 \end{itemize} 
 
 \vskip.15in
@@ -181,37 +180,39 @@ ECON 550, ECON 551
 \begin{enumerate}
 \item \underline{Causality, Statistics, and Economics}
   \begin{enumerate}
-  \item Potential Outcomes and Directed Acyclic Graphs
+  \item Class 1: Potential Outcomes and Directed Acyclic Graphs
     \begin{itemize}
-    \item Chapter 7, Aronow and Miller 
+    \item Chapter 7, Aronow and Miller
+    \item Chapter 1, Imbens and Rubin
     \item Chapter 3, Cunningham
     \item ``Structural vs. Reduced Form'' Language, Confusion and Models in Empirical Economics, Haile \url{http://www.econ.yale.edu/~pah29/intro.pdf} (or on course website)
     \item ``Statistics and Causal Inference'', Holland 1986
     \item ``The Identification Zoo: Meanings of Identification in Econometrics'', Lewbel, 2019
     \end{itemize}
-  \item Research Design, Randomization, and Design-Based Inference
+  \item Class 2: Research Design, Randomization, and Model- vs. Design-Based Inference
     \begin{itemize}
+    \item Chapter 3+4, Imbens and Rubin      
     \item ``Causality and design-based inference'', Bowers, J. \& Leavitt, T. (2020)
     \item ``Instruments, Randomization, and
       Learning about Development'' Deaton (2010)
     \item ``Better LATE Than Nothing: Some Comments on Deaton (2009) and Heckman and Urzua (2009)'' Imbens (2010)
     \item ``Building Bridges between Structural and Program Evaluation Approaches to Evaluating Policy''
     \item ``Let's take the Con out of Econometrics'', Leamer (1983)
-    \item ``The Credibility Revolution in Empirical Economics: How Better Research Design is Taking the Con out of Econometrics'', Angrist and Pischke (2010)      
+    \item ``The Credibility Revolution in Empirical Economics: How Better Research Design is Taking the Con out of Econometrics'', Angrist and Pischke (2010)
     \end{itemize}
-  \item Propensity Scores
+  \item Class 3: Propensity Scores
     \begin{itemize}
     \item ``The central role of the propensity score in observational
       studies for causal effects'' Rosenbaum and Rubin (1983)
     \item ``Matching As An Econometric Evaluation Estimator'', Heckman, Ichimura, and Todd (1998)
-    \item ``Efficient Estimation of Average Treatment Effects Using the Estimated Propensity Score'', Hirano, Imbens and Rider (2003)
+    \item ``Efficient Estimation of Average Treatment Effects Using the Estimated Propensity Score'', Hirano, Imbens and Ridder (2003)
     \item ``Propensity Score-Matching Methods for Nonexperimental Causal Studies'', Dehijia and Wahba (2002)
     \item ``Does matching overcome LaLonde's critique of nonexperimental estimators?'', Smith and Todd (2005)
     \item ``Practical propensity score matching: a reply to Smith and Todd'', Dehijia (2005)
     \item ``Nonparametric Estimation of Average Treatment Effects Under Exogeneity: A Review'', Imbens (2004)
-%    \item ``Why Propensity Scores Should Not Be Used for Matching.'' King and Nielsen (2019)
+    \item ``Contamination Bias in Linear Regression,'' Goldsmith-Pinkham, Hull and Koles\'ar (2022)
     \end{itemize}
-  \item Interference, Spillovers and Dynamics
+  \item Class 4: Interference, Spillovers and Dynamics
     \begin{itemize}
     \item ``Identification of Endogenous Social Effects: The Reflection Problem'' Manski (1993)
     \item ``Social Networks and the Identification of Peer Effects'' Goldsmith-Pinkham and Imbens (2013)
@@ -224,30 +225,31 @@ ECON 550, ECON 551
   \end{enumerate}
 \item \underline{Linear Regression}
   \begin{enumerate}
-  \item Inference
+  \item Class 5: Inference
     \begin{itemize}
     \item ``Robust Standard Errors in Small Samples: Some Practical Advice.'' Imbens and Koles\'ar  (2016)
     \item ``GMM estimation with cross sectional dependence'' Conley (1999)
     \item ``The Standard Errors of Persistence'' Kelly (2019)
     \item ``Clustering, spatial correlations, and randomization inference.'' Barrios et al. (2012)
     \item  ``Sampling-based vs. Design-based Uncertainty in Regression Analysis.'' Abadie et al. (2019)
-    \item Abadie et al. ``When Should You Adjust Standard Errors for Clustering?'' 2017
-    \item Athey et al. ``Using Wasserstein Generative Adversarial Networks for the Design of Monte Carlo Simulations''
+    \item  ``When Should You Adjust Standard Errors for Clustering?'' Abadie et al. (2022)
+    \item  ``Using Wasserstein Generative Adversarial Networks for the Design of Monte Carlo Simulations'' Athey et al.
     \end{itemize}
-  \item Seimparametrics and Visualization
+  \item Class 6: Semiparametrics and Visualization
     \begin{itemize}
     \item ``On Binscatter'' Cattaneo et al. (2019)
     \item ``Validation of Visual Statistical Inference, Applied to Linear Models'', Majumder, Hoffman and Cook (2014)
     \item ``Visual Inference and Graphical Representation in Regression Discontinuity Designs,'' Kortin, Lieberman, Matsudaira, and Shen (2020)
     \item ``Better Data Visualizations: A Guide for Scholars, Researchers, and Wonks'' Schwabish (2021)
     \item ``Data Visualization: A Practical Introduction'', \url{https://socviz.co/}, Healy
+    \item ``Contamination Bias in Linear Regression'', Goldsmith-Pinkham, Hull and Koles\'ar (2022)
     \end{itemize}
-  \item Quantile Regression
+  \item Class 7: Quantile Regression
     \begin{itemize}
-    \item Koenker and Hallock. Quantile Regression. 2001
-    \item Koenker. Quantile Regression: 40 Years On. 2017
+    \item Koenker and Hallock. ``Quantile Regression''. 2001
+    \item Koenker. ``Quantile Regression: 40 Years On''. 2017
     \end{itemize}
-  \item Penalized linear regression
+  \item Class 8: Penalized linear regression
     \begin{itemize}
     \item ``Regression shrinkage and selection via the lasso'' Tibshiriani (1996)
     \item ``The adaptive lasso and its oracle properties'', Zou (2006)
@@ -265,17 +267,17 @@ ECON 550, ECON 551
   \end{enumerate}
 \item \underline{Likelihood Methods}
   \begin{enumerate}
-  \item Binardy Discrete Choice, GLM and Computational Methods
+  \item Class 9: Binary Discrete Choice, GLM and Computational Methods
     \begin{itemize}
     \item ``Discrete Choice Methods with Simulation'' Train (2009) \url{https://eml.berkeley.edu/books/choice2.html}
     \end{itemize}
-  \item Multiple Discrete Choices
+  \item Class 10: Multiple Discrete Choices
     \begin{itemize}
     \item ``Maximum score estimation of the stochastic utility model of choice'', Manski (1975)
     \item ``Analysis of covariance with qualitative data'' Chamberlain (1980)
     \item ``Binary Response Models for Panel Data: Identification and Information'' Chamberlain (2010)
     \end{itemize}
-  \item Duration models
+  \item Class 11: Duration models
     \begin{itemize}
     \item ``Econometric Methods for the Duration of Unemployment'', Lancaster (1979)
     \item ``Generalised residuals and heterogeneous duration models: With applications to the Weilbull model'', Lancaster (1985)
@@ -283,7 +285,7 @@ ECON 550, ECON 551
     \item ``Economic duration data and hazard functions'', Kiefer (1988)
     \item ``Duration Models: Specification, Identification and Multiple Durations'', Van Den Berg (2001)
     \end{itemize}
-  \item Hierarchical modeling + Bayesian Shrinkage
+  \item Class 12: Hierarchical modeling + Bayesian Shrinkage
     \begin{itemize}
     \item ``The Impacts of Neighborhoods on Intergenerational Mobility II: County-Level Estimates'' Chetty and Hendren (2018)
     \item ``Understanding the average impact of microcredit expansions: A bayesian hierarchical analysis of seven randomized experiments'' Meager (2019)
@@ -292,7 +294,7 @@ ECON 550, ECON 551
   \end{enumerate}
 \item  \underline{Canonical Research Designs}
   \begin{enumerate}
-  \item Difference-in-differences
+  \item Class 13: Difference-in-differences (Part I): single timing and staggered timing
     \begin{itemize}
     \item ``Difference-in-differences with variation in treatment timing'', Goodman-Bacon (2018)
     \item ``Two-way fixed effects estimators with heterogeneous treatment effects'' de Chaisemartin and d'Haultfoeuille (2020)
@@ -303,13 +305,19 @@ ECON 550, ECON 551
     \item ``Fuzzy differences-in-differences'' de Chaisemartin and d'Haultfoeuille (2018)
     \item ``Semiparametric difference-in-differences estimators'' Abadie (2005)
     \end{itemize}
-  \item Event Studies, Synthetic Control + Synthetic DinD
+  \item Class 14: Difference-in-differences (Part II): Event Studies, Synthetic Control + Synthetic DinD
     \begin{itemize}
     \item ``Using synthetic controls: Feasibility, data requirements, and methodological aspects'' Abadie (2019)
     \item ``Synthetic control methods for comparative case studies: Estimating the effect of California’s tobacco control program'' Abadie, Diamond and Hainmueller (2010)
     \item ``Synthetic Difference In Differences'', Arkhangelsky et al. (2019)
     \end{itemize}
-  \item Instrumental Variables (Part I)
+  \item Class 15: Difference-in-differences (Part III): The Checklist and Extensions
+    \begin{itemize}
+    \item ``Using synthetic controls: Feasibility, data requirements, and methodological aspects'' Abadie (2019)
+    \item ``Synthetic control methods for comparative case studies: Estimating the effect of California’s tobacco control program'' Abadie, Diamond and Hainmueller (2010)
+    \item ``Synthetic Difference In Differences'', Arkhangelsky et al. (2019)
+    \end{itemize}
+  \item Class 16: Instrumental Variables (Part I)
     \begin{itemize}
     \item ``Identification and estimation of local average treatment effects'' Imbens and Angrist (1994)
     \item ``Identification of causal effects using instrumental variables'' Angrist, Imbens and Rubin (1996)
@@ -318,7 +326,7 @@ ECON 550, ECON 551
     \item ``Comment on James J. Heckman,`Instrumental Variables: A Study of Implicit Behavioral Assumptions Used in Making Program Evaluations''' Angrist and Imbens (1999)
     \item ``Instrumental variables: response to Angrist and Imbens'' Heckman (1999)
     \end{itemize}
-  \item Instrumental Variables (Part II)
+  \item Class 17: Instrumental Variables (Part II)
     \begin{itemize}
     \item ``On the structure of IV estimands'' Andrews (2019)
     \item ``Weak instruments in instrumental variables regression: Theory and practice'' Andrews, Stock and Sun (2019)
@@ -330,7 +338,7 @@ ECON 550, ECON 551
       for identifying and bounding treatment effects'' Heckman and
       Vytlacil (1999)
     \end{itemize}
-  \item Instrumental Variables (Part III)
+  \item Class 18: Instrumental Variables (Part III)
     \begin{itemize}
     \item ``On the structure of IV estimands'' Andrews (2019)
     \item ``Weak instruments in instrumental variables regression: Theory and practice'' Andrews, Stock and Sun (2019)
@@ -342,15 +350,17 @@ ECON 550, ECON 551
       for identifying and bounding treatment effects'' Heckman and
       Vytlacil (1999)
     \end{itemize}
-  \item Bartik + Simulated Instruments
+  \item Class 19: Bartik, Simulated, Recentered, and Granular Instruments
     \begin{itemize}
     \item ``Bartik Instruments: What, When, Why and How'' Goldsmith-Pinkham, Sorkin and Swift (2020)
     \item ``Quasi-experimental shift-share research designs'' Borusyak, Hull and Jaravel (2020)
     \item ``Shift-share designs: Theory and inference'' Adao, Kolesar and Morales (2019)
     \item ``Non-random exposure to exogenous shocks: Theory and applications'' Borusyak and Hull (2021)
-    \item ``The Estimation of Treatment Effects in Simulated Instrument Designs'', Aronow, Goldsmith-Pinkham and Sorkin (mimeo) 
+    \item ``Efficient Estimation with Non-Random Exposure to Exogeneous Shocks'' Borusyak and Hull (2022)
+    \item ``The Estimation of Treatment Effects in Simulated Instrument Designs'', Aronow, Goldsmith-Pinkham and Sorkin (mimeo)
+    \item ``Granular Instrumental Variables'', Gabaix and Koijen (2022)
     \end{itemize}
-  \item Examiner Designs aka Judge IV 
+  \item Class 20: Examiners, Leniency, and Hausman Instruments
     \begin{itemize}
     \item ``Consumer bankruptcy and financial health'' Dobbie, Goldsmith-Pinkham and Yang (2016)
     \item ``The criminal and labor market impacts of incarceration.'' Mueller-Smith (2015)
@@ -358,7 +368,7 @@ ECON 550, ECON 551
     \item ``Racial bias in bail decisions'' Arnold, Dobbie, and Yang (2018)
     \item ``Family Welfare Cultures'', Dahl, Kostol and Mogstad (2014)
     \end{itemize}
-  \item Regression Discontinuity I: Identification and Groundwork
+  \item Class 21: Regression Discontinuity I: Identification and Groundwork
     \begin{itemize}
     \item ``Identification and estimation of treatment effects with a regression-discontinuity design'' Hahn, Todd and Van Der Klaauw (2001)
     \item ``A Practical Introduction to Regression Discontinuity Designs: Foundations'', Cattaneo, Idrobo and Titiunik, (2020)
@@ -369,38 +379,25 @@ ECON 550, ECON 551
     \item ``Robust nonparametric confidence intervals for regression-discontinuity designs'' Calanico et al. (2014)
     \item ``Regression discontinuity designs using covariates'' Calanico et al (2019)
     \end{itemize}
-  \item Regression Discontinuity II: The Checklist
-  \item Regression Discontinuity III: Extensions
+  \item Class 22: Regression Discontinuity II: The Checklist
+  \item Class 23: Regression Discontinuity III: Extensions
     \begin{itemize}
     \item ``Approximate Permutation Tests and Induced Order Statistics in the Regression Discontinuity Design'', Canay and Kamat (2017)
     \item ``Manipulation of the running variable in the regression discontinuity design: A density test'', McCrary (2008)
     \item ``External Validity in Fuzzy Regression Discontinuity Designs'', Bertanha and Imbens (2019)
     \item ``Bounds on treatment effects in regression discontinuity designs with a manipulated running variable'', Gerard, Rokkanen and Rothe (2020)
     \item ``A Simple Adjustment for Bandwidth Snooping'', Armstrong and Kolesar (2018)
-\end{itemize}     
-  % \item Bunching Estimators
-  %   \begin{itemize}
-  %   \item ``On Bunching and Identification of the Taxable Income Elasticity'' Blomquist et al. (2019)
-  %   \end{itemize}
+    \end{itemize}     
   \end{enumerate}
 \item \underline{Machine Learning}
   \begin{enumerate}
-  \item Supervised Machine Learning I: Prediction
+  \item Class 24: Supervised Machine Learning I: Prediction
     \begin{itemize}
     \item ``Machine Learning Methods Economists Should Know About.''Athey S, Imbens G.  (2019)
     \item ``Predictably Unequal? The Impact of Machine Learning on Credit Markets'' Fuster et al. (2020)
     \item ``Deep Neural Networks for Estimation and Inference'' Ferrell, Liang and Misra (2020)
     \end{itemize}
-  \item Supervised Machine Learning II: Heterogeneous Treatment Effects
-    \begin{itemize}
-    \item ``Estimation and Inference of Heterogeneous Treatment Effects using Random Forests'' Wager and Athey (2019)
-    \item ``Recursive partitioning for heterogeneous causal effects'' Athey and Imebns (2016)
-    \item ``Using Causal Forests to Predict Treatment Heterogeneity:  An Application to Summer Jobs'' Davis and Heller (2017)
-    \item ``Generic Machine Learning Inference On Heterogenous
-      Treatment Effects In Randomized Experiments, With An Application
-      To Immunization In India'' Chernozhukov et al. (2020)
-    \end{itemize}
-  \item Unstructured Data and Unsupervised Machine Learning 
+  \item Class 24: (IF TIME PERMITS) Unstructured Data and Unsupervised Machine Learning 
     \begin{itemize}
     \item ``Text as Data'', Kelly, Gentzkow and Taddy (2020)
     \item ``Measuring Technological Innovation Over the Long Run'', Kelly et al. (2020)
@@ -411,10 +408,19 @@ ECON 550, ECON 551
     \item ``Text Selection'', Kelly, Manela and Moreira (2020)
     \item ``The Structure of Economic News'', Bybee et al. (2020)
     \end{itemize}
+  \item Class 25: Supervised Machine Learning II: Heterogeneous Treatment Effects
+    \begin{itemize}
+    \item ``Estimation and Inference of Heterogeneous Treatment Effects using Random Forests'' Wager and Athey (2019)
+    \item ``Recursive partitioning for heterogeneous causal effects'' Athey and Imebns (2016)
+    \item ``Using Causal Forests to Predict Treatment Heterogeneity:  An Application to Summer Jobs'' Davis and Heller (2017)
+    \item ``Generic Machine Learning Inference On Heterogenous
+      Treatment Effects In Randomized Experiments, With An Application
+      To Immunization In India'' Chernozhukov et al. (2020)
+    \end{itemize}
   \end{enumerate}
 \item \underline{Miscellaneous}
   \begin{enumerate}
-  \item Partial Identification
+  \item Class 26: Partial Identification
     \begin{itemize}
     \item ``Nonparametric bounds on treatment effects'' Manski. (1990)
     \item ``Confidence intervals for partially identified parameters'' Imbens and Manski (2004)
@@ -435,8 +441,7 @@ ECON 550, ECON 551
 \vskip.15in
 \noindent\textbf{Class Policy:}  
 \begin{itemize}
-\item Regular attendance is not required, due to Covid circumstances, but is preferred. 
+\item Regular attendance is not required, but is preferred. 
 \end{itemize}
 
-%%%%%% THE END 
 \end{document} 
