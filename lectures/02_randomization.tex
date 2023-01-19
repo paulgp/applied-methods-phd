@@ -178,7 +178,7 @@
 
 \end{frame}
 
-\begin{frame}{Outline on Randomizaition}
+\begin{frame}{Outline on Randomization}
   Goal of today's class
   \begin{itemize}
   \item Discuss debates in value of randomization
@@ -186,7 +186,7 @@
     \item Historical
     \item Current
     \end{itemize}
-  \item Research Design and Design-based inference
+  \item ``Research Design'' and Design-based vs. model-based inference 
   \end{itemize}
 \end{frame}
 
@@ -198,13 +198,13 @@
   \begin{wideitemize}
   \item Randomization is a powerful tool
     \begin{itemize}
-    \item E.g. a true randomized intervention such as randomly giving
-      a treatment to half of a sample using a randomized process
-    \item Formally, let randomly assign $D_{i}$ to a sample of size
+    \item E.g. An intervention giving a treatment to half of a sample
+      using a randomized process
+    \item Formally, randomly assign $D_{i}$ to a sample of size
       $n$ such that the set of potential random assignments across all
       $n$ individuals is known ($\Omega$), and the probability
       distribution over $\Omega$ is known
-    \item In other words, you know the ``true'' p-score
+    \item In other words, you know the ``true'' propensity to receive treatment (the p-score)
     \end{itemize}
   \item In our different models of causal inference:
     \begin{itemize}
@@ -364,17 +364,55 @@
 \end{columns}
 \end{frame}
 
+\begin{frame}{David Card's definition of Research Design}
+  \begin{wideitemize}
+  \item Card draws a distinction between causality as ``model-based'' and ``design-based'':
+    \begin{itemize}
+    \item ``causality is model-based: only exists within the framework of a theory that x causes y''
+    \item ``causality is design-based: ...causality requires that you can design a manipulation in which x causes y''
+    \end{itemize}
+  \item Crucial definition of what Card views as ``design-based'' approach:
+    \begin{itemize}
+    \item ``identification equated with research design''
+    \item ``research design defines the counterfactual''
+    \item Of course, he also doesn't define (in his slides) what research design means...
+    \end{itemize}
+  \item From Card's Nobel lecture: research design is equated with
+    transparently describibng sources of identification
+    \item   \url{https://davidcard.berkeley.edu/lectures/woytinsky.pdf}
+  \end{wideitemize}
+\end{frame}
+
 \begin{frame}{Paul Goldsmith-Pinkham's definition of Research Design}
 \begin{columns}[T] % align columns
-  \begin{column}{.7\textwidth}
+  \begin{column}{\textwidth}
     \begin{wideitemize}
     \item A \emph{(causal) research design} is a statistical and/or economic
       statement of how an empirical research paper will estimate a
-      relationship between two (or more) variables that is causal in nature -- $X$ causing $Y$.
+      relationship between two (or more) variables that is causal in nature: how $X$ causes $Y$.
 
-    \item The design should have a description for how some
-      variation in $X$ is either caused by or approximated by a
-      randomized experiment.
+    \item Since we know that causal effects require estimation of an
+      (unobservable) counterfactual, a research design describes what
+      assumptions are necessary to estimate the counterfactual for a
+      given estimand.
+      
+    \item As we will discuss in class, these research designs can be
+      split into two types of assumptions (with some overlap to be
+      discussed later):
+      \begin{itemize}
+      \item \emph{Model}-based: the estimand is
+        identified using assumptions on the modeling of the potential outcomes conditional on treatment and additional variables
+         (e.g. parallel trends)
+       \item\emph{Design}-based: the estimand is
+         identified using assumptions on the treatment variable,
+         conditional on the potential outcomes and additional
+         variables
+      \end{itemize}
+
+    \item See Lihua Lei's very nice Twitter discussion of the
+      \underline{\href{https://twitter.com/lihua_lei_stat/status/1479700463343714306?s=20&t=pKi-XTp3e89Rn8KV8b3KEA}{history
+          of Model vs. Design-based nomenclature from the survey
+          literature}}
     \end{wideitemize}
 \end{column}%
 \hfill%
@@ -592,7 +630,7 @@
     distribution of $\mathbf{Y}_{0}, \mathbf{Y}_{1}$, and so isn't
     directly knowable. Instead, we bound for a conservative estimate:
     \begin{equation}
-      \hat{\sigma}^{2}_{\hat{\bar{\tau}}} = \frac{n}{n-1}\left(\frac{\sigma^{2}_{0}}{n_{c}} + \frac{\sigma^{2}_{0}}{n_{t}}\right)
+      \hat{\sigma}^{2}_{\hat{\bar{\tau}}} = \frac{n}{n-1}\left(\frac{\sigma^{2}_{0}}{n_{c}} + \frac{\sigma^{2}_{1}}{n_{t}}\right)
     \end{equation}
   \end{wideitemize}
 \end{frame}
@@ -616,6 +654,9 @@
     \end{itemize}
   \item This approach is \emph{very} valuable in other settings
     (especially when treatments are very complicated). More next week.
+    \begin{itemize}
+    \item Key downside: doesn't test for \emph{average} effects
+    \end{itemize}
   \end{wideitemize}
   \end{column}%
   \hfill%
@@ -668,8 +709,8 @@
   \item For our estimator of $\bar{\tau}$, the estimator is unbiased
     only under certain assumptions (random assignment is equal across
     $\Omega$).
-  \item A more general approach is more flexible and unbiased for any
-    design, from Horvitz-Thompson (1952) (see Aronow and Middleton
+  \item A more general approach is more flexible and unbiased in many
+    designs, from Horvitz-Thompson (1952) (see Aronow and Middleton
     (2013) for a useful discussion):
     \begin{equation}
       \hat{\bar{\tau}}_{HT} = n^{-1}\left[\sum_{i}\frac{1}{\pi_{1i}}Y_{i}D_{i} - \frac{1}{\pi_{0i}}Y_{i}(1-D_{i})\right],

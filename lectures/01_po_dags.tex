@@ -183,8 +183,8 @@
 \begin{columns}[T] % align columns
 \begin{column}{.58\textwidth}
   \begin{wideitemize}
-  \item Every economics research paper
-    is \emph{not} estimating a causal quantity
+  \item Not every economics research paper
+    is estimating a causal quantity
     \begin{itemize}
     \item But, the implication or takeaway of papers is (almost) always
       a causal one
@@ -244,10 +244,10 @@
   \begin{wideitemize}
     \item  Two variables:
     \begin{itemize}
-    \item $Y \in \{0, 1\}$: whether a person is immune to Covid-19
+    \item $Y \in \{0, 1\}$: whether a person will get Covid-19
     \item $D \in \{0, 1\}$: whether a person gets a vaccine
     \end{itemize}
-  \item Our question: does $D$ cause $Y$?
+  \item Our question: does $D$ causally affect $Y$?
   \item \emph{Ignore the question of data for now} -- this is purely a
     question of what is knowable.
   \item ``The fundamental problem of causal inference'' (Holland 1986)
@@ -267,7 +267,8 @@
   \begin{wideitemize}
   \item What is knowable?
     \begin{itemize}
-    \item We need notation - begin with the Neyman-Rubin Causal model
+    \item We need notation
+    \item Begin with the Neyman-Rubin Causal model
     \end{itemize}
   \item There is a population of $n$ individuals, indexed by $i$. 
   \item Let $Y_{i}(D_{i})$ denote the outcome given a particular vaccine
@@ -414,7 +415,7 @@ the data''\\
     \begin{itemize}
     \item Consider $\tau_{ATT}$. $\mathbb{E}(Y_{i}(1)| D_{i}= 1)$ is
       identified, mechanically. What about $\mathbb{E}(Y_{i}(0) | D_{i} = 1)$?
-    \item Need an assumption on the relationship between $D_{i}$ and
+    \item One approach: make an assumption on the relationship between $D_{i}$ and
       $(Y_{i}(1), Y_{i}(0))$.
     \end{itemize}
 \end{itemize}
@@ -823,5 +824,20 @@ the data''\\
 \end{columns}
 \end{frame}
 
+
+\begin{frame}{Concrete example: demand and supply}
+  \begin{wideitemize}
+  \item Consider a demand and supply model: $P(Q)$ and $Q(P)$:
+    \begin{align}
+      P &= \alpha_{0} + \alpha_{1}Q + \alpha_{2}W + \epsilon\\
+      Q &= \beta_{0} + \beta_{1}P + \beta_{2}V + \xi          
+    \end{align}
+  \item This is the ``structural'' equations
+  \item The reduced form comes from plugging in the endogeneous
+    variables and solving for only ``exogeneous'' variables on the RHS
+  \item This will let us consider counterfactuals in the structural equations!
+  \end{wideitemize}
+  
+\end{frame}
 
 \end{document}
