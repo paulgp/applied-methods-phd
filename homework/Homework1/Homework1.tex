@@ -65,8 +65,8 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
   MGMT 737
 \end{center}
 \begin{center}
-  Spring 2022
-  Due: Tuesday, February 1
+  Spring 2023
+  Due: Tuesday, January 1
 \end{center}
 %\date{September 26, 2014}
 
@@ -92,6 +92,43 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
     canned software) of the outcome on the treatment dummy, and
     compare the p-values from this test to the previous answer.
   \end{enumerate}
+\item Propensity Scores. This analysis will use the dataset
+  from Problem 1 as well as the PSID dataset from Dehijia and
+  Wahba, \texttt{lalonde\_psid.csv}. These datasets have identical
+  variables. The new dataset is a sample of observations from the
+  Panel Survey of Income Dynamics that can be used as alternative
+  control observations. Importantly, these observations were not in
+  the initial randomization.
+  \begin{enumerate}
+  \item Using \texttt{age}, \texttt{education}, \texttt{hispanic},
+    \texttt{black}, \texttt{married}, \texttt{nodegree}, \texttt{RE74}
+    and \texttt{RE75}, construct a propensity score using the
+    \emph{treated} group in \texttt{lalonde\_nsw.csv} and the control
+    sample of \texttt{lalonde\_psid.csv}.  Use a logit regression
+    model to do so (you may use a canned routine to run the
+    regression). Report the average p-score for the treated and
+    control samples, and plot the propensity score densities for the
+    treatment and control groups.
+  \item Using your p-score estimates, calculate the IPW and SIPW
+    estimate for control and treated mean of the outcome, and the
+    average treatment effect. Contrast these estimates to the control
+    mean of the outcome from the NSW sample, and the treatment effect
+    from last week's problem set.
+  \item Compare the ATE in the previous question to the treatment
+    effect estimated using a linear regression using the PSID and NSW
+    treatment sample, with \texttt{age}, \texttt{education},
+    \texttt{hispanic}, \texttt{black}, \texttt{married},
+    \texttt{nodegree}, \texttt{RE74} and \texttt{RE75} as controls.
+  \item Now revisit your estimates from part a and b, and following
+    Crump et al. (2009), discard all units with estimated propensities
+    outside the range of $[0.1, 0.9]$. Reestimate the IPW and SIPW
+    estimator of the ATE from part b using this trimmed sample.
+  \item Finally, calculate the IPW and SIPW estimates for the ATE
+    using this trimmed sample for Black and non-Black
+    individuals. Compare this estimate to the ATE for Black and
+    non-Black individuals using the full randomized sample.
+  \end{enumerate}
+  
 \end{enumerate}
 
 \end{document}
