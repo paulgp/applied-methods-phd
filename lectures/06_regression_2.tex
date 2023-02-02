@@ -75,7 +75,21 @@
   linkbordercolor = {white},
   linkcolor = {blue}
 }
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{bbm}
+\usepackage{accents}
 
+\newcommand\indep{\protect\mathpalette{\protect\independenT}{\perp}}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclarePairedDelimiter\indicatorfence{\{}{\}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\ip{\langle}{\rangle}
+\newcommand\1{\operatorname{\mathbbm{1}}\indicatorfence}
+\newcommand{\dbtilde}[1]{\accentset{\approx}{#1}}
 
 %% I use a beige off white for my background
 \definecolor{MyBackground}{RGB}{255,253,218}
@@ -315,49 +329,175 @@
     \begin{equation}
       \tau = \frac{E(\sigma^{2}_{D}(W_{i})\tau(W_{i}))}{E(\sigma^{2}_{D}(W_{i}))}, \qquad \sigma^{2}_{D}(W_{i}) = E((D_{i} - E(D_{i}|W_{i}))^{2} | W_{i})
     \end{equation}
-    See Section 3.3.1 in MHE or Section 2.1 in Goldsmith-Pinkham, Hull
-    and Kolesar (GHK, 2021) for a derivation
+    Let's derive this, and show how it can fail more generally.
   \end{wideitemize}
 \end{frame}
 
-\begin{frame}{An aside on regression estimand vs. ATE}
-  $$ Y_{i} = \tau D_{i} + \beta W_{i} + \epsilon_{i}$$
-  \begin{wideitemize}
-  \item Consider the estimand that this partially linear regression gets you:
-    \begin{equation}
-      \tau = \frac{E(\sigma^{2}_{D}(W_{i})\tau(W_{i}))}{E(\sigma^{2}_{D}(W_{i}))}, \qquad \sigma^{2}_{D}(W_{i}) = E((D_{i} - E(D_{i}|W_{i}))^{2} | W_{i})
-    \end{equation}
-  \item This is a \emph{variance-weighted} estimand. Is there a good reason to focus on this estimand?
-    \pause
-  \item The traditional natural estimand is the ATE. This is estimable
-    in linear regression using a trick noted in Imbens and Wooldridge
-    (and discussed in GHK)
-    $$ Y_{i} = \alpha + \tau D_{i} + \beta_{0}W_{i} + \beta_{1} D_{i}(W_{i}-E(W_{i})) + \epsilon_{i}$$
-  \item What are the trade-offs between ATE vs. variance weighted?
-  \end{wideitemize}
-\end{frame}
-
-\begin{frame}{An aside on regression estimand vs. ATE, continued}
-  \begin{columns}[T] % align columns
-    \begin{column}{.5\textwidth}
-  \begin{wideitemize}
-  \item GHK show that when treatment effect heterogeneity is minimal
-    (or uncorrelated with controls), the variance weighted approach is ``optimal'' in a particular sense
+\begin{frame}
+  \begin{itemize}
+  \item To build intuition, consider both $W_{i}$ and $D_{i}$ binary. Then add another treatment arm.
+  \item Consider regression
+    \begin{equation*}
+      Y_i=\alpha + D_{i}\beta+W_{i}\gamma +U_i,
+    \end{equation*}
+    with $D_{i},W_{i}\in\{0,1\}$. \alert{By definition}, $U_{i}$ mean-zero
+    regression residual uncorrelated with $(D_{i},W_{i})$
+  \item Stylized Project STAR example: $D_{i}$ is small classroom dummy, $Y_{i}$
+    is avg test score of student $i$
     \begin{itemize}
-    \item Punchline: variance-weighting can be good!
-    \item Caution: important to think about what this means with many strata, or \emph{many treatments}
+    \item Randomization stratified: probability of assignment to small vs large
+      classroom depends on school. $W_{i}$ denotes school FE
+    \item Binary $W_{i}$: only 2 schools for simplicity
     \end{itemize}
-  \item GHK highlight with multiple (unorded and exclusive)
-    treatments, contamination bias can occur
-  \end{wideitemize}
-  \end{column}%
-  \hfill%
-  \begin{column}{.5\textwidth}
-    \only<2>{
-      \includegraphics[width=\linewidth]{images/ghk.png}
-      }
-  \end{column}
-\end{columns}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Potential outcomes and key assumption}
+  \begin{itemize}
+  \item To characterize $\beta$, use potential outcomes notation $Y_{i}(d)$
+    \begin{itemize}
+    \item Individual treatment effect $\tau_{i1} = Y_{i}(1) - Y_{i}(0)$,
+      conditional treatment effect $\tau_{1}(w) = E[\tau_{i1}\mid W_{i} = w]$
+    \item Observed outcome $Y_{i} = Y_{i}(0) + \tau_{i1}D_{i}$
+    \item Propensity score:
+      $p_{1}(W_{i}) = \Pr(D_{i} = 1 \mid W_{i}) = E[D_{i} \mid W_{i}]$
+    \end{itemize}
+  \item Treatment (as good as) randomly assigned conditional on $W_{i}$:
+    $\left(Y_i(0),Y_i(1)\right)\indep D_i\mid W_i$
+  \item Random assignment assumption delivers key result from Angrist (1998):
+    \begin{equation*}
+      \beta=\phi\tau_{1}(0)+(1-\phi)\tau_{1}(1),\quad
+      \phi= \frac{\var(D_i\mid W_i=0)\Pr(W_i=0)}{\sum_{w=0}^{1}
+        \var(D_i\mid W_i=w)\Pr(W_i=w)},
+    \end{equation*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Derivation}
+  \small
+  \begin{equation*}
+    \begin{split}
+      \beta&\overset{(1)}{=}\frac{E[\tilde{D}_{i}Y_i]}{E[\tilde{D}_i^2]}
+      % =\frac{E[\tilde{D}_i(Y_i(0)+\tau_{i1}D_i)]}{E[\tilde{D}_i^2]}
+      =\frac{EE[\tilde{D}_{i}Y_i(0)\mid
+        W_{i}]}{E[\tilde{D}_i^2]}+\frac{EE[\tilde{D}_{i} D_{i}\tau_{i1}\mid W_{i}]}{E[\tilde{D}_i^2]}\\
+      & \overset{(2)}{=}\frac{E[\var(D_{i}\mid W_{i})\tau(W_i)]}{E[\var(D_{i}\mid W_{i})]}\\
+      & =\phi\tau(0)+(1-\phi)\tau(1)\quad \phi= \frac{\var(D_i\mid
+        W_i=0)\Pr(W_i=0)}{\sum_{w=0}^{1} \var(D_i\mid W_i=w)\Pr(W_i=w)},
+    \end{split}
+  \end{equation*}
+  \begin{itemize}
+  \item (1) follows from FWL theorem; $\tilde{D}_{i}$ residual from regressing
+    $D_{i}$ on $W_{i}$.
+  \item (2) follows by random assignment, and the fact that
+    $E[\tilde{D}_{i}\mid W_{i}]=0$ (not just
+    $\operatorname{corr}(\tilde{D}_{i},W_{i})=0$).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Key features of this estimator}
+    \begin{equation*}
+      \beta=\phi\tau(0)+(1-\phi)\tau(1),\quad
+      \phi= \frac{\var(D_i\mid W_i=0)\Pr(W_i=0)}{\sum_{w=0}^{1}
+        \var(D_i\mid W_i=w)\Pr(W_i=w)},
+    \end{equation*}
+  \begin{itemize}
+  \item $\phi\in (0,1)$
+  \item No need to estimate propensity score
+  \item Puts larger weight on strata with higher variation in $D_{i}$
+    \begin{itemize}
+    \item $\neq$ ATE! (unless $\tau(w)$ constant or $p_{1}(w)$ constant
+      across strata)
+    \item May lead to unusual or ``unrepresentative'' estimand (Aronow and Samii (2016)
+    \item But this sort of weighting necessary to avoid loss of identification
+      under overlap failure (e.g. $p_{1}(0)=0$), or lack of precision under weak
+      overlap ($p_{1}(0)$ close to $0$)
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Multiple treatments}
+
+  \begin{itemize}
+  \item Project STAR in fact had additional treatment arm in addition to small
+    class ($D_{i}=1$): full-time teaching aide ($D_i=2$).
+    \begin{equation*}
+      Y_i=\alpha+  X_{i1}\beta_{1}+X_{i2}\beta_{2}+W_i\gamma +U_i,
+    \end{equation*}
+  \item General notation:
+    \begin{itemize}
+    \item $X_{i} = [X_{i1}, X_{i2}]'$, $X_{ij}=\1{D_{i}=j}$
+    \item $Y_i=Y_i(0)+X_{i}'\tau_{i}$, where $\tau_{ik}=Y_{k}(k)-Y_{i}(0)$.
+    \item Let $\tau_{k}(W_{i})=E[\tau_{ik}\mid W_{i}]$ and
+      $p_{ok}(w)=E[X_{ik}\mid W_{i}=w]$.
+    \end{itemize}
+  \item Assignment still conditionally random,
+    $\left(Y_i(0),Y_i(1),Y_i(2)\right)\perp {X}_i \mid W_i$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Causal interpretation of $\beta_{1}$}\label{slide:fwl_derivation}
+  Again, due to FWL,
+    \begin{equation*}
+      \begin{split}
+        \beta_{1}&=\frac{E[\dbtilde{X}_{i1}Y_i]}{E[\dbtilde{X}_{i1}^2]} =
+        {\frac{E[\dbtilde{X}_{i1}Y_{i}(0)]}{E[\dbtilde{X}_{i1}^2]}}+
+        \frac{E[\dbtilde{X}_{i1}X_{i1}\tau_{i1}]}{E[\dbtilde{X}_{i1}^2]}
+        +\frac{E[\dbtilde{X}_{i1}X_{i2}\tau_{i2}]}{E[\dbtilde{X}_{i1}^2]}\\
+        &= E[\lambda_{11}(W_{i})\tau_{1}(W_{i})]
+        +E[\lambda_{12}(W_{i})\tau_{2}(W_{i})],
+      \end{split}
+     \end{equation*}
+     where
+     $ \lambda_{11}(W_{i})= \frac{E[\dbtilde{X}_{i1}X_{i1}\mid
+       W_{i}]}{E[\dbtilde{X}_{i1}^2]} \geq 0$, and
+     $\lambda_{12}(W_i) =\frac{E[\dbtilde{X}_{i1}X_{i2}\mid
+       W_{i}]}{E[\dbtilde{X}_{i1}^2]} \neq 0$ in general.
+  \begin{description}
+  \item[Key point] $\dbtilde{X}_{i1}$ is residual from regressing $X_{i1}$ on
+    $W_{i}$, constant, \alert{and} $X_{i2}$
+    \begin{itemize}
+    \item $\dbtilde{X}_{i1} \not= X_{i1} - E[X_{i1} \mid W_{i}, X_{i2}]$, since
+      $X_{i2}$ \alert{depends non-linearly} on $X_{i1}$
+    \item As a result, $\beta_{1}$ \alert{contaminated} by $\tau_{i2}$.
+    \end{itemize}
+  \end{description}
+\end{frame}
+
+
+\begin{frame}{Stylized Example: No overlap}
+  \begin{itemize}
+  \item Suppose only units in stratum $W_{i}=0$ receive treatment $2$. Let
+    $n_{k}(w)=\sum_{i=1}^{N}\1{W_{i}=w,X_{i}=k}$.
+  \item Then
+    \begin{equation*}
+      \hat{\beta}
+      =
+  \begin{pmatrix}
+    \phi\hat{\tau}_{1}(0)+(1-\phi)\hat{\tau}_{1}(1)
+    \\
+    \frac{n_{1}(0)(1-\phi)}{n_{1}(0)+n_{0}(0)}
+    \left[\hat{\tau}_{1}(1)-\hat{\tau}_{1}(0)\right]
+    +\hat{\tau}_{2}(0)
+  \end{pmatrix},
+    \end{equation*}
+    where
+    $\phi=\frac{(1/n_{1}(0)+1/n_{0}(0))^{-1}}{
+      \sum_{w=0}^{1}(1/n_{1}(w)+1/n_{0}(w))^{-1} }$.
+  \item E.g., with equal-sized strata, $n_{0}(0)=n_{1}(0)=n_{2}(0)$, and
+    $n_{0}(1)=n_{1}(1)$,
+    \begin{equation*}
+      \hat{\beta}
+      =
+      \begin{pmatrix}
+        \frac{2}{5}\hat{\tau}_{1}(0)+\frac{3}{5}\hat{\tau}_{1}(1)
+        \\
+        \frac{3}{10}
+        \left[\hat{\tau}_{1}(1)-\hat{\tau}_{1}(0)\right]
+        +\hat{\tau}_{2}(0)
+      \end{pmatrix}.
+    \end{equation*}
+  \end{itemize}
 \end{frame}
 
 
