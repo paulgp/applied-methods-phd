@@ -596,18 +596,40 @@
   \end{wideitemize}
 \end{frame}
 
+%%% UPDATE
 \begin{frame}{BLP}
   \begin{wideitemize}
-  \item Another important set of models that we won't discuss today is
-    BLP (Berry Levinsohn Pakes)
-    $$ U_{ijm} = \beta_{i}X_{ijm} + \xi_{jm} + \epsilon_{ijm}$$
+  \item Another important set of models is known as BLP (Berry
+    Levinsohn Pakes)
+    $$ U_{ijm} = \mu_{ijm} + \delta_{jm} + \epsilon_{ijm}$$
   \item This exploits knowledge of choices (either aggregated or
     disaggreated) across many markets
   \item Can use this knowledge to allow for a lot more market-product
-    specific fixed effects ($\xi_{jt}$), which gives a richer
+    specific fixed effects ($\xi_{jm}$), which gives a richer
     substitution pattern
+  \item Under distributional assumptions for $\epsilon_{ijm}$,
+    \begin{equation}
+      s_{jm}(\boldsymbol{\delta}_{m}, \beta) = \int \frac{\exp(\delta_{jm} + \mu_{ijm})}{\sum_{k \in J_{m}} \exp(\delta_{km} + \mu_{ikm})} f(\boldsymbol{\mu}|\beta) d \boldsymbol{\mu}_{im}
+    \end{equation}
   \end{wideitemize}
 \end{frame}
+
+\begin{frame}{BLP}
+    \begin{align*}
+      s_{jm}(\boldsymbol{\delta}_{m}, \beta) &= \int \frac{\exp(\delta_{jm} + \mu_{ijm})}{\sum_{k \in J_{m}} \exp(\delta_{km} + \mu_{ikm})} f(\boldsymbol{\mu}|\beta) d \boldsymbol{\mu}_{im}\\
+      \delta_{jm} &= x_{jm}\beta_{2} - \alpha p_{jt} + \xi_{jm}
+    \end{align*}
+  \begin{wideitemize}
+  \item Key insight in BLP is to use a fixed point algorithm to match the estimated market shares in a market, $\hat{s}_{m}(\boldsymbol{\delta}_{m}, \beta)$, to the observed market shares
+    \begin{itemize}
+    \item This is done iteratively, mapping the shares into a linear index for $\delta$
+    \item Conlon and Gortmaker (2020) highlight that this can have
+      estimation issues due to convergence in this process
+    \item Provide Python package to solve this!
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
 
 \begin{frame}{Inconsistency in binary choice models}
   \begin{wideitemize}
@@ -667,6 +689,32 @@
   \item Worthwhile to try to arbitrage these methods in fields that
     are less exposed to them (e.g. Koijen and Yogo (2019))
   \end{wideitemize}
+\end{frame}
+
+%%% UPDATE WITH KOIJEN AND YOGO
+
+\begin{frame}{Koijen and Yogo (2019)}
+  \begin{columns}[T] % align columns
+    \begin{column}{.5\textwidth}
+      \begin{wideitemize}
+      \item Influential paper by Koijen and Yogo (2019) estimates a
+        demand system for financial assets
+      \item The framework is used to study three things:
+        \begin{enumerate}
+        \item Distribution of price elasticities with respect to demand shocks (residual demand)
+        \item Decomposing variation in asset returns
+        \end{enumerate}
+      \end{wideitemize}
+    \end{column}%
+  \hfill%
+  \begin{column}{.5\textwidth}
+    \only<1>{  \includegraphics[width=\linewidth]{images/koijenyogo.pdf}}
+    \only<2>{  \includegraphics[width=\linewidth]{images/koijenyogo4.pdf}}
+    \only<3>{  \includegraphics[width=\linewidth]{images/koijenyogo3.pdf}}
+    \only<4>{  \includegraphics[width=\linewidth]{images/koijenyogo2.pdf}}                
+  \end{column}
+\end{columns}
+
 \end{frame}
 
 \end{document}
