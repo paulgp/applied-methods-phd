@@ -83,7 +83,9 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
     percentile of the outcome variable, conditional on the value of
     $X$, and $\hat{p}_{j}$, which is the empirical probability of
     $X = x_{j}$.  Do so using the PSID dataset for
-    $X = \textrm{education}$, for $\tau = (0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)$
+    $X = \textrm{education}$, for
+    $\tau = (0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)$, using
+    \texttt{re78} as the outcome variable.
   \item Given these inputs, the quantile regression slope
     estimates is just
     $$ \hat{\beta}_{\tau} = \arg\min_{b} \sum_{j} (\hat{\pi}_{\tau}(x_{j}) - x_{j}b)^{2}\hat{p}_{j}.$$
