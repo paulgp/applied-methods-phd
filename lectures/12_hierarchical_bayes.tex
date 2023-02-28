@@ -218,12 +218,12 @@
 \begin{frame}{Motivation for Bayesian approaches}
   \begin{wideitemize}
   \item To motivate and give context to our discussion, will present the
-    following three estimation problems.
+    following four examples.
   \item These are very different types of problems, but will all
     hopefully be more accessible following our discussion today.
   \end{wideitemize}
 \end{frame}
-\begin{frame}{Three examples - (1) Microcredit + pooling}
+\begin{frame}{Four examples - (1) Microcredit + pooling}
   \begin{wideitemize}
   \item A set of experiments run in different locations, studying the
     efficiacy of microcredit on a variety of outcomes
@@ -251,7 +251,7 @@
   \end{wideitemize}
 \end{frame}
 
-\begin{frame}{Three examples - (2) Predictability and uncertainty}
+\begin{frame}{Four examples - (2) Predictability and uncertainty}
   \begin{wideitemize}
   \item Excess stock returns (above some risk free rate) are
     predictable based on historical data (e.g. the dividend
@@ -281,7 +281,7 @@
 \end{frame}
 
 
-\begin{frame}{Three examples - (3) Estimation}
+\begin{frame}{Four examples - (3) Estimation}
   \begin{wideitemize}
   \item Recall from demand models that choice modeling can be complex
     \begin{itemize}
@@ -300,6 +300,23 @@
     \item Analgous to the multivariate logit / probit problem
     \end{itemize}
   \item Can we use structure on the errors to make estimation feasible?
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Four examples - (4) Multiple testing}
+  \begin{wideitemize}
+  \item One serious concern that has arisen is multiple testing issues in empirical analysis:
+    \begin{itemize}
+    \item ``Data mining'' a specification by running many regressions until a significant regression is achieved
+    \end{itemize}
+  \item This is particularly a concern in empirical asset pricing ( Harvey et al. (2016))
+  \item Bayesian hierarchical models can jointly model the full set of
+    empirical tests at the same time, and avoid any multiple testing
+    complications 
+    \begin{itemize}
+    \item Jensen, Kelly and Pedersen (2022) use exactly this framework
+      to study the replicability of empirical papers showing significant alpha from new factors 
+    \end{itemize}
   \end{wideitemize}
 \end{frame}
 
@@ -492,14 +509,14 @@
   \end{wideitemize}
 \end{frame}
 
-\begin{frame}{Going fully hierarchical Bayes}
-\begin{center}
-\begin{tabular}{ccc}
-  \multicolumn{3}{c}{\includegraphics[width=0.3\linewidth]{images/bayes1.JPG}}\\
-  \includegraphics[width=0.24\linewidth]{images/bayes2.JPG} & \includegraphics[width=0.24\linewidth]{images/bayes3.JPG} & \includegraphics[width=0.24\linewidth]{images/bayes4.JPG}\\
-\end{tabular}
-\end{center}
-\end{frame}
+% \begin{frame}{Going fully hierarchical Bayes}
+% \begin{center}
+% \begin{tabular}{ccc}
+%   \multicolumn{3}{c}{\includegraphics[width=0.3\linewidth]{images/bayes1.JPG}}\\
+%   \includegraphics[width=0.24\linewidth]{images/bayes2.JPG} & \includegraphics[width=0.24\linewidth]{images/bayes3.JPG} & \includegraphics[width=0.24\linewidth]{images/bayes4.JPG}\\
+% \end{tabular}
+% \end{center}
+% \end{frame}
 
 
 \begin{frame}{Why does adding this structure help?}
