@@ -960,15 +960,34 @@
   \item It turns out that in the panel setting with staggered timings,
     these weights are not necessarily positive
   \end{itemize}
-\item Key insight from several papers: with staggered timings +
-    heterogeneous effects, the TWFE approach to DinD (both using a
-    single pooled estimator, or using an event study) can put large
-    negative weight on certain groups' estimands, and large positive
-    weight on others
-    \begin{itemize}
+\item Why? The predicted value of $D_{i,t}$, $\hat{D}_{it}$, may be
+  greater than 1 because $E(D_{i}|W_{i})$ is the model is incorrectly specified by
+  the two-way fixed effects:
+  \begin{equation*}
+    \hat{\beta}_{post} = \frac{\sum_{i,t}(D_{it}- \hat{D}_{i,t})Y_{i,t}}{\sum_{i,t}(D_{it}- \hat{D}_{i,t})^{2}}
+  \end{equation*}
+\end{wideitemize}
+\end{frame}
+
+
+
+\begin{frame}{Misspecification in conditional expectation}
+  \begin{wideitemize}
+  \item An example from GPHK (2022): Three time periods, and three
+    groups of units: treated early in period 2 ($n_{E}$), treated late in period 3
+    ($n_{L}$), and never ($n_{N}$)
+  \item The weights in the estimands on the treatment effects will be
+    \begin{align}
+      \lambda(j,t=3) &= \frac{n_{E} + 2n_{N}}{\kappa}, j \in L\\
+      \lambda(j,t=2) &= \frac{n_{N} + 2n_{L}}{\kappa}, j \in E\\
+      \lambda(j,t=3) &= \frac{n_{N} - n_{L}}{\kappa}, j \in E,
+    \end{align}
+    $\kappa$ just scaling. Hence, first two always get positive weight, but the ATT from period 3 of the early adopters is negative if the never-adopters is small relative to late adopters
+  \item Key insight from several papers: with staggered timings +
+    heterogeneous effects, the TWFE approach to DinD can put negative
+    weight on certain groups' TE
+  \begin{itemize}
     \item Serious issue for interpretability
-    \item Some example papers: Goodman-Bacon (2020), De Chaisemartin
-      and D’Haultfœuille (2020),
     \end{itemize}
   \item This is \emph{solveable}. Merely a construct of being overly
     casual with estimator definition
@@ -1148,7 +1167,7 @@
     assumptions are in each setting, and transparently highlighting
     them.
   \item Important to note that this always identifies a
-    \emph{relative} affect, and to aggregate, you will typically need
+    \emph{relative} effect, and to aggregate, you will typically need
     a model and additional strong assumptions (see Auclert, Dobbie and
     Goldsmith-Pinkham (2019) for an example in a macro setting).
   \end{wideitemize}
@@ -1158,7 +1177,7 @@
   \begin{wideitemize}
   \item Beware weak tests of pre-trends. Consider using R\&R's
     partial identification tests to assess robustness of results. 
-  \item Do not worry about the new literature on staggered timings if you only have one timing!
+  \item Do not worry about the new literature on staggered timings if you only have one rollout period!
   \item Think carefully about your estimand if you're using a staggered timing DinD -- what's your counterfactual in each case?
     \begin{itemize}
     \item Software exists for many of these papers. This is doable!
