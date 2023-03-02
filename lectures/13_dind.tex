@@ -145,7 +145,7 @@
   \end{frame}
 }
 
-\title[]{\textcolor{blue}{Canonical Research Designs I:\\ Difference-in-Differences}}
+\title[]{\textcolor{blue}{Canonical Research Designs I:\\ Difference-in-Differences:\\ Basics, Pre-trends, and Issues with Staggered Timing}}
 \author[PGP]{}
 \institute[FRBNY]{\small{\begin{tabular}{c}
   Paul Goldsmith-Pinkham  \\
@@ -181,17 +181,23 @@
 
 \begin{frame}{Revisiting Research Design}
   \begin{columns}[T] % align columns
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.8\textwidth}
       \begin{wideitemize}
-      \item<1-> Recall my attempt at a definition:
+      \item Recall my attempt at a definition:
         \begin{itemize}
-        \item A \emph{(causal) research design} is a statistical
-          and/or economic statement of how an empirical research paper
-          will estimate a relationship between two (or more) variables
-          that is causal in nature -- $X$ causing $Y$.
-        \item The design should have a description for how some
-          variation in $X$ is either caused by or approximated by a
-          randomized experiment.
+        \item A \emph{(causal) research design} is a statistical and/or economic
+          statement of how an empirical research paper will estimate a
+          relationship between two (or more) variables that is causal in nature: how $X$ causes $Y$.
+      \end{itemize}
+    \item Recall these research designs can be considered into two types:
+      \begin{itemize}
+      \item \emph{Model}-based: the estimand is identified using
+        assumptions on the modeling of the potential outcomes
+        conditional on treatment and additional variables
+       \item\emph{Design}-based: the estimand is
+         identified using assumptions on the treatment variable,
+         conditional on the potential outcomes and additional
+         variables
         \end{itemize}
       \end{wideitemize}
     \end{column}%
@@ -206,8 +212,8 @@
   \begin{columns}[T] % align columns
     \begin{column}{0.7\textwidth}
       \begin{wideitemize}
-      \item This ideal is not necessarily achievable in all scenarios
-      \item Recall the reason for wanting a randomied experiment: we want to estimate \emph{counterfactual} outcomes
+      \item The design-based ideal is not necessarily achievable in all scenarios
+      \item Recall the reason for wanting a randomized experiment: we want to estimate \emph{counterfactual} outcomes
       \item Alternative way to do this: model the outcome (absent treatment) directly
         \begin{itemize}
         \item The relationship between X and Y can be clearly
@@ -265,8 +271,7 @@
           \end{itemize}
         \item \emph{What are your structural assumptions and their implications?}
           \begin{itemize}
-          \item Do you need to assume functional forms? (e.g. ``Is
-            this really something that has an experimental analog''?)
+          \item Do you need to assume functional forms? 
           \end{itemize}
         \end{enumerate}
       \item Papers have both pointed out issues but also provided
@@ -283,29 +288,43 @@
 \end{frame}
 
 
-\begin{frame}{Setup }
+\begin{frame}{Simple setup in basic 2x2 Diff-in-diff }
   \begin{wideitemize}
-  \item Assume we have $n$ units ($i$) and $T$ time periods $(t)$
+  \item Assume we have $n$ units ($i$) and $T=2$ time periods ($t$) 
   \item Consider a binary policy $D_{it}$, and we are interested
     in estimating its effect on outcomes $Y_{it}$
-  \item The inherent problem is that $D_{it}$ is \emph{not}
-    necessarily randomly assigned
-  \item The historical key (and parametric) assumption underlying of
-    the potential outcomes model (one version):
-    \begin{align*}
-      Y_{it}(D_{it}) &= \alpha_{i} + \gamma_{t} + \tau_{i}D_{it}\\
-      \text{s.t.} &\; Y_{it}(1) - Y_{it}(0)=  \tau_{i}
-    \end{align*}
-  \item Implication? In the absence of the treatment, the $Y_{it}$
-    across units \textbf{evolve in parallel} -- their $\gamma_{t}$ are
-    identical. Absent the policy, units may have different
-    \emph{levels} ($\alpha_{i}$) but their changes would evolve in
-    parallel
+  \item Consider the potential outcome notation for $Y_{it}$:
     \begin{itemize}
-    \item This is a key (parametric!) identifying assumption
-    \item $Y_{it}(0) - Y_{i,t-k}(0) = \gamma_{t} - \gamma_{t-k}$, $Y_{it}(0) - Y_{jt}(0) = \alpha_{i} -\alpha_{j}$
+    \item $Y_{it}(0,0)$ is the outcome in period $t\in \{1,2\}$ if untreated in both periods
+    \item $Y_{it}(0,1)$ is the outcome in period $t\in \{1,2\}$ if
+      untreated in first period, treated in second
+    \item Can simplify to just $Y_{it}(0)$ and $Y_{it}(1)$, but when
+      we have many time periods, want to account for path of treatments
     \end{itemize}
+  \item The inherent problem is that $D_{it}$ is \emph{not}
+    necessarily randomly assigned, but we still want to estimate the ATT in period 2:
+    \begin{equation*}
+      \tau_{2}^{ATT} = E(Y_{i,2}(1) - Y_{i,2}(0) | D_{i} = 1)
+    \end{equation*}
   \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Basic 2x2 Diff-in-diff}
+  How can we identify the ATT?
+  \begin{enumerate}
+  \item Parallel Trends: ``in the absence of the treatment, the average outcomes would have evolved in parallel''
+    \begin{equation*}
+        E(Y_{i,2}(0) - Y_{i,1}(0) | D_{i} = 1) =     E(Y_{i,2}(0) - Y_{i,1}(0) | D_{i} = 0)
+      \end{equation*}
+      \begin{itemize}
+      \item Absent the policy, units may have different \emph{levels}, but their changes would be the same
+      \item A sufficient parametric formulation: $Y_{it}(0) = \gamma_{t} + \alpha_{i} + \epsilon_{it}$
+      \end{itemize}
+    \item No-anticipation: policy has no effect prior to treatment
+    \begin{equation*}
+        Y_{i,1}(0) = Y_{i,1}(1) 
+      \end{equation*}
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}{Basic 2x2 DinD setup}
@@ -315,17 +334,16 @@
       \item Recall our typical estimand of interest is the ATE or the ATT:
         \begin{align*}
           \tau_{ATE} &= E(Y_{it}(1) - Y_{it}(0)) = E(\tau_{i})\\
-          \tau_{ATT} &= E(Y_{it}(1) - Y_{it}(0)) = E(\tau_{i} |D_{it} = 1)          
+          \tau_{ATT} &= E(Y_{it}(1) - Y_{it}(0) | D_{it} = 1) = E(\tau_{i} |D_{it} = 1)          
         \end{align*}
-      \item Since $D$ is not randomly assigned and we only observe one time
-        period, this model is inherently not identified without additional assumptions.
+      \item Since $D$ is not randomly assigned,, this model is inherently not identified without the additional assumptions (and two time periods).
         \begin{itemize}
         \item Why? $D_{i}$ could be correlated with $\alpha_{i}$
         \item Recall that our plug-in estimator approaches need
           estimates for $E(Y_{it}(1))$ and $E(Y_{it}(0))$
-        \item Where can we get unbiased estimates?
+        \item But the correlation prevents this without conditional exogeneity assumptions
         \end{itemize}
-      \item With two time periods we can make a lot more progress!
+      \item Using the assumptions and multiple time periods, we can make progress!
       \end{wideitemize}
     \end{column}%
     \hfill%
@@ -363,14 +381,41 @@
   \end{wideitemize}
 \end{frame}
 
-\begin{frame}{An aside on our simplifying assumption}
+\begin{frame}{Another way to see this, assuming absorbing treatment}
+  \begin{wideitemize}
+  \item Rewrite the parallel trends assumption:
+        \begin{equation*}
+        E(Y_{i,2}(0)| D_{i} = 1) =  E( Y_{i,1}(0) |D_{i} = 1) +   E(Y_{i,2}(0) - Y_{i,1}(0) | D_{i} = 0)
+      \end{equation*}
+    \item In other words, the counterfactual ``untreated'' state is
+      the untreated outcome in the pre-period for the treated group,
+      plus the change from the other untreated group
+    \item Then, thanks to no-anticipation, we can replace
+      $E( Y_{i,1}(0) |D_{i} = 1)$ with $E( Y_{i,1}(1) |D_{i} = 1)$,
+      which has an empirical analog:
+        \begin{equation*}
+        E(Y_{i,2}(0)| D_{i} = 1) =  E( Y_{i,1} |D_{i} = 1) +   E(Y_{i,2} - Y_{i,1} | D_{i} = 0)
+      \end{equation*}
+    \item So parallel trends + no-anticipation generates our
+      counterfactual outcome for us!
+    \item Pop quiz: where does no-anticipation show up in the
+      parametric formulation?
+  \end{wideitemize}
+
+\end{frame}
+
+\begin{frame}{An aside on our simplifying assumption on absorbing treatment}
   \begin{wideitemize}
   \item The choice of focusing on take-up of a policy, such that $D_{i1} \geq D_{i0}$, is well-grounded in many policy settings
   \item However, there are cases where policies turn on, and then turn off, and this can vary across units
   \item This can be challenging and potentially problematic with
     heterogeneous effects
-  \item Need to think carefully about whether $D_{i}$ turning on is
-    identical (but opposite sign) to $D_{i}$ turning off
+  \item De Chaisemartin and d'Haultfoeuille (2020) allow for this, but not innocuous
+    \begin{itemize}
+    \item Additional assumption required (will discuss in subsequent classes)
+    \end{itemize}
+  \item Is $D_{i}$ turning on identical (but opposite sign) to $D_{i}$
+    turning off?
     \begin{itemize}
     \item Hull (2018) working paper on mover designs discusses this
     \end{itemize}
@@ -394,7 +439,7 @@
     \item Intuitively, we generate a counterfactual for the treatment
       using the changes in the untreated units: $E(Y_{i1} - Y_{i0} | D_{i}=0)$
     \end{itemize}
-  \item Necessary: two time periods! What if we have more?
+  \item Necessary condition: two time periods! What if we have more?
   \end{wideitemize}
 \end{frame}
 
@@ -408,7 +453,7 @@
       \begin{itemize}
       \item Sometimes referred to as ``pre-trends''
       \end{itemize}
-    \item If we have multiple periods \emph{after} the policy implementation, we can examine the timing of the effect
+    \item If we have multiple periods \emph{after} the policy implementation, we can examine effect timing
       \begin{itemize}
       \item Is it an immediate effect? Does it die off? Is it persistent?
       \item If you pool all time periods together into one ``post'' variable, this estimates the average effect. If sample is not balanced, can have unintended effects!
@@ -559,10 +604,10 @@
         \begin{itemize}
         \item Yagan (AER, 2015) 
         \end{itemize}
-      \item 1 treatment timing, Continuous treatment
-        \begin{itemize}
-        \item Berger, Turner and Zwick (JF, 2020)
-        \end{itemize}
+      % \item 1 treatment timing, Continuous treatment
+      %   \begin{itemize}
+      %   \item Berger, Turner and Zwick (JF, 2020)
+      %   \end{itemize}
       \item Staggered treatment timing, Binary treatment
         \begin{itemize}
           \item Bailey and Goodman-Bacon (AER, 2015)
@@ -713,93 +758,93 @@
   \end{wideitemize}
 \end{frame}
 
-\begin{frame}{Berger, Turner and Zwick (2019)}
-  \begin{wideitemize}
-  \item This paper studies the impact of temporary fiscal stimulus
-    (First-Time Home Buyer tax credit) on housing markets
-  \item Policy was differentially targetted towards first time home buyers
-    \begin{itemize}
-    \item Define program exposure as ``the number of potential
-      first-time homebuyers in a ZIP code, proxied by the share of
-      people in that ZIP in the year 2000 who are first-time
-      homebuyers''
-    \item The design:
-      \begin{quote}
-        The key threat to this design is the possibility that
-        time-varying, place-specific shocks are correlated with our
-        exposure measure.
-      \end{quote}
-    \end{itemize}
-  \item This measure is \textbf{not} binary -- we are just comparing
-    areas with a low share vs. high share, effectively. However, we
-    have a dose-response framework in mind -- as we increase the
-    share, the effect size should grow.
-  \end{wideitemize}
-\end{frame}
+% \begin{frame}{Berger, Turner and Zwick (2019)}
+%   \begin{wideitemize}
+%   \item This paper studies the impact of temporary fiscal stimulus
+%     (First-Time Home Buyer tax credit) on housing markets
+%   \item Policy was differentially targetted towards first time home buyers
+%     \begin{itemize}
+%     \item Define program exposure as ``the number of potential
+%       first-time homebuyers in a ZIP code, proxied by the share of
+%       people in that ZIP in the year 2000 who are first-time
+%       homebuyers''
+%     \item The design:
+%       \begin{quote}
+%         The key threat to this design is the possibility that
+%         time-varying, place-specific shocks are correlated with our
+%         exposure measure.
+%       \end{quote}
+%     \end{itemize}
+%   \item This measure is \textbf{not} binary -- we are just comparing
+%     areas with a low share vs. high share, effectively. However, we
+%     have a dose-response framework in mind -- as we increase the
+%     share, the effect size should grow.
+%   \end{wideitemize}
+% \end{frame}
 
-\begin{frame}{First stage: Binary approximation}
-      \makebox[\linewidth][c]{
-      \resizebox{0.7\linewidth}{!}{
-      \includegraphics{images/zwick_fthb_1.pdf}
-      }
-      }
-\end{frame}
-\begin{frame}{First stage: Regression coefficients}
-      \makebox[\linewidth][c]{
-      \resizebox{0.7\linewidth}{!}{
-      \includegraphics{images/zwick_fthb_2.pdf}
-      }
-      }
-\end{frame}
-\begin{frame}{Final Outcome: Regression coefficients}
-      \makebox[\linewidth][c]{
-      \resizebox{\linewidth}{!}{
-      \includegraphics{images/zwick_fthb_3.pdf}
-      }
-      }
-\end{frame}
+% \begin{frame}{First stage: Binary approximation}
+%       \makebox[\linewidth][c]{
+%       \resizebox{0.7\linewidth}{!}{
+%       \includegraphics{images/zwick_fthb_1.pdf}
+%       }
+%       }
+% \end{frame}
+% \begin{frame}{First stage: Regression coefficients}
+%       \makebox[\linewidth][c]{
+%       \resizebox{0.7\linewidth}{!}{
+%       \includegraphics{images/zwick_fthb_2.pdf}
+%       }
+%       }
+% \end{frame}
+% \begin{frame}{Final Outcome: Regression coefficients}
+%       \makebox[\linewidth][c]{
+%       \resizebox{\linewidth}{!}{
+%       \includegraphics{images/zwick_fthb_3.pdf}
+%       }
+%       }
+% \end{frame}
 
-\begin{frame}{Binary Approximation vs. Continuous Estimation}
-  \begin{wideitemize}
-    \item Remember our main equation did not necessarily specify that $D_{it}$ had to be binary. 
-      \begin{equation}
-      Y_{it} = \alpha_{i} + \gamma_{t} + \sum_{t=1, t\not=t_{0}}^{T}\delta_{t} D_{it} + \epsilon_{it},
-    \end{equation}
-  \item However, if it is continuous, we are making an additional
-    strong functional form assumption that the effect of $D_{it}$ on our
-    outcome is linear.
-  \item We make this linear approximation all the time in our
-    regression analysis, but it is worth keepping in mind. It is
-    partially testable in a few ways:
-    \begin{itemize}
-    \item Bin the continuous $D_{it}$ into quartiles $\{\widetilde{D}_{itk}\}_{k=1}^{4}$ and estimate the effect across those groups:
-      \begin{equation}
-        Y_{it} = \alpha_{i} + \gamma_{t} + \sum_{t=1, t\not=t_{0}}^{T}\sum_{k=1}^{4}\delta_{t,k} \widetilde{D}_{it,k} + \epsilon_{it}.
-      \end{equation}
-    \item What does the ordering of $\delta_{t,k}$ look like? Is it at least monotonic?
-    \end{itemize}
-  \end{wideitemize}
-\end{frame}
+% \begin{frame}{Binary Approximation vs. Continuous Estimation}
+%   \begin{wideitemize}
+%     \item Remember our main equation did not necessarily specify that $D_{it}$ had to be binary. 
+%       \begin{equation}
+%       Y_{it} = \alpha_{i} + \gamma_{t} + \sum_{t=1, t\not=t_{0}}^{T}\delta_{t} D_{it} + \epsilon_{it},
+%     \end{equation}
+%   \item However, if it is continuous, we are making an additional
+%     strong functional form assumption that the effect of $D_{it}$ on our
+%     outcome is linear.
+%   \item We make this linear approximation all the time in our
+%     regression analysis, but it is worth keepping in mind. It is
+%     partially testable in a few ways:
+%     \begin{itemize}
+%     \item Bin the continuous $D_{it}$ into quartiles $\{\widetilde{D}_{itk}\}_{k=1}^{4}$ and estimate the effect across those groups:
+%       \begin{equation}
+%         Y_{it} = \alpha_{i} + \gamma_{t} + \sum_{t=1, t\not=t_{0}}^{T}\sum_{k=1}^{4}\delta_{t,k} \widetilde{D}_{it,k} + \epsilon_{it}.
+%       \end{equation}
+%     \item What does the ordering of $\delta_{t,k}$ look like? Is it at least monotonic?
+%     \end{itemize}
+%   \end{wideitemize}
+% \end{frame}
 
-\begin{frame}{Berger, Turner and Zwick implementation of linearity test}
-  \makebox[\linewidth][c]{
-    \resizebox{0.7\linewidth}{!}{
-      \includegraphics{images/zwick_fthb_4.pdf}
-    }
-  }
-\end{frame}
+% \begin{frame}{Berger, Turner and Zwick implementation of linearity test}
+%   \makebox[\linewidth][c]{
+%     \resizebox{0.7\linewidth}{!}{
+%       \includegraphics{images/zwick_fthb_4.pdf}
+%     }
+%   }
+% \end{frame}
 
-\begin{frame}{Takeaway}
-  \begin{wideitemize}
-  \item When you have a continuous exposure measure, can be intuitive
-    and useful to present binned means ``high'' and ``low'' groups
-  \item However, best to present regression coefficients of the
-    effects that exploits the full range of the continuous measure so
-    that people don't think you're data mining
-  \item Consider examining for non-monotonicities in your policy exposure measure
-  \item This paper is still has only one ``shock'' -- one policy time period for implementation
-  \end{wideitemize}
-\end{frame}
+% \begin{frame}{Takeaway}
+%   \begin{wideitemize}
+%   \item When you have a continuous exposure measure, can be intuitive
+%     and useful to present binned means ``high'' and ``low'' groups
+%   \item However, best to present regression coefficients of the
+%     effects that exploits the full range of the continuous measure so
+%     that people don't think you're data mining
+%   \item Consider examining for non-monotonicities in your policy exposure measure
+%   \item This paper is still has only one ``shock'' -- one policy time period for implementation
+%   \end{wideitemize}
+% \end{frame}
 
 
 \begin{frame}{Bailey and Goodman-Bacon (2015)}
@@ -895,8 +940,8 @@
     want some weighted combinated of these ATTs
   \item Callaway and Sant'anna (2020) highlight two ways to identify the above estimand:
     \begin{enumerate}
-    \item Parallel trends of treatment group with a group that is ``never-treated'' 
-    \item Parallel trends of treatment group with the group of the ``not yet treated''
+    \item Parallel trends of treatment group with a group that is ``never-treated'',  $G_{i} = \infty$
+    \item Parallel trends of treatment group with the group of the ``not yet treated'',   $G_{i} \geq t + 1$
     \end{enumerate}
   \item Using these estimands, C\&S provide a very natural set of
     potential ways to aggregate these estimands up
@@ -922,12 +967,11 @@
     weight on others
     \begin{itemize}
     \item Serious issue for interpretability
-    \item Some example papers: Borusyak and Jaravel (2017), de
-      Chaisemartin and D’Haultfœuille (2020), Goodman-Bacon (2019),
-      Sun and Abraham (2020)
+    \item Some example papers: Goodman-Bacon (2020), De Chaisemartin
+      and D’Haultfœuille (2020),
     \end{itemize}
-  \item Key point: this is \emph{solveable}. Merely a construct of
-    being overly casual with estimator definition
+  \item This is \emph{solveable}. Merely a construct of being overly
+    casual with estimator definition
   \end{wideitemize}
 \end{frame}
 
@@ -935,7 +979,7 @@
   \begin{columns}[T] % align columns
     \begin{column}{0.4\textwidth}
       \begin{wideitemize}
-      \item  Consider two staggered treatements and a never-treated group
+      \item  Consider two staggered treatments and a never-treated group
       \item What does the TWFE estimator estimate?
       \end{wideitemize}
     \end{column}%
@@ -993,12 +1037,9 @@
     \item A perfect example wherein the estimator does not generate an
       estimate that maps to a meaningful estimand
     \end{itemize}
-  \item There are several approaches proposed in the literature that are just as good!
+  \item There are different approaches proposed in the literature that are just as good! 
     \begin{itemize}
-    \item Sun and Abraham (2020)
-    \item de Chaisemartin and  d'Haultfoeuille (2020)
-    \item Borusyak and Jaravel (2017)
-    \item Callaway and Sant'anna (2020)      
+    \item E.g. de Chaisemartin and  d'Haultfoeuille (2020), Callaway and Sant'anna (2020)      
     \end{itemize}
   \item These all are robust to this issue. I find Callaway and
     Sant'anna quite intuitive, but your circumstances may vary
