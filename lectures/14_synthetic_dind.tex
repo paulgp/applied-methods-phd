@@ -183,11 +183,11 @@
 \begin{frame}{Today's Topics}
   \begin{wideitemize}
   \item Today, touching on two (related) topics
-  \item First, finishing up conversation related to last class and
-    diff-in-diff, focusing again on discussion of \emph{event studies}
+  \item First, finishing conversation on standard diff-in-diff,
+    focusing on \emph{event studies}
     \begin{itemize}
-    \item Focusing on how event studies generate a counteractual
-      control unit
+    \item How do event studies generate a counteractual control unit
+    \item Issue: dynamic effects \textbf{plus} staggered timing \textbf{plus} heterogeneity
     \end{itemize}
   \item Second, discuss synthetic control (and dind) methods
     \begin{itemize}
@@ -200,21 +200,21 @@
   \begin{columns}[T] % align columns
     \begin{column}{0.6\textwidth}
       \begin{wideitemize}
-      \item Distinction betwen ``event study'' and ``diff-in-diff'' is not formal
+      \item Two important cases with these staggered timing dind (event studies)
         \begin{itemize}
-        \item My view: event study are panel (or time
-          series) settings where all units are eventually treated
+        \item There exists a never-treated group who is a potential control group
+        \item Everyone is treated eventually  (No group is a ``pure control'')
         \end{itemize}
-      \item What does this imply? No group is a ``pure control''
-      \item Without a true control group, can't have both time fe,
-        unit fe and the full non-parametric spec. 
+      \item The older approach to estimate this model was:
         \begin{equation*}
           Y_{it} = \alpha_{i} + \gamma_{t} + \sum_{s = L_{0}, s\not=-1}^{L_{1}}1(t-T_{i} = s)\mu_{s}
         \end{equation*}
+      \item Without a true control group, can't have both time
+        fe, unit fe, and the full set of relative effects
         \vspace{-15pt}
-        \item Need to exclude both the baseline period AND at least
-          some periods outside the treatment window
-        \end{wideitemize}
+      \item Need to exclude both the baseline period AND at least
+        some periods outside the treatment window
+      \end{wideitemize}
       \end{column}%
       \hfill%
       \begin{column}{.4\textwidth}
@@ -229,19 +229,35 @@
 
 \begin{frame}{Event study continued}
   \begin{wideitemize}
-  \item The necessary assumption is the same (or similar) what we discussed last class
+  \item The necessary assumptions are the same (or similar) what we discussed last class
+  \item Parallel trends
+      \begin{equation}
+        E(Y_{i,t}(\infty) - Y_{i,t'}(\infty) | G_{i} = g) =       E(Y_{i,t}(\infty) - Y_{i,t'}(\infty) | G_{i} = g) , \forall g, g', \text{and} t, t'
+    \end{equation}
+  \item Turns out, all of the groups need to be parallel.
+  \item That might be a bad assumption (e.g. very far apart from
+    one another)
     \begin{itemize}
-    \item Parallel trends -- but amongst who?
-    \item Turns out, all of the groups need to be parallel.
-    \item That might be an awful assumption (e.g. very far apart from
-      one another)
+    \item Can be weakened in some cases, but only partially
     \end{itemize}
-  \item Sun and Abraham (2020) point out that heterogeneity in
-    treatment effects can have big impacts as well
+  \item No anticipation:
+    \begin{equation}
+      Y_{it}(g) = Y_{it}(\infty) \forall t < g
+    \end{equation}
+  \end{wideitemize}    
+\end{frame}
+
+\begin{frame}{Contamination Bias in event studies}
+  \begin{wideitemize}
+    \item Sun and Abraham (2021) show that if the dynamic path of
+    treatment is the same across cohorts ($g$), then the coefficient
+    from the TWFE model will correctly estimate the period ATT
+    $$\tau_{it}(g)  = \sum_{s\geq0}\tau_{s}1(t-g = s)$$
+  \item If not, then there is $g$ specific heterogeneity in paths. This creates issues:
     \begin{itemize}
-    \item In fact, it can violate the pre-trend test
-    \item The use of ``excluded'' periods potentially contaminates pre-periods
-    \item Solution: use ``late'' adopters as control group. 
+    \item Violate the pre-trend test as the use of ``excluded''
+      periods potentially contaminates pre-periods
+    \item Mismeasure the dynamic effects
     \end{itemize}
     \item Additional untestable assumptions are required as we allow for more types of heterogeneity
   \end{wideitemize}
@@ -269,7 +285,6 @@
 \includegraphics[width=\linewidth]{images/badcredit3.png}        
     \end{column}%
   \end{columns}
-  
 \end{frame}
 
 \begin{frame}{Constructing a counterfactual is the key goal}
@@ -617,12 +632,11 @@
 
 \begin{frame}{So what about synthetic methods?}
   \begin{wideitemize}
-  \item Many authors argue that this is a burgeoning innovative field
+  \item Both an old field, and a new one -- lots of new methodological papers coming out 
     \begin{itemize}
     \item It is a very cool method!
     \end{itemize}
-  \item But, I am not sure I see it breaking a huge amount of ground
-  \item Researchers appear hesitant to use it. Why?
+  \item So far, limited application by researchers. Why?
   \item  My thoughts:
     \begin{itemize}
     \item These are strong structural assumptions, and not clear we
@@ -636,6 +650,9 @@
     \item More worrisome: dind is equally problematic, but we aren't
       aware of it
     \end{itemize}
+  \item If researchers are more willing to understand that DinD is
+    sensitive to functional form, ML methods that construct
+    counterfactual outcomes are a natural direction
   \end{wideitemize}
 \end{frame}
 
@@ -662,4 +679,13 @@
     packages (original synth package is tough to use)
   \end{wideitemize}
 \end{frame}
+
+\begin{frame}{Next class}
+  \begin{wideitemize}
+    \item Extensions: continuous treatments, multiple treatments,
+      alternative approaches
+    \item Checklist: What do you need to do?
+    \end{wideitemize}
+\end{frame}
+
 \end{document}
