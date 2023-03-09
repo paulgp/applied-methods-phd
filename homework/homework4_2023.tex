@@ -1,0 +1,206 @@
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+  {\Large \textsc{Problem Set 4: Diff-in-diff}}
+
+  MGMT 737
+\end{center}
+
+
+\begin{enumerate}
+\item \textbf{Diff-in-diff:} Consider the following simulated data in
+  \texttt{dind\_data.csv}. There are 10 time periods (\texttt{timeid}),
+  1000 units (\texttt{ids}), and the treatment turns on in period 5
+  (\texttt{post}). The treated group (\texttt{treated\_group}) receives
+  the treatment in period 5 and the control group does not. The
+  treatment is fully absorbing. For this exercise, you may use canned
+  linear regression packages, or your own constructed
+  estimator. Please be specific on what standard errors you are
+  reporting. 
+  \begin{enumerate}
+  \item First, focus on \texttt{y\_instant} and estimate the treatment effect for the following three regressions:
+    \begin{itemize}
+    \item The treatment effect, controlling for group status and the post period $y_{it} = \alpha_{post} + \alpha_{treated} + \beta \texttt{post} \times \texttt{treated}$
+    \item The treatment effect, controlling for group status and time fixed effects $y_{it} = \alpha_{t} + \alpha_{treated} + \beta \texttt{post} \times \texttt{treated}$      
+    \item The treatment effect, controlling for unit and time fixed effects $y_{it} = \alpha_{t} + \alpha_{i} + \beta \texttt{post} \times \texttt{treated}$            
+    \end{itemize}
+    Compare the point estimates and standard errors. How do they differ? Why? Plot the means of the outcome over time, split out by treatment group, to help explain your answer.
+  \item Now, we want to estimate the dynamic effects for this
+    outcome. Estimate the effect of the treatment relative to time
+    period 4, for all time periods, controlling for unit and time
+    fixed effects. Plot these coefficients, and report the estimate
+    and standard error in period 6.
+
+    \textbf{N.B. Verify to yourself that you must omit the estimated
+      effect in a given time period.  What would your estimator
+      estimate if you failed to omit a given period?}
+  \item How does your point estimate from part a with the same
+    specification compare to taking the simple average of the dynamic
+    coefficients from the regression in part b? 
+  \item Now estimate the effect of the treatment relative to time
+    period 3. How does the estimate change? Use your figure to explain why.
+  \item Now, we want to estimate the effect for the \texttt{y\_dynamic}
+    outcome. Replicate part a and b using the this outcome. Explain
+    why this outcome looks different (consider plotting the means as
+    before).
+  \item Now replicate part b and d using \texttt{y\_dynamic2}. Do you
+    think \texttt{y\_dynamic2} satisfies the necessary condiitions for
+    diff-in-diff?
+  \item Consider the standard errors that you chose in this
+    exercise. Repeat part a, but try with both robust standard errors,
+    and clustered by id. Report the difference in standard errors for
+    the estimate of the treatment effect, controlling for unit and
+    time fixed effects.
+
+    To get intuition on this result, do the following exercise:
+
+    \begin{itemize}
+    \item Calculate the residuals from the specification
+    \item Estimate the autocorrelation within unit by period
+    \end{itemize}
+    What does the autocorrelation structure imply about how the shocks
+    line up with the treatment timing?
+  \end{enumerate}
+  
+\item\textbf{Event Study} Next, we consider an event study
+  approach. We will use data from Sun and Abraham (2021)'s
+  application, which replicates results from Dobkin et al. (2020)'s
+  results using the HRS data (which is publicly available). Variables:
+  \texttt{hhidpn} household identifier -- this is the identifier for
+  an individual in the panel; \texttt{wave} time identifier (wave of
+  survey) -- this is the time index of the survey; \texttt{wave\_hosp}
+  time of event -- time when the individual is hospitalized; and
+  \texttt{oop\_spend} Out-of-pocket spending.
+  \begin{enumerate}
+  \item We will be following Sun and Abraham's notation for describing
+    this setup. Denote the initial time period of treatment for a unit
+    as $E_{i}$. What variable corresponds to $E_{i}$ in our dataset?
+    Construct a variable $D_{it} = 1(E_{i} <= t)$ which is equal to
+    one when an individual is treated. What share of individuals are
+    treated in period 7,8,9,10?
+  \item Estimate the traditional static two-way fixed effects
+    estimation for this setup:
+    \begin{equation}\label{eq:twfe}
+      Y_{it} = \alpha_{i} + \lambda_{t} + D_{it}\beta + \epsilon_{it}
+    \end{equation}
+    where $Y_{it}$ is \texttt{oop\_spend}, $\alpha_{i}$ is a unit
+    fixed effect and $\lambda_{t}$ is a time fixed effect. Report the
+    estimate for $\beta$ and its standard error (adjust for
+    appropriate inference in the panel setting). 
+  \item Now, consider the estimation group by group. Denote our
+    control group as the last group ever treated. For each other
+    treated wave, estimate the treatment effect relative to this
+    group, excluding the last period of data. Report the coefficients
+    and standard errors for each of these waves. How do these
+    estimates compare to your last result? For Wave 8 cohort, what is the
+    relative comparison period for the diff-in-diff? In other words,
+    the diff across units is Cohort Wave 8 vs. Cohort Wave 11. What is the diff
+    across time comparing?
+  \item Now thing back to the traditional static equation -- what is
+    the relative comparison period for this diff-in-diff? 
+  \item We now consider the dyanamic versions of Equation
+    \ref{eq:twfe}. Denote $D_{it}^{l} = 1(t - E_{i} = l)$
+    \begin{equation}\label{eq:twfe_dyn}
+      Y_{it} = \alpha_{i} + \lambda_{t} + \sum_{l \in -3,-2} D^{l}_{it}\beta_{l} +  \sum_{l \in 0,1,2,3} D^{l}_{it}\beta_{l} + \epsilon_{it}.
+    \end{equation}
+    Report the $\beta$ coefficients and their standard errors.
+  \item Now, repeat this exercise, but consider the estimation
+    group-by-group again. Focusing just on the Cohort Wave 8
+    vs. Cohort Wave 11 comparison, how would you run the above
+    specification? What coefficients are you able to estimate? Report
+    these estimates. Now repeat and estimate $\beta_{0}$ for each of
+    the groups. How do these estimates compare to your estimates from
+    Equation \ref{eq:twfe_dyn}?
+  \item Now focus on the estimate for $\beta_{-2}$ from Equation
+    \ref{eq:twfe_dyn}. This is traditionally the pre-trend test. Sun
+    and Abraham show that under the standard diff-in-diff assumptions,
+    the $\beta_{-2}$ coefficient in Equation \ref{eq:twfe_dyn}
+    specification, this coefficient is the weighted combination of
+    multiple treatments in other periods. Denote $CATT_{e,l}$ as the
+    average treatment effect $l$ periods from the initial treatment
+    for the cohort of units first treated at time $e$. Then, Sun and Abraham show that
+    \begin{equation}
+      \beta_{-2} = \sum_{e=8}^{11}\omega_{e,-2}^{-2}CATT_{e,-2} + \sum_{l=-3,0,1,2,3}\sum_{e=8}^{11}\omega_{e,l}^{-2}CATT_{e,l} + \sum_{l'\in\{-4,-1\}}\sum_{e=8}^{11}\omega_{e,l'}^{-2}CATT_{e,l'}, 
+    \end{equation}
+    where the $\omega$ are weights that we can calculate. We can
+    estimate these by replacing $Y_{it}$ in Equation \ref{eq:twfe_dyn}
+    with $D_{i,t}^{l}1(E_{i}=e)$ as the outcome variable, and
+    reporting the coefficient on $D^{-2}_{it}$. Do so for each $l$ and
+    $e$. Your results should match Figure 2 in Sun and Abraham. How
+    does this affect your interpretation of the pre-trend test?
+  \item Finally, we estimate Sun and Abraham's alternative estimator,
+    which avoids the contamination bias. This approach \emph{pools}
+    our cohort-by-cohort comparison from before. First, we estimate
+    \begin{equation}
+      Y_{it} = \alpha_{i} + \lambda_{t} + \sum_{e = 8,9,10} \sum_{l =-3, l \not=-1}^{l=3} 1(E_{i} = e) \times D^{l}_{it}\delta_{e,l} + \epsilon_{it},
+    \end{equation}
+    where we exclude the last time period and treat the Cohort Wave 11
+    as our control group. Take the $\delta_{e,l}$ estimates, and
+    report $\delta_{e,0}$ for all 3 groups. The final estimate
+    $\mu_{0}$ weights each of these $\delta$ by the cohort sample
+    weight $\pi_{e} = Pr(E_{i} = e | l = 0)$. Report this estimate of
+    $\mu_{0}$.
+  \end{enumerate}
+\end{enumerate}
+
+
+\end{document}
