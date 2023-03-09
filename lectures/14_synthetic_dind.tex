@@ -145,7 +145,7 @@
   \end{frame}
 }
 
-\title[]{\textcolor{blue}{Canonical Research Designs II:\\ Difference-in-Differences II:\\
+\title[]{\textcolor{blue}{Canonical Research Designs I:\\ Difference-in-Differences II:\\
   Event Studies, Synthetic Control, and Synthetic DinD}}
 \author[PGP]{}
 \institute[FRBNY]{\small{\begin{tabular}{c}
@@ -258,10 +258,49 @@
     \item Violate the pre-trend test as the use of ``excluded''
       periods potentially contaminates pre-periods
     \item Mismeasure the dynamic effects
+    \item Additional untestable assumptions are required as we allow for more types of heterogeneity      
     \end{itemize}
-    \item Additional untestable assumptions are required as we allow for more types of heterogeneity
   \end{wideitemize}
 \end{frame}
+
+\begin{frame}{Issues in Diff-in-Diff - Negative Weighting vs. Contamination Bias}
+  \begin{wideitemize}
+  \item There are two distinct issues in staggered timings:
+    \begin{enumerate}
+    \item Goodman-Bacon (2021) and others show that the aggregated
+      TWFE estimate can put \emph{negative} weight on some treatment
+      cohorts, thereby giving nonsensical estimands
+    \item Sun and Abraham (2021) and others show that the
+      \emph{dynamic} TWFE estimates can be \emph{contaminated} across
+      time 
+    \end{enumerate}
+  \item See discussion in Goldsmith-Pinkham, Hull and Kolesar (2022)
+    appendix for analogy to broader linear regression issue
+  \item Key point: TWFE linear regression is misspecified 
+  \end{wideitemize}
+\end{frame}
+
+
+\begin{frame}{Solutions: Borusyak Hull and Jaravel (2022) Estimator}
+  \begin{wideitemize}
+  \item Will walk through Sun and Abraham (2021) solution on homework (interacting treatment effects by cohort)
+  \item Callaway and Sant'anna (2021) also provided straightforward solution (not using regression)
+  \item BHJ impute the counterfactual using the not-yet-treated observations
+    \begin{equation}
+      Y_{it}(\infty) = \alpha_{i} + \lambda_{t} + \epsilon_{it}
+    \end{equation}
+  \item Then, we can predict the value for any unit in a time period:
+    $\hat{Y}_{i,t}(\infty)$ and proceed accordingly to construct
+    measures of group by time period ATT
+    ($\mu_{ATT}(g,t) = E( Y_{i,t}(g) - \hat{Y}_{i,t}(\infty) | G_{i} =
+    g)$
+  \item What is key difference from Callaway and Sant'anna (and why it is more efficient under some settings?)
+    \begin{itemize}
+    \item Estimation of $\alpha_{i}$ uses all the pre-treatment data, rather than just the period before
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
 
 \begin{frame}{Aside in event studies}
   \begin{columns}[T] % align columns
