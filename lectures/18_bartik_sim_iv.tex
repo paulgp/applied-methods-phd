@@ -147,7 +147,7 @@
   \end{frame}
 }
 
-\title[]{\textcolor{blue}{Canonical Research Designs V:\\ Bartik and Simulated Instruments }}
+\title[]{\textcolor{blue}{Canonical Research Designs V:\\ Bartik, Simulated, and Granular Instruments }}
 \author[PGP]{}
 \institute[FRBNY]{\small{\begin{tabular}{c}
   Paul Goldsmith-Pinkham  \\
@@ -187,21 +187,26 @@
     \begin{itemize}
     \item There is a single policy or source of variation
     \end{itemize}
-  \item However, in other settings, there are more complicated sources of variation exploited to identify effects. Today we'll focus on two:
+  \item However, in other settings, there are more complicated sources of variation exploited to identify effects. Today we'll focus on three:
     \begin{itemize}
     \item Bartik (shift-share) instruments: three recent
       papers on commonly used identification approach
     \item Simulated instruments: reframe an older literature in a new
       light using Borusyak and Hull (2022) paper
+    \item Granular instruments: identifcation approach in Gabaix and
+      Koijen (2023) leveraging differences in the size distribution
+      across firms
     \end{itemize}
-  \item Key historical feature of these approaches is that they had an ``intuitive'' feature of identification, but formal properties were not established for several decades
+  \item Key historical feature of some of these approaches is that
+    they had an ``intuitive'' feature of identification, but formal
+    properties were not established for several decades
     \begin{itemize}
     \item Analagous to staggered DinD lit!
     \end{itemize}
   \end{wideitemize}
 \end{frame}
 
-
+\section{Bartik Instruments}
 
 \begin{frame}{Bartik instruments are used everywhere}
     %Local Markets and National Categories
@@ -327,20 +332,19 @@ $$B_l = \sum_{k=1}^{K}z_{lk} \textcolor{blue}{g_{k}}$$
 \begin{frame}
 \frametitle{This gives us a simple 2SLS structure}
 
+
 \begin{align}
   y_l&= \beta_0 + \beta x_l + \epsilon_l \notag \\
   x_l&= \pi_0 + \pi_{1} B_l + u_l \notag \\  
-  B_l &=  \sum_{k=1}^{K}z_{lk} \textcolor{blue}{g_{k}} \notag \\
-  g_{lk} &=   \textcolor{blue}{g}_{ \textcolor{blue}{k}}+  \textcolor{red}{\tilde{g}_{lk}}  \notag 
+B_l &=  \sum_{k=1}^{K}z_{lk} \textcolor{blue}{g_{k}} \notag \\
+g_{lk} &=   \textcolor{blue}{g}_{ \textcolor{blue}{k}}+  \textcolor{red}{\tilde{g}_{lk}}  \notag 
 \end{align}
 
-
-
-China shock: e.g., Autor, Dorn and Hanson (2013)  
+Bank-lending relationships: e.g., Greenstone, Mas and Nguyen (2015)
 \begin{itemize}
-\item $z_{lk}$: location (l) industry (k) composition
-\item $g_{lk}$:  location (l)  industry (k) growth in imports from China
-\item $\textcolor{blue}{g_k}$: industry $k$  growth of imports (from China)
+\item $z_{lk}$: location (l) share of loan origination from bank $k$
+\item $g_{lk}$:  loan growth in location $l$ by bank $k$
+\item $\textcolor{blue}{g_k}$: part of loan growth due to bank supply shock
 \end{itemize}
 
 
@@ -371,28 +375,6 @@ Immigrant enclave: e.g., Altonji and Card (1991)
 
 \end{frame}
 
-
-%------
-\begin{frame}
-\addtocounter{framenumber}{-1}
-\frametitle{Other instruments have this structure}
-
-\begin{align}
-  y_l&= \beta_0 + \beta x_l + \epsilon_l \notag \\
-  x_l&= \pi_0 + \pi_{1} B_l + u_l \notag \\  
-B_l &=  \sum_{k=1}^{K}z_{lk} \textcolor{blue}{g_{k}} \notag \\
-g_{lk} &=   \textcolor{blue}{g}_{ \textcolor{blue}{k}}+  \textcolor{red}{\tilde{g}_{lk}}  \notag 
-\end{align}
-
-Bank-lending relationships: e.g., Greenstone, Mas and Nguyen (2015)
-\begin{itemize}
-\item $z_{lk}$: location (l) share of loan origination from bank $k$
-\item $g_{lk}$:  loan growth in location $l$ by bank $k$
-\item $\textcolor{blue}{g_k}$: part of loan growth due to bank supply shock
-\end{itemize}
-
-
-\end{frame}
 
 %------
 \begin{frame}
@@ -715,15 +697,16 @@ Two ideas:
   appealing), but requires an argument why shocks are randomly
   assigned
 \item The shares approach is model-based, so suffers from same issues
-  as dind, but may more naturally work in your setting.
+  as diff-in-diff, but may more naturally work in your setting.
 \end{itemize}
 
 \end{frame}
 
 %----
 \begin{frame}
-\frametitle{Is ADH about shocks or shares?}
+\frametitle{How to decide if a paper is  about shocks or shares?}
 
+For Autor, Dorn and Hanson's China Shock:
 Shocks:
 \begin{itemize}
 \item  Explains why $g_{kt}^{high-income}$ rather than $g_{kt}^{US}$  (hard to rationalize under shares)
@@ -740,6 +723,7 @@ Shares:
 
 Bottom line: a little hard to tell what exactly ADH are assuming; ADH approach does not appear to satisfy testable assumptions under GPSS, but do appear to under BHJ.
 \end{frame}
+
 
 
 
@@ -869,69 +853,9 @@ Interpretation:
 \begin{itemize}
 \item Gap between maximum likelihood and two-step estimators is evidence of misspecification 
 \end{itemize}
-Also, overidentification tests, which provides evidence of misspecification
-%
-%Note, in Angrist and Krueger (1991), MBTSLS and LIML are very similar
+Also, overidentification tests, which provides evidence of misspecification (but not robust to heterogeneous effects!)
 
 \end{frame}
-
-%-----
-
-\begin{comment}
-
-\begin{frame}[label=overidtest]
-\frametitle{Test \#3b: Overidentification tests}
-
-Basic insight: many instruments 
-\begin{itemize}
-\item Test statistics: for HFUL, Chao, Hausman, Newey, Swanson and Woutersen (2014) test statistic; for TSLS, Sargan; for LIML (Cragg-Donald)
-\end{itemize} 
-Interpretation:
-\begin{itemize}
-\item Overid test failure is evidence of misspecification
-\end{itemize}
-\end{frame}
-
-\end{comment}
-
-%----
-\begin{frame}[fragile,label=sh_results]
-\frametitle{Test \#3: Alternative estimators and overidentification}
-
-
-\small
-\begin{table}[htbp]
-\label{table:olsiv_bartik}
-\begin{center}
-  \begin{tabular}{l*{4}{c}}
-\toprule
-  & \multicolumn{1}{c}{$\Delta$ Emp} & Over ID Test\\
-\midrule
-OLS  & -0.17 &  \\
-    & \textcolor{gray!75}{(0.04)}&         & \\
-TSLS (Bartik)  & -0.62 &  \\
-              &  \textcolor{gray!75}{(0.11) }&         & \\
-TSLS           & -0.22 & 872.69\\
-              &  \textcolor{gray!75}{(0.06)}        & [0.00]\\
-MBTSLS  & -0.33 & \\
-    &  \textcolor{gray!75}{(0.05)}&         & \\
-LIML  & -2.07 & 1348.50\\
-    &  \textcolor{gray!75}{(3.52)}&          [0.00]\\
-HFUL & -1.13 &  1141.08\\
-    &  \textcolor{gray!75}{(0.04)}&         [0.00]\\
-\midrule
-Year and Census Division FE&            Yes\\
-Controls        &           Yes\\
-Observations    &      1,444\\
-\bottomrule
-\end{tabular}
-\end{center}
-\end{table}
-
-\end{frame}
-
-
-
 
 % INTRO
 
@@ -949,7 +873,6 @@ Observations    &      1,444\\
     ``random''
     \begin{itemize}
     \item Sometimes, it is easy to know how to use this randomness
-    \item \textbf{This paper is about when it is hard}
     \end{itemize}
   \end{wideitemize}
 \end{column}%
@@ -1108,28 +1031,9 @@ Observations    &      1,444\\
       p(w_{i}) = Pr(x_{i} | w_{i}) = \sum_{g} f_{i}(g, w_{i}) Pr(g)
     \end{equation*}
   \item With pscore in hand, estimation is straightforward, and known to be semiparametrically efficient!
-  \end{wideitemize}
-\end{column}%
-\hfill%
-\begin{column}{.25\textwidth}
-\end{column}%
-\end{columns}
-\end{frame}
-
-\begin{frame}{Recentering vs. Controlling?}
-\begin{columns}[T] % align columns
-\begin{column}{.9\textwidth}
-  \begin{wideitemize}
-  \item The paper makes a big point about the recentering concept
     \begin{itemize}
-    \item I'm not sure why one would do this vs. just controlling
-    \end{itemize}
-  \item This is particularly true in this setting (rather than with
-    interference)
-  \item My suggestion when reading the paper: just think of this as
-    conditioning on propensity scores
-    \begin{itemize}
-    \item Can revisit if you are worried about interference
+    \item Either subtract this p-score off of the endogeneous variable
+      (recentering) or control for it directly
     \end{itemize}
   \end{wideitemize}
 \end{column}%
@@ -1156,7 +1060,7 @@ Observations    &      1,444\\
     whether a person is eligible under their state's law $z_{bh}$
     \begin{itemize}
     \item Also identify the $p(w)$ that they are eligible on average across others states' laws
-    \item They recenter ($\tilde{z}_{bh} = z_{bh} - p(w)$) but you could just control...
+    \item They recenter ($\tilde{z}_{bh} = z_{bh} - p(w)$) 
     \end{itemize}
   \end{wideitemize}
 \end{frame}
@@ -1179,52 +1083,6 @@ Observations    &      1,444\\
 
 \end{column}%
 \end{columns}
-\end{frame}
-
-
-\begin{frame}{Discussion: When beautiful theory  meets data roadblocks}
-  \begin{wideitemize}
-  \item Many times, the data necessary to calculate eligibility and
-    the outcomes of interest are not in the same dataset. This is
-    especially true in simulated IV settings (I know from experience)
-    \begin{itemize}
-    \item Appendix D.2 talks about these issues but it's a little vague
-    \end{itemize}
-  \item Clarify ideas: Cohodes et al. (2016) consider effects of
-    Medicaid in the 1980s on long-term education outcomes
-    \begin{itemize}
-    \item Parental income (the relevant $w_{i}$ for eligbility during childhood) is not known in the same dataset for $y_{i}$.
-    \item $x_{i}$ is average eligibility for types born in state $s$ at age $a$ of race $r$ in period $t$.
-    \item They just want the variation that comes from state laws, not the demographics
-    \item Construct Sim. IV that takes the average share of
-      individuals in national population that would be eligible under
-      states' laws
-    \end{itemize}
-  \item Hopefully you're getting it now! Proposal from paper:
-    \begin{itemize}
-    \item Construct $Pr(x_{i} | \tilde{w})$ that randomizes over \emph{states} and control (or recenter)
-    \end{itemize}
-  \item Note: this type of within-state demographic info is actually
-    used in Mahoney (2015) for bankruptcy simulated instruments!
-  \end{wideitemize}
-\end{frame}
-
-\begin{frame}{Discussion: Heterogeneity in the underlying data}
-  \begin{wideitemize}
-  \item Something harder to take from the paper
-    \begin{itemize}
-    \item How to consider aggregation issues
-    \end{itemize}
-  \item State-level variation, but maybe some individuals experienced Medicaid expansion, while other experienced contraction
-    \begin{itemize}
-    \item Less likely in Medicaid case, but possible in other settings
-    \end{itemize}
-  \item E.g. monotonicity violation when there is heterogeneous treatment
-    \begin{itemize}
-    \item Paper discusses some points on this in Appendix, but would be useful to be a bit more concrete in some examples
-    \item Something I tried to work on with Aronow and Sorkin but ran into serious data issues!
-    \end{itemize}
-  \end{wideitemize}
 \end{frame}
 
 \begin{frame}{Second kernel of the paper: interference}
@@ -1463,7 +1321,6 @@ Observations    &      1,444\\
 \begin{wideitemize}
 \item   We focused on Currie and Gruber (1996a, b) cases of simulated instruments, but there are other cases of ``simulated instruments'' 
 \begin{itemize}
-\item Gruber and Saez is an individual-level instrument so the monotonicity point doesn't apply
 \item Gruber and Saez is all about characteristics (income) responding endogenously
 \end{itemize}
 \item These are tax elasticities and not clear that exclusion restriction holds
@@ -1471,7 +1328,101 @@ Observations    &      1,444\\
 \end{wideitemize}
 \end{frame}
 
+\begin{frame}{Granular Instruments (Gabaix and Koijen)}
+\begin{columns}[T] % align columns
+\begin{column}{.5\textwidth}
+  \begin{wideitemize}
+  \item Note that the previous approach heavily leaned on on
+    considering a ``random'' distribution of exogeneous shocks,
+    independent of the model
+  \item Granular IV (Gabaix and Koijen (2022)) similarly relies on
+    random shocks, but uses model structure to generate instruments
+    for demand and supply estimation
+  \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.5\textwidth}
+  \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/gabaix_koijen.png}
+    }}
+\end{column}%
+\end{columns}
+\end{frame}
 
+\begin{frame}{Simplified Setup from Granular Instruments}
+  \begin{wideitemize}
+  \item Goal of the paper is to estimate a structural model of the following setup:
+    \begin{align}
+      y_{it} &= \phi^{d}p_{t} + \gamma^{y} X_{1,it} + \underbrace{\lambda_{i}\eta_{t}}_{\text{Unobserved}} + u_{it}\\
+      p_{t}  &= \psi y_{St} + \gamma^{p} X_{2,t} + \epsilon_{t}\\
+      y_{St} &= \sum_{i}\underbrace{S_{i}}_{\text{Size Weights}}y_{it}.
+    \end{align}
+  \item Effectively, we want to estimate the elasticities for this system:
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{ Setup from Granular Instruments}
+  \begin{wideitemize}
+  \item Goal of the paper is to estimate a structural model of the following setup:
+    \begin{align}
+      y_{it} &= \phi^{d}p_{t} + \gamma^{y} X_{1,it} + \underbrace{\lambda_{i}\eta_{t}}_{\text{Unobserved}} + u_{it}\\
+      p_{t}  &= \psi y_{St} + \gamma^{p} X_{2,t} + \epsilon_{t}
+    \end{align}
+  \item A few things to note:
+    \begin{enumerate}
+    \item OLS is biased for either regression (can solve and show endogeneity bias)
+    \item Equations are estimated in different aggregation levels (key!)
+    \end{enumerate}
+  \item Key assumptions for the paper:
+    \begin{itemize}
+    \item $u_{it}$ are completely random: $\boldsymbol{u}_{t} \perp \eta_{t},\gamma^{y} X_{1,it}, \gamma^{p} X_{2,t}$
+    \item Models are correctly specified
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{\emph{Simplified} Setup from Granular Instruments}
+  \begin{wideitemize}
+  \item Simplified application:
+    \begin{align}
+      y_{it} &= \phi^{d}p_{t} + \eta_{t} + u_{it}\\
+      p_{t}  &= \psi y_{St} + \epsilon_{t}
+    \end{align}
+  \item Aggregate risk exposure is identical ($\eta_{t}$)
+  \item What happens if aggregate $y_{it}$ within-time period?
+    \begin{itemize}
+    \item $y_{S t} = \sum_{i}S_{i}y_{it}$. Everything is
+      identical across firms except $u_{it}$.
+    \item Define $z_{t} = y_{S t} - y_{E t} = \sum_{i}S_{i}y_{it} - n^{-1}\sum_{i}y_{it} = u_{St} - u_{Et}$
+    \item By assumption, $z_{t}$ is independent of $\epsilon_{t}$! 
+    \item By assumption, $E(z_{t}\eta_{t}) = 0$  AND $E(z_{t}u_{Et}) = 0$      
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+
+\begin{frame}{Application for Granular Instruments (Gabaix and Koijen 2022b)}
+\begin{columns}[T] % align columns
+\begin{column}{.5\textwidth}
+  \begin{wideitemize}
+  \item Shocks to mutual fund flows as a source of variation in demand
+  \end{wideitemize}
+\end{column}%
+\hfill%
+\begin{column}{.5\textwidth}
+\only<1>{  \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/gabaix_koijen2.png}
+    }}}
+\only<2>{    \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/gabaix_koijen3.png}
+    }}}
+
+\end{column}%
+\end{columns}
+\end{frame}
 
 
 \end{document}
