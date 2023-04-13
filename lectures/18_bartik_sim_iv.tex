@@ -1401,6 +1401,39 @@ Also, overidentification tests, which provides evidence of misspecification (but
   \end{wideitemize}
 \end{frame}
 
+\begin{frame}{\emph{Simplified} Setup from Granular Instruments}
+    \begin{align}
+      y_{it} &= \phi^{d}p_{t} + \eta_{t} + u_{it}\\
+      p_{t}  &= \psi y_{St} + \epsilon_{t}
+    \end{align}
+  
+    \begin{wideitemize}
+    \item Conceptually, this model has no external instruments, but if
+      it is correctly specified, it can identify residuals which are
+      assumed to be independent
+    \item E.g. consider the reduced forms:
+      \begin{align}
+        y_{St} &=  (1-\phi^{d} \psi)  \phi^{d}  \epsilon_{t} + (1-\phi^{d} \psi)\eta_t + (1-\phi^{d} \psi)u_{St}\\
+        p_t &= (1- \phi^{d}\psi)^{-1}\psi \eta_{t} + (1- \phi^{d}\psi)^{-1} \psi u_{St} + (1- \phi^{d}\psi)^{-1} \epsilon_{t}
+      \end{align}
+  \end{wideitemize}
+\end{frame}
+\begin{frame}{\emph{Simplified} Setup from Granular Instruments}
+    \begin{align}
+      y_{it} &= \phi^{d}p_{t} + \eta_{t} + X_{it}\delta + u_{it}\\
+      p_{t}  &= \psi y_{St} + \epsilon_{t}
+    \end{align}
+  
+    \begin{wideitemize}
+    \item How can this break? What if there is a time-varying characteristic we do not control for?
+    \item Then, $z_{t}$ will capture this size weighted component --
+      if it's correlated with the average shocks on either side, that
+      will be problematic.
+  \end{wideitemize}
+\end{frame}
+
+
+
 
 \begin{frame}{Application for Granular Instruments (Gabaix and Koijen 2022b)}
 \begin{columns}[T] % align columns
@@ -1419,7 +1452,10 @@ Also, overidentification tests, which provides evidence of misspecification (but
     \resizebox{\linewidth}{!}{
       \includegraphics{images/gabaix_koijen3.png}
     }}}
-
+\only<3>{    \makebox[\linewidth][c]{
+    \resizebox{\linewidth}{!}{
+      \includegraphics{images/gabaix_koijen4.png}
+    }}}
 \end{column}%
 \end{columns}
 \end{frame}
