@@ -81,7 +81,7 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
     change the estimates?
   \item Re-estimate this using a local quadratic function. How does it
     change the estimates?
-  \item Finally, re-estimate this using a bandiwth of 40. How does it
+  \item Finally, re-estimate this using a bandwidth of 40. How does it
     change the estimate? 
   \item Describe what the ``covs'' option in the estimation approach
     is doing. How does the main estimate change if you do not include
@@ -107,8 +107,12 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
     \end{equation}
     using the observations that are within the bandwidth picked by the
     \texttt{rdrobust} command (hint this should be under 11, and is
-    called \texttt{h}). How does your point estimate of $\gamma_{2}$
-    compare to the \texttt{rdrobust} estimate? Explain.
+    called \texttt{h}) and omitting observations where
+    \texttt{firstmonth} = 1. How does your point estimate of
+    $\gamma_{2}$ compare to the \texttt{rdrobust} estimate? Explain.
+  \item Explain, in words, how you could get the \texttt{rdrobust}
+    estimate that uses the triangular kernel using OLS (hint: it would
+    involve weights)
   \end{enumerate}
 \end{enumerate}
 % \item PART II (Testing Across Estimators) Now we want to compare
