@@ -98,7 +98,19 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
     (approximately). How plausible does that seem?
   \item How does your RD Honest estimate change if you increase the
     bandwidth to 40?
+  \item Finally, run the following two estimates:
+    \begin{enumerate}
+    \item \texttt{rdrobust} omitting observations where \texttt{firstmonth} = 1 and a uniform kernel
+    \item     a linear regression of
+    \begin{equation}
+      \text{cod\_any} = \gamma_0 + \text{agemo\_mda}\gamma_{1} + 1(\text{agemo\_mda} > 0)\gamma_{2} + 1(\text{agemo\_mda} > 0)\times \text{agemo\_mda}\gamma_{3} + \epsilon_{it}
+    \end{equation}
+    using the observations that are within the bandwidth picked by the
+    \texttt{rdrobust} command (hint this should be under 11, and is
+    called \texttt{h}). How does your point estimate of $\gamma_{2}$
+    compare to the \texttt{rdrobust} estimate? Explain.
   \end{enumerate}
+\end{enumerate}
 % \item PART II (Testing Across Estimators) Now we want to compare
 %   estimated effects on Male vs. Female drivers. We will replicate
 %   Columns 4 and 6 from Table 1. (You can get the data here:
