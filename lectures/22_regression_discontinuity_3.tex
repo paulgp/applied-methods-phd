@@ -481,6 +481,83 @@
     \end{columns}
 \end{frame}
 
+\begin{frame}{Multiple Cutoffs}
+    \begin{columns}[onlytextwidth, T] % align columns
+      \begin{column}{.6\textwidth}
+  \begin{wideitemize}
+  \item Cattaneo, Titiunik, Vazquez-Bare and Keele (2016) and Bertanha
+    (2020) touch on what to do when not every threshold is the same
+    (See the discussion in Cattaneo, Idrobo and Titiunik's extensions
+    textbook for a very clean discussion)
+    \begin{itemize} 
+    \item E.g. \textbf{MultiThreshold} contrast a political election with 2 vs. 3 candidates
+      -- what is the ``winning'' threshold?
+    \item E.g. \textbf{MultiCutoff} Cutoff based on two test scores
+    \end{itemize}
+  \item These have separate complications associated with them
+  \end{wideitemize}
+  \end{column}
+      \begin{column}{.4\textwidth}
+        \only<1>{\includegraphics[width=\linewidth]{images/multicutoff.png}}
+        \only<2>{\includegraphics[width=\linewidth]{images/multiscore.png}}        
+      \end{column}%
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Multiple Threshold - Cumulative vs. Not}
+    \begin{columns}[onlytextwidth, T] % align columns
+      \begin{column}{.6\textwidth}
+  \begin{wideitemize}
+  \item Do the treatment cutoffs vary based on unit, or are there just many of them?
+  \item An example non-cumulative case is when the thresholds vary on
+    geography: all units could potentially be exposed to treatments
+    defined at different cutoffs
+  \item An example cumulative case is where dosing is a function of
+    the score -- those facing different treatment cutoffs are not
+    comparable (e.g. a support problem in the running variable)
+  \end{wideitemize}
+  \end{column}
+      \begin{column}{.4\textwidth}
+        \only<1>{\includegraphics[width=\linewidth]{images/cutoff_noncum.png}}
+        \only<2>{\includegraphics[width=\linewidth]{images/cutoff_cum.png}}        
+      \end{column}%
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Multiple Threshold - Non-cumulative pooling}
+  \begin{columns}[onlytextwidth, T] % align columns
+    \begin{column}{.6\textwidth}
+      \begin{wideitemize}
+      \item With non-cumulative treatments, can consider a cutoff specific
+        treatment and proceed identically -- each one identified separately
+      \item To pool these estiamtes, you can normalize and center at the same point
+        \begin{equation}
+          \tau_{SRD}^{pool} = \sum_{c} w(c) \tau_{SRD}(c), \; w(c) = \frac{f_{X|C}(c|c) Pr(C = c)}{\sum_{c}f_{X|C}(c|c) Pr(C = c)}
+        \end{equation}
+      \end{wideitemize}
+    \end{column}
+    \begin{column}{.4\textwidth}
+      \only<1>{\includegraphics[width=\linewidth]{images/cutoff_noncum.png}}
+    \end{column}%
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Multiple Cutoffs}
+  \begin{columns}[onlytextwidth, T] % align columns
+    \begin{column}{.6\textwidth}
+      \begin{wideitemize}
+      \item With multiple scores, the limits are defined in a multi-dimensional way.
+      \item Integrating over these points has a similar logic to multiple-threshold
+      \end{wideitemize}
+    \end{column}
+    \begin{column}{.4\textwidth}
+      \only<1>{\includegraphics[width=\linewidth]{images/multiscore.png}}
+    \end{column}%
+  \end{columns}
+\end{frame}
+
+
 \begin{frame}{What about bunching? Bounds on Treatment effects}
     \begin{columns}[onlytextwidth, T] % align columns
       \begin{column}{.6\textwidth}
