@@ -501,7 +501,7 @@
           \begin{equation}
             IDF_{w} = \log\left(\frac{d}{d \text{with word } w}\right)
           \end{equation}
-        \item Then $TFIDF_{pw}$ is  the product of those two.
+        \item $TFIDF_{pw}$ is  the product of those two.
         \end{wideitemize}
       \end{column}%
       \hfill%
@@ -517,7 +517,7 @@
         \begin{wideitemize}
         \item This paper constructs BIDF, which is a backwards looking version of IDF:
           \begin{equation}
-            IDF_{wp} = \log\left(\frac{\text{patents priors to p}}{\text{1+ patents prior to p that include w}}\right)
+            \tiny IDF_{wp} = \log\left(\frac{\text{patents priors to p}}{\text{1+ patents prior to p that include w}}\right)
           \end{equation}
         \item Finally, they look at the cosine distance between these TFBIDF for a given patent.
           \item They can identify ``new'' patents using this!
