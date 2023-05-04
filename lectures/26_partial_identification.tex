@@ -544,6 +544,63 @@
 \end{frame}
 
 
+\begin{frame}{Excellent application considering interval data: Novosad, Rafkin and Asher (2022)}
+      \begin{columns}[onlytextwidth, T] % align columns
+        \begin{column}{.5\textwidth}
+          \begin{wideitemize}
+          \item Mortality rates among non-Hispanic Whites without college degrees have
+            increased substantially over time
+            \begin{itemize}
+            \item Why?
+            \end{itemize}
+          \item Three possible reasons:
+            \begin{itemize}
+            \item an artifact of shifts in the education
+              distribution
+            \item mortality could be rising uniformly among
+              individuals in the bottom half of the education dist
+            \item mortality could be rising substantially at the very
+              bottom of the education distribution
+            \end{itemize}
+          \end{wideitemize}
+      \end{column}%
+      \hfill%
+      \begin{column}{.5\textwidth}
+        \only<1>{\includegraphics[width=\linewidth]{images/novosad1.png}       }
+        \only<2>{\includegraphics[width=\linewidth]{images/novosad2.png}       }        
+      \end{column}%
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Excellent application considering interval data: Novosad, Rafkin and Asher (2022)}
+      \begin{columns}[onlytextwidth, T] % align columns
+        \begin{column}{.5\textwidth}
+          \begin{wideitemize}
+          \item This paper uses Manski and Tamer with two additional assumptions:
+            \begin{enumerate}
+            \item there exists a latent
+              education rank, which is only coarsely observed in the
+              education data
+            \item mortality rate is weakly decreasing in the latent
+              education rank
+            \end{enumerate}
+          \item Effectively, put bounds on $E(y | x \in [a,b])$
+          \end{wideitemize}
+      \end{column}%
+      \hfill%
+      \begin{column}{.5\textwidth}
+        \only<1>{\includegraphics[width=\linewidth]{images/novosad2.png}       }
+        \only<2>{\includegraphics[width=\linewidth]{images/novosad3.png}       }
+        \only<3>{\includegraphics[width=\linewidth]{images/novosad4.png}       }
+        \only<4>{\includegraphics[width=\linewidth]{images/novosad5.png}       }                        
+      \end{column}%
+    \end{columns}
+\end{frame}
+
+
+
+
 \begin{frame}{Other things?}
   \begin{wideitemize}
   \item Both of these approaches are very practical ways to deal with
