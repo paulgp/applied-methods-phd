@@ -64,13 +64,54 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
   MGMT 737
 \end{center}
 \begin{center}
-Spring 2021
+Spring 2023
 \end{center}
 
 
 In answering these questions, full marks are given for explanations,
 not just right answers. Good luck!
 
+
+\section{True/False/Uncertain}
+For the following problems, respond True False or Uncertain, and
+explain why. If you can refer to papers or results that is
+particularly valuable.
+
+\begin{itemize}
+\item If something is randomly assigned conditional on variables $X$,
+  controlling for those variables in a linear regression is sufficient
+  to estimate the average treatment effect.
+\item A difference-in-difference design with a single intervention
+  time period suffers from negative weighting issues.
+\item It is still possible to partially identify a treatment effect in
+  a regression discontinuity setting if there is bunching in the
+  running variable.
+\item You should always cluster your standard errors in the most
+  conservative way possible.
+\item The parallel trends test is a good test for research design
+  validity in the difference-in-difference setting.
+\item If a treatment spills over and affects more than the treated
+  units, it is not possible to estimate the average treatment effect
+  of a treatment.
+\item It is not possible to identify anything about the compliers in
+  an instrumental variables regression.
+\item The quantile regression estimation approach is robust to
+  censoring in the outcome variable.
+\item In a duration model, it is fine to throw out observations that
+  are right censored.
+\item A Bartik or shift-share research design rests on the validity of
+  exogeneous shares.
+\item A randomized experiment doesn't need to control for any
+  confounding factors.
+\item If you have an outcome variable $y$ with zeros and positive
+  values, you can estimate a percentage effect by using $\log(1+y)$ as
+  the outcome.
+\item As long as your first stage F statistic is larger than 10, you
+  should have no weak instrument problems.
+\end{itemize}
+
+
+\section{Application Questions}
 \begin{enumerate}
 \item In Angrist, Imbens and Rubin (1996), they study as an
   application the effect of military service on civilian

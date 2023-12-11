@@ -90,6 +90,14 @@ out$rdplot +
 ggsave("images/lee_rd_binscatter_qsmv_choice.png")
 
 est = rdrobust(lee08$voteshare, lee08$margin)
+est_rdhonest = RDHonest(lee08$voteshare ~ lee08$margin, cutoff = 0, M = 0.1, opt.criterion="MSE")
+est_rdhonest2 = RDHonest(lee08$voteshare ~ lee08$margin, cutoff = 0, M = 1, opt.criterion="MSE")
+est_rdhonest3 = RDHonest(lee08$voteshare ~ lee08$margin, cutoff = 0, M = 0.01, opt.criterion="MSE")
+data = tibble( mu = c(est$coef[1], est_rdhonest3$estimate, est_rdhonest$estimate, est_rdhonest2$estimate), lb = c(est$ci[2], est_rdhonest3$lower, est_rdhonest$lower, est_rdhonest2$lower), ub = c(est$ci[5], est_rdhonest3$upper, est_rdhonest$upper, est_rdhonest2$upper),  case = c("RDRobust", "RDHonest M=0.01", "RDHonest M=.1", "RDHonest M=1"), bw = c(est$bws[1], est_rdhonest3$hp, est_rdhonest$hp, est_rdhonest2$hp))
+ggplot(data = data, aes(y = est, ymin = lb, ymax = ub, x = case)) + geom_pointrange()
+ggplot
+summary(est)
+est_rdhonest
 coef = est$coef[1]
 label1 = paste0("Coef = ", round(coef, digits = 2))
 label2 = paste0("SE = ", round(est$se[1], digits = 2))

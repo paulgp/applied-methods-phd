@@ -1,0 +1,16 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+exam_questions/
+.DS_Store
+.lintr
+get-pip.py
+Homework_temp/
+lectures/.DS_Store
+*/.DS_Store
+*/.Rproj.user
+*/.Rhistory
+*/.RData
+*/.Ruserdata
+homework_list.xlsx

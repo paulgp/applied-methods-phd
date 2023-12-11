@@ -1,0 +1,83 @@
+\documentclass{tufte-handout}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{epigraph}
+
+\hypersetup{
+  colorlinks,
+  urlcolor = blue,
+  pdfauthor={Paul Goldsmith-Pinkham}
+  pdfkeywords={econometrics}
+  pdftitle={Lecture Notes for Applied Empirical Methods}
+  pdfpagemode=UseNone
+}
+\newtheorem{ruleN}{Rule}
+\newtheorem{thmN}{Theorem}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\E}{\mathbb{E}}
+
+\def\inprobHIGH{\,{\buildrel p \over \rightarrow}\,} 
+\def\inprob{\,{\inprobHIGH}\,} 
+\def\indistHIGH{\,{\buildrel d \over \rightarrow}\,} 
+\def\indist{\,{\indistHIGH}\,}
+
+\title{Lecture 1 - Potential Outcomes and Directed Acylic Graphs}
+\author{Paul Goldsmith-Pinkham}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+
+
+Not every economics research paper is estimating a causal quantity. But, the implication or takeaway of papers is (almost) always a causal one.  Causality lies at the heart of every exercise. \sidenote{``We do not have knowledge of a thing until we have grasped its why, that is to say, its cause.'' -- Aristotle}
+
+
+
+ Goal for today's class:
+  Enumerate tools used to discuss causal questions
+Emphasize a \emph{multimodal} approach
+Set terminology/definitions for future discussions
+
+    \newthought{In his later books},
+\cite{lewbel2019identification}
+
+\begin{itemize}
+  \item The true underpinnings of causality are nearly philosphical in nature
+    \begin{itemize}
+    \item If Aristotle didn't settle the question, neither will
+      researchers in the 21t century
+    \end{itemize}
+  \item I will avoid many of the discussions, but my biases will show up in one or two settings
+  \item Key point: economics research is messy, and a careful
+    discussion of causality entails two dimensions:
+    \begin{enumerate}
+    \item A good framework to articulate your assumptions
+    \item Readers that understand the framework
+    \end{enumerate}
+  \end{itemize}
+
+
+ \newthought{Medical example} 
+  \begin{itemize}
+    \item  Two variables:
+    \begin{itemize}
+    \item $Y \in \{0, 1\}$: whether a person will get Covid-19
+    \item $D \in \{0, 1\}$: whether a person gets a vaccine
+    \end{itemize}
+  \item Our question: does $D$ causally affect $Y$?
+  \item \emph{Ignore the question of data for now} -- this is purely a
+    question of what is knowable.
+  \item ``The fundamental problem of causal inference'' (Holland 1986)
+    is that for a given individual, we can only observe one world --
+    either they get the vaccine, or they do not
+  \end{itemize}
+\bibliographystyle{plain}
+\bibliography{lecture_note_bib}
+\end{document}
