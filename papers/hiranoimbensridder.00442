@@ -1,0 +1,2898 @@
+<!DOCTYPE html>
+<html lang="en" class="pb-page"  data-request-id="26e013f3-b121-40c7-a7a0-ad5f34c5469e"  
+><head data-pb-dropzone="head"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="pbContext" content=";journal:journal:14680262;page:string:Article/Chapter View;article:article:doi\:10.1111/1468-0262.00442;ctype:string:Journal Content;website:website:pericles;issue:issue:doi\:10.1111/ecta.2003.71.issue-4;requestedJournal:journal:14680262;subPage:string:Access Denial;wgroup:string:Publication Websites;pageGroup:string:Publication Pages"/>
+            <script type="text/javascript" src="/pb-assets/optimizer-1611832262563.js"></script>
+
+<script type="text/javascript">var $DoubleClickZone = "econometrica_ecta";var $DoubleClickSite =  "wly.economics_000047";</script><script id="analyticDigitalData">digitalData = {"site":{"ip":"38.126.101.131","environment":"LIVE","website":"onlinelibrary.wiley.com","websiteCode":"pericles","serverDate":"2021-02-07","server":"web118"},"identities":[{"type":"SmartGroupUser","uuid":"b238ab85-6bb4-49e4-84ca-a0d9f3ee5a35"},{"type":"SmartGroupUser","uuid":"39f911ce-44b6-4dba-9978-8b2e947a8eb0"},{"type":"RegionUser","uuid":"3c5060a1-6620-438f-862b-902a4d4cd4ac"},{"type":"BasicGroup","uuid":"e623deab-c83b-41e3-84a2-d9f1d46c5f17"},{"type":"RegionUser","uuid":"c5f02e7b-70ef-4cfd-bbf9-3c1f2a08099c"},{"type":"BasicGroup","uuid":"197fe835-5b5f-4f4e-b8e9-a74d68491a84"},{"type":"SmartGroupUser","uuid":"b2dbfe27-ecae-4bb6-bb0d-d75e5caa3762"},{"type":"SmartGroupUser","uuid":"a86d27d2-6bcd-4b94-bca5-fe16f4882855"},{"type":"BasicGroup","uuid":"fd99905c-4b60-4cb9-b576-5529f7a031dd","customerRecords":[{"customerDomain":"ALM-CU","customerNumber":"TESTOHIOSTATECOCHRANE"}]},{"type":"SmartGroupUser","uuid":"da88d808-3f7b-4bde-9210-10862b6d121b"},{"type":"SmartGroupUser","uuid":"ab743440-628f-4964-9216-9983ad3beadf"},{"type":"SmartGroupUser","uuid":"756fc162-8722-461f-a077-ebffec4f4fae"},{"type":"SmartGroupUser","uuid":"cf9c85b9-7f3b-4309-aeaa-c41669cabe3b"},{"type":"SmartGroupUser","uuid":"db8b8d10-1aed-4809-b3ee-70938c569014"},{"type":"SmartGroupUser","uuid":"cdce41c2-a8de-4a64-a4d9-a85caaaa2314"}],"publication":{"item":{"title":"Efficient Estimation of Average Treatment Effects Using the Estimated Propensity Score","doi":"10.1111/1468-0262.00442","access":"no","earliestDate":"2003-10-24","formats":["Abstract","Cited by","First page image","PDF"],"topics":[{"taxonomyUri":"global-subject-codes","topicLabel":"Econometric \u0026 Statistical Methods","topicUri":"st27"},{"taxonomyUri":"global-subject-codes","topicLabel":"Econometrics","topicUri":"ec30"},{"taxonomyUri":"global-subject-codes","topicLabel":"STATISTICS","topicUri":"st"},{"taxonomyUri":"global-subject-codes","topicLabel":"Applied Probability \u0026 Statistics","topicUri":"st20"},{"taxonomyUri":"global-subject-codes","topicLabel":"ECONOMICS","topicUri":"ec"},{"taxonomyUri":"global-subject-codes","topicLabel":"General \u0026 Introductory Economics","topicUri":"ec00"}]},"group":{"doi":"10.1111/ecta.2003.71.issue-4","access":"no","volume":"71","issue":"4","coverDate":"2003-07-01","topics":[{"taxonomyUri":"global-subject-codes","topicLabel":"Econometric \u0026 Statistical Methods","topicUri":"st27"},{"taxonomyUri":"global-subject-codes","topicLabel":"Econometrics","topicUri":"ec30"},{"taxonomyUri":"global-subject-codes","topicLabel":"STATISTICS","topicUri":"st"},{"taxonomyUri":"global-subject-codes","topicLabel":"Applied Probability \u0026 Statistics","topicUri":"st20"},{"taxonomyUri":"global-subject-codes","topicLabel":"ECONOMICS","topicUri":"ec"},{"taxonomyUri":"global-subject-codes","topicLabel":"General \u0026 Introductory Economics","topicUri":"ec00"}]},"series":{"title":"Econometrica","doi":"10.1111/(ISSN)1468-0262","access":"no","code":"14680262","issn":"0012-9682","eissn":"1468-0262","topics":[{"taxonomyUri":"gpt-zonename","topicLabel":"econometrica_ECTA","topicUri":"econometrica_ecta"},{"taxonomyUri":"gpt-sitename","topicLabel":"wly.economics_000047","topicUri":"wly.economics_000047"},{"taxonomyUri":"global-subject-codes","topicLabel":"Econometric \u0026 Statistical Methods","topicUri":"st27"},{"taxonomyUri":"global-subject-codes","topicLabel":"Econometrics","topicUri":"ec30"},{"taxonomyUri":"global-subject-codes","topicLabel":"STATISTICS","topicUri":"st"},{"taxonomyUri":"global-subject-codes","topicLabel":"Applied Probability \u0026 Statistics","topicUri":"st20"},{"taxonomyUri":"global-subject-codes","topicLabel":"ECONOMICS","topicUri":"ec"},{"taxonomyUri":"global-subject-codes","topicLabel":"General \u0026 Introductory Economics","topicUri":"ec00"}]}},"page":{"subPage":"Access Denial","page":"Article/Chapter View","pageGroup":"Publication Pages","title":"title","errorCode":200},"events":[{"eventData":{"ppvOptions":[{"optionType":"48-Hour online access","optionCurrency":"USD","optionPrice":14.0},{"optionType":"Online-only access","optionCurrency":"USD","optionPrice":21.0},{"optionType":"PDF download and online access","optionCurrency":"USD","optionPrice":42.0}]},"eventName":"accessDenied-PPV"}]}</script>
+
+
+
+
+
+
+
+<meta charset="UTF-8">
+
+
+
+
+<meta name="robots" content="noarchive,noindex,nofollow"/>
+<meta name="pb-robots-disabled">
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+    <meta property="og:title" content="Efficient Estimation of Average Treatment Effects Using the Estimated Propensity Score"/>
+
+
+    <meta property="og:type" content="Article"/>
+
+
+        <meta property="og:url" content="https://onlinelibrary.wiley.com/doi/10.1111/1468-0262.00442"/>
+    
+
+        
+        <meta property="og:image" content="https://onlinelibrary.wiley.com/cms/asset/96a9507a-940c-4724-acae-af4c4eedb08e/ecta.2021.89.issue-1.x.cover.jpg"/>
+    
+
+    <meta property="og:site_name" content="Wiley Online Library"/>
+
+
+
+        
+
+        <meta property="og:description" content="We are interested in estimating the average effect of a binary treatment on a scalar outcome. If assignment to the treatment is exogenous or unconfounded, that is, independent of the potential outcom..."/>
+    
+
+
+
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <meta name="citation_doi" content="10.1111/1468-0262.00442"/>
+
+    <meta name="dc.identifier" content="10.1111/1468-0262.00442"/>
+
+
+
+
+<meta name="citation_journal_title" content="Econometrica">
+<meta name="citation_title" content="Efficient Estimation of Average Treatment Effects Using the Estimated Propensity Score">
+<meta name="citation_keywords" content="Propensity score">
+<meta name="citation_keywords" content="treatment effects">
+<meta name="citation_keywords" content="semiparametric efficiency">
+<meta name="citation_keywords" content="sieve estimator">
+<meta name="citation_volume" content="71">
+<meta name="citation_issue" content="4">
+<meta name="citation_firstpage" content="1161">
+<meta name="citation_lastpage" content="1189">
+<meta name="citation_publication_date" content="2003/07/01">
+<meta name="citation_online_date" content="2003/10/24">
+<meta name="citation_issn" content="1468-0262">
+<meta name="citation_language" content="en">
+<meta name="citation_author" content="Keisuke Hirano">
+<meta name="citation_author_institution" content="1 University of Miami, USA&#x2003;khirano@miami.edu, 2University of California at Berkeley, and NBER&#x2003;imbens@econ.berkeley.edu, 3University of Southern California, Los Angeles, USA&#x2003;ridder@usc.edu">
+<meta name="citation_author" content="Guido W. Imbens">
+<meta name="citation_author_institution" content="1 University of Miami, USA&#x2003;khirano@miami.edu, 2University of California at Berkeley, and NBER&#x2003;imbens@econ.berkeley.edu, 3University of Southern California, Los Angeles, USA&#x2003;ridder@usc.edu">
+<meta name="citation_author" content="Geert Ridder">
+<meta name="citation_author_institution" content="1 University of Miami, USA&#x2003;khirano@miami.edu, 2University of California at Berkeley, and NBER&#x2003;imbens@econ.berkeley.edu, 3University of Southern California, Los Angeles, USA&#x2003;ridder@usc.edu">
+<meta name="citation_abstract_html_url" content="https://onlinelibrary.wiley.com/doi/abs/10.1111/1468-0262.00442">
+<meta name="citation_fulltext_html_url" content="https://onlinelibrary.wiley.com/doi/full/10.1111/1468-0262.00442">
+<meta name="citation_pdf_url" content="https://onlinelibrary.wiley.com/doi/pdf/10.1111/1468-0262.00442">
+<meta name="citation_publisher" content="John Wiley & Sons, Ltd">
+<meta name="article_references" content="Hirano, K., Imbens, G.W. and Ridder, G. (2003), Efficient Estimation of Average Treatment Effects Using the Estimated Propensity Score. Econometrica, 71: 1161-1189. https://doi.org/10.1111/1468-0262.00442">
+<meta name="epdf_available" content="false">
+<meta name="Description" content="We are interested in estimating the average effect of a binary treatment on a scalar outcome. If assignment to the treatment is exogenous or unconfounded, that is, independent of the potential outc...">
+
+
+<title>Efficient Estimation of Average Treatment Effects Using the Estimated Propensity Score - Hirano - 2003 - Econometrica - Wiley Online Library</title>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/wro/jwm5~product.css">
+
+
+    <style>@font-face {
+    font-family: 'Open Sans Subset';
+    font-display: swap;
+    src: local('Muli Regular'), local('Muli-Regular'),
+    url(data:application/font-woff;charset=utf-8;base64,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) format('woff');
+}
+
+</style><link rel="stylesheet" href="/products/pericles/releasedAssets/css/build-f25c7db7038678877c0e.css"/><link rel="stylesheet" href="/products/pericles/releasedAssets/css/print-f25c7db7038678877c0e.css" media="print"/>
+
+
+
+
+
+<script async src="/pb-assets/catchpoint-1549680351760.js"></script>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" type="text/css" href="/pb-assets/hub-assets/pericles/hub-1585729361327.css">
+
+
+<link rel="stylesheet" type="text/css" href="/pb-assets/css/iucr-1510734465460.css">
+<link rel="stylesheet" type="text/css" href="/pb-assets/css/readcube-1510565373110.css">
+<link rel="stylesheet" type="text/css" href="/pb-assets/css/dr-overrides-1611780866727.css">
+<!-- link rel="stylesheet" type="text/css" href="/pb-assets/css/temporary-1525702334993.css" -->
+
+<style>
+/* PERICLES-7186: distorted cover images */
+.journal-info-container .cover-image__image img {
+    min-height: unset;
+}
+
+/* TEMPORARY CSS HACK TO FIX LIT-220590 */
+.icon-icon-Rss::before {
+    content: "\e629";
+}
+
+/* TEMPORARY CSS TO FIX ALIGNMENT OF TOP AD IN RIGHT RAIL */
+.publication-cover-info {
+    margin-bottom: 20px;
+}
+
+.article-row-right > .pb-ad {
+    margin-left: 0;
+    margin-bottom: 10px;
+}
+
+/* TEMPORARY HACK FOR PERICLES-6763 */
+.table-of-content .issue-item h2 {
+    font-size: 16px;
+}
+
+.table-of-content .issue-item h2 a.issue-item__title {
+    display: inline;
+}
+
+/* TEMPORARY CSS FOR PERICLES-7445 */
+
+input.saml__consent__yes {
+    background: #005274;
+    font-size: 12px;
+    font-size: .75rem;
+    padding: 12px 20px;
+    border-radius: 0;
+    margin-top: 20px;
+    margin-right: 10px;
+    width: 100px;
+}
+
+input.saml__consent__yes:hover {
+    background: #003951;
+}
+
+/* PERICLES-2166: Site-wide maintenance message */
+
+.admin-message {
+    background-color: #005274;
+    color: white;
+}
+
+/* TEMPORARY CSS FOR STAY-CONNECTED SOCIAL MEDIA ICONS */
+.stay-connected ul  {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.stay-connected i {
+    margin-right: 10px;
+    font-size: 25px;
+    line-height: 55px;
+}
+
+.stay-connected i.icon-hubs-rg-icon,
+.stay-connected i.icon-hubs-soundcloud-icon {
+    font-size: 41px;
+}
+
+.stay-connected .icon-hubs-pinterest-icon:before {
+    color: white;
+}
+
+.stay-connected .icon-hubs-pinterest-icon {
+    background-color: #BD081C;
+    border: solid #BD081C;
+    border-width: 8px;
+}
+
+/* PERICLES-5833: TEMPORARY CSS TO ADJUST POSITION OF ADS */
+.article-mpu-bottom .pb-ad {
+    margin: 0 0 0 195px;
+}
+
+
+.article-mpu-top .pb-ad {
+    padding-top: 20px;
+    margin: 0 0 -35px 0;
+}
+
+.banner-wrapper .pb-ad {
+    padding: 0;
+}
+
+/* TEMPORARY CSS FOR THE SOCIETY MEMBER LOGIN PAGE */
+.society-member-login .widget__header,
+.society-member-login .show-registration,
+.society-member-login .show-request-reset-password {
+    display: none;
+}
+
+.society-member-login .login-form {
+    margin-top: 20px;
+}
+
+.society-member-login .widget__body .input-group+.input-group {
+    margin-top: 15px;
+}
+
+
+/* TEMPORARY CSS TO HIDE FPI IN TOP CONTENT ACTION WIDGET */
+.top-content .firstPageImage {
+	display: none;
+}
+
+
+.custom-page-pericles .main-content :target:before {
+	content: "";
+	display: block;
+	height: 140px;
+	margin: -140px 0 0;
+}
+
+/* PERICLES-4777: TEMPORARY CSS TO HIDE OPTIONS IN THE SIDEBAR ON MRW PAGES */
+.journal-resources li#TableofContents,
+.journal-resources li#Topics,
+.journal-resources li#ArticleTitlesAZ {
+	display: none;
+}
+
+/* TEMPORARY FIX FOR UNWANTED MARGIN BELOW COVER IMAGES ON BOOK SERIES PAGES */
+.remove-margin .cover-image {
+	margin: 0;
+}
+
+/* TEMPORARY FIX TO MAKE IT POSSIBLE TO EDIT RICH TEXT WIDGETS IN SLIDESHOWS */
+.bs .modal-backdrop {
+	display: none;
+}
+
+/* TEMPORARY FIX FOR MENU POSITION */
+.hubpage-menu nav {
+	padding-bottom: 0;
+	position: relative;
+}
+
+/* TEMPORARY FOR MARGIN AROUND ADS */
+.advert.advert-leaderboard {
+	margin: 15px 0;
+}
+
+.banner-wrapper {
+	box-shadow: none;
+}
+
+/* TEMPORARY TO FIX OVERFLOW FOR P IN JOURNAL-NEWS SLIDESHOWS */
+.journal-news .slide-item p {
+	overflow: unset;
+}
+
+/* EDITOR HIGHLIGHTS CSS */
+div.ancillary-content.relateditem div.content {
+	height: 10em;
+}
+div.ancillary-content.listitem div.content {
+	height: 4em;
+}
+
+/* TEMPORARY Fix heading on Topical Index widget for MRWs */
+.topical-index h2 {
+    margin: 15px 0;
+    font-size: 1.75rem;
+    line-height: 28px;
+    color: #1c1d1e;
+    font-family: Source Serif Pro,serif;
+    font-weight: normal;
+}
+
+/* PERICLES-7288 */
+.issue-supplementary-files, .cover-image__virtual-issue {
+    margin-bottom: 15px;
+}
+
+/* PERICLES-8875 */
+.journal-news .slide-item img {
+    float: left;
+    margin-right: 10px;
+}
+
+/* DO NOT REMOVE */
+li[heading="Restore Points"].ng-isolate-scope,
+li[heading="Disable Widgets"].ng-isolate-scope {
+    display: none!important;
+}
+
+.modal-header .widgetOrigin {
+    display: none;
+}
+
+/* PERICLES-10090 */
+.cover-image__image img {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+/* LIT-282003 */
+.journal-info-container span.info_value:after {
+    content: '\003B';
+}
+
+.journal-info-container span.info_value:last-child:after {
+    content: '';
+}
+
+/* LIT-299510 */
+h1.citation__title {
+    font-size: 22px;
+    font-size: 1.375rem;
+}
+
+@media (max-width: 991px) {
+    h1.citation__title {
+        font-size: 18px;
+        font-size: 1.125rem;
+    }
+    h1.citation__title:after {
+        content: "";
+    }
+}
+
+/* LIT-295816 */
+.search__item .item__body .meta__details a.publication_meta_serial:after {
+    content: "";
+    margin: 0;
+}
+.search__item .item__body .meta__details a.publication_meta_volume_issue:before {
+    content: "|";
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+/* PPV */
+.cart-indicator__wrapper {
+    padding: 0;
+}
+
+/* TrendMD Test */
+#article__content #trendmd-suggestions{
+    margin-top: 40px !important;
+    border-top: 1px solid #ddd;
+    
+}
+body #article__content .trendmd-widget-container {
+    margin-top: 20px !important;
+}
+
+body #article__content .trendmd-widget-header__heading{
+    font-size: 20px !important;
+    margin-bottom: 30px !important
+}
+body #article__content .trendmd-widget-list-item__link, body #article__content .trendmd-widget-list-item__meta{
+    font-family:'Open Sans', arial, sans-serif !important;
+}
+body #article__content .trendmd-widget{
+	font-size:16px !important;
+}
+body #article__content .trendmd-widget-list-item{
+	margin-bottom:24px !important;
+}
+body #article__content .trendmd-widget-list-item__link{
+	color: #005293 !important;
+}
+body #article__content .trendmd-widget-list-item__meta{
+	color: #5d5d5d !important;
+	font-size:14px !important;
+	margin-top:3px !important;
+}
+body #article__content .trendmd-widget_horizontal .trendmd-widget-section{
+	width: 47% !important;
+}
+
+@media (max-width: 450px) {
+	body #article__content .trendmd-widget_horizontal .trendmd-widget-section{
+		width: 95% !important;
+	}
+}
+
+#pane-pcw-related .trendmd-widget-header__heading{
+	font-size: 18px !important;
+	font-family:'Open Sans', arial, sans-serif !important;
+}
+#pane-pcw-related .trendmd-widget-container{
+	padding:0 20px !important;
+}
+#pane-pcw-related .trendmd-widget-list-item__link{
+	 font-family:'Open Sans', arial, sans-serif !important;
+	 font-size:14px !important;
+	 color: #005293 !important;
+	 display:block;
+	 margin-bottom: 5px !important;
+}
+#pane-pcw-related .trendmd-widget-list-item__meta{
+	font-family:'Open Sans', arial, sans-serif !important;
+	color:#666 !important;
+}
+#pane-pcw-related .trendmd-widget-list-item{
+	margin-bottom:20px !important;
+}
+
+
+</style>
+
+<!-- The Adobe DTM script. Must come after the digitalData object -->
+<script src="//assets.adobedtm.com/6e626c9ec247e474f6b98eb15a79a185cf7e26a5/satelliteLib-c1ac050bbdc647f13a62578e71f0d817f8a6cbb5.js"></script>
+
+<!-- Google Search Console verification -->
+<meta name="google-site-verification" content="ffz4i4DxIJCdGpRXe0XN6KG6o4FYI-nnFW9I_dg8piM" />
+
+<!-- KRUX Implementation-->
+<script class="kxct" data-id="JMOONjNh" data-timing="async" data-version="1.9" type="text/javascript">
+
+	window.Krux || (( Krux = function () {
+		Krux.q.push ( arguments )
+	}).q = []);
+
+	( function () {
+		var k , m , s , src;
+		k = document.createElement ( 'script' );
+		k.type 	= 'text/javascript';
+		k.async = true;
+		src = ( m = location.href.match ( /\bkxsrc=([^&]+)/ )) && decodeURIComponent ( m [ 1 ]);
+		k.src = /^https?:\/\/([a-z0-9_\-\.]+\.)?krxd\.net(:\d{1,5})?\//i.test ( src ) ? src : src === 'disable' ? '' : ( location.protocol === 'https:'?'https:':'http:' ) + '//cdn.krxd.net/controltag?confid=JMOONjNh';
+		s = document.getElementsByTagName ( 'script' ) [ 0 ];
+		s.parentNode.insertBefore ( k , s );
+	} ());
+</script>
+
+<!-- KRUX Implementation cont'd -->
+<script type="text/javascript">
+	window.Krux || (( Krux = function () {
+		Krux.q.push ( arguments );
+	}).q = []);
+
+	( function () {
+		function retrieve ( n ) {
+			var m , k = 'kx' + n;
+			if ( window.localStorage ) {
+				return window.localStorage [ k ] || '';
+			} else if ( navigator.cookieEnabled ) {
+				m = document.cookie.match ( k + '=([^;]*)' );
+				return ( m && unescape ( m [ 1 ])) || '';
+			} else {
+				return '';
+			}
+		}
+
+		Krux.user = retrieve ( 'user' );
+		Krux.segments = retrieve ( 'segs' ) && retrieve ( 'segs' ).split ( ',' ) || [];
+	}) ();
+</script>
+
+<!-- Grapeshot Implementation -->
+<script>
+	var gs_channels = 'default';
+</script>
+
+<script src="//wiley.grapeshot.co.uk/main/channels.cgi?url=https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/1468-0262.00442" async></script>
+
+<!-- DoubleClick Implementation -->
+<script type="text/javascript">
+	var $WileyGooglePublisherID = 2215;
+
+	if (!$DoubleClickSite) {
+		switch("pericles") {
+      case "acsess.onlinelibrary.wiley.com":
+				var $DoubleClickSite = "wly.agriculture_000018";
+				break;
+			case "afspubs":
+				var $DoubleClickSite = "wly.aqua.fish_000017";
+				break;
+			case "aasldpubs":
+  				var $DoubleClickSite = "wly.gastro.hep_000059";
+  				break;
+			case "headachejournal":
+  				var $DoubleClickSite = "wly.neurology_000086";
+  				break;
+			default:
+				var $DoubleClickSite = "undefined-site";
+		};
+  	};
+
+	if (!$DoubleClickZone) {
+		switch("pericles") {
+      case "acsess.onlinelibrary.wiley.com":
+        var $DoubleClickZone = "Agriculture_ACSESS_Hub";
+        break;
+			case "afspubs":
+				var $DoubleClickZone = "AFS_HUB";
+				break;
+      case "aasldpubs":
+        var $DoubleClickZone = "AASLD-pubs_HUB";
+        break;
+      case "headachejournal":
+        var $DoubleClickZone = "headache_HUB";
+        break;
+			default:
+				var $DoubleClickZone = "undefined-zone";
+		};
+	};
+
+	var $GooglePublisherCategory = "/" + $WileyGooglePublisherID + "/" + $DoubleClickSite + "/" + $DoubleClickZone;
+</script>
+
+<script>
+	var googletag = googletag || {};
+
+	googletag.cmd = googletag.cmd || [];
+
+	( function () {
+
+		var gads = document.createElement ( 'script' ) ,
+		node = document.getElementsByTagName ( 'script' ) [ 0 ] ;
+
+		gads.async = true;
+		gads.src = document.location.protocol + '//www.googletagservices.com/tag/js/gpt.js';
+
+		node.parentNode.insertBefore ( gads , node );
+
+	}) ();
+</script>
+
+<script>
+	googletag.cmd.push ( function () {
+
+		var sizes = {
+			leaderboard : googletag.sizeMapping ()
+				.addSize ([ 300 , 100 ] , [ 300 , 50 ])
+				.addSize ([ 740 , 100 ] , [ 728 , 90 ])
+				.addSize ([ 0 , 0 ] , 'fluid')
+				.build () ,
+			rail : googletag.sizeMapping ()
+				.addSize ([ 0 , 0 ] , [ 300 , 250 ])
+				.build (),                                          
+			interstitial : googletag.sizeMapping ()
+							.addSize ([ 0 , 0 ] , [ 640 , 480 ])
+							.build ()
+
+		};
+
+
+		gptPage = window.digitalData && digitalData.page && digitalData.page.page ? digitalData.page.page : "blank";
+		gptSubPage = window.digitalData && digitalData.page && digitalData.page.subPage ? digitalData.page.subPage : "blank";
+
+
+		function gptClean(gptText){
+			if(typeof(gptText)=="string"){
+				gptText = gptText.replace(/\&/g,'%26');
+
+
+				return gptText.replace(/\^|\*|#|\$|\"|\'|\=|\,|\!|\+|\~|\;|\(|\)|\<|\>|\[|\]|\?|\%|\:|\@|\;|\&|\||\{|\}|\\|/g,'');
+
+			}
+			return "blank";
+		}
+
+
+		googletag.pubads ()
+			.setTargeting ( 'property' 	, 'value-of-property' 	) 	// Change and duplicate this line for as many additional keywords to send
+			.setTargeting ( 'doi' , gptClean('10.1111/1468-0262.00442')) // Publication DOI
+			.setTargeting ( 'gs_cat' 	, gs_channels 		) 	// Grapeshot
+			.setTargeting ( 'ksg' 		, Krux.segments 	) 	// Krux
+			.setTargeting ( 'kuid' 		, Krux.user 		) 	// Krux
+			.setTargeting ( 'pbPage', gptClean(gptPage) )
+			.setTargeting ( 'pbSubPage', gptClean(gptSubPage) )
+			.setTargeting ( 'urlpath', gptClean(document.location.pathname));
+
+		googletag.defineSlot ( $GooglePublisherCategory, 'fluid', 'advert-leaderboard' )
+			.defineSizeMapping ( sizes.leaderboard )
+			.addService ( googletag.pubads ())
+			.setCollapseEmptyDiv ( true );
+
+		googletag.defineSlot ( $GooglePublisherCategory, 'fluid', 'advert-rail-1' )
+			.defineSizeMapping ( sizes.rail )
+			.setTargeting ( 'Position', 'advert-rail-1')
+			.addService ( googletag.pubads ())
+			.setCollapseEmptyDiv ( true );
+
+		googletag.defineSlot ( $GooglePublisherCategory, 'fluid', 'advert-rail-2' )
+			.defineSizeMapping ( sizes.rail )
+			.setTargeting ( 'Position', 'advert-rail-2')
+			.addService ( googletag.pubads ())
+			.setCollapseEmptyDiv ( true );
+
+		googletag.defineSlot ( $GooglePublisherCategory, 'fluid', 'advert-video' )
+			.defineSizeMapping ( sizes.interstitial )
+			.setTargeting ( 'Position', 'advert-video')
+			.addService ( googletag.pubads ())
+			.setCollapseEmptyDiv ( true );
+
+
+		googletag.pubads ().enableSingleRequest ();
+		googletag.enableServices ();
+	});
+	//]]>
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+    
+        
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Get whether TNSI is in live or test mode -->
+    
+    <!-- Get the configured TNSI Javascript version number -->
+    
+    <!-- Get the configured TNSI MerchantID -->
+    
+    <!-- Add "TEST" to beginning of merchant ID when running in test mode -->
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+    
+    
+    
+    <!-- loading Javascript for using the persistence Service -->
+    <script src="//unpkg.com/@theidentityselector/thiss-ds"></script>
+
+    <script type="text/javascript">
+
+        function getParameter(parameterName) {
+            let result = null,
+                tmp = [];
+            location.search
+                .substr(1)
+                .split("&")
+                .forEach(function (item) {
+                    tmp = item.split("=");
+                    if (tmp[0] === parameterName) result = tmp[1];
+                });
+            return result;
+        }
+
+        var SeamlessAccessService = {
+            spUrl: "/action/ssostart",
+            returnURL: window.location.href,
+            my_context: 'seamlessaccess.org',
+
+            getWAYFLessUrl: function (entityId) {
+                let redirectURL = getParameter('redirectUri');
+                if(redirectURL == null){
+                    redirectURL = encodeURIComponent(this.returnURL);
+                }
+                if(redirectURL.indexOf('saml_referrer') < 0){
+                    redirectURL += encodeURIComponent(((redirectURL.indexOf('?') !== -1) ? '&' : '?') + 'saml_referrer');
+                }
+                return this.spUrl + "?idp=" + encodeURIComponent(entityId)
+                    + "&redirectUri=" + redirectURL;
+            },
+            retrieveEntity: function () {
+                var self = this;
+                var ps = new thiss.PersistenceService('https://service.seamlessaccess.org/ps/');
+
+                return new Promise(function (resolve, reject) {
+                    ps.entities(self.my_context)
+                        .then(function (res) {
+                            // get the results
+                            var results = res.data;
+                            return resolve(results);
+                        }, function (err) {
+                            // failed
+                            reject('retrieve entity error: ' + err);
+                        });
+                });
+            },
+            updateEntity: function (entitydata) {
+                var self = this;
+                var ps = new thiss.PersistenceService('https://service.seamlessaccess.org/ps/');
+
+                var jsonObj = {};
+                try {
+                    //try to parse it, if it is a json string
+                    jsonObj = JSON.parse(entitydata.val());
+                } catch (e) {
+                    jsonObj = entitydata;
+                }
+                return new Promise(function (resolve) {
+                    ps.update(self.my_context, jsonObj)
+                        .then(function (res) {
+                            // Process the results
+                            var ssoInstitutions = res.data;
+                            return resolve(ssoInstitutions);
+                        }, function (err) {
+                            // failed
+                            console.log('failed to update the local storage duo to: ' + err);
+                        });
+                })
+            },
+            getAccessibleEntityStatus: function (doi, entityId) {
+                return new Promise(function (resolve) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/action/seamlessAccess',
+                        accept: {
+                            text: "application/json"
+                        },
+                        data: {doi: doi, entityid: entityId}
+
+                    }).done(function (status) {
+                        return resolve(status);
+                    });
+                });
+            },
+            getEntitiesWithAllInfo: function (doi) {
+                let self = this,
+                    arrayOfPromises = [];
+                return new Promise(function (resolve, reject) {
+                    self.retrieveEntity().then(function (res) {
+                        let allSsoInstitutions = res;
+                        for (let i in allSsoInstitutions) {
+                            let ssoInstitution = allSsoInstitutions[i];
+                            arrayOfPromises.push(new Promise(function (resolve) {
+                                self.getAccessibleEntityStatus(doi, ssoInstitution.entity.entityID)
+                                    .then(function (entityStatus) {
+                                        resolve({
+                                            entityID: ssoInstitution.entity.entityID,
+                                            entityTitle: ssoInstitution.entity.title,
+                                            entityStatusObj: entityStatus,
+                                            entitySsoUrl: self.getWAYFLessUrl(ssoInstitution.entity.entityID)
+                                        });
+                                    }, function (err) {
+                                        console.log('failed to get the entity status: ' + err);
+                                    });
+                            }));
+                        }
+                        Promise.all(arrayOfPromises)
+                            .then(function (finalResponse) {
+                                resolve(finalResponse);
+                            });
+
+                    }).catch(function (err) {
+                        reject(err);
+                    })
+                });
+            }
+        };
+
+        window.addEventListener('load', function () {
+            document.querySelectorAll(".sso-institution").forEach(function (institution) {
+                var entityId = institution.getAttribute('data-entityid');
+                var entityName = institution.getAttribute('data-name');
+                var entitydata = {
+                    entityID: entityId,
+                    title: entityName
+                };
+                institution.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    var self = this;
+                    SeamlessAccessService.updateEntity(entitydata).then(function (res) {
+                        console.log(res);
+                        window.location.href = self.href;
+                    });
+                });
+            });
+        });
+
+    </script>
+
+
+
+
+
+
+
+
+
+    
+    <script type="text/javascript">
+        (function() {
+            function riskifiedBeaconLoad() {
+                var store_domain = 'https://onlinelibrary.wiley.com';
+                var session_id = 'aaamMu29wJNsudN3jT5Dx';
+                var url = ('https:' == document.location.protocol ? 'https://' : 'http://')
+                    + "beacon.riskified.com?shop=" + store_domain + "&sid=" + session_id;
+                var s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = url;
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+            }
+            if (window.attachEvent)
+                window.attachEvent('onload', riskifiedBeaconLoad)
+            else
+                window.addEventListener('load', riskifiedBeaconLoad, false);
+        })();
+    </script>
+
+    <script src="//scholar.google.com/scholar_js/casa.js" async></script>
+
+
+
+
+
+
+
+    
+
+
+<script>
+    var digitalData = window.digitalData ? window.digitalData : {};
+    digitalData.page.title = "Efficient Estimation of Average Treatment Effects Using the Estimated Propensity Score - Hirano - 2003 - Econometrica - Wiley Online Library";
+</script>
+
+<script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+<body class="pb-ui">
+
+<div class="skip-links">
+    <ul class="rlist">
+        
+                <li><a href="#main-content" tabindex="1">Skip to Main Content</a></li>
+            
+    </ul>
+</div>
+
+
+
+
+
+
+
+    <div id="pb-page-content" data-ng-non-bindable>
+        <div data-pb-dropzone="main" data-pb-dropzone-name="Main">
+
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="pageHeader" data-widget-id="62175478-b98a-43d5-90f2-1f2045ac1a7e" class="pageHeader">
+        
+
+
+
+        
+        <header class="page-header">
+    <div data-pb-dropzone="main">
+    
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="ux3-layout-widget" data-widget-id="bb5b5e2c-d3d6-4015-b586-eeade38f59d4" class="admin-message">
+        
+
+
+
+        
+        <div class="container"><div class="row"><div>
+
+
+
+        
+        
+
+
+
+        <div class="pb-ad">
+            <div style="background=blue;">
+    <div class="container">
+        <p style="text-align: center;"><b>Working off-campus?</b> Learn about our <a href="/action/clickThrough?id=101169&url=https%3A%2F%2Fonlinelibrary.wiley.com%2Fresearchers%2Fread%2Faccess-options&loc=%2Fdoi%2Fpdfdirect%2F10.1111%2F1468-0262.00442&pubId=45310561&placeholderId=1029&productId=1011" target="_blank" tabindex="2"><font color="white"><u>remote access options</u></font></a></p>
+    </div>
+</div>
+        </div>
+    
+
+</div></div></div>
+
+        </div>
+    
+
+
+
+
+        
+        <div class="container"><div class="row"><div class="contents col-md-12">
+
+
+
+        
+        <div class="pull-left">
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="ux3-general-image" data-widget-id="ff262197-0fb8-4973-aaa2-2fceba4b5a61" class="logo-container hidden-xs hidden-sm hidden-md">
+        
+
+
+
+        
+        <a href="/" title="Wiley Online Library"><img id="mainLogo" alt="Wiley Online Library" src="/pb-assets/hub-assets/pericles/logo-header-1526603583437.png"/></a>
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="ux3-general-image" data-widget-id="6b601b23-7301-47c8-8889-242d041241c4" class="logo-container-mobile hidden-lg hidden-md hidden-sm">
+        
+
+
+
+        
+        <a href="/" title="Wiley Online Library"><img id="mobileLogo" alt="Wiley Online Library" src="/pb-assets/hub-assets/pericles/mobilehublogo-1518781861020.png"/></a>
+
+        </div>
+    
+</div><div class="pull-right">
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="UX3QuickSearchWidget" data-widget-id="48175bb0-0f70-46e6-bb89-7e2781fdb8e4" class="header-quicksearch">
+        
+
+
+
+        
+        <div class="quick-search-wrapper"><a href="#" title="search" aria-label="Search" class="quick-search__item"><i aria-hidden="true" class="icon-search"></i><span class="quick-search__item__arrow"></span></a><div data-linkto-page="true" class="quick-search quickSearchFormContainer"><div class="main-search-field-wrapper"><div class="tab clearfix"><input type="search" placeholder="Search" value="" tabindex="13" class="fakeQSInput quickSearchFilter"/><label for="search-within" class="sr-only">Search within</label><select name="search-within" id="search-within" tabindex="10" class="search-within"><option value="#pane-67065c09-4a88-49cd-934c-ac707951d35c0">This Journal</option><option value="#pane-67065c09-4a88-49cd-934c-ac707951d35c1">Anywhere</option></select><ul role="tablist" class="rlist tab__content"><li id="pane-67065c09-4a88-49cd-934c-ac707951d35c0" aria-labelledby="pane-67065c09-4a88-49cd-934c-ac707951d35c0-con" role="tab" class="tab__pane quick-search-pane__anywhere active"><form action="/action/doSearch" name="thisJournalQuickSearch" method="get" title="Quick Search"><div class="input-group option-0"><label for="searchField0" class="hiddenLabel">Search term</label><input type="search" name="AllField" id="searchField0" placeholder="Search" onfocus="this.value = this.value;" data-auto-complete-max-words="7" data-auto-complete-max-chars="32" data-contributors-conf="3" data-topics-conf="3" data-publication-titles-conf="3" data-history-items-conf="3" value="" tabindex="9" class="autocomplete actualQSInput quickSearchFilter"/><input type="hidden" name="SeriesKey" value="14680262"/><div class="search-options-wrapper quickSearchFilter"><a href="https://onlinelibrary.wiley.com/search/advanced?publication=14680262" title="" tabindex="12" class="advanced">  Advanced Search</a><a href="https://onlinelibrary.wiley.com/search/advanced?publication=14680262#citation" title="" tabindex="12" class="citation">  Citation Search</a></div></div><button type="submit" title="Search" tabindex="11" aria-label="Submit Search" class="btn quick-search__button icon-search"></button></form></li><li id="pane-67065c09-4a88-49cd-934c-ac707951d35c1" aria-labelledby="pane-67065c09-4a88-49cd-934c-ac707951d35c1-con" role="tab" class="tab__pane quick-search-pane__anywhere"><form action="https://onlinelibrary.wiley.com/action/doSearch" name="defaultQuickSearch" method="get" title="Quick Search"><div class="input-group option-1"><label for="searchField1" class="hiddenLabel">Search term</label><input type="search" name="AllField" id="searchField1" placeholder="Search" onfocus="this.value = this.value;" data-auto-complete-max-words="7" data-auto-complete-max-chars="32" data-contributors-conf="3" data-topics-conf="3" data-publication-titles-conf="3" data-history-items-conf="3" value="" tabindex="9" class="autocomplete actualQSInput quickSearchFilter"/><div class="search-options-wrapper quickSearchFilter"><a href="https://onlinelibrary.wiley.com/search/advanced" title="" tabindex="12" class="advanced">  Advanced Search</a><a href="https://onlinelibrary.wiley.com/search/advanced#citation" title="" tabindex="12" class="citation">  Citation Search</a></div></div><button type="submit" title="Search" tabindex="11" aria-label="Submit Search" class="btn quick-search__button icon-search"></button></form></li></ul></div></div></div></div>
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="ux3-layout-widget" data-widget-id="5ef13ed1-f4ac-4b62-a426-07ec9576a586" class="cart-indicator__wrapper">
+        
+
+
+
+        
+        <div class="pull-left">
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="eCommerceCartIndicatorWidget" data-widget-id="4a9f7c04-a273-4a25-91fb-8e7bd9970288" class="cart-indicator__wrapper">
+        
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+        </div>
+    
+</div><div class="pull-right">
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="literatumNavigationLoginBar" data-widget-id="d384ca92-7137-45d6-b3c2-78c9c0a98c2b" class="login-bar-container">
+        
+
+
+
+        
+        
+
+
+
+
+    
+
+
+
+
+
+
+
+
+        
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    <div class="loginBar login-open">
+        <a href="/action/showLogin?uri=%2Fdoi%2Fpdfdirect%2F10.1111%2F1468-0262.00442&amp;aria-label=Log+in+or+Register" class="show-login" role="button" uri="/doi/pdfdirect/10.1111/1468-0262.00442" aria-label="Log in or Register">
+            <span class="icon-profile_empty"></span>
+            <span class="sign-in-label">Login / Register</span>
+        </a>
+            
+    </div>
+
+
+    
+
+
+        </div>
+    
+</div>
+
+        </div>
+    
+</div>
+</div></div></div>
+    </div>
+</header>
+
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="pageBody" data-widget-id="72100436-7a82-49fc-933b-c6c9d8c42914" class="pageBody body-text">
+        
+
+
+
+        
+        <main id="main-content" tabindex="-1">
+    <!--begin pagefulltext-->
+    <div class="page-body pagefulltext">
+        <div data-pb-dropzone="main">
+        
+
+
+
+        
+        <div>
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="literatumAd" data-widget-id="0220a30b-90c0-4b51-8637-141edf12f86a" class="banner-wrapper">
+        
+
+
+
+        
+        
+
+
+
+        <div class="pb-ad">
+            <aside role="complementary">
+		<div id="advert-leaderboard" class="advert advert-leaderboard">
+			<script>
+				googletag.cmd.push 		( function () {
+					googletag.display 	( 'advert-leaderboard' );
+				});
+			</script>
+
+			<!-- No JavaScript support is a call to an image -->
+			<noscript>
+				<a href="/action/clickThrough?id=1013&url=https%3A%2F%2Fpubads.g.doubleclick.net%2Fgampad%2Fjump%3Fiu%3D%24googlePublisherCategory%26amp%3Bsz%3D728x90%26amp%3Btile%3D1%26amp%3Bc%3D%24random&loc=%2Fdoi%2Fpdfdirect%2F10.1111%2F1468-0262.00442&pubId=45310561&placeholderId=1015&productId=101018" target="_blank">
+					<img src="https://pubads.g.doubleclick.net/gampad/ad?iu=$googlePublisherCategory&amp;sz=728x90&amp;tile=1&amp;c=$random">
+				</a>
+			</noscript>
+		</div>
+	</aside>
+        </div>
+    
+
+
+        </div>
+    
+
+
+
+
+        
+        <style type="text/css">li.menu-item[data-menu-label="Accepted Articles"] {
+  display: none;
+}</style><style type="text/css">li.menu-item[data-menu-label="Early View"] {
+  display: none;
+}
+li.menu-item[data-menu-label="Recently Published"] {
+  display: none;
+}</style>
+</div>
+
+
+
+
+
+
+
+
+
+
+        <section data-widget-def="ux3-layout-widget" data-widget-id="0f7bccba-8328-4dbd-a1fa-e84c526dd9ab">
+        
+
+
+
+        
+        <div class="container"><div class="row"><div class=" col-md-12">
+
+
+
+        
+        <style>
+@media (max-width: 991px) {
+
+  .article-citation:after {
+    border-bottom: 2px solid #d8d9da;
+    content: '';
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+  }
+
+  .stickybar+.accessDenialslot {
+    margin-top: 35px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .stickybar + .accessDenialslot {
+    margin-top: 0;
+  }
+
+}
+</style>
+
+
+
+
+        
+        <div>
+
+
+
+        
+        <article data-related="/action/ajaxShowRecommended?widgetId=cea03f16-41db-4f4d-9961-d720aa41d028&amp;ajax=true&amp;doi=10.1111%2F1468-0262.00442&amp;pbContext=%3Bjournal%3Ajournal%3A14680262%3Bpage%3Astring%3AArticle%2FChapter+View%3Barticle%3Aarticle%3Adoi%5C%3A10.1111%2F1468-0262.00442%3Bctype%3Astring%3AJournal+Content%3Bwebsite%3Awebsite%3Apericles%3Bissue%3Aissue%3Adoi%5C%3A10.1111%2Fecta.2003.71.issue-4%3BrequestedJournal%3Ajournal%3A14680262%3BsubPage%3Astring%3AAccess+Denial%3Bwgroup%3Astring%3APublication+Websites%3BpageGroup%3Astring%3APublication+Pages&amp;showSubjects=false&amp;displayCitedByLink=true&amp;displayAlmetricDropzone=true&amp;taxonomyUri=publication-features&amp;topicUri=hide-issue-metadata" data-details="/action/ajaxShowPubInfo?widgetId=cea03f16-41db-4f4d-9961-d720aa41d028&amp;ajax=true&amp;doi=10.1111%2F1468-0262.00442&amp;pbContext=%3Bjournal%3Ajournal%3A14680262%3Bpage%3Astring%3AArticle%2FChapter+View%3Barticle%3Aarticle%3Adoi%5C%3A10.1111%2F1468-0262.00442%3Bctype%3Astring%3AJournal+Content%3Bwebsite%3Awebsite%3Apericles%3Bissue%3Aissue%3Adoi%5C%3A10.1111%2Fecta.2003.71.issue-4%3BrequestedJournal%3Ajournal%3A14680262%3BsubPage%3Astring%3AAccess+Denial%3Bwgroup%3Astring%3APublication+Websites%3BpageGroup%3Astring%3APublication+Pages&amp;showSubjects=false&amp;displayCitedByLink=true&amp;displayAlmetricDropzone=true&amp;taxonomyUri=publication-features&amp;topicUri=hide-issue-metadata" data-mathjax="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" data-accesscode="" data-name="" class="seamless-access-data "><div class="row article-row"><div id="article__content" tabindex="-1" class="col-sm-12 col-md-8 col-lg-8 article__content article-row-left"><div data-pb-dropzone="mrwBannerDropZone" class="mrw-banner-dropzone">
+
+
+
+        
+        
+</div><div class="article-citation"><div class="citation">
+   <div class="pb-dropzone" data-pb-dropzone="publicaitonContent-series-title">
+      <a href="/journal/14680262" title="Econometrica"><img id="" alt="Econometrica" src="/pb-assets/journal-banners/14680262-1501384706207.jpg"/></a>
+   </div>
+   <div class="doi-access-container clearfix"><span class="primary-heading"></span>
+      </div>
+   <h1 class="citation__title">Efficient Estimation of Average Treatment Effects Using the Estimated Propensity Score</h1>
+   <div class="rlist--inline loa comma visible-xs mobile-authors loa-authors-trunc">
+      <div class="accordion-tabbed__tab-mobile  accordion__closed"><a href="/action/doSearch?ContribAuthorStored=Hirano%2C+Keisuke" class="author-name accordion-tabbed__control" data-id="am1" data-db-target-for="am1" aria-controls="am1" aria-haspopup="true" id="am1_Ctrl" role="button"><span>Keisuke Hirano</span><i aria-hidden="true" class="icon-section_arrow_d"></i></a><div class="author-info accordion-tabbed__content" data-db-target-of="am1" aria-labelledby="am1_Ctrl" role="region" id="am1">
+            <p>1
+            University of Miami, USA khirano@miami.edu, 2University of California at Berkeley, and NBER imbens@econ.berkeley.edu, 3University of Southern California, Los Angeles, USA ridder@usc.edu</p><a class="moreInfoLink" href="/action/doSearch?ContribAuthorStored=Hirano%2C+Keisuke">Search for more papers by this author</a></div>
+      </div>
+            1
+          
+
+      <div class="accordion-tabbed__tab-mobile  accordion__closed"><a href="/action/doSearch?ContribAuthorStored=Imbens%2C+Guido+W" class="author-name accordion-tabbed__control" data-id="am2" data-db-target-for="am2" aria-controls="am2" aria-haspopup="true" id="am2_Ctrl" role="button"><span>Guido W. Imbens</span><i aria-hidden="true" class="icon-section_arrow_d"></i></a><div class="author-info accordion-tabbed__content" data-db-target-of="am2" aria-labelledby="am2_Ctrl" role="region" id="am2">
+            <p>1
+            University of Miami, USA khirano@miami.edu, 2University of California at Berkeley, and NBER imbens@econ.berkeley.edu, 3University of Southern California, Los Angeles, USA ridder@usc.edu</p><a class="moreInfoLink" href="/action/doSearch?ContribAuthorStored=Imbens%2C+Guido+W">Search for more papers by this author</a></div>
+      </div>
+            2
+          
+
+      <div class="accordion-tabbed__tab-mobile  accordion__closed"><a href="/action/doSearch?ContribAuthorStored=Ridder%2C+Geert" class="author-name accordion-tabbed__control" data-id="am3" data-db-target-for="am3" aria-controls="am3" aria-haspopup="true" id="am3_Ctrl" role="button"><span>Geert Ridder</span><i aria-hidden="true" class="icon-section_arrow_d"></i></a><div class="author-info accordion-tabbed__content" data-db-target-of="am3" aria-labelledby="am3_Ctrl" role="region" id="am3">
+            <p>1
+            University of Miami, USA khirano@miami.edu, 2University of California at Berkeley, and NBER imbens@econ.berkeley.edu, 3University of Southern California, Los Angeles, USA ridder@usc.edu</p><a class="moreInfoLink" href="/action/doSearch?ContribAuthorStored=Ridder%2C+Geert">Search for more papers by this author</a></div>
+      </div>
+            3
+          
+
+   </div>
+   <div class="loa-wrapper loa-authors hidden-xs">
+      <div id="sb-1" class="accordion">
+         <div class="accordion-tabbed">
+            <div class="accordion-tabbed__tab-mobile  accordion__closed"><a href="/action/doSearch?ContribAuthorStored=Hirano%2C+Keisuke" class="author-name accordion-tabbed__control" data-id="a1" data-db-target-for="a1" aria-controls="a1" aria-haspopup="true" id="a1_Ctrl" role="button"><span>Keisuke Hirano</span><i aria-hidden="true" class="icon-section_arrow_d"></i></a><div class="author-info accordion-tabbed__content" data-db-target-of="a1" aria-labelledby="a1_Ctrl" role="region" id="a1">
+                  <p>1
+            University of Miami, USA khirano@miami.edu, 2University of California at Berkeley, and NBER imbens@econ.berkeley.edu, 3University of Southern California, Los Angeles, USA ridder@usc.edu</p><a class="moreInfoLink" href="/action/doSearch?ContribAuthorStored=Hirano%2C+Keisuke">Search for more papers by this author</a></div>
+            </div>
+            1
+          
+
+            <div class="accordion-tabbed__tab-mobile  accordion__closed"><a href="/action/doSearch?ContribAuthorStored=Imbens%2C+Guido+W" class="author-name accordion-tabbed__control" data-id="a2" data-db-target-for="a2" aria-controls="a2" aria-haspopup="true" id="a2_Ctrl" role="button"><span>Guido W. Imbens</span><i aria-hidden="true" class="icon-section_arrow_d"></i></a><div class="author-info accordion-tabbed__content" data-db-target-of="a2" aria-labelledby="a2_Ctrl" role="region" id="a2">
+                  <p>1
+            University of Miami, USA khirano@miami.edu, 2University of California at Berkeley, and NBER imbens@econ.berkeley.edu, 3University of Southern California, Los Angeles, USA ridder@usc.edu</p><a class="moreInfoLink" href="/action/doSearch?ContribAuthorStored=Imbens%2C+Guido+W">Search for more papers by this author</a></div>
+            </div>
+            2
+          
+
+            <div class="accordion-tabbed__tab-mobile  accordion__closed"><a href="/action/doSearch?ContribAuthorStored=Ridder%2C+Geert" class="author-name accordion-tabbed__control" data-id="a3" data-db-target-for="a3" aria-controls="a3" aria-haspopup="true" id="a3_Ctrl" role="button"><span>Geert Ridder</span><i aria-hidden="true" class="icon-section_arrow_d"></i></a><div class="author-info accordion-tabbed__content" data-db-target-of="a3" aria-labelledby="a3_Ctrl" role="region" id="a3">
+                  <p>1
+            University of Miami, USA khirano@miami.edu, 2University of California at Berkeley, and NBER imbens@econ.berkeley.edu, 3University of Southern California, Los Angeles, USA ridder@usc.edu</p><a class="moreInfoLink" href="/action/doSearch?ContribAuthorStored=Ridder%2C+Geert">Search for more papers by this author</a></div>
+            </div>
+            3
+          
+
+         </div>
+      </div>
+   </div>
+   <div class="epub-sections"><div class="epub-section"><span class="epub-state">First published: </span><span class="epub-date">24 October 2003</span></div>
+      <div class="epub-section"><a class="epub-doi" aria-label="Digital Object Identifier" href="https://doi.org/10.1111/1468-0262.00442">https://doi.org/10.1111/1468-0262.00442</a></div><div class="epub-section cited-by-count"><span>Citations: <a href="#citedby-section">943</a></span></div>
+   </div>
+</div></div><div class="fixedCoolBar"><nav aria-label="Article navigation and tools" class="coolBar stickybar"><div class="stickybar__wrapper coolBar__wrapper clearfix"><div class="rlist coolBar__zone"><div class="coolBar__section"><a href="#" data-db-target-for="article" data-db-switch="icon-close_thin" aria-haspopup="true" aria-controls="article_Pop" role="button" id="article_Ctrl" class="coolBar__ctrl hidden-lg"><i class="icon-abstract"></i><span>About</span></a><div data-db-target-of="article" aria-labelledby="article_Ctrl" role="menu" id="article_Pop" class="coolBar__drop fixed rlist dropBlock__holder"><div data-target=".article-row-right .tab__nav, .coolBar--download" data-remove="false" data-targetClass="hidden-xs hidden-sm" data-toggle="transplant" data-direction="from" data-transplant="self" class="transplant showit"></div></div></div><div class="coolBar__section coolBar--accessDenail scroll-to-target"><a href="#accessDenialLayout" role="button" id="access_Ctrl" class="coolBar__ctrl hidden-lg"><i class="icon-icon-lock_open"></i><span>Access</span></a></div></div><div class="coolBar__second rlist"><div class="coolBar__section coolBar--download PdfLink"><a href="#accessDenialLayout" title="ePDF" class="coolBar__ctrl pdf-download"><img src="/products/pericles/releasedAssets/images/pdf-icon.png" alt="PDF"/>PDF</a></div>
+
+
+
+        
+        <div class="relative"><a href="#" data-db-target-for="0e406ce9-5c43-4e2d-b741-e0b43d1f1865" data-db-switch="icon-close_thin" aria-haspopup="true" aria-controls="0e406ce9-5c43-4e2d-b741-e0b43d1f1865_Pop" role="button" id="0e406ce9-5c43-4e2d-b741-e0b43d1f1865_Ctrl" class="article-tools__ctrl"><i aria-hidden="true" class="icon-Icon_Tools"></i><span>Tools</span></a><div data-db-target-of="0e406ce9-5c43-4e2d-b741-e0b43d1f1865" aria-labelledby="0e406ce9-5c43-4e2d-b741-e0b43d1f1865_Ctrl" role="menu" id="0e406ce9-5c43-4e2d-b741-e0b43d1f1865_Pop" class="article-tools__block fixed dropBlock__holder"><ul class="rlist w-slide--list"><li role="presentation" class="article-tool"><a href="https://onlinelibrary.wiley.com/action/rightsLink?doi=10.1111%2F1468-0262.00442&amp;mode=" role="menuitem" target="_blank"><i aria-hidden="true" class="icon-permissions-key"></i><span>Request permission</span></a></li><li role="presentation" class="article-tool"><a href="/action/showCitFormats?doi=10.1111%2F1468-0262.00442" role="menuitem" target="_self"><i aria-hidden="true" class="icon-export-icon"></i><span>Export citation</span></a></li><li role="presentation" class="article-tool"><a href="/personalize/addFavoritePublication?doi=10.1111%2F1468-0262.00442" role="menuitem" target="_self"><i aria-hidden="true" class="icon-favorites"></i><span>Add to favorites</span></a></li><li role="presentation" class="article-tool"><a href="/action/addCitationAlert?doi=10.1111%2F1468-0262.00442" role="menuitem" target="_self"><i aria-hidden="true" class="icon-Icon_Track-citations"></i><span>Track citation</span></a></li></ul></div></div>
+
+
+
+
+        
+        <!-- Go to www.addthis.com/dashboard to customize your tools --><script type="text/javascript" async="async" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-4faab26f2cff13a7"></script><div class="relative"><a id="share-access__ctrl" href="#" data-db-target-for="dff42abe-4b17-4fe9-a9c5-625405cd1007" data-db-switch="icon-close_thin" aria-haspopup="true" aria-controls="share_Pop" role="button" class="share-access__ctrl"><i aria-hidden="true" class="icon-Icon_Share"></i><span>Share</span></a><a id="share__ctrl" href="#" data-db-target-for="dff42abe-4b17-4fe9-a9c5-625405cd1007" data-db-switch="icon-close_thin" aria-haspopup="true" aria-controls="share_Pop" role="button" class="share__ctrl hidden"><i aria-hidden="true" class="icon-Icon_Share"></i><span>Share</span></a><div data-db-target-of="dff42abe-4b17-4fe9-a9c5-625405cd1007" aria-labelledby="share-access__ctrl" role="menu" id="share_Pop" class="share__block dropBlock__holder fixed">
+
+
+
+        
+        <div data-share-access="/action/authorizeSharing?doi=10.1111/1468-0262.00442&amp;shareType=P2P" class="share-access hidden"><p>Give access</p><a href="#" data-toggle="modal" data-target="#shareAccess" class="share-access__link"><i class="icon-users"></i>Share full text access</a></div><div class="ux-modal-container share-access__modal"><div id="shareAccess" class="modal"><div class="modal__dialog"><div class="modal__header"><button type="button" data-dismiss="modal" class="close"><i aria-hidden="true" class="icon-close_thin"></i></button><p>Share full-text access</p></div><div class="modal__body"><form method="post"><fieldset><legend>Please review our <a href="https://onlinelibrary.wiley.com/termsAndConditions" target="_blank">Terms and Conditions of Use</a> and check box below to share full-text version of article.</legend><div class="input-group"><label for="terms-and-conditions" class="checkbox--primary"><input id="terms-and-conditions" type="checkbox" value="yes" required="" name="terms-and-conditions" data-ajax-link="/action/generateShareUrl?doi=10.1111/1468-0262.00442&amp;shareType=P2P&amp;format=FULL-TEXT" data-shareable-link=""/><span class="label-txt">I have read and accept the Wiley Online Library Terms and Conditions of Use</span></label></div></fieldset><hr class="separator"/><div class="shareable"><label>Shareable Link</label><p>Use the link below to share a full-text version of this article with your friends and colleagues. <a href="https://onlinelibrary.wiley.com/researchers/tools-resources/sharing" target="_blank" class="emphasis">Learn more.</a></p><div class="shareable__box"><div class="shareable__text"><div class="shareable__field"><span id="shareable__text"></span><textarea tabindex="-1" class="shareable__text-area"></textarea></div></div><button type="submit" disabled="" class="btn shareable__btn">Copy URL</button></div><div class="error shareable__error hidden"></div></div></form></div></div></div></div>
+<p>Share a link</p><span class="sr-only">Share on</span><ul class="rlist w-slide--list addthis addthis_toolbox addthis_default_style addthis_32x32_style"><li><a role="link" class="addthis_button_email"><i aria-hidden="true" class="at-icon-wrapper icon-Email"></i>Email</a></li><li><a role="link" class="addthis_button_facebook"><i aria-hidden="true" class="at-icon-wrapper icon-facebook"></i>Facebook</a></li><li><a role="link" class="addthis_button_twitter"><i aria-hidden="true" class="at-icon-wrapper icon-twitter-t"></i>Twitter</a></li><li><a role="link" class="addthis_button_linkedin"><i aria-hidden="true" class="at-icon-wrapper icon-linkedin"></i>Linked In</a></li><li><a role="link" class="addthis_button_reddit"><i aria-hidden="true" class="at-icon-wrapper icon-reddit-alien"></i>Reddit</a></li><li><a role="link" class="addthis_button_wechat"><i aria-hidden="true" class="at-icon-wrapper icon-wechat"></i>Wechat</a></li></ul></div></div>
+</div></div></nav></div><div id="accessDenialslot" class="accessDenialslot">
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="ux3-layout-widget" data-widget-id="d80f9e80-c9a3-4918-a11e-71973b7dbf63" id="accessDenialLayout">
+        
+
+
+
+        
+        <div>
+
+
+
+        
+        <div class="slotLicenseConsumption"><i aria-hidden="true" class="icon-info---Material-Icon"></i><strong class="warning">Get access to the full version of this article.</strong><span class="warning-note"> View access options below.</span></div>
+
+
+
+
+        
+        <div class="slotLicenseConsumption readcube-loggedin hidden" readcube-purchased>
+  <i aria-hidden="true" class="icon-check-alt"></i>
+  <span class="text-success">
+    <strong>You previously purchased this article through ReadCube. </strong>View access options below.
+  </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+        <section data-widget-def="ux3-layout-widget" data-widget-id="9a2621aa-a915-4425-ac8d-313a10dfec2d" class="accessDenialLayout clearfix">
+        
+
+
+
+        
+        <div class="accessDenialLeft col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xs-6">
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="8df4fe83-341f-45d8-9ba8-43ac54575422" class="border-bottom">
+        
+
+
+
+        
+        <div class="seamlessAccessDenial accessDenial-heading">
+    <h5>Institutional Login</h5>
+    <div class="seamlessAccessDenial__wrapper">
+        <div class="seamlessAccessDenial__inner-wrapper">
+            <div class="icon">
+                <div class="js--loader"></div>
+            </div>
+            <div class="text">
+                <span>Loading institution options...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    
+
+
+
+
+        
+        <div class="accessDenial-heading"><h5>Log in to Wiley Online Library</h5></div><div><p class="content-message"><small>If you have previously obtained access with your personal account, please log in.</small></p><div class="accessDenial-btn accessDenial-btn--secondary float-right"><a href="/action/showLogin?uri=/doi/full/10.1111/1468-0262.00442" role="button" data-toggle="modal" data-target="#login-minimal" class="access-denial-show-login">Log in</a></div></div>
+</div><div class="accessDenialRight col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xs-6">
+
+
+
+        
+        
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+    <div class=" ">
+        
+        
+        
+
+        
+
+
+
+<div class="accessDenial-heading">
+    <h5>Purchase Instant Access</h5>
+</div>
+
+        
+                <a class="saved-go-cart hidden" href="/action/showCart?FlowID=2"><span class="icon-cart-icon-material"></span> Item saved, go to cart </a>
+            
+
+        <div class="purchaseAreaList_expanded" id="#purchasePanel">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="purchase-options-container">
+    
+
+    
+    
+        
+            
+            <div class="purchaseMessage hidden" data-item="PPV-JOURNALS-RENTAL-TIER1-TEST-ELECTRONIC-USD-10.1111%2F1468-0262.00442-100061">
+                <p class="errorMsgBox"></p>
+            </div>
+            <div class="add-journal-to-cart">
+                <header>
+                    <div class="input-group">
+                        <label class="radio--primary">
+                            <div class="add-article-to-cart">
+                                <input type="radio" name="purchaseAccessRadio" class="purchase-access-option"
+                                       data-key="PPV-JOURNALS-RENTAL-TIER1-TEST-ELECTRONIC-USD-10.1111%2F1468-0262.00442-100061">
+                                <span class="label-txt">
+                                <bold class="add-article-to-cart__title title">
+                                        48-Hour online access
+                                </bold>
+                                <bold class="add-article-to-cart__price price">$14.00</bold>
+                         </span>
+                            </div>
+                        </label>
+                    </div>
+                    
+                        <div class="accordion-with-arrow">
+                            <div class="accordion">
+                                <ul class="accordion-tabbed rlist">
+                                    <li class="accordion-tabbed__tab accordion__closed">
+                                        <a href="#" title="Single Accordion Controller" aria-expanded="false"
+                                           aria-controls="id30" class="accordion-tabbed__control">Details</a>
+                                        <div id="id30" class="accordion-tabbed__content">
+                                                <ul class="rlist unordered-list">     <li>View the article PDF and any associated supplements and figures for a period of 48 hours.</li>     <li>Article can <em>not</em> be printed.</li>     <li>Article can <em>not</em> be downloaded.</li>     <li>Article can <em>not</em> be redistributed.</li> </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    
+                </header>
+            </div>
+        
+            
+            <div class="purchaseMessage hidden" data-item="PPV-JOURNALS-CLOUD-TIER1-TEST-ELECTRONIC-USD-10.1111%2F1468-0262.00442-100063">
+                <p class="errorMsgBox"></p>
+            </div>
+            <div class="add-journal-to-cart">
+                <header>
+                    <div class="input-group">
+                        <label class="radio--primary">
+                            <div class="add-article-to-cart">
+                                <input type="radio" name="purchaseAccessRadio" class="purchase-access-option"
+                                       data-key="PPV-JOURNALS-CLOUD-TIER1-TEST-ELECTRONIC-USD-10.1111%2F1468-0262.00442-100063">
+                                <span class="label-txt">
+                                <bold class="add-article-to-cart__title title">
+                                        Online-only access
+                                </bold>
+                                <bold class="add-article-to-cart__price price">$21.00</bold>
+                         </span>
+                            </div>
+                        </label>
+                    </div>
+                    
+                        <div class="accordion-with-arrow">
+                            <div class="accordion">
+                                <ul class="accordion-tabbed rlist">
+                                    <li class="accordion-tabbed__tab accordion__closed">
+                                        <a href="#" title="Single Accordion Controller" aria-expanded="false"
+                                           aria-controls="id30" class="accordion-tabbed__control">Details</a>
+                                        <div id="id30" class="accordion-tabbed__content">
+                                                <ul class="rlist unordered-list">     <li>Unlimited viewing of the article PDF and any associated supplements and figures.</li>     <li>Article can <em>not</em> be printed.</li>     <li>Article can <em>not</em> be downloaded.</li>     <li>Article can <em>not</em> be redistributed.</li> </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    
+                </header>
+            </div>
+        
+            
+            <div class="purchaseMessage hidden" data-item="PPV-JOURNALS-PURCHASE-TIER1-ELECTRONIC-USD-10.1111%2F1468-0262.00442-100050">
+                <p class="errorMsgBox"></p>
+            </div>
+            <div class="add-journal-to-cart">
+                <header>
+                    <div class="input-group">
+                        <label class="radio--primary">
+                            <div class="add-article-to-cart">
+                                <input type="radio" name="purchaseAccessRadio" class="purchase-access-option"
+                                       data-key="PPV-JOURNALS-PURCHASE-TIER1-ELECTRONIC-USD-10.1111%2F1468-0262.00442-100050">
+                                <span class="label-txt">
+                                <bold class="add-article-to-cart__title title">
+                                        PDF download and online access
+                                </bold>
+                                <bold class="add-article-to-cart__price price">$42.00</bold>
+                         </span>
+                            </div>
+                        </label>
+                    </div>
+                    
+                        <div class="accordion-with-arrow">
+                            <div class="accordion">
+                                <ul class="accordion-tabbed rlist">
+                                    <li class="accordion-tabbed__tab accordion__closed">
+                                        <a href="#" title="Single Accordion Controller" aria-expanded="false"
+                                           aria-controls="id30" class="accordion-tabbed__control">Details</a>
+                                        <div id="id30" class="accordion-tabbed__content">
+                                                <ul class="rlist unordered-list">     <li>Unlimited viewing of the article/chapter PDF and any associated supplements and figures.</li>     <li>Article/chapter can be printed.</li>     <li>Article/chapter can be downloaded.</li>     <li>Article/chapter can <em>not</em> be redistributed.</li> </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    
+                </header>
+            </div>
+        
+        <div class="accessDenial-btn accessDenial-btn--secondary float-right">
+            <a href="/action/addToCart?id=PPV-JOURNALS-PURCHASE-TIER1-ELECTRONIC-USD-10.1111%2F1468-0262.00442-100050" data-key="PPV-JOURNALS-PURCHASE-TIER1-ELECTRONIC-USD-10.1111%2F1468-0262.00442-100050" data-bind="addItem">
+                Check out
+            </a>
+        </div>
+    
+    
+</div>
+        </div>
+    </div>
+
+
+
+    
+
+
+
+
+        
+        
+</div>
+
+        </section>
+    
+</div>
+
+        </div>
+    
+</div><div class="article__body "><div class="abstract-group">
+   <section class="article-section article-section__abstract" lang="en" data-lang="en" id="section-1-en">
+      <h3 class="article-section__header main abstractlang_en main">Abstract</h3>
+      <div class="article-section__content en main">
+         <p>We are interested in estimating the average effect of a binary treatment on a scalar outcome. If assignment to the treatment is exogenous or unconfounded, that is, independent of the potential outcomes given covariates, biases associated with simple treatment‐control average comparisons can be removed by adjusting for differences in the covariates. Rosenbaum and Rubin (1983) show that adjusting solely for differences between treated and control units in the propensity score removes all biases associated with differences in covariates. Although adjusting for differences in the propensity score removes all the bias, this can come at the expense of efficiency, as shown by Hahn (1998), Heckman, Ichimura, and Todd (1998), and Robins, Mark, and Newey (1992). We show that weighting by the inverse of a nonparametric estimate of the propensity score, rather than the true propensity score, leads to an efficient estimate of the average treatment effect. We provide intuition for this result by showing that this estimator can be interpreted as an empirical likelihood estimator that efficiently incorporates the information about the propensity score.</p>
+         
+      </div>
+   </section>
+</div>
+<div class="pb-dropzone" data-pb-dropzone="below-abstract-group">
+   <!-- Empty dropzone -->
+</div>
+<div class="pb-dropzone" data-pb-dropzone="citedBy-dropzone">
+   <!-- Empty dropzone -->
+</div></div></div><div class="col-lg-4 col-md-4 col-sm-4 hidden-xs hidden-sm hidden-md article-row-right fixed-element"><div class="publication-cover-info clearfix">
+
+
+
+        
+        <div class="cover-image-wrapper cover-image__image hasDetails"><a href="/toc/14680262/2003/71/4" title="View Volume 71, Issue 4"><img src="/cms/asset/96a9507a-940c-4724-acae-af4c4eedb08e/ecta.2021.89.issue-1.x.cover.jpg" alt=""/></a></div><div class="extra-info-wrapper cover-image__details"><p class="volume-issue"><a href="/toc/14680262/2003/71/4" title="View Volume 71, Issue 4"><span>Volume</span><span class="val">71</span>, <span>Issue</span><span class="val">4</span></a></p><p>July 2003</p><p class="page-range"><span>Pages</span><span> 1161-1189</span></p>
+
+
+
+        
+        
+</div>
+</div>
+
+
+
+        
+        
+
+
+
+        <div class="pb-ad">
+            <div id="advert-rail-1" class="advert advert-rail">
+			<script>
+
+				googletag.cmd.push 		( function () {
+					googletag.display 	( 'advert-rail-1' );
+				});
+
+			</script>
+
+			<!-- No JavaScript support is a call to an image -->
+			<noscript>
+				<a href="/action/clickThrough?id=1011&url=https%3A%2F%2Fpubads.g.doubleclick.net%2Fgampad%2Fjump%3Fiu%3D%24googlePublisherCategory%26amp%3Bsz%3D160x600%7C160x320%7C160x160%7C120x600%26amp%3Btile%3D2%26amp%3Bc%3D%24random&loc=%2Fdoi%2Fpdfdirect%2F10.1111%2F1468-0262.00442&pubId=45310561&placeholderId=1014&productId=101018" target="_blank">
+					<img src="https://pubads.g.doubleclick.net/gampad/ad?iu=$googlePublisherCategory&amp;sz=160x600|160x320|160x160|120x600&amp;tile=2&amp;c=$random">
+				</a>
+			</noscript>
+		</div>
+        </div>
+    
+
+<div class="sticko__parent scrollThenFix"><div class="tab tab--slide tab--flex sticko__md tabs--xs dynamic-sticko  tab--flex tabs--xs"><ul data-mobile-toggle="slide" role="tablist" class="rlist tab__nav w-slide--list"><li role="presentation"><a data-slide-clone="self" href="#pane-pcw-related" aria-controls="#pane-pcw-related" role="tab" data-toggle="tab" id="pane-pcw-relatedcon" data-slide-target="#pane-pcw-related" class="article-row-right__tabLinks w-slide__btn related-tab"><i aria-hidden="true" class="icon-related-circles-extend-button"></i><h2>Related</h2></a></li><li role="presentation"><a data-slide-clone="self" href="#pane-pcw-details" aria-controls="#pane-pcw-details" role="tab" data-toggle="tab" id="pane-pcw-detailscon" data-slide-target="#pane-pcw-details" class="article-row-right__tabLinks w-slide__btn details-tab"><i aria-hidden="true" class="icon-Icon_Information"></i><h2>Information</h2></a></li></ul><ul role="presentation" class="rlist tab__content sticko__child"><li id="pane-pcw-related" aria-labelledby="pane-pcw-relatedcon" role="tabpanel" class="tab__pane article-row-right__panes"></li><li id="pane-pcw-details" aria-labelledby="pane-pcw-detailscon" role="tabpanel" class="tab__pane article-row-right__panes empty"><div class="contentTab"></div><div class="emptyTab">
+
+
+
+        
+        
+
+
+
+        <div class="pb-ad">
+            <aside>
+	<div id="advert-rail-2" class="advert advert-rail">
+		<script>
+
+			googletag.cmd.push 		( function () {
+				googletag.display 	( 'advert-rail-2' );
+			});
+
+		</script>
+
+		<!-- No JavaScript support is a call to an image -->
+		<noscript>
+			<a href="/action/clickThrough?id=1012&url=https%3A%2F%2Fpubads.g.doubleclick.net%2Fgampad%2Fjump%3Fiu%3D%24googlePublisherCategory%26amp%3Bsz%3D160x600%7C160x320%7C160x160%7C120x600%26amp%3Btile%3D2%26amp%3Bc%3D%24random&loc=%2Fdoi%2Fpdfdirect%2F10.1111%2F1468-0262.00442&pubId=45310561&placeholderId=1013&productId=101018" target="_blank">
+				<img src="https://pubads.g.doubleclick.net/gampad/ad?iu=$googlePublisherCategory&amp;sz=160x600|160x320|160x160|120x600&amp;tile=2&amp;c=$random">
+			</a>
+		</noscript>
+	</div>
+</aside>
+        </div>
+    
+
+</div></li><li class="tab__spinner"><div class="tab__spinner--box"><img src="/ux3/releasedAssets/images/spinner.gif" id="spinner" alt=""/></div></li></ul></div></div></div></div></article><script>var articleRef = document.querySelector('.article__body:not(.show-references) .article__references');
+if (articleRef) { articleRef.style.display = "none"; }
+
+</script><div id="figure-viewer" data-ux3-wrapper="figure-viewer" data-ux3-transformed-by="figureInit" data-ux3-role="parent" role="dialog" class="figure-viewer"><div class="figure-viewer__reg__top clearfix"><div class="figure-viewer__top__right"><a href="#" data-ux3-role="controller" role="button" class="figure-viewer__ctrl__close"><span class="icon-close_thin"><span class="sr-only">Close Figure Viewer</span></span></a></div><div class="figure-viewer__top__left"><a href="#" role="button" class="figure-viewer__ctrl__return is-hidden"><span class="icon-arrow-left"><span class="sr-only">Return to Figure</span></span></a><button title="zoom out" class="figure-viewer__label__zoom icon-zoom-out zoom-out"></button><span tabindex="1" class="zoomSlider js__zoom-slider ui-slider"><input type="range" class="zoom-range"/></span><button title="zoom in" class="figure-viewer__label__zoom icon-zoom-in zoom-in"></button></div></div><div class="figure-viewer__reg__center"><div class="figure-viewer__cent__left"><a href="#" role="button" class="figure-viewer__ctrl__prev"><span class="icon-arrow_l"><span class="sr-only">Previous Figure</span></span></a><a href="#" role="button" class="figure-viewer__ctrl__next"><span class="icon-arrow_r"><span class="sr-only">Next Figure</span></span></a><div class="figure-viewer__hold__fig"><figure class="holder"></figure></div><div class="figure-viewer__hold__list clearfix container"></div></div><div class="figure-viewer__cent__right"><div class="figure-viewer__title"><a title="Open/Close Caption" href="#" class="figure-viewer__ctrl__caption"><span class="icon-doublearrow"></span><span class="figure-viewer__caption__label">Caption</span></a><span class="figure-viewer__title__text"></span></div><div class="figure-viewer__hold__figcap"></div></div></div></div>
+
+
+
+
+        
+        <div style="text-align: right!important;"><a style="font-weight: 300!important; font-size: 90%;" href="/doi/pdf/10.1111/1468-0262.00442">Download PDF</a></div>
+</div>
+</div></div></div>
+
+        </section>
+    
+        </div>
+    </div><!--end pagefulltext-->
+</main>
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="pageFooter" data-widget-id="053994f3-7d80-4bb1-97a4-c67fbc4768cd" class="pageFooter">
+        
+
+
+
+        
+        <footer class="page-footer">
+    <div data-pb-dropzone="main">
+    
+
+
+
+        
+        <div class="main-footer">
+
+
+
+        
+        <style>
+    .footer-links {
+        text-align: center;
+    }
+    .footer-links h3 {
+        font-weight: 300;
+    }
+    .footer-links a {
+        font-weight: 600;
+    }
+    @media (min-width: 992px) {
+        .footer-links {
+            text-align: left;
+        }
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="ux3-layout-widget" data-widget-id="2753bec1-a79d-4403-827b-6c788ddd6db3" class="footer-sections">
+        
+
+
+
+        
+            <h2 class="sr-only">
+                Additional links
+            </h2>
+        
+        <div class="container"><div class="row"><div class=" col-md-3">
+
+
+
+        
+        <div class="footer-links mb-3">
+  <h3>About Wiley Online Library</h3>
+  <ul class="rlist">
+    <li><a href="https://www.wiley.com/privacy">Privacy Policy</a></li>
+    <li><a href="https://onlinelibrary.wiley.com/terms-and-conditions">Terms of Use</a></li>
+    <li><a href="https://onlinelibrary.wiley.com/cookies">Cookies</a></li>
+    <li><a href="https://onlinelibrary.wiley.com/accessibility">Accessibility</a></li>
+  </ul>
+</div>
+</div><div class=" col-md-3">
+
+
+
+        
+         <div class="footer-links mb-3">
+    <h3>Help & Support</h3>
+    <ul class="rlist">
+      <li><a href="https://hub.wiley.com/community/support/onlinelibrary">Contact Us</a></li>
+    </ul>
+  </div>
+</div><div class=" col-md-3">
+
+
+
+        
+         <div class="footer-links mb-3">
+    <h3>Opportunities</h3>
+    <ul class="rlist">
+      <li><a href="https://onlinelibrary.wiley.com/agents">Subscription Agents</a></li>
+      <li><a href="https://onlinelibrary.wiley.com/advertisers">Advertisers & Corporate Partners</a></li>
+    </ul>
+  </div>
+</div><div class=" col-md-3">
+
+
+
+        
+        <div class="footer-links mb-3">
+    <h3>Connect with Wiley</h3>
+    <ul class="rlist">
+      <li><a href="https://www.wiley.com/network">The Wiley Network</a></li>
+      <li><a href="https://newsroom.wiley.com/">Wiley Press Room</a></li>
+    </ul>
+  </div>
+</div></div></div>
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="ux3-layout-widget" data-widget-id="86584e25-e4db-4118-9550-9b4f5341a4ac" class="copyright-container">
+        
+
+
+
+        
+        <div class="container"><div class="row"><div class=" col-md-12">
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="bfbf6c5d-a650-4662-828f-5275fada9120" class="copyright">
+        
+
+
+
+        
+        <div class="copyright pull-left">Copyright &copy; 1999-2021 <a href="https://www.wiley.com">John Wiley &amp; Sons, Inc</a>. All rights reserved</div>
+
+        </div>
+    
+
+
+
+
+        
+        <div class="footer-logo pull-right">
+        
+<a href="https://www.wiley.com" title="Wiley Home Page" aria-label="Wiley"><img alt="Wiley Home Page" src="/pb-assets/tmp-images/footer-logo-wiley-1510029248417.png"></a>
+
+</div>
+</div></div></div>
+
+        </div>
+    
+</div>
+    </div>
+</footer>
+
+        </div>
+    
+
+
+
+
+        
+        <!-- [Tag{id&#x3D;102299, code&#x3D;econometrica_ecta, name&#x3D;econometrica_ECTA}, Tag{id&#x3D;101739, code&#x3D;wly.economics_000047, name&#x3D;wly.economics_000047}, Tag{id&#x3D;816, code&#x3D;st27, name&#x3D;Econometric &amp; Statistical Methods}, Tag{id&#x3D;709, code&#x3D;ec30, name&#x3D;Econometrics}, Tag{id&#x3D;40, code&#x3D;st, name&#x3D;STATISTICS}, Tag{id&#x3D;121, code&#x3D;st20, name&#x3D;Applied Probability &amp; Statistics}, Tag{id&#x3D;95, code&#x3D;ec, name&#x3D;ECONOMICS}, Tag{id&#x3D;719, code&#x3D;ec00, name&#x3D;General &amp; Introductory Economics}] -->                  <div id="iucr-failure"> <p><i class="icon-notice"></i>The full text of this article hosted at iucr.org is unavailable due to technical difficulties.<a href="#" class="close-iucr-failure"><i class="icon-x"></i></a> </p> </div> 
+
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="popup login-popup hidden" role="dialog" tabindex="-1" aria-labelledby="loginPopupHead">
+
+
+
+    <div class="content">
+        <a href="#" class="close" role="button" aria-label="Cancel Login"><i class="icon-tools_close"></i></a>
+        <div class="modal__header">
+            
+
+<div class="header_logo">
+    <img src="/pb-assets/hub-assets/pericles/logo-header-1526603583437.png" alt="">
+</div>
+        </div>
+
+        <div class="modal__body">
+            <div class="ssoLogin">
+                
+            </div>
+
+            <h2 id="loginPopupHead">Log in to Wiley Online Library</h2>
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="login-form">
+    
+
+    
+
+    
+    <form action="/action/doLogin?societyURLCode=" class="bordered" method="post"><input type="hidden" name="id" value="67065c09-4a88-49cd-934c-ac707951d35c" />
+        
+            <input type="hidden" name="popup" value="true" />
+        
+        
+
+        
+        <input type="hidden" name="loginUri" value="/doi/pdfdirect/10.1111/1468-0262.00442" />
+        
+            
+
+
+
+
+<input type="hidden" name="redirectUri" value="/doi/pdfdirect/10.1111/1468-0262.00442" />
+<input type="hidden" name="loginUri" value="/doi/pdfdirect/10.1111/1468-0262.00442" />
+            
+        
+        
+        
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        
+    <div class="input-group">
+        <div class="label">
+
+            
+                    <label for="username">Email or Customer ID</label>
+                
+        </div>
+        
+        
+                <input id="username" class="login" type="text" name="login" value="" size="15" placeholder="Enter your email"autocorrect="off"spellcheck="false"autocapitalize="off"required="true" />
+            
+        
+                    
+                        <div class="actions">
+                            
+                        </div>
+                    
+                
+    </div>
+
+
+                
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <div class="input-group">
+        <div class="label">
+            <label for="password">Password</label>
+        </div>
+        
+        
+                <input id="password" class="password" type="password" name="password" value="" autocomplete="off" placeholder="Enter your password"autocorrect="off"spellcheck="false"autocapitalize="off"required="true" />
+            
+        <span class="password-eye-icon icon-eye hidden"></span>
+        
+                
+    </div>
+
+                
+                    
+                        <div class="actions">
+                            
+                            <a href="/action/requestResetPassword" class="link show-request-reset-password">
+                                Forgot password?
+                            </a>
+                        </div>
+                    
+                
+            
+        
+        <div class="loginExtraBeans-dropZone" data-pb-dropzone="loginExtraBeans">
+            
+        </div>
+
+        
+                <div class="align-end">
+                    
+                    
+                            
+                            <span class="submit ">
+                                <input class="button btn submit primary no-margin-bottom accessSubmit" type="submit" name="submitButton" value="Log In" />
+                            </span>
+                        
+                </div></form>
+    <div class="societySpecificInstructions">
+        
+    </div>
+</div>
+
+            
+                <div class="login-container clearfix form-btn">
+                    <a href="/action/registration" class="linkBtn float-left">
+                        
+                        NEW USER <span aria-hidden="true">></span>
+                    </a>
+                    
+                        <a href="/action/ssostart?redirectUri=%2Fdoi%2Fpdfdirect%2F10.1111%2F1468-0262.00442" class="linkBtn float-right instituation-login">
+                            
+                            INSTITUTIONAL LOGIN <span aria-hidden="true">></span>
+                        </a>
+                    
+                </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+
+
+        
+        
+
+
+
+
+
+
+<div class="popup change-password-drawer hidden" role="dialog" tabindex="-1" aria-labelledby="changePasswordPopupHead">
+    <div class="content">
+        <a href="#" class="close cancel" role="button" aria-label="close dialog"><i class="icon-close_thin"></i></a>
+        <div class="modal__header">
+            
+
+<div class="header_logo">
+    <img src="/pb-assets/hub-assets/pericles/logo-header-1526603583437.png" alt="">
+</div>
+
+            <h2 id="changePasswordPopupHead">Change Password</h2>
+        </div>
+        <div class="modal__body">
+
+            <div class="form">
+
+                <form action="/action/changePassword" method="post"><div class="message error"></div>
+                    <input type="hidden" name="submit" value="submit" />
+                    <div class="input-group">
+                        <div class="label">
+                            <label for="a589574e-bb98-4c6e-8fed-67365ff05357-old">Old Password</label>
+                        </div>
+                        <input id="a589574e-bb98-4c6e-8fed-67365ff05357-old" class="old" type="password" name="old" value="" autocomplete="off" />
+                        <span class="password-eye-icon icon-eye hidden"></span>
+                    </div>
+                    <div class="input-group">
+                        <div class="label">
+                            <label for="a589574e-bb98-4c6e-8fed-67365ff05357-new">New Password</label>
+                        </div>
+                        <input id="a589574e-bb98-4c6e-8fed-67365ff05357-new" class="pass-hint new" type="password" name="new" value="" autocomplete="off" />
+                        <span class="password-eye-icon icon-eye hidden"></span>
+                        
+                            
+
+
+
+
+
+
+
+    
+
+
+    
+
+
+    
+
+
+<div class="password-strength-indicator" data-min="10" data-max="32" data-strength="3">
+    <span class="text too-short">Too Short</span>
+    <span class="text weak">Weak</span>
+    <span class="text medium">Medium</span>
+    <span class="text strong">Strong</span>
+    <span class="text very-strong">Very Strong</span>
+    <span class="text too-long">Too Long</span>
+</div>
+                        
+                    </div>
+                    <input class="button primary submit" type="submit" value="Submit" disabled="disabled" /></form>
+                <a href="#" class="fakeFormLastElement"></a>
+            </div>
+            <div class="success-template hidden">
+                <h2>Password Changed Successfully</h2>
+                <p>Your password has been changed</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+        
+        
+
+
+
+
+
+<div class="popup registration-popup hidden"  role="dialog" tabindex="-1" aria-labelledby="createAccountPopupHead">
+
+
+
+    <div class="content">
+        <a href="#" class="close" role="button" aria-label="close dialog"><i class="icon-tools_close"></i></a>
+        <div class="modal__header">
+            <div class="logoDropZone" data-pb-dropzone="logoDropZone">
+                
+            </div>
+
+            <h2 id="createAccountPopupHead">Create a new account</h2>
+        </div>
+
+        <div class="modal__body">
+            <form action="/action/registration" class="registration-form" method="post"><input type="hidden" name="redirectUri" value="/doi/pdfdirect/10.1111/1468-0262.00442" />
+                <div class="input-group">
+                    <div class="label">
+                        <label for="4e647394-f751-4441-baa4-df426bca4b6e.email">Email or Customer ID</label>
+                    </div>
+                    <input id="4e647394-f751-4441-baa4-df426bca4b6e.email" class="email" type="text" name="email" value="" size="15" />
+                </div>
+                <div class="submit">
+                    <input class="button submit primary" type="submit" value="Register" />
+                </div></form>
+            <div class="center">
+                <a href="/action/showLogin" class="show-login">
+                    
+                    Returning user
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+        
+        
+
+
+
+<div class="popup top-drawer request-reset-password-drawer hidden" role="dialog" tabindex="-1" aria-labelledby="resetPasswordPopupHead">
+    <div class="content">
+        <div class="modal__header">
+            <a href="#" class="cancel close" role="button" aria-label="close dialog"><i class="icon-close_thin"></i></a>
+
+            
+
+<div class="header_logo">
+    <img src="/pb-assets/hub-assets/pericles/logo-header-1526603583437.png" alt="">
+</div>
+
+            <h2 id="resetPasswordPopupHead">Forgot your password?</h2>
+
+            <p class="sub">Enter your email address below. </p>
+
+        </div>
+
+        <div class="modal__body">
+
+            
+
+
+
+
+
+
+
+
+
+<div class="error"></div>
+
+
+<form action="/action/requestResetPassword" class="request-reset-password-form" method="post"><input type="hidden" name="requestResetPassword" value="true" />
+    
+            <div class="input-group">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        
+    <div class="input-group">
+        <div class="label">
+
+            
+                    <label for="email">Email or Customer ID</label>
+                
+        </div>
+        
+        
+                <input id="email" class="email" type="text" name="email" value="" size="15" placeholder="Enter your email"autocorrect="off"spellcheck="false"autocapitalize="off" />
+            
+        
+    </div>
+
+            </div>
+        
+
+
+    
+            <div class="password-recaptcha-ajax"></div>
+        
+
+    <div class="form-btn">
+        <input class="button btn primary submit" type="submit" name="submit" value="RESET PASSWORD" disabled="disabled" />
+    </div></form>
+            
+
+            <div class="message error"></div>
+
+            <div class="success-template hidden">
+
+                <p>Please check your email for instructions on resetting your password.
+                    If you do not receive an email within 10 minutes, your email address may not be registered,
+                    and you may need to create a new Wiley Online Library account.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+        
+        <div><div class="pb-dropzone" data-pb-dropzone="col-0" title="col-0"></div></div>
+
+
+
+
+        
+        
+
+
+
+
+<div class="popup top-drawer request-username-drawer username-popup hidden"  role="dialog" tabindex="-1" aria-labelledby="requestUsernamePopupHead">
+    <a href="#" class="close" role="button" aria-label="close dialog"><i class="icon-close_thin"></i></a>
+    <div class="content">
+        <h2 id="requestUsernamePopupHead">Request Username</h2>
+        <div class="form">
+            <p>Can't sign in? Forgot your username?</p>
+            <p class="sub">Enter your email address below and we will send you your username</p>
+            <div class="message error"></div>
+            <form action="/action/requestUsername" method="post"><input type="hidden" name="requestUsername" value="requestUsername" />
+                <div class="input-group">
+                    <div class="label">
+                        <label for="ac834f24-aa07-4ad2-9d13-f77c843f21cb.email">Email or Customer ID</label>
+                    </div>
+                    <input id="ac834f24-aa07-4ad2-9d13-f77c843f21cb.email" class="email" type="text" name="email" value="" size="15" />
+                </div>
+
+                <div class="username-recaptcha-ajax">
+                </div>
+
+                <input class="button primary submit" type="submit" name="submit" value="Submit" disabled="disabled" />
+                <div class="center">
+                    <a href="#" class="cancel">Close</a>
+                </div></form>
+        </div>
+        <div class="success-template hidden note">
+            <p>If the address matches an existing account you will receive an email with instructions to retrieve your username</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+        
+        <!-- Belongs at the bottom of the page -->
+
+<script type="text/javascript">
+if(window._satellite) { 
+_satellite.pageBottom(); 
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="07adc2f1-0322-4580-9398-f0754103176f" class="accessDenial--tab">
+        
+
+
+
+        
+        <script>
+!function (e, t) { typeof module != "undefined" ? module.exports = t() : typeof define == "function" && typeof define.amd == "object" ? define(t) : this[e] = t() }("domready", function () { var e = [], t, n = document, r = n.documentElement.doScroll, i = "DOMContentLoaded", s = (r ? /^loaded|^c/ : /^loaded|^i|^c/).test(n.readyState); return s || n.addEventListener(i, t = function () { n.removeEventListener(i, t), s = 1; while (t = e.shift()) t() }), function (t) { s ? setTimeout(t, 0) : e.push(t) } })
+
+domready(function () {
+    var targetNodes = $("html");
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+    if (MutationObserver) {
+        var myObserver = new MutationObserver(mutationHandler);
+        var obsConfig = { attributes: true };
+        myObserver.observe(targetNodes[0], obsConfig);
+        function checkReadingOptions() {
+            $("html.r3-reading-options ").each(function () {
+                console.log(" activating reading options");
+                if($(".ppv-injected.js--open").length==0){
+                    $('a[title*="Purchase"]').click();
+                }
+                $('a[title*="Purchase"]').text("Reading options").attr("title", "Reading options");
+                $('li.accordion-tabbed__tab.login-options').addClass('hidden');
+                
+                //myObserver.disconnect();
+            });
+            
+            $("html.r3-instant-purchase").each(function () {
+                if($(".ppv-injected.js--open").length==0){
+                    $('a[title*="Reading options"]').click();
+                }
+                $('a[title*="Reading options"]').text("Purchase instant access").attr("title", "Purchase instant access");
+                $('li.accordion-tabbed__tab.login-options').removeClass('hidden');
+            });
+
+            
+        }
+        checkReadingOptions();
+        function mutationHandler(mutationRecords) {
+            
+            mutationRecords.forEach(function (mutation) {
+            
+                var newVal = $(mutation.target).prop(mutation.attributeName);
+                if (mutation.attributeName === "class") {
+                    checkReadingOptions();
+                }
+            });
+        }
+    }
+});
+</script>
+
+        </div>
+    
+
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="popup access-denial-login-popup hidden" role="dialog" tabindex="-1" aria-labelledby="loginPopupHead">
+
+
+
+    <div class="content">
+        <a href="#" class="close" role="button" aria-label="Cancel Login"><i class="icon-tools_close"></i></a>
+        <div class="modal__header">
+            
+
+<div class="header_logo">
+    <img src="/pb-assets/hub-assets/pericles/logo-header-1526603583437.png" alt="">
+</div>
+        </div>
+
+        <div class="modal__body">
+            <div class="ssoLogin">
+                
+            </div>
+
+            <h2 id="loginPopupHead">Log in to Wiley Online Library</h2>
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="login-form">
+    
+
+    
+
+    
+    <form action="/action/doLogin?societyURLCode=" class="bordered" method="post"><input type="hidden" name="id" value="85d86655-9ad7-4011-95e1-942291a5eb95" />
+        
+            <input type="hidden" name="popup" value="true" />
+        
+        
+
+        
+        <input type="hidden" name="loginUri" value="/doi/pdfdirect/10.1111/1468-0262.00442" />
+        
+            
+
+
+
+
+<input type="hidden" name="redirectUri" value="/doi/pdfdirect/10.1111/1468-0262.00442" />
+<input type="hidden" name="loginUri" value="/doi/pdfdirect/10.1111/1468-0262.00442" />
+            
+        
+        
+        
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        
+    <div class="input-group">
+        <div class="label">
+
+            
+                    <label for="username">Email or Customer ID</label>
+                
+        </div>
+        
+        
+                <input id="username" class="login" type="text" name="login" value="" size="15" placeholder="Enter your email"autocorrect="off"spellcheck="false"autocapitalize="off"required="true" />
+            
+        
+                    
+                        <div class="actions">
+                            
+                        </div>
+                    
+                
+    </div>
+
+
+                
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <div class="input-group">
+        <div class="label">
+            <label for="password">Password</label>
+        </div>
+        
+        
+                <input id="password" class="password" type="password" name="password" value="" autocomplete="off" placeholder="Enter your password"autocorrect="off"spellcheck="false"autocapitalize="off"required="true" />
+            
+        <span class="password-eye-icon icon-eye hidden"></span>
+        
+                
+    </div>
+
+                
+                    
+                        <div class="actions">
+                            
+                            <a href="/action/requestResetPassword" class="link show-request-reset-password">
+                                Forgot your password?
+                            </a>
+                        </div>
+                    
+                
+            
+        
+        <div class="loginExtraBeans-dropZone" data-pb-dropzone="loginExtraBeans">
+            
+        </div>
+
+        
+                <div class="align-end">
+                    
+                    
+                            
+                                
+                                <span class="submit register-btn">
+                                    <a href="/action/registration" class="accessRegister">
+                                        
+                                        <span type="text" class="button btn primary no-margin-bottom" name="accessRegister">
+                                        Register
+                                        </span>
+                                    </a>
+
+
+                                </span>
+                            
+                            <span class="submit login-btn">
+                                <input class="button btn submit primary no-margin-bottom accessSubmit" type="submit" name="submitButton" value="Log In" />
+                            </span>
+                        
+                </div></form>
+    <div class="societySpecificInstructions">
+        
+    </div>
+</div>
+
+            
+
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+<script src="/products/pericles/releasedAssets/js/build.lazyload.bundle-e176d1e300ac4e657a6b.js"></script><script src="/products/pericles/releasedAssets/js/main.bundle-9cf551fee6903de057dd.js"></script>
+<script type="text/javascript" src="/wro/jwm5~product.js"></script>
+
+<script>var _prum=[['id','59e8fecb3847311aab7b23c6'],['mark','firstbyte',(new Date()).getTime()]];(function(){var s=document.getElementsByTagName('script')[0],p=document.createElement('script');p.async='async';p.src='//rum-static.pingdom.net/prum.min.js';s.parentNode.insertBefore(p,s);})();</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'61df155ebed4c5ec',m:'80a53af4ef99accd88be535dcf4a2f083d2d2ab8-1612721592-1800-AZkH3Sl7BY3ewwWrKxnQgySYlXfJ1SAtbIAPcKseXQVUKfBJ6JAQN+Tgfo040B1g3CGxfp5PGgziEzLkkzgE+6vFRpXXR32jBcCVBs4VfJey9xvphXSHtH4A+ji1lZRgxoGQWwUo46L0lFizC0Gczi6oCjahcBqWF3c6ykMlNjXJ',s:[0xd240876de8,0xa06007ccd2],}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"version":"2021.1.2","rayId":"61df155ebed4c5ec","si":10}'></script>
+</body>
+</html>
