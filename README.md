@@ -41,7 +41,7 @@ This is a partial list of various interesting and useful books that will be touc
 ## Lectures ([Full Syllabus](https://github.com/paulgp/applied-methods-phd/blob/main/syllabus.pdf))
 
 1. **Causality, Statistics, and Economics**
-	1. [**Potential Outcomes and Directed Acyclic Graphs**](https://nbviewer.org/github/paulgp/applied-methods-phd/blob/main/lectures/01_po_dags.pdf)
+	1. [**Potential Outcomes and Directed Acyclic Graphs**](https://nbviewer.org/github/paulgp/applied-methods-phd/blob/main/lectures/01_po_dags.pdf) [(Lecture Notes)](https://nbviewer.org/github/paulgp/applied-methods-phd/blob/main/lecture_notes/01_po_dags_notes.pdf)
 	2. [**Research Design, Randomization, and Design-Based Inference**](https://nbviewer.org/github/paulgp/applied-methods-phd/blob/main/lectures/02_randomization.pdf)
     3. [**Propensity Scores**](https://nbviewer.org/github/paulgp/applied-methods-phd/blob/main/lectures/03_propensity_scores.pdf)
     4.  [**Interference, Spillovers and Dynamics**](https://nbviewer.org/github/paulgp/applied-methods-phd/blob/main/lectures/04_interference_dynamics.pdf)
