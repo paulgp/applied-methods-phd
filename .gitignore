@@ -14,3 +14,13 @@ lectures/.DS_Store
 */.RData
 */.Ruserdata
 homework_list.xlsx
+*.aux
+*.log
+*.out
+*.thm
+*.synctex.gz
+*.bbl
+*.toc
+*.nav
+*.snm
+*.blg
