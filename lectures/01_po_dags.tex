@@ -652,9 +652,9 @@ the data''\\
     \item Examine the paths by which $D$ links to $Y$:
       \begin{itemize}
       \item The standard direct effect $D \rightarrow Y$
-      \item The ``Back-Door'' path $D \rightarrow X \leftarrow Y$
+      \item The path $D \rightarrow X \leftarrow Y$
       \end{itemize}
-    \item Key difference: a backdoor collider is automatically blocked
+    \item Key difference: a collider is automatically blocked
       (if it or upstream variables are not conditioned on)
       \begin{itemize}
       \item If you condition on $X$, you open the path!
@@ -780,7 +780,7 @@ the data''\\
       \begin{enumerate}
       \item Write down the DAG, and identify what effect you want
       \item Write all paths between the two nodes
-      \item What is the direct ``causal'' paths (e.g. the arrows all flow in the right direction)?
+      \item What are the ``causal'' paths (e.g. the arrows all flow in the right direction)?
       \item How many backdoor paths are there? Are they blocked? Can they be?
       \end{enumerate}
     \item Crucial point: conditioning on colliders will cause more harm than good
