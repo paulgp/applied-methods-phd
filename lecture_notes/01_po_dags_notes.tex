@@ -287,18 +287,18 @@ This estimates the effect for individuals who received the treatment.\footnote{I
 We can also define the conditional average treament effect (CATE). Let $X_{i}$ be a pre-determined set of covariates. Then, we can define the CATE as:
 \begin{defN}
   \begin{equation*}
-    \tau_{CATE}(x) \equiv \E(Y_{i}(1) | D_{i} = 1, X_{i} = x) - \E(Y_{i}(0)| D_{i} = 1, X_{i} = x).
+    \tau_{CATE}(x) \equiv \E(Y_{i}(1) | X_{i} = x) - \E(Y_{i}(0)| X_{i} = x).
   \end{equation*}
 \end{defN}
 
 
 \begin{boxD}
   \begin{continueexample}{example1}
-    The ATE is what the would be on headaches if every person in the population took aspirin relative to not taking aspirin.
+    The ATE is what the effect would be on headaches if every person in the population took aspirin relative to not taking aspirin.
 
     The ATT is what the impact of aspirin has been for those who took aspirin, relative to if they had not taken aspirin.
 
-    The CATE is what the impact of aspirin for a particular group, such as older men, relative to not taking aspirin.
+    The CATE is what the impact of aspirin for a particular group, such as older men, would be relative to not taking aspirin.
     \end{continueexample}
   \end{boxD}
 
@@ -496,7 +496,7 @@ The key difference in this setting is that since $X$ does not cause $Y$, it is a
 
 \begin{boxD}
 \begin{continueexample}{ex:example2}
-  Return to the example of a job training program. We want to study the impact of the programon wages, and we condition on whether a person has a car. If a person's wages affects their likelihood of having a car, we will have created a biased comparison: we will first consider the effect of the job training program among those who have a car (which may be small), and then among those who do not (which may also be small). If much of the effect of the program affects individuals' ability to buy a car, then we will underestimate the effect of the program.
+  Return to the example of a job training program. We want to study the impact of the program on wages, and we condition on whether a person has a car. If a person's wages affects their likelihood of having a car, we will have created a biased comparison: we will first consider the effect of the job training program among those who have a car (which may be small), and then among those who do not (which may also be small). If much of the effect of the program affects individuals' ability to buy a car, then we will underestimate the effect of the program.
 \end{continueexample}
 \end{boxD}
  
