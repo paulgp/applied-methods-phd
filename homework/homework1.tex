@@ -1,0 +1,96 @@
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+  {\Large \textsc{Problem Set 1}}
+
+  MGMT 737
+\end{center}
+\begin{center}
+  Spring 2024
+\end{center}
+%\date{September 26, 2014}
+
+\begin{enumerate}
+\item Randomization. This analysis will use the Dehijia
+  and Wahba sample from the Lalonde dataset of the NSW experiment. The dataset is
+  \texttt{lalonde\_nsw.csv}. The outcome variable is \texttt{re78}
+  (real earnings in 1978). The treatment indicator is
+  \texttt{treat}. The remaining variables are potential covariates. Assume for the purposes of this problem set that $\texttt{treat}$ is completely randomly assigned. 
+  \begin{enumerate}
+  \item Calculate the average treatment effect of the policy
+    $E(\tau_{i})$ using a simple difference in means.
+  \item Calculate the average treatment effect on the treated of the policy
+    $E(\tau_{i}| \mathrm{treat} = 1)$. How does it compare to part a? 
+  \item Test the null of $\tau_{i} = 0$ for all $i$ using a
+    randomization test. \\
+    \emph{N.B.} Hold fixed the number of treated and control
+    (e.g. assume the treatment count would be held fixed) and permute
+    the labels randomly 1000 times -- you do not need to fully do
+    every permutation (there would be too many). Report the quantile
+    that your estimate from the previous question falls.
+  \item Run a regression using robust standard errors (you may use
+    canned software) of the outcome on the treatment dummy, and
+    compare the p-values from this test to the previous answer.
+  \end{enumerate}  
+\end{enumerate}
+
+\end{document}
