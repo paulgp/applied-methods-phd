@@ -1,0 +1,178 @@
+---
+output:
+    rmdformats::robobook:
+        self_contained: true
+        thumbnails: true
+        lightbox: true
+        gallery: false
+        highlight: tango
+title: "Problem Set 2 Solutions"
+author: "Paul Goldsmith-Pinkham"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Problem 1
+We first load in the Dehijia and Wahba sample from the Lalonde dataset of the NSW experiment. The dataset is ``lalonde_nsw.csv``. We will only take the treated units from this sample. We will then also load the ``lalonde_psid.csv`` as the control sample.  The outcome variable is ``re78`` (real earnings in 1978). The remaining variables are potential covariates we will use for our propensity score estimation.
+
+First we load some convenience packages and set seed:
+```{r, message = FALSE}
+library(tidyverse)
+library(data.table)
+library(fixest)
+set.seed(1234)
+```
+## Part a
+Using ``age, education, hispanic, black, married, nodegree, RE74`` and ``RE75``, construct a propensity score using the treated group in ``lalonde_nsw.csv`` and the control sample of ``lalonde_psid.csv``.  Use a logit regression model to do so (you may use a canned routine to run the regression). Report the average p-score for the treated and control samples, and plot the propensity score densities for the treatment and control groups.
+
+```{r, message = FALSE}
+nsw_data <- read_csv("data/lalonde_nsw.csv")
+psid_data <- read_csv("data/lalonde_psid.csv")
+
+nsw_treat <- nsw_data[nsw_data$treat == 1, ]
+psid_control <- psid_data[psid_data$treat == 0, ]
+
+dw_data <- rbind(nsw_treat, psid_control)
+```
+```{r}
+logit_model <- feglm(treat ~ age + education + hispanic + black + married + nodegree + re74 + re75, data = dw_data, family = "binomial")
+pscore_logit <- predict(logit_model, dw_data)
+
+dw_data %>%
+    bind_cols(tibble(pscore_logit = pscore_logit)) %>%
+    group_by(treat) %>%
+    summarize(pscore_logit = mean(pscore_logit))
+```
+
+```{r}
+# Density Plot
+ggplot(dw_data %>% bind_cols(tibble(pscore_logit = pscore_logit))) +
+    geom_density(aes(x = pscore_logit, color = factor(treat), group = factor(treat))) +
+    labs(x = "Propensity Score", y = "Density")
+# Trimmed Density Plot
+ggplot(dw_data %>% bind_cols(tibble(pscore_logit = pscore_logit)) %>% filter(pscore_logit > 0.1 & pscore_logit < 0.9)) +
+    geom_density(aes(x = pscore_logit, color = factor(treat), group = factor(treat))) +
+    labs(x = "Propensity Score", y = "Density")
+```
+
+
+## Part b
+Using your p-score estimates, calculate the IPW and SIPW
+    estimate for control and treated mean of the outcome, and the
+    average treatment effect. Contrast these estimates to the control
+    mean of the outcome from the NSW sample, and the treatment effect
+    from last week's problem set.
+
+```{r}
+ipw_estimate <- function(ps_hat, y, treat) {
+    control_mean <- mean(y * (1 - treat) / (1 - ps_hat))
+    treatment_mean <- mean(y * treat / (ps_hat))
+    ate <- treatment_mean - control_mean
+    return(list(ate = ate, control_mean = control_mean, treatment_mean = treatment_mean))
+}
+sipw_estimate <- function(ps_hat, y, treat) {
+    control_mean <- (mean(y * (1 - treat) / (1 - ps_hat)) / mean((1 - treat) / (1 - ps_hat)))
+    treatment_mean <- (mean(y * treat / (ps_hat)) / mean(treat / ps_hat))
+    ate <- treatment_mean - control_mean
+    return(list(ate = ate, control_mean = control_mean, treatment_mean = treatment_mean))
+}
+ipw_estimate(pscore_logit, dw_data$re78, dw_data$treat)
+sipw_estimate(pscore_logit, dw_data$re78, dw_data$treat)
+```
+
+## Part c
+Compare the ATE in the previous question to the treatment
+    effect estimated using a linear regression using the PSID and NSW
+    treatment sample, with `age`, `education`,
+    `hispanic`, `black`, `married`,
+    `nodegree`, `RE74` and `RE75` as controls.
+
+```{r}    
+linear_model_outcome <- feols(re78 ~ treat + age + education + hispanic + black + married + nodegree + re74 + re75, data = dw_data)
+summary(linear_model_outcome)
+```
+
+## Part d
+Now revisit your estimates from part a and b, and following
+    Crump et al. (2009), discard all units with estimated propensities
+    outside the range of $[0.1, 0.9]$. Reestimate the IPW and SIPW
+    estimator of the ATE from part b using this trimmed sample.
+
+```{r}
+subset <- pscore_logit <= 0.9 & pscore_logit >= 0.1
+ipw_estimate(
+    pscore_logit[subset],
+    dw_data$re78[subset],
+    dw_data$treat[subset]
+)
+sipw_estimate(
+    pscore_logit[subset],
+    dw_data$re78[subset],
+    dw_data$treat[subset]
+)
+```
+
+## part e
+Finally, calculate the IPW and SIPW estimates for the ATE
+    using this trimmed sample for Black and non-Black
+    individuals. Compare this estimate to the ATE for Black and
+    non-Black individuals using the full randomized sample.
+
+Black Estimates:
+```{r}
+subset <- pscore_logit <= 0.9 & pscore_logit >= 0.1 & dw_data$black == 1
+ipw_estimate(
+    pscore_logit[subset],
+    dw_data$re78[subset],
+    dw_data$treat[subset]
+)
+sipw_estimate(
+    pscore_logit[subset],
+    dw_data$re78[subset],
+    dw_data$treat[subset]
+)
+```
+
+White Estimates:
+```{r}
+subset <- pscore_logit <= 0.9 & pscore_logit >= 0.1 & dw_data$black == 0
+ipw_estimate(
+    pscore_logit[subset],
+    dw_data$re78[subset],
+    dw_data$treat[subset]
+)
+sipw_estimate(
+    pscore_logit[subset],
+    dw_data$re78[subset],
+    dw_data$treat[subset]
+)
+```
+
+Compare to full randomized sample:
+```{r}
+estimate_mean_diff <- function(treat, y) {
+    return(mean(y[treat == 1]) - mean(y[treat == 0]))
+}
+
+estimate_mean_diff(nsw_data$treat[nsw_data$black == 1], nsw_data$re78[nsw_data$black == 1])
+estimate_mean_diff(nsw_data$treat[nsw_data$black == 0], nsw_data$re78[nsw_data$black == 0])
+```
+
+
+## Part f
+We now consider what our results look like if we just consider difference-in-differences. Estimate a linear regression model (using canned software package like `lm` in R is fine -- be sure to cluster on the individual) with two specifications:
+    \begin{enumerate}
+      \item The difference in `RE78` less `RE75` on the left hand side against a treatment indicator. 
+      \item `RE78` on the left hand side against a treatment indicator and `RE75`.
+    \end{enumerate}
+  Report the estimates and compare to your previous estimates. Can you think of other specifications that might work? 
+
+```{r}
+did_model_outcome1 <- feols(re78 - re75 ~ treat, data = dw_data)
+did_model_outcome2 <- feols(re78 ~ treat + re75, data = dw_data)
+summary(did_model_outcome1)
+summary(did_model_outcome2)
+```
