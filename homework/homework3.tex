@@ -1,0 +1,119 @@
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+\begin{document}
+\begin{center}
+  {\Large \textsc{Problem Set 3}}
+
+  MGMT 737
+\end{center}
+\begin{center}
+  Spring 2024
+\end{center}
+%\date{September 26, 2014}
+% SIMULATE POWER FOR A PANEL REGRESSION WITH FIFTY STATES
+\begin{enumerate}
+\item \textbf{Standard Errors} For this problem, use the dataset \texttt{networth\_delta\_elas.csv}, where \texttt{county\_fips} is the county FIPS code, \texttt{statename} is the state FIPS code, \texttt{elasticity} is the Saiz elasticity measure, \texttt{total} is the number of households in each county, and \texttt{netwp\_h} is the change in net worth within a county from 2006 to 2009.
+\begin{enumerate}
+\item Write a function to esitmate the linear regression of networth change against a constant and the Saiz elasticiy. Report the coefficient on the elasticity. 
+\item Next, estimate the homoskedastic SE, heteroskedasticity-robust SE, HC2, and HC3 standard errors for the elasticity estimate. [See the formulas in the slides]
+\item Now, we will estimate the three standard errors from Abadie et al. (2020) [see section 4 for details]. I will walk you through the estimation. Let 
+\begin{align*}
+    V^{causal} &= n^{-1}\Gamma^{-1}(\rho\Delta^{cond} + (1-\rho)\Delta^{ehw})\Gamma^{-1}\\
+    V^{causal,sample} &= n^{-1}\Gamma^{-1}\Delta^{cond}\Gamma^{-1}\\
+    V^{descr} &= n^{-1}(1-\rho)\Gamma^{-1}\Delta^{ehw}\Gamma^{-1}\\
+    V^{ehw} &= n^{-1}\Gamma^{-1}\Delta^{ehw}\Gamma^{-1}.
+\end{align*}
+Our elasticity measure is $X_{i}$, and the outcome is $Y_{i}$. Let $Z$ denote our constant (and potentially an additional control).
+  \begin{enumerate}
+  \item Estimate $\hat{\epsilon}_{i}$ as the standard residual from
+    the linear regression of $Y$ on $X$ and $Z$
+  \item Estimate the short regression of $X$ on $Z$ ($X$ as the outcome, $Z$ as the right hand side)  to calculate $\hat{\gamma}$, the projection of $X$ on $Z$ (note that when $Z$ is a constant, this is just the mean of $X$).
+  \item Estimate $\hat{\Gamma} = n^{-1}\sum_{i}(X_{i} - \hat{\gamma}Z_{i})^{2}$
+  \item Estimate $\hat{\Delta}^{\textrm{ehw}} = n^{-1}\sum_{i}(X_{i} - \hat{\gamma}Z_{i})\hat{\epsilon}^{2}_{i}(X_{i} - \hat{\gamma}Z_{i})$.
+  \item Now, estimate $V^{EHW} = (1/n) * \hat{\Gamma}^{-1}   \hat{\Delta}^{\textrm{ehw}} \hat{\Gamma}^{-1}$. Check that this coincides with your previous EHW estimates (it should differ slightly b/c of no degree of freedom corrections, but quite close).
+  \item Estimate $\rho = n/N$ using the following fact: the data is observed at the county level, and in the United States, there are 3,006 counties. Recall that (in my notation) $n$ is the number of observations in the sample, and $N$ is the ``population.'' Using this measure, estimate $V^{descr} = (1-\rho)V^{EHW}$ and report the standard error. Note the relative size of each.
+  \item Next, calculate:
+    \begin{equation}
+      \hat{G} = \left( n^{-1}\sum_{i}(X_{i} - \hat{\gamma}Z_{i})\hat{\epsilon}_{i}Z_{i}'\right)\left(n^{-1}\sum_{i}Z_{i}Z_{i}'\right)^{-1}
+    \end{equation}
+    Note that this is exactly zero in our current case.
+  \item Now, let $\hat{\Delta}^{Z} = n^{-1}\sum_{i}((X_{i} - \hat{\gamma}Z_{i})\hat{\epsilon}_{i} - \hat{G}Z_{i})^{2}$. Note that this should be equal to $\hat{\Delta}^{EHW}$. 
+  \item Finally, calculate $V^{causal}$ and $V^{\textrm{causal,sample}}$ using $\hat{\Delta}^{Z}$ in the place of $\Delta^{\textrm{cond}}$ and and report the standard errors. (We cannot estimate $\Delta^{cond}$ feasibly, so we use $\Delta^{Z}$ in its place.) Note that in this setting, we have identical estimates for the causal estimates b/c we cannot do better than the EHW estimate.
+  \item Now reimplement this approach, but include state fixed effects as controls in $Z$. Report your estimates for the standard errors using $V^{EHW}$, $V^{descr}$, $V^{causal}$ and $V^{causal,sample}$ in this setting.
+  \end{enumerate}
+\end{enumerate}
+%%% UPDATE THIS PROBLEM
+\item \textbf{Binscatter}: For this problem, use the dataset
+\texttt{yearly\_hp\_full\_sample.csv}, where \texttt{county\_fips} is
+the county FIPS code, \texttt{statename} is the state FIPS code,
+\texttt{year} is the year, \texttt{elasticity} is the Saiz
+elasticity measure, \texttt\texttt{total} is the number of
+households in each county, \texttt{hpi} is Zillow House Price value, and \texttt{hpa} is the annual growth in house prices. For this problem, you may use your own regression estimate function, or a pre-existing function to estimate the regression.
+\begin{enumerate}
+\item Regress HPA on the elasticity measure interacted with year, using your constructed function. I.e. $\texttt{hpa}_{it} = \alpha_{t} + \sum_{s}\texttt{elasticity}_{i}\times 1(year_{t} = s)\beta_{t}$ Plot the $\beta_{t}$ coefficient for each year across time. Report the coefficient measuring the effect of elasticity in 2008.
+\item Next, construct the house price change from 2001 to 2008, and 2008-2010 for each county.  Construct 10 decile dummies for the elasticity and reestimate the regression, using the two long changes as observations, using the ten dummies in the place of the continuous elasticity measure:
+\begin{equation*}
+  \texttt{hpa}_{it} = \alpha_{2001-2008} + \alpha_{2008-2010} + \sum_{b = 1}^{10}\texttt{elasticity}_{b}\times \beta_{t} + \sum_{b = 1}^{10}\texttt{elasticity}_{b}\times 1(year = 2008-2010) \times \gamma_{t}.
+\end{equation*}
+Plot these decile effects such that each point reflects an approximation to the conditional expectation function, for both periods. Report the value on $\gamma$ for the first decile.
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
