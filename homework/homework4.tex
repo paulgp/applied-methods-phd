@@ -1,0 +1,214 @@
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+  {\Large \textsc{Problem Set 4}}
+
+  MGMT 737
+\end{center}
+
+
+\begin{enumerate}
+\item \textbf{Quantile Regression}. This analysis will use the dataset
+  from Problem Set 1, \texttt{lalonde\_nsw.csv} (which I will refer to
+  as NSW), as well as the dataset from Problem Set 2,
+  \texttt{lalonde\_psid.csv} (which I will call PSID).
+  \begin{enumerate}
+  \item We will begin by defining an estimation approach for doing
+    quantile regression that doesn't require linear programming. This
+    approach comes from Gary Chamberlain (in Chamberlain (1994), and
+    discussed in Angrist et al. (2006)). 
+
+    Let $X$ be a (discrete) right hand side variable with $J$ discrete
+    values.  For each $j$ value of $X = x_{j}$, calculate
+    $\hat{\pi}_{\tau}(x) = Q_{\tau}(Y|X_{j})$, which is the $\tau$
+    percentile of the outcome variable, conditional on the value of
+    $X$, and $\hat{p}_{j}$, which is the empirical probability of
+    $X = x_{j}$.  Do so using the PSID dataset for
+    $X = \textrm{education}$, for
+    $\tau = (0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)$, using
+    \texttt{re78} as the outcome variable.
+  \item Given these inputs, the quantile regression slope
+    estimates is just
+    $$ \hat{\beta}_{\tau} = \arg\min_{b} \sum_{j} (\hat{\pi}_{\tau}(x_{j}) - x_{j}b)^{2}\hat{p}_{j}.$$
+    This is a simple (weighted) linear regression (or minimum distance
+    problem), with the diagonal weight matrix
+    $\hat{W} = diag(\hat{p}_{1}, \ldots, \hat{p}_{J})$. Estimate
+    $\hat{\beta}_{\tau}$ for the education example above.
+  \item Our variance estimator is the sum of two terms (coming from
+    uncertainty in the QCF, and the estimation of the slope
+    conditional on those terms), $V$ and $D$:
+    \begin{align*}
+  V &= \left(\boldsymbol{x}'\hat{W}\boldsymbol{x}\right)^{-1}\boldsymbol{x}'\hat{W}\Sigma\hat{W}\boldsymbol{x}\left(\boldsymbol{x}'\hat{W}\boldsymbol{x}\right)^{-1},\\
+  \Sigma &= diag(\sigma^{2}_{\tau,1}/p_{1}, \ldots, \sigma^{2}_{\tau,J}/p_{J})\\
+  D &= \left(\boldsymbol{x}'\hat{W}\boldsymbol{x}\right)^{-1}\boldsymbol{x}'\hat{W}\Delta\hat{W}\boldsymbol{x}\left(\boldsymbol{x}'\hat{W}\boldsymbol{x}\right)^{-1},\\
+  \Delta &= diag((\pi_{\tau,1} - x_{1}\beta_{\tau})^{2}/p_{1}, \ldots, (\pi_{\tau,J} - x_{J}\beta_{\tau})^{2}/p_{J}).
+\end{align*}
+Everything here should be straight forward to estimate, except for
+$\sigma^{2}_{\tau,j}$. To do this, define the following order
+statistics:
+\begin{align*}
+  b_{j} &= \max \left\{1, \mathrm{round}\left(\tau N_{j} - z_{1-\alpha/2}\sqrt{\tau(1-\tau)N_{j}}\right)\right\}\\
+  t_{j} &= \min \left\{N_{j}, \mathrm{round}\left(\tau N_{j} + z_{1-\alpha/2}\sqrt{\tau(1-\tau)N_{j}}\right)\right\},
+\end{align*}
+where $\mathrm{round}(a)$ rounds to the closest integer, and
+$z_{1-\alpha/2} = 1.96$, typically, and $N_{j}$ is the number of
+observations in the $j$th bin of $X$. Then,
+\begin{equation}
+  \hat{\sigma}^{2}_{\tau,j} = N_{j}\left(\frac{y_{j(t_{j})}-y_{j(b_{j})}}{2 z_{1-\alpha}}\right)^{2}.
+\end{equation}
+Report the standard error on your estimates, which is calculated as $\sqrt{(V+D)/N}$
+\item Finally, using the NSW dataset, calculate the
+  $\tau = (0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)$ treatment effects, and their
+  standard errors.
+\end{enumerate}
+\item \textbf{Unconditional Quantile Effects} This analysis will walk
+  through an alternative way of approaching quantile effects, using
+  results from Firpo, Fortin and Lemieux (2009). Instead of focusing
+  on conditional quantile functions, we will consider the
+  \emph{uncondtional} (or marginal) distribution of the outcome, $Y$,
+  and how that changes when you shift an exogeneous covariate.
+
+  We define the \emph{uncondtional} (marginal) distribution of $Y$:
+  $$ F_{Y}(y) = \int F_{Y|X}(y | X = x) \cdot dF_{X}(x),$$
+
+  and consider small changes to $F_{X}$, holding fixed
+  $F_{Y|X}$. Intuitively, we consider the effect of changing $F_{X}$
+  to $G_{X}$ using a simple additive shift, and consider the effect
+  that has on the marginal distiribution of $F$. This will give us the
+  \emph{uncondtional quantile partial effect} (UQPE), analogous to the
+  unconditional average partial effect (UAPE), $E(dE(Y|X)/dx)$. The
+  estimation approach for this uses influence functions. I will walk
+  you through the estimation approach, using our example above and the
+  approach they call RIF-OLS.
+  \begin{enumerate}
+  \item Our goal is to estimate $UQPE(\tau)$. We need to estimate
+    three pieces. Let $Y_{i}$ be income (\texttt{re78}) and $X_{i}$ be
+    years of education using the PSID dataset.
+  \item First, we estimate the $\tau$ quantile of
+    $Y_{i}$ (unconditionally), which we denote as $\hat{q}_{\tau}$
+  \item Second, we need to estimate a constant
+    $c_{1,\tau} = 1/f_{Y}(q_\tau)$. To do so, we need an estimate of
+    the density of $\hat{q}_{\tau}$. Calculate this directly using the
+    following estimator:
+    $$\hat{f}_{Y}(\hat{q}_{\tau}) = \frac{1}{Nb} \sum_{i = 1}^{N}K(\frac{Y_{i} - \hat{q}_{\tau}}{b}$$
+    Assume $b = 2534.263$ (this bandiwdth depending on the outcome),
+    and let $K$ be the Gaussian kernel,
+    $$K(u) = \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{u^{2}}{2}\right)$$.
+  \item Finally, we need to estimate $E(dPr(Y > q_{\tau} | X) /
+    dX)$. Firpo, Fortin and Lemiux (2009) show that you can do this as
+    follows. Calculate
+    $\hat{RIF}(Y_{i}, \hat{q}_{\tau}) = \hat{c}_{1,\tau} \cdot 1(Y_{i}
+    > \hat{q}_{\tau}) + \hat{c}_{2,\tau}$, where
+    $\hat{c}_{2,\tau} = \hat{q}_{\tau} -
+    \hat{c}_{1,\tau}(1-\tau)$. Regress
+    $\hat{RIF}(Y_{i}, \hat{q}_{\tau})$ against $X_{i}$, and extract
+    the coefficient on $X_{i}$. This is the estimate for the $UQPE$ at
+    the $\tau$ quantile.
+  \item Implement the above estimation procedure for
+      $\tau = (0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)$. Compare these results to your
+    results in Part I.
+  \end{enumerate}
+\item \textbf{Debiased Lasso Regression}. We'll now consider estimation of
+  Double/De-biased Lasso. Using the treated units in the NSW dataset
+  for the treatment group, and PSID data for the control group, let
+  $Y$ denote \texttt{re78}, $D$ denote the treatment indicator, and
+  $X$ denote a matrix of indicator variables for all values of
+  \texttt{education}, \texttt{hispanic}, \texttt{black}, an indicator
+  variable if \texttt{re74} is zero, an indicator if \texttt{re75} is
+  zero, and a linear, quadratic, and cubic term for \texttt{age},
+  \texttt{re74} and \texttt{re75}. This should be $K = 30$ terms. 
+  \begin{enumerate}
+  \item Using \texttt{rlasso} (available in R in the package ``hdm''
+    and in Stata in Lassopack), implement the DML codebook to identify
+    the subset of $X$ to control for in the regression of $Y$ on $D$
+    and controls. Report the coefficient on D.
+  \item Now reimplement this using NSW dataset. What variables get
+    selected in $X$?
+  \end{enumerate}
+\item \textbf{Puffer Lasso} Finally, we consider a new dataset,
+  \texttt{health\_ins}. This dataset has commuting zone level measures
+  of health insurance (\texttt{has\_insurance}), and additional
+  explanatory variables (the remaining variables in the dataset,
+  except for \texttt{czone}). We will now consider how our estimates
+  change when we use Puffer vs. not in Lasso. Denote
+  $Y = \text{has\_insurance}$ and let the matrix $X$ be the remaining
+  variables in the dataset (except for \texttt{czone}).
+  \begin{enumerate}
+  \item Estimate the OLS regression of Y on X and report the coefficient on \texttt{cs\_frac\_hisp}
+  \item Now estimate Lasso (using rLasso as before), and report the coefficient on \texttt{cs\_frac\_hisp}, and the number of non-zero coefficients
+  \item Implement the Puffer transformation of $Y$ and $X$
+    using the singular value decomposition of $X$ (you should use a
+    built-in package to get these values) to construct a
+    pre-multiplying matrix $F$. Report the coefficient on
+    \texttt{cs\_frac\_hisp} and the number of non-zero coefficients of
+    the regressino of $FY$ on $FX$.
+  \item Take the non-zero coefficients from the Puffer lasso
+    regression, and rerun OLS using those selected coefficients (using
+    the non-puffered data). Report the coefficient on
+    \texttt{cs\_frac\_hisp}, and the standard error, and compare to the
+    original OLS regression and standard error.
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}
+
+  
