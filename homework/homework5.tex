@@ -1,0 +1,112 @@
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+  {\Large \textsc{Problem Set 5}}
+
+  MGMT 737
+\end{center}
+
+\begin{enumerate}
+  %%% TO DO -- WRITE A DEMAND FUNCTION QUESTION
+\item \textbf{Poisson Regression}. This analysis will use the dataset
+  \texttt{Detroit.csv}. You should use built-in pacakges for this --
+  in \texttt{R}, use the \texttt{fixest} library. In \texttt{Stata},
+  use the \texttt{reghdfe} and \texttt{ppmlhdfe} packages.
+  \begin{enumerate}
+  \item Run an OLS regression of \texttt{flows} (the number of workers
+    who work in \texttt{home\_ID} and work in \texttt{work\_ID}) on
+    \texttt{distance\_Google\_miles}, and include \texttt{home\_ID} and
+    \texttt{work\_ID} fixed effects (absorb them), and cluster on
+    \texttt{home\_ID}. Report the coefficient and standard error on
+    \texttt{distance\_Google\_miles}.
+  \item Run an OLS regression of \texttt{log(flows)} on
+    \texttt{log(distance\_Google\_miles)} and include \texttt{home\_ID}
+    and \texttt{work\_ID} fixed effects , omitting the cells with zero
+    flows. Cluster on \texttt{home\_ID}. Report the coefficient and
+    standard error on \texttt{log(distance\_Google\_miles)}.
+  \item Repeat part 1b, but instead of omitting the zero cells, run
+    the OLS regression of \texttt{log(c + flows)} for c = 0.1, 1 and
+    10. Compare how your coefficients change. 
+  \item Finally, repeat part 1a using Poisson regression, and contrast
+    the estimates to Part b and c.
+  \end{enumerate}
+\item \textbf{Duration Modeling}. This analysis will use the dataset
+  \texttt{acs\_duration.csv}. The
+  \texttt{acs\_duration.csv} dataset is from the American Community
+  Survey in 2019, and has heads of households' responses to the
+  question ``How long have you lived in this home?''
+  (\texttt{moving\_approx}  -- in reality, this value is given as
+    a range in the public data -- I have imputed using the midpoint. A
+    fun exercise left to the reader is to think about how to
+    generalize this problem using ranges.) and homeownership
+  (\texttt{homeowner} vs. \texttt{renter}).
+    \begin{enumerate}
+    \item Using the ACS data,write down how to estimate the unconditional probability that a household stays in a home for T or more years, using the available data. Estimate this for $T=7$ and report the value.
+    \item Calculate the hazard rate for each observed value of
+      \texttt{moving\_approx}. Report this value for $T=7$.
+    \item Recalculate these hazard values for $T=7$ for homeowners and
+      renters. Contrast the difference in hazard rates over time.
+    \end{enumerate}
+  \end{enumerate}
+
+
+\end{document}
