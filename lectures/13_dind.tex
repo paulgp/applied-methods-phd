@@ -145,6 +145,28 @@
   \end{frame}
 }
 
+\pgfdeclareimage[height=\paperheight]{mybackground}{images/diff_in_diff.png}
+
+
+\setbeamertemplate{title page}{
+
+        \begin{picture}(0,0)
+
+            \put(-11,-150){%
+                \pgfuseimage{mybackground}
+            }
+
+            \put(0,-50.7){%
+                \begin{minipage}[b][45mm][t]{226mm}
+                    \usebeamerfont{title}{\inserttitle\par}
+                \end{minipage}
+            }
+
+            \end{picture}
+
+    }
+
+
 \title[]{\textcolor{blue}{Canonical Research Designs I:\\ Difference-in-Differences:\\ Basics, Pre-trends, and Issues with Staggered Timing}}
 \author[PGP]{}
 \institute[FRBNY]{\small{\begin{tabular}{c}
