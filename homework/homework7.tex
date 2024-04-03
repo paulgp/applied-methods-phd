@@ -1,0 +1,150 @@
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+  {\Large \textsc{Problem Set 7: Instrumental Variables}}\\
+  MGMT 737
+\end{center}
+
+\begin{enumerate}
+\item \textbf{Compliers and Weak IV}: We explore Angrist and Evan (1998), who
+  study the impact of children on parents' supply. This paper has two
+  instruments: 1) whether the first two children of a mother are the
+  same sex \textit{Same sex}; 2) whether the second (successful)
+  pregnancy is twins \textit{Twins-2}. The 1980 Data for this paper is
+  available in the repository in a csv \texttt{ang\_ev\_1980\.csv}.
+
+  I was not able to perfectly match AE's sample but it is very
+  close. As a result, the point estimates are not identical, but are
+  close enough that you should be able to feel confident. You may use pre-built estimation packages unless otherwise stated.
+
+  \textit{More than 2 children} is \texttt{morekids}, \textit{Number
+    of children} is \texttt{kidcount}, \textit{worked for pay} is
+  \texttt{mom\_worked}, \textit{Weeks worked} is
+  \texttt{mom\_weeks\_worked} and the two dummy instruments are
+  \texttt{samesex} and \texttt{twins\_2}.
+  \begin{enumerate}
+  \item Replicate the coefficients from Table 5, Column 1, rows 1-4, using a linear regression.
+  \item Replicate the coefficients from Table 5, Column 2, rows 3-4,
+    using 2SLS. Convince yourself you could construct this estimate by
+    hand using the result in the previous answer.
+  \item Replicate the coefficients from Table 5, Column 7, rows 1-4, using a linear regression.
+  \item For the endogeneous vairable ``More than 2 children'', what is
+    the complier share for each of the two instruments?
+  \item For the endogeneous vairable ``More than 2 children'' and each
+    of the two instruments, what is the average share of the complier
+    population with an education greater than high school
+    (\texttt{moreths})? What about different mother race shares?
+  \item Using the Same sex instrument, construct the Weak IV robust
+    Anderson-Rubin confidence intervals using the algorithm outlined
+    in Chernozhukov and Hansen (2007) (see the slides)
+  \end{enumerate}
+\item \textbf{Kitagawa test} Now we implement the Kitagawa
+  (2015) test for instrument validity. We will focus on the
+  \textit{worked for pay} outcome as our endogeneous variable $Y$,
+  more than two children as our endogeneous variable, and our two
+  instruments will be as before (same sex and twins). Implement the procedure below for both instruments.
+  \begin{enumerate}
+  \item Let
+    $P(y,d) = n_{1}^{-1} \sum_{i : Z_{i} = 1} 1(Y_{i} = y, D_{i} = d)$,
+    where $n_{1}$ is the number of observations where $Z_{i} = 1$ in
+    the sample, and
+    $Q(y,d) = n_{0}^{-1} \sum_{i : Z_{i} = 0} 1(Y_{i} = y, D_{i} = d)$,
+    where $n_{1}$ is the number of observations where $Z_{i} = 0$ in
+    the sample. $n = n_{0} + n_{1}$ Estimate $P(y,d)$ and $Q(y,d)$ and
+    report them for the 4 possible pairs of $(y,d)$.
+  \item Next, we want to calculate the following statistic (Note that this is simplified relative to the general Kitagawa case because $Y$ is binary):
+    \begin{align*}
+      T = \left(\frac{n_{0}n_{1}}{n}\right)^{1/2} \max \bigl\{&\sup_{y\in \{0,1\}} \left\{\frac{Q(y,1) - P(y,1)}{\xi \vee \sigma_{P,Q}(y,1)}\right\},\\
+      &\sup_{y\in \{0,1\}} \left\{\frac{Q(y,0) - P(y,0)}{\xi \vee \sigma_{P,Q}(y,0)}\right\}\bigr\}
+    \end{align*}
+    where $\xi$ is a trimming constant that you pick, $\vee$ denotes the ``max'' between the two objects, and
+    \begin{equation*}
+      \sigma^{2}_{P,Q}(y,d) = (1-\hat{\lambda})P(y,d)(1-P(y,d)) + \hat{\lambda}Q(y,d)(1-Q(y,d)), \qquad \qquad \hat{\lambda} = n_{1}/n.
+    \end{equation*}
+    Estimate $\sigma$ for each of the four possible pairs of $(y,d)$,
+    and then calculate the $T$ based using a $\xi = 0.1$. Report this T statistic.
+  \item Now, we need to construct critical values for the statistic
+    $T$. First, take the subsample of $n_{1}$ observations where
+    $Z_{i}=1$. Sample a new set of $n_{1}$ observations from this
+    subsample, with replacement using weights
+    $H(y,d) = \hat{\lambda}P + (1-\hat{\lambda})Q$. (E.g. the weight
+    of drawing each observation is a function of this combined
+    probability). Use this new data to construct a new empirical
+    distribution $P^{*}$. Similarly construct a new sample of $n_{0}$
+    observations based on the subsample of observations where
+    $Z_{0} = 0$ using $H(y,d)$. Use this to construct $Q^{*}$. Then,
+    calculate the $T$ statistic above, but using $P^{*}$ and $Q^{*}$
+    in place of $P$ and $Q$.
+  \item Repeat this last process 500 times and construct a
+    distribution of the $T^{*}$. We reject the null of instrument
+    validity (exclusion and monotonicity) at the 5 percent level if
+    $T$ is greater than the 95th percentile of the distribution of
+    $T^{*}$. Identify what quantile $T$ sits in the distribution of
+    $T^{*}$.
+  \end{enumerate}
+  % For the future
+% \item PART III: \textbf{Weak and Many IV} In this problem, we will use simulated data. You should use built-in software to estimate 2SLS.
+%   \begin{itemize}
+%   \item First, consider just-identified weak instruments. Simulate data where $\epsilon_{i}$ and $\eta_{i}$ are normally distributed, 
+%   \end{itemize}
+\end{enumerate}
+  \end{document}
