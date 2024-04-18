@@ -1,0 +1,134 @@
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+  {\Large \textsc{Problem Set 8: Regression Discontinuity}}\\
+  MGMT 737
+\end{center}
+\begin{enumerate}
+\item PART I (Comparing Estimators) We will replicate the main results
+  from Table 1 of Huh and Reif (2021, AER Insights). This estimation
+  will require using linear regression and also canned packages from
+  two sources: Cattaneo et al.'s \texttt{rdrobust} software
+  \url{https://rdpackages.github.io/rdrobust/} and Michal Kolesar's
+  \texttt{rdhonest} package \url{https://github.com/kolesarm/RDHonest}.
+
+  The code and data for this paper is available here: \url{https://github.com/reifjulian/driving}
+  \begin{enumerate}
+  \item Replicate the estimated point estimate and confidence
+    intervals for Column 2 for the \texttt{All causes}
+    outcome. (Note the Readme file on the github page -- it is quite
+    easy to run this)
+  \item Now, re-estimate this using a uniform kernel. How does it
+    change the estimates?
+  \item Re-estimate this using a local quadratic function. How does it
+    change the estimates?
+  \item Finally, re-estimate this using a bandwidth of 40. How does it
+    change the estimate? 
+  \item Describe what the ``covs'' option in the estimation approach
+    is doing. How does the main estimate change if you do not include
+    it?
+  \item Re-estimate the main specification again, but drop
+    observations where firstmonth = 1. How does this compare?
+  \item Now, re-estimate this RD, dropping observations where
+    firstmonth = 1, and using the RDHonest approach with an $M$
+    smoothness parameter of 0.1 and the bandwidth specified by the
+    Cattaneo estimator. How do the estimates and the confidence
+    intervals compare?
+  \item How small does the smoothness parameter need to be to match
+    the confidence intervals from the original result?
+    (approximately). How plausible does that seem?
+  \item How does your RD Honest estimate change if you increase the
+    bandwidth to 40?
+  \item Finally, run the following two estimates:
+    \begin{enumerate}
+    \item \texttt{rdrobust} omitting observations where \texttt{firstmonth} = 1 and a uniform kernel
+    \item     a linear regression of
+    \begin{equation}
+      \text{cod\_any} = \gamma_0 + \text{agemo\_mda}\gamma_{1} + 1(\text{agemo\_mda} > 0)\gamma_{2} + 1(\text{agemo\_mda} > 0)\times \text{agemo\_mda}\gamma_{3} + \epsilon_{it}
+    \end{equation}
+    using the observations that are within the bandwidth picked by the
+    \texttt{rdrobust} command (hint this should be under 11, and is
+    called \texttt{h}) and omitting observations where
+    \texttt{firstmonth} = 1.
+  \end{enumerate}
+  How does your point estimate of
+    $\gamma_{2}$ compare to the \texttt{rdrobust} estimate? Explain.
+  \item Explain, in words, how you could get the \texttt{rdrobust}
+    estimate that uses the triangular kernel using OLS (hint: it would
+    involve weights)
+\end{enumerate}
+% \item PART II (Testing Across Estimators) Now we want to compare
+%   estimated effects on Male vs. Female drivers. We will replicate
+%   Columns 4 and 6 from Table 1. (You can get the data here:
+%   \url{https://julianreif.com/driving/data/mortality/derived/female.dta}
+%   and
+%   \url{https://julianreif.com/driving/data/mortality/derived/male.dta}.
+%   \begin{enumerate}
+%   \item First, replicate the main point estimates and confidence
+%     intervals from the outcome \texttt{All Causes} from Table 1 for
+%     Male and Female drivers.
+%   \item Now, we want test whether these estimates are significant
+%     different from one another. 
+%   \end{enumerate}
+\end{enumerate}
+
+\end{document}
