@@ -591,6 +591,31 @@
 \end{frame}
 
 
+\begin{frame}{The virtue of complexity (and the double descent)}
+  \begin{wideitemize}
+  \item As models grow in complexity, 
+  \begin{itemize}
+    \item there is a decrease in the ``in-sample'' error that continues until you have a fully saturated model
+    \item there is an initial decrease in the ``out-of-sample'' error initially, and then an increase due to overfitting
+  \end{itemize}
+  \item This trade-off is what is often optimized using cross-validation
+  \item However, a key new insight (see Kelly, Malamud and Zhou (2024) for an example) is that the out-of-sample error will start to improve again as the number of parameters grows (under certain models)
+  \item This is the ``double descent'' curve
+  \begin{itemize}
+    \item Big improvements in predicting future market returns (market timing)
+    \item Interesting to think of applications in other areas!
+  \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}
+  \includegraphics[width=\linewidth]{images/double_descent.png}
+\end{frame}
+
+
+
+
+
 \begin{frame}{How to approach and further reading}
   \begin{wideitemize}
   \item If you are considering ML models, the two standard programming
