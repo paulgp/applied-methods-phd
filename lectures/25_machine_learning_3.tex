@@ -241,7 +241,7 @@
         \begin{wideitemize}
         \item A  overview of two different examples /
           applications where unusual unstructured data was used
-        \item An brief dive into one particular unsupervised ML technique, Latent Dirichlet Allocation (LDA)
+        \item A brief dive into one particular unsupervised ML technique, Latent Dirichlet Allocation (LDA)
           \begin{itemize}
           \item Commonly used in text data (things with counts)
           \end{itemize}
@@ -338,9 +338,14 @@
     \begin{column}{.5\textwidth}
       \only<1>{\includegraphics[width=\linewidth]{images/gentzkowshapiro_2.png}}
       \only<2>{\includegraphics[width=\linewidth]{images/gentzkowshapiro_3.png}}
+      \only<3>{\includegraphics[width=\linewidth]{images/newspaper_slant.png}}
+      \only<4>{\includegraphics[width=\linewidth]{images/newspaper_slant2.png}}
     \end{column}%
   \end{columns}
 \end{frame}
+
+
+
 
 \begin{frame}{Example 2: Bandiera et al. (2017)}
     \begin{columns}[onlytextwidth, T] % align columns
@@ -471,7 +476,7 @@
       \item The joint probability of the corpus from model is given by
         $P = B\Theta$, where $B$ is the matrix of $\beta$
         ($p \times K$), and $\Theta$ is $K \times n$
-      \item Concretely, imagine $p = 1, and K = 2$
+      \item Concretely, imagine $p = 1$, and $K = 2$
       \end{itemize}
     \item The priors are necessary for estimation!
       \begin{itemize}
@@ -530,6 +535,58 @@
     \end{columns}
   \end{frame}
 
+
+  \begin{frame}{Example 4: Using LLMs to construct new data}
+    \begin{columns}[onlytextwidth, T] % align columns
+      \begin{column}{.5\textwidth}
+       \only<1-4>{ \begin{wideitemize}
+        \item Since the advent of ChatGPT (and other LLMs), there has been a huge push to use these models to construct new data
+        \item Some examples:
+  \begin{itemize}
+    \item Construct beliefs (Bybee (2024))
+    \item Simulate experiments (Horton (2024))
+    \item Classify documents 
+    \item Embed characteristics
+  \end{itemize}        
+  \item Bybee (2024) uses ChatGPT to elicit beliefs about macroeconomic conditions using news articles
+  \begin{itemize}
+    \item ChatGPT's elicited beliefs are much like surveyed beliefs, not objective!
+  \end{itemize}
+        \end{wideitemize}}
+\only<5>{\begin{wideitemize}
+  \item Outstanding statistical problems:
+  \begin{itemize}
+    \item How do we think about uncertainty?
+    \item How do we think about memorization?
+  \end{itemize}
+\end{wideitemize}
+}
+\end{column}%
+      \hfill%
+      \begin{column}{.5\textwidth}
+        \only<1>{\includegraphics[width=\linewidth]{images/bybee1.png}}
+        \only<2>{\includegraphics[width=\linewidth]{images/bybee2.png}}
+        \only<3>{\includegraphics[width=\linewidth]{images/bybee3.png}}
+        \only<4->{\includegraphics[width=\linewidth]{images/bybee4.png}}
+      \end{column}%
+    \end{columns}
+  \end{frame}
+
+
+
+%   \begin{frame}{Example 5: Embedding characteristics for comparisons}
+%     \begin{columns}[onlytextwidth, T] % align columns
+%       \begin{column}{.5\textwidth}
+%  \begin{wideitemize}
+%         \item Embeddings are a way to convert words into a continuous space
+%         \end{wideitemize}
+% \end{column}%
+%       \hfill%
+%       \begin{column}{.5\textwidth}
+%         \only<1>{\includegraphics[width=\linewidth]{images/bybee1.png}}
+%       \end{column}%
+%     \end{columns}
+%   \end{frame}
   
   
   \begin{frame}{My Main takeaway}
@@ -544,7 +601,7 @@
       \begin{itemize}
       \item Personal expereince with my own work
       \end{itemize}
-    \item Thoughts?
+    \item Advent of LLMs has opened up this space tremendously
     \end{wideitemize}
   \end{frame}
 \end{document}
