@@ -1,0 +1,142 @@
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{pythonhighlight}
+
+
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+\usepackage{cleveref}
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+  {\Large \textsc{Problem Set 9: Machine Learning}}
+  MGMT 737
+\end{center}
+\begin{enumerate}
+    \item \textbf{Chernozhukov et al. (2022)}
+This problem will implement the heterogeneity analysis from Chernozhukov et al. (2022) using their publicly available pacakge. I will walk you through an example from an RCT in \href{https://academic.oup.com/qje/article/132/2/551/3002609#173480323}{Atkin, Khandewal and Osman (2017)} using the method.
+\begin{enumerate}
+    \item We will be replicating first Column 1 from Table 4 (the ITT). The dataset is called \texttt{analysis.dta}. You can download it \href{https://s3.amazonaws.com/file.paulgp.com/30d/jpal_analysis.dta}{here}.
+    First, load the file \texttt{jpal\_analysis.dta}. There are 191 observations. First, replicate the main specifciation, which is a regression of \texttt{ever\_export} on \texttt{treatment} and \texttt{ever\_export\_b} and includes strata fixed effects (\texttt{strata}). You should  replicate the column 1 coefficient from Table 4.
+    \item Now for simplicity, we're going to omit the strata FE and the baseline covariates. Re-estimate the coefficient. How much does it change? Why do you think that is? 
+    \item Now we will use a set of baseline covariates \texttt{ever\_export\_b}, \texttt{log\_weight\_sidda\_b}, \texttt{qual\_corners\_b}, \texttt{qual\_waviness\_b}, \texttt{qual\_weight\_b, qual\_touch\_b},  \texttt{qual\_sidda\_packed\_b}. There are a lot of other covariates but due to the design, they're not always osberved for all firms, and we do not want to induce additional selection issues. These are available for 190 of the 191 firms. Interact these covariates with the treatment variable and re-estimate the model. Do you find evidence of heterogeneity in the treatment? Would you trust these estimates? Why or why not?
+    \item Now, we will use the \texttt{GenericML} package from Chernozhukov et al. (2022) to estimate the treatment effect heterogeneity. You can install the package by running \texttt{install.packages("GenericML")}. Discussion of the package is \href{https://github.com/mwelz/GenericML}{available here}. This is a bit of a complex package, and so your first task is to read through the Example on the documentation page. \\
+    \textbf{You can now do this problem set in two ways:  First, you can figure out how to implement it yourself. See the last question for the goal; Second, I can walk you through it. If you want help, see the following problems. IMPORTANT NOTE: the "lasso" learner breaks the code in this example, so you should not use it in the learner set -- I used the other defaults proposed in the README example.} 
+    \item Next, you should look at the \texttt{Homework9\_problem1\_solution\_skeleton.R} I have provided. I want you to check the following aspects and how I have changed them from the example: (1) the learners (2) the Z covariates (3) the propensity score model (4) the treatment effect model.
+    \item Try running this code. You should find a 90\% confidence interval for beta\_2 of (0, 1.355). 
+    \item Report the BLP estimates for beta\_2 and the GATES estimates for gamma1, gamma4, and gamma.4 - gamma.1. How do you interepret these? Finally, calculate the CLAN for the \texttt{ever\_export\_b} covariate. Did firms that had previously exported have higher or lower treatment effects, on average?
+\end{enumerate}
+% \item \textbf{ML on Text}
+% This is going to be an problem that will teach you how to setup a large language model to classify text for you. You will then used this classified text to examine some correlations. This problem will require using Python. The end goal is to feed this data into an open source large language model, ask it for a sentiment score, and then look at the correlation of that sentiment score with the stock market. 
+%     \begin{enumerate}
+%         \item You will need to download the model weights for the \href{https://llama.meta.com/llama-downloads/}{Llama 3 8B Instruct model} (this involves signing up with Meta, but should only take a second). I will walk you through the steps:
+%     \begin{enumerate}
+%         \item Go to the link above and sign up to download the llama 2+3 weights.
+%         \item You will receive an email with instructions on how to download. This involves downloading the download.sh script and running it. Choose to install the llama3-instruct weights. \textbf{Note: this will take a while to download, as it's 10GB+ file.} Note the path that these get installed into, as you will need it for your script. 
+%     \end{enumerate}
+%         \item You will need to have Python 3.7 or better installed, and also \texttt{transformers} and \texttt{PyTorch}. (These can be installed using pip). 
+%         \item Download the data on \href{https://s3.amazonaws.com/file.paulgp.com/30d/nyt_headlines.zip}{NYT Headlines for the last 30 years}. This data is a collection of headlines from the New York Times from 1990 to 2020.
+%         \item Write a script that reads in each headline from the data, and then uses the llama 3 model to classify the sentiment of the headline. Here's an example script:
+%         \begin{python}
+%             from transformers import LlamaForCausalLM, LlamaTokenizer
+
+%             model_path = "path/to/llama/model/weights"
+
+%             tokenizer = LlamaTokenizer.from_pretrained(model_path)
+%             model = LlamaForCausalLM.from_pretrained(model_path)
+
+%             prompt = """
+%             Here is a headline of news article:
+            
+%             "Students Must Get to School and Back Safely"
+
+%             Do you think this news is positive or negative?
+%             Write your answer as:
+%             {positive/negative/uncertain}:
+%             {confidence (0-1)}:
+%             """
+
+%             input_ids = tokenizer.encode(prompt, return_tensors="pt")
+
+%             output = model.generate(input_ids, max_length=100)
+
+%             generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
+%             print(generated_text)
+%             \end{python}
+%             \item Construct an annual index of positive and negative news sentiment by averaging the sentiment scores of all the headlines in a year. Plot this figure.
+%             \item What are some ways that you might change this approach? What are some potential pitfalls?
+%             \item Now, download the \href{https://s3.amazonaws.com/file.paulgp.com/30d/sandp500.zip}{S\&P 500 data} for the last 30 years. This data is the daily closing return of the S\&P 500 index. How does the sentiment from the news articles correlate with the return for the S\&P 500?
+%     \end{enumerate}
+\item \textbf{Lee Bounds} We now consider the simple application of Lee Bounds in the the NSW application from the first homework. Recall that the dataset is
+\texttt{lalonde\_nsw.csv}. The outcome variable is \texttt{re78}(real earnings in 1978). The treatment indicator is
+\texttt{treat}. The remaining variables are potential covariates. Crucially, we are now going to study \emph{wage receipts}, which is \texttt{re78} for individuals who have positive income. So, define a binary indicator \texttt{employed} which is 1 if \texttt{re78} is positive and 0 otherwise, and define \texttt{wage} as \texttt{re78} if \texttt{employed} is 1 and missing otherwise.
+
+For purposes of context, recall from Lalonde (1986) that the NSW training program guaranteed a job for 9-18 months, and that this randomization occurred over a multi-year period (1976-77) -- this is discussed in Dehijia and Wahba's JASA article. We have far fewer data points than Lee (2009)'s application but we're going to do our best!
+\begin{enumerate}
+    \item Estimate the effect of the treatment on the wage receipt, \texttt{wage}, and compare it to the effect on income (\texttt{re78}). Is it higher or lower? Why do you think that is? 
+    \item Estimate the effect of the treatment on the probability of employment. Is this significantly different from zero? (You may use statistical packages) 
+    \item Given the NSW program guaranteed a job, would you expect that the treatment ffect on wages is biased upwards or downwards? Why?
+    \item Now, calculate $p_{0}$ from Lee (2009), which is 
+    \begin{equation}
+        \label{eq:lee_p}
+        p_{0} = \frac{Pr(\texttt{employed} = 1 | \texttt{treat} = 1) - Pr(\texttt{employed} = 1 | \texttt{treat} = 0)}{Pr(\texttt{employed} = 1 | \texttt{treat} = 1)}
+    \end{equation}
+    \item Now, calculate and report the bounds on the average treatment effect on wages using the formula from Lee (2009). 
+    \item Do the same exercise, but use log(\texttt{wage}) as the outcome variable. (this is what Lee (2009) does in the paper). (N.B. since we're doing wages we can take logs without issues!) How do these bounds compare to the main results on wages from Lee (2009)'s Table 5? 
+    \item Now we want to use \texttt{nodegree} to sharpen our bounds. To do so, we'll reestimate \Cref{eq:lee_p} for each covariate. This will give us $p_{x1}$ and $p_{x0}$. Now, you find the percentiles for the outcome conditional on treatment, employment \emph{and} \texttt{nodegree} (i.e. $F_{Y|T=1, S = 1, X=1}$ and $F_{Y|T=1, D=1, X = 1}$), and use these to construct bounds for each covariate. Report these bounds for \emph{log wages}. (See Proposition 1.b from the paper for more details)
+    \item Finally, you can aggregate these two bounds up using the density of the covariates for the employed untreated group to get a final bound. Compare to your results above. 
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
