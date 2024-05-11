@@ -7,7 +7,7 @@ output:
         lightbox: true
         gallery: false
         highlight: tango
-title: "Problem Set 3 Solutions"
+title: "Problem Set 4 Solutions"
 author: "Paul Goldsmith-Pinkham"
 ---
 
