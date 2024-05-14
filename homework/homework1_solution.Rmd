@@ -1,0 +1,104 @@
+---
+output:
+    rmdformats::robobook:
+        self_contained: true
+        thumbnails: true
+        lightbox: true
+        gallery: false
+        highlight: tango
+title: "Problem Set 1 Solutions"
+author: "Paul Goldsmith-Pinkham"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Problem 1
+We first load in the Dehijia and Wahba sample from the Lalonde dataset of the NSW experiment. The dataset is ``lalonde_nsw.csv``. The outcome variable is ``re78`` (real earnings in 1978). The treatment indicator is ``treat``. The remaining variables are potential covariates. Assume for the purposes of this problem set that ``treat`` is completely randomly assigned. 
+
+First we load some convenience packages and set seed:
+```{r, message = FALSE}
+library(tidyverse)
+library(data.table)
+set.seed(1234)
+```
+
+and the data:
+```{r}
+lalonde <- fread("data/lalonde_nsw.csv")
+dt <- lalonde[, .(re78, treat)] %>%
+    rename(Y = re78, D = treat)
+```
+
+Some cursory examinination seems fine:
+```{r}
+dt %>%
+    group_by(D) %>%
+    sample_n(3) %>%
+    kableExtra::kable(digits = 0, col.names = c("Income", "Treatment"))
+```
+
+## Problem 1a
+
+>Calculate the average treatment effect of the policy  $E(\tau_{i})$ using a simple difference in means.
+
+```{r}
+dt %>%
+    group_by(D) %>%
+    summarize(mean(Y)) %>%
+    kableExtra::kable(digits = 0, col.names = c("Treatment", "Income"))
+y1 = dt[dt$D == 1, Y]
+y0 <- dt[dt$D == 0, Y]
+tau <- mean(y1) - mean(y0)
+```
+
+The simple difference in means is `r round(tau, digits = 0)`.
+
+## Problem 1b
+>Calculate the average treatment effect on the treated of the policy $E(\tau_{i}| \mathrm{treat} = 1)$. How does it compare to part a? 
+
+Since the treatment is randomly assigned, the ATT is the same as the ATE. 
+
+## Problem 1c
+>Test the null of $\tau_{i} = 0$ for all $i$ using a randomization test. ***N.B.*** Hold fixed the number of treated and control (e.g. assume the treatment count would be held fixed) and permute the labels randomly 1000 times -- you do not need to fully do every permutation (there would be too many). Report the quantile that your estimate from the previous question falls.
+
+```{r}
+estimate_mean_diff <- function(D, y) {
+    return(mean(y[D == 1]) - mean(y[D == 0]))
+}
+
+randomization_estimates <- rep(0, 1000)
+for (i in seq(1, 1000)) {
+    randomized_treat <- sample(dt$D)
+    randomization_estimates[i] <- estimate_mean_diff(randomized_treat, dt$Y)
+}
+
+ggplot() +
+    geom_histogram(
+        data = tibble(random = randomization_estimates), aes(x = random),
+        fill = "blue"
+    ) +
+    geom_vline(xintercept = estimate_mean_diff(dt$D, dt$Y)) +
+    theme_minimal() +
+    labs(
+        x = "Estimated Treatment Effect",
+        y = ""
+    ) +
+    annotate("text", x = 1500, y = 40, label = "True Estimate")
+
+# One-sided test
+mean(randomization_estimates > tau)
+# Two-sided test
+mean(abs(randomization_estimates) > abs(tau))
+```
+
+## Problem 1d
+>Run a regression using robust standard errors (you may use canned software) of the outcome on the treatment dummy, and compare the p-values from this test to the previous answer.
+
+```{r}
+library(fixest)
+feols(Y ~ D, data = dt, vcov = "HC1")
+```
+
