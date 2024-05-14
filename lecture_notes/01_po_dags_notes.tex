@@ -547,7 +547,7 @@ Consider now what $E(Y_{i} | D_{i})$ will recover:
 \begin{align*}
   E(Y_{i} | D_{i} = 1) &= \alpha + \tau + E(\varepsilon_{i} | D_{i} = 1)\\
   E(\varepsilon_{i} | D_{i} = 1) &= (E(\tau_{i} | D_{i}=1) - \tau)  + E(Y_{i}(0) | D_{i} = 1) -  E(Y_{i}(0) | D_{i} = 0)\\
-  E(Y_{i} | D_{i} = 0) &= \alpha + E(\varepsilon_{i} | D_{i} = 1)\\
+  E(Y_{i} | D_{i} = 0) &= \alpha + E(\varepsilon_{i} | D_{i} = 0)\\
   E(\varepsilon_{i} | D_{i} = 0) &= 0.
 \end{align*}
 So, we can see that we will recover the average treatment effect as $\beta$ if $D_{i}$ is randomly assigned (or strongly ignorable).  This is a special case where the coefficient $\beta$ in the linear regression case will give the average treatment effect, the constant will give the average for the untreated, and the error term will capture the rest. We will suffer from omitted variable bias if $ E(Y_{i}(0) | D_{i} = 1) -  E(Y_{i}(0) | D_{i} = 0) \neq 0$ -- e.g. if there is selection into treatment based on your control potential outcome. Notice that if $E(\tau_{i} | D_{i} =1) \not=\tau$, then we will also not estimate the ATE, but we will estimate the ATT.

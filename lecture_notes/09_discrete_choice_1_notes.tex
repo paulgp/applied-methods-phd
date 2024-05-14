@@ -265,7 +265,7 @@ We will discuss later how to estimate $\beta$ given these assumptions, but they 
 \section{Generalized Linear Models (GLM)}
 We can generalize the intuition above, where we let the underlying distribution of $\epsilon$ be non-normal, and parameterize the mean of the distribution to be a function of $X_{i}\beta$. This is the idea behind Generalized Linear Models (GLM), originally formulated in \citet{nelder1972generalized}.\footnote{Interestingly, this is very common in non-economics fields, but much less common in economics.} 
 
-The overall setup of GLMs in broad strokes is to consider estimation of a \textbf{linear model $X\beta$}, which is linked to the conditional mean $E(Y|X)$ by \textbf{a link function $g$}: $E(Y|X) = g^{-1}(X\beta)$. The crucial underlying assumption for the underlying machinery is that $Y$, the outcome, is distributed by some member of the \textbf{exponential family} of distributions. This includes the normal, binomial, Poisson, and gamma distributions, among others.
+The overall setup of GLMs in broad strokes is to consider estimation of a \textbf{linear model $X\beta$}, which is linked to the conditional mean $E(Y|X)$ by \textbf{a link function $g$}: $E(Y|X) = g^{-1}(X\beta)$. The crucial underlying machinery is based on the idea that $Y$, the outcome, is distributed by some member of the \textbf{exponential family} of distributions. This includes the normal, binomial, Poisson, and gamma distributions, among others. Quite notably, though, as we discuss below, this distribution does not have to be correctly specified for the parameter estimates for the conditional mean to be consistent.
 
 Some simple examples of GLMs include:
         \begin{enumerate}
@@ -608,13 +608,14 @@ then we get the McFadden conditional logit model:
 
 \begin{equation}
   \label{eq:mcfadden}
-  Pr(Y_{i} = j | X_{ij}) = \frac{\exp(X_{ij}\beta)}{\sum_{k=0}^{J}\exp(X_{ik}\beta)}.
+  Pr(Y_{i} = j | X_{i}) = \frac{\exp(X_{ij}\beta)}{\sum_{k=0}^{J}\exp(X_{ik}\beta)}.
 \end{equation}
+
 \begin{boxF}
   \begin{cmt}
   Note that if the characteristics $X_{ij}$ only vary based on the individual (e.g. we can write $X_{ij}\beta$ as $X_{i}\beta_{j}$), then the effects across choices are \emph{relative} to each other. We can write our probability equation as
 \begin{equation}
-  Pr(Y_{i} = j | X_{ij}) = \frac{\exp(\alpha_{j} + X_{i}\beta_{j})}{1 + \sum_{k=1}^{J}\exp(\alpha_{k} + X_{i}\beta_{k})}.
+  Pr(Y_{i} = j | X_{i}) = \frac{\exp(\alpha_{j} + X_{i}\beta_{j})}{1 + \sum_{k=1}^{J}\exp(\alpha_{k} + X_{i}\beta_{k})}.
 \end{equation}
 This is the \emph{multinomial logit}. Once we allow for choice speicfic characteristics, then we need to write the probability following \Cref{eq:mcfadden}.
   \end{cmt}
@@ -639,6 +640,11 @@ where $\gamma$ is the coefficient on price in the conditional logit model. Note 
 The canonical example of this is the ``car, red bus and blue bus'' example. Imagine a choice set where there are three choices for transportation: a car, and two busses: one red, and one blue.  Presumably a person is purely indifferent between red and blue busses. Hence, a shift in the red bus price would presumably cause a bigger substitution from the blue bus than from car users, but the conditional logit (in this form) will not account for this.
 
 How can we deal with the IIA issue? This is a problem of poor substitution patterns, which is an economics problem. In other words, economics  gives us an intuition about the market substitution patterns, and we don't think identical cross-elasticities makes sense. It's also a statistical problem -- there is a very strong statistical functional form we have assummed, which was analytically convenient but has somewhat perverse properties. We will now consider a few (but not all) solutions to the problem proposed in the literature.
+
+\subsection{Data structure}
+Before jumping into estimation approaches to improve on the substitition patterns, it is worth touching on the structure of the observed data. Crudely, we can think of there being two types of data we observe. In some cases, we observe the individual's choices, combined with information about the individuals, and the choices themselves.\footnote{Sometimes we even observe their second and third choices, which can be very useful!} Often, these individuals may be in the same market, or in different markets. In other cases, we observe the market shares of the choices, the overall characteristics of the individuals in the market, and the characteristics of the choices.\footnote{Note that we could construct the market shares directly from the individual data, assuming that it's a random sample of the population.}
+
+Note that the market share implied by the model in \Cref{eq:mcfadden} is just $s_{j} \equiv Pr(Y_{i}=j|X_{i})$. We can then think about transformations of this market share: $\log(s_{j}) = X_{ij}\beta - \log(\sum_{k=0}^{J}\exp(X_{ik}\beta))$. 
 
 \subsection{Nested Logit and Correlated Multivariate Probit}
 
