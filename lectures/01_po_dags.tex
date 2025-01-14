@@ -244,7 +244,7 @@
   \begin{wideitemize}
     \item  Two variables:
     \begin{itemize}
-    \item $Y \in \{0, 1\}$: whether a person will get Covid-19
+    \item $Y \in \{0, 1\}$: whether a person will get measles
     \item $D \in \{0, 1\}$: whether a person gets a vaccine
     \end{itemize}
   \item Our question: does $D$ causally affect $Y$?
@@ -277,7 +277,7 @@
     \item  $Y_{i}(1)$: they receive the vaccine
     \item $Y_{i}(0)$: they do not receive the vaccine
     \end{itemize}
-  \item \textbf{Key Assumption}? \pause person $i$'s outcome is only
+  \item \textbf{What's a key assumption here}? \pause person $i$'s outcome is only
     affected by their own treatment. We will discuss relaxing this
     assumption later.
     \begin{itemize}
@@ -341,7 +341,7 @@
   \item \underline{Estimand}: the quantity to be estimated
   \item \underline{Estimate}: the approximation of the estimand using a finite data sample
   \item \underline{Estimator}: the method or formula for arriving at the estimate for an estimand
-  \item My way of remembering: \url{https://twitter.com/paulgp/status/1275135175966494721?s=20}
+  \item My way of remembering: \url{https://www.youtube.com/watch?v=dEOHfYvCibw}
   \end{wideitemize}
 \end{column}%
 \hfill%
@@ -831,7 +831,7 @@ the data''\\
       P &= \alpha_{0} + \alpha_{1}Q + \alpha_{2}W + \epsilon\\
       Q &= \beta_{0} + \beta_{1}P + \beta_{2}V + \xi          
     \end{align}
-  \item This is the ``structural'' equations
+  \item These are the ``structural'' equations
   \item The reduced form comes from plugging in the endogeneous
     variables and solving for only ``exogeneous'' variables on the RHS
   \item This will let us consider counterfactuals in the structural equations!
