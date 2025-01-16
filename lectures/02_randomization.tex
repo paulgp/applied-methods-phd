@@ -409,7 +409,7 @@
 
     \item Since we know that causal effects require estimation of an
       (unobservable) counterfactual, a research design describes what
-      assumptions are necessary to estimate the counterfactual for a
+      assumptions are necessary to estimate the counterfactual(s) for a
       given estimand.
       
     \item As we will discuss in class, these research designs can be
@@ -614,7 +614,7 @@
   \item If we assume that assignment is completely equal, then let
     $\pi_{1}(\mathbf{D}) = n_{t}(\mathbf{D})/n$ be the share treated,
     and $E(\pi_{1}^{-1}D_{i}) = 1$.
-    \item We'll show 
+    \item Then,
       \begin{align}
         E(\hat{\bar{\tau}}(\mathbf{D}, \mathbf{Y})) &= E\left(\frac{\mathbf{D}'\mathbf{Y}}{\sum_{i}D_{i}} - \frac{(\mathbf{1}-\mathbf{D})'\mathbf{Y}}{\sum_{i}(1-D_{i})}\right)\\
                                                     &=n^{-1}E\left(\sum_{i}\pi_{1}^{-1}Y_{i}D_{i} - \sum_{i}(1-\pi_{1})^{-1}Y_{i}(1-D_{i})\right)\\
