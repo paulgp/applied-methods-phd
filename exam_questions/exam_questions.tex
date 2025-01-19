@@ -215,6 +215,60 @@ particularly valuable.
       part b) above with the staggered roll-outs?  Describe in words,
       or with algebra, or with a graph (or all three). 
     \end{enumerate}
+
+
+    \item You've been put in charge of evaluating the impact of Connecticut's policy to forgive medical debt. The policy targeted people whose household income is up to \$60,000.
+    
+    The state has tasked you with evaluating the impact of this policy on financial distress. You have been given a dataset with:
+    \begin{itemize}
+        \item $Y_{i}$: financial distress of individual $i$     
+        \item $X_{i}$: an individual's household income
+        \item $D_{i}$: the individual's initial amount of medical debt
+    \end{itemize}
+    
+    \begin{enumerate}
+        \item[a.] You have determined that you should estimate the effect of the policy on $Y$ using a regression discontinuity design. What assumptions are necessary for this design to be consistent? How would you estimate the effect of the policy using this design?
+        \item[b.] Describe two tests you could do to test the assumptions necessary for the regression discontinuity design to be consistent.
+        \item[c.] How could you use this regression discontinuity design to estimate the effect of changes in medical debt on financial distress?
+        \item[d.] You now realize that the policy actually had two cutoffs: \$60k for a single person or \$120k for a married couple. Describe, either formally or in words, how you would adjust your estimation procedure to account for this. Do you need anymore assumptions?
+        \item[e.] The state wants to know what would happen if they changed the cutoff for the policy to \$70k. What  (well-defended and supported) answer would you give them?
+        \item[df.] You have now discovered a serious issue with the data: the data on household income is bucketed in bins of \$5000, so that everyone between 50,000 and 54,999 is reported as 50,000, everyone between 55,000 and 59,999 is reported as 55,000, etc. How would this affect your ability to estimate the effect of the policy using a regression discontinuity design? How could you address this issue?
+    \end{enumerate}
+    
+   \item We want to estimate a linear regression model of the form:
+    \begin{equation}
+        Y_{i} = \beta_{0} + \beta_{1}X_{i} + \epsilon_{i},
+    \end{equation}
+    where $Y_{i}$ is the change in employment in the service sector in city $i$, $X_{i}$ is an indicator for whether the city passed a law that increased the minimum wage, and $\epsilon_{i}$ is an error term. Assume you observe $n$ cities. 
+    
+    \begin{enumerate}
+        \item[a.] Assume that we could consistently estimate $\beta_{1}$ by using OLS. How would you calculate the standard errors for $\beta_{1}$ if you assumed that the errors, $\epsilon_{i}$, were homoskedastic?
+        \item[b.] Now, we will consider a model where the effect of $X_{i}$ varies by city, but this heterogeneity is uncorrelated with whether the city passed a minimum wage law. Specifically, we assume that $\beta_{i} = \beta_{1} + (\beta_{i} - \beta_{1})$, $E(\beta_{i} - \beta_{1} | X_{i}) = 0$, and 
+        \begin{equation}
+            Y_{i} = \beta_{0} + \beta_{i}X_{i} + \epsilon_{i}.
+        \end{equation}
+        How would you estimate $\beta_{1}$ in this case? How would your standard errors change? If they change, please specify how you would estimate them.
+        \item[c.] Now, we realize that the cities don't pass minimum wage laws on their own -- rather, the states passed the laws, making $X_{i}$ correlated within states. We assume we observe $S$ states and $n_{s}$ cities in each state. Observations in our regression are still at the city level.
+        \begin{enumerate}
+            \item[i] If we assume that there was no heterogeneity in $\beta_{1}$, how would we estimate standard errors for $\beta_{1}$? What assumptions are necessary?
+            \item[ii] If we assume that there was heterogeneity in $\beta_{1}$ \emph{and it is correlated within cluster}, with $\beta_{i} - \beta_{1} = b_{s} + \tilde{\beta}_{i}$, how would we estimate standard errors for $\beta_{1}$? 
+        \end{enumerate}
+    \end{enumerate}
+    
+    
+  \item You are interested in studying the impact of noncompete bans across states (A noncompete agreement is a contract between an employer and employee where the employee agrees not to work for a competitor for a specified period of time after leaving the company). You have a panel dataset with the following variables:
+    \begin{itemize}
+    \item $Y_{it}$: the wages of workers in state $i$ in year $t$
+    \item $X_{it}$: an indicator for whether the state has an abortion ban in year $t$
+    \end{itemize}
+    You have $n$ states, and $T=3$ years of data. In the first year, no states have a ban. In the second year, $n_{e} = 20$ states have a ban put into place going forward, and in the third year, $n_{l} = 10$ more states have a ban, giving a total of 30 states with a ban, and 20 without.
+    \begin{enumerate}
+        \item[a.] Describe how you would estimate the effect of the ban on the average wage in the second year. What assumptions are necessary for this estimate to be consistent?
+        \item[b.] How would you expand your approach from part a to estimate the effect of the abortion ban on the average wage using all time periods? What assumptions are necessary for this estimate to be consistent?
+        \item[c.] Are there any tests you could do to test the assumptions necessary for your estimates to be consistent?
+        \item[d.] One important consideration when studying state-level data is that individuals can cross into other states to work. How would this affect your estimates of the effect of the bans? Do you have any ideas on how you could quantify this effect?
+        \item[e.] Now, you get another year of data, and in this year, all states have a ban. What assumptions would you need to make to estimate the effect of the ban on the average wage?
+    \end{enumerate}    
 \end{enumerate}
   
 \end{document}
