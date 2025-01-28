@@ -188,15 +188,14 @@
     \item So far we've focused on \emph{identification} -- e.g. what estimands can we know from the data generating process?
     \item Now, given estimators for these estimands, we want to discuss uncertainty and inference
     \end{itemize}
-  \item Let's define some notation to start. We'll consider a sample of size $n$:
+  \item Define some notation to start. For a sample of size $n$:
     \begin{itemize}
     \item causal variable $D_{i}$ (can be continuous valued) $\rightarrow  \; \mathbf{D}_{n}$;
     \item outcome $Y_{i} \rightarrow  \; \mathbf{Y}_{n}$;
 %    \item potential outcome will be defined as $Y_{i}^{*}(D_{i})$, where $Y_{i} = Y_{i}^{*}(D_{i})$;
     \item controls $X_{i}$ (relevant for exogeneity, and can be vector valued)  $\rightarrow  \; \mathbf{X}_{n}$.
     \end{itemize}
-  \item We'll assume SUTVA holds, and that $D_{i}$ is exogeneous
-    conditional on $X_{i}$
+  \item We'll assume SUTVA holds, and that $D_{i}$ is exogeneous (or strict ignorability holds), conditional on $X_{i}$
   \end{wideitemize}
   \end{column}%
   \hfill%
