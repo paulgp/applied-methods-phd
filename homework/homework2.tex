@@ -65,9 +65,19 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
   MGMT 737
 \end{center}
 \begin{center}
-  Spring 2024
+  Spring 2025
 \end{center}
 %\date{September 26, 2014}
+
+You should have gotten this homework assignment from the Github classroom environment (\url{https://classroom.github.com/classrooms/192971645-yale-mgmt-737-spring-2025-classroom}). In submitting your problem set, you should have two files in your Github repository:
+
+
+\begin{enumerate}
+  \item \texttt{homework2-code.R}, which contains your code,
+  \item \texttt{homework2-writeup.pdf}, which contains your writeup 
+\end{enumerate} 
+
+You may have other files / folders if necessary when there are images or auxiliary files. My very strong preference is for you to write this up in R. If this is not possible, you can use Python. Please let me know if you're planning on this. (This is not a coding preference, but mainly a grading issue.)
 
 \begin{enumerate}
 \item Propensity Scores. This analysis will use the dataset
@@ -79,7 +89,7 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
   the initial randomization.
   \begin{enumerate}
   \item Using \texttt{age}, \texttt{education}, \texttt{hispanic},
-    \texttt{black}, \texttt{married}, \texttt{nodegree}, \texttt{RE74}
+    \texttt{black}, \texttt{married},  \texttt{RE74}
     and \texttt{RE75}, construct a propensity score using the
     \emph{treated} group in \texttt{lalonde\_nsw.csv} and the control
     sample of \texttt{lalonde\_psid.csv}.  Use a logit regression
@@ -87,28 +97,43 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
     regression). Report the average p-score for the treated and
     control samples, and plot the propensity score densities for the
     treatment and control groups.
+
+    \hspace{10pt} $\rightarrow$ Label the calculated value as \texttt{treated\_pscore} and \texttt{control\_pscore} in your code.
   \item Using your p-score estimates, calculate the IPW and SIPW
     estimate for control and treated mean of the outcome, and the
     average treatment effect. Contrast these estimates to the control
     mean of the outcome from the NSW sample, and the treatment effect
     from last week's problem set.
+   
+    \hspace{10pt} $\rightarrow$ Label the calculated value as \texttt{control\_mean\_ipw}, \texttt{treated\_mean\_ipw}, \texttt{ate\_ipw},  \texttt{control\_mean\_sipw}, \texttt{treated\_mean\_sipw},and \texttt{ate\_sipw}.
   \item Compare the ATE in the previous question to the treatment
     effect estimated using a linear regression using the PSID and NSW
     treatment sample, with \texttt{age}, \texttt{education},
     \texttt{hispanic}, \texttt{black}, \texttt{married},
-    \texttt{nodegree}, \texttt{RE74} and \texttt{RE75} as controls.
+     \texttt{RE74} and \texttt{RE75} as controls.
+   
+    \hspace{10pt} $\rightarrow$ Label the calculated coefficient as \texttt{coef\_lin\_reg}
   \item Now revisit your estimates from part a and b, and following
     Crump et al. (2009), discard all units with estimated propensities
     outside the range of $[0.1, 0.9]$. Reestimate the IPW and SIPW
     estimator of the ATE from part b using this trimmed sample.
+    
+    \hspace{10pt} $\rightarrow$ Label the calculated values as \texttt{ate\_ipw\_trimmed}, and \texttt{ate\_sipw\_trimmed}.
   \item Finally, calculate the IPW and SIPW estimates for the ATE
     using this trimmed sample for Black and non-Black
     individuals. Compare this estimate to the ATE for Black and
-    non-Black individuals using the full randomized sample.
+    non-Black individuals using the full randomized sample (last week's design).
+
+    \hspace{10pt} $\rightarrow$ Label the calculated values as \texttt{ate\_ipw\_black},  \texttt{ate\_sipw\_black},  \texttt{ate\_ipw\_nonblack}, and  \texttt{ate\_sipw\_nonblack}.
+
     \item We now consider what our results look like if we just consider difference-in-differences. Estimate a linear regression model (using canned software package like \texttt{lm} in R is fine -- be sure to cluster on the individual) with two specifications:
     \begin{enumerate}
       \item The difference in \texttt{RE78} less \texttt{RE75} on the left hand side against a treatment indicator. 
+     
+      \hspace{10pt} $\rightarrow$ Label the calculated coefficient as \texttt{coef\_lin\_reg\_diff}.
       \item \texttt{RE78} on the left hand side against a treatment indicator and \texttt{RE75}.
+      
+      \hspace{10pt} $\rightarrow$ Label the calculated coefficient as \texttt{coef\_lin\_reg\_lagged}.
     \end{enumerate}
   Report the estimates and compare to your previous estimates. Can you think of other specifications that might work? 
 \end{enumerate}
