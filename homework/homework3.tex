@@ -64,15 +64,28 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
   MGMT 737
 \end{center}
 \begin{center}
-  Spring 2024
+  Spring 2025
 \end{center}
-%\date{September 26, 2014}
-% SIMULATE POWER FOR A PANEL REGRESSION WITH FIFTY STATES
+
+You should have gotten this homework assignment from the Github classroom environment (\url{https://classroom.github.com/classrooms/192971645-yale-mgmt-737-spring-2025-classroom}). In submitting your problem set, you should have two files in your Github repository:
+
+
 \begin{enumerate}
-\item \textbf{Standard Errors} For this problem, use the dataset \texttt{networth\_delta\_elas.csv}, where \texttt{county\_fips} is the county FIPS code, \texttt{statename} is the state FIPS code, \texttt{elasticity} is the Saiz elasticity measure, \texttt{total} is the number of households in each county, and \texttt{netwp\_h} is the change in net worth within a county from 2006 to 2009.
+  \item \texttt{homework3-code.R}, which contains your code,
+  \item \texttt{homework3-writeup.pdf}, which contains your writeup 
+\end{enumerate} 
+
+You may have other files / folders if necessary when there are images or auxiliary files. My very strong preference is for you to write this up in R. If this is not possible, you can use Python. Please let me know if you're planning on this. (This is not a coding preference, but mainly a grading issue.)
+
 \begin{enumerate}
-\item Write a function to esitmate the linear regression of networth change against a constant and the Saiz elasticiy. Report the coefficient on the elasticity. 
+\item \textbf{Standard Errors I} For this problem, use the dataset \texttt{networth\_delta\_elas.csv}, where \texttt{county\_fips} is the county FIPS code, \texttt{statename} is the state FIPS code, \texttt{elasticity} is the Saiz elasticity measure, \texttt{total} is the number of households in each county, and \texttt{netwp\_h} is the change in net worth within a county from 2006 to 2009.
+\begin{enumerate}
+\item Write a function to estimate the linear regression of networth change against a constant and the Saiz elasticiy. Report the coefficient on the elasticity. 
+
+\hspace{10pt} $\rightarrow$ Label the calculated value as \texttt{lin\_reg\_coef} in your code.
 \item Next, estimate the homoskedastic SE, heteroskedasticity-robust SE, HC2, and HC3 standard errors for the elasticity estimate. [See the formulas in the slides]
+
+\hspace{10pt} $\rightarrow$ Label the calculated values as \texttt{homoskedastic\_se1}, \texttt{hetero\_se1}, \texttt{hc2\_se1}, \texttt{hc3\_se1} in your code.
 \item Now, we will estimate the three standard errors from Abadie et al. (2020) [see section 4 for details]. I will walk you through the estimation. Let 
 \begin{align*}
     V^{causal} &= n^{-1}\Gamma^{-1}(\rho\Delta^{cond} + (1-\rho)\Delta^{ehw})\Gamma^{-1}\\
@@ -89,6 +102,8 @@ Our elasticity measure is $X_{i}$, and the outcome is $Y_{i}$. Let $Z$ denote ou
   \item Estimate $\hat{\Delta}^{\textrm{ehw}} = n^{-1}\sum_{i}(X_{i} - \hat{\gamma}Z_{i})\hat{\epsilon}^{2}_{i}(X_{i} - \hat{\gamma}Z_{i})$.
   \item Now, estimate $V^{EHW} = (1/n) * \hat{\Gamma}^{-1}   \hat{\Delta}^{\textrm{ehw}} \hat{\Gamma}^{-1}$. Check that this coincides with your previous EHW estimates (it should differ slightly b/c of no degree of freedom corrections, but quite close).
   \item Estimate $\rho = n/N$ using the following fact: the data is observed at the county level, and in the United States, there are 3,006 counties. Recall that (in my notation) $n$ is the number of observations in the sample, and $N$ is the ``population.'' Using this measure, estimate $V^{descr} = (1-\rho)V^{EHW}$ and report the standard error. Note the relative size of each.
+
+  \hspace{10pt} $\rightarrow$ Label the calculated value as \texttt{abadie\_se\_desc}.
   \item Next, calculate:
     \begin{equation}
       \hat{G} = \left( n^{-1}\sum_{i}(X_{i} - \hat{\gamma}Z_{i})\hat{\epsilon}_{i}Z_{i}'\right)\left(n^{-1}\sum_{i}Z_{i}Z_{i}'\right)^{-1}
@@ -96,23 +111,45 @@ Our elasticity measure is $X_{i}$, and the outcome is $Y_{i}$. Let $Z$ denote ou
     Note that this is exactly zero in our current case.
   \item Now, let $\hat{\Delta}^{Z} = n^{-1}\sum_{i}((X_{i} - \hat{\gamma}Z_{i})\hat{\epsilon}_{i} - \hat{G}Z_{i})^{2}$. Note that this should be equal to $\hat{\Delta}^{EHW}$. 
   \item Finally, calculate $V^{causal}$ and $V^{\textrm{causal,sample}}$ using $\hat{\Delta}^{Z}$ in the place of $\Delta^{\textrm{cond}}$ and and report the standard errors. (We cannot estimate $\Delta^{cond}$ feasibly, so we use $\Delta^{Z}$ in its place.) Note that in this setting, we have identical estimates for the causal estimates b/c we cannot do better than the EHW estimate.
+
+  \hspace{10pt} $\rightarrow$ Label the calculated value as \texttt{abadie\_se\_causal} and  \texttt{abadie\_se\_causal\_sample} in your code.
   \item Now reimplement this approach, but include state fixed effects as controls in $Z$. Report your estimates for the standard errors using $V^{EHW}$, $V^{descr}$, $V^{causal}$ and $V^{causal,sample}$ in this setting.
+
+  \hspace{10pt} $\rightarrow$ Label the calculated value as \texttt{abadie\_se\_desc2}, \texttt{abadie\_se\_causal2} 
+  
+  and  \texttt{abadie\_se\_causal\_sample2} in your code. 
   \end{enumerate}
 \end{enumerate}
-%%% UPDATE THIS PROBLEM
-\item \textbf{Binscatter}: For this problem, use the dataset
-\texttt{yearly\_hp\_full\_sample.csv}, where \texttt{county\_fips} is
-the county FIPS code, \texttt{statename} is the state FIPS code,
-\texttt{year} is the year, \texttt{elasticity} is the Saiz
-elasticity measure, \texttt\texttt{total} is the number of
-households in each county, \texttt{hpi} is Zillow House Price value, and \texttt{hpa} is the annual growth in house prices. For this problem, you may use your own regression estimate function, or a pre-existing function to estimate the regression.
+\item \textbf{Standard Errors II - Clustering:} This problem will teach you how to generate data and then test your model on the data. First, you will construct code to randomly sample data. Then you will implement different estimators on the randomly generated data, and study the properties of these estimators over many random simulations. \textit{N.B. Make sure to set your seed} \texttt{set.seed(123)}.
 \begin{enumerate}
-\item Regress HPA on the elasticity measure interacted with year, using your constructed function. I.e. $\texttt{hpa}_{it} = \alpha_{t} + \sum_{s}\texttt{elasticity}_{i}\times 1(year_{t} = s)\beta_{t}$ Plot the $\beta_{t}$ coefficient for each year across time. Report the coefficient measuring the effect of elasticity in 2008.
-\item Next, construct the house price change from 2001 to 2008, and 2008-2010 for each county.  Construct 10 decile dummies for the elasticity and reestimate the regression, using the two long changes as observations, using the ten dummies in the place of the continuous elasticity measure:
-\begin{equation*}
-  \texttt{hpa}_{it} = \alpha_{2001-2008} + \alpha_{2008-2010} + \sum_{b = 1}^{10}\texttt{elasticity}_{b}\times \beta_{t} + \sum_{b = 1}^{10}\texttt{elasticity}_{b}\times 1(year = 2008-2010) \times \gamma_{t}.
-\end{equation*}
-Plot these decile effects such that each point reflects an approximation to the conditional expectation function, for both periods. Report the value on $\gamma$ for the first decile.
+  \item Generate a sample of $n_{c}=100$ clusters, each of size $n=100$ (hence $N=10,000$). For each observation, you will randomly assign a treatment $D_{i}$ with probability $p=0.5$. Specify the outcomes as:
+  \begin{equation}
+    Y_{i} = D_{i}\tau_{i} + \varepsilon_{i}
+  \end{equation}
+  where 
+  \begin{align}
+    \varepsilon_{i} &= \varepsilon_{c(i)} + \varepsilon_{indiv,i}\\
+    \varepsilon_{c(i)} &\sim \mathcal{N}(0, \rho)\\
+    \varepsilon_{indiv,i} &\sim \mathcal{N}(0, 1-\rho)\\
+    \tau_{i} &= \tau_{c(i)} + \tau_{indiv,i}\\
+    \tau_{indiv, i} &\sim \mathcal{N}(0.1, 0.5^{2})\\
+    \tau_{c(i)} &\sim \mathcal{N}(0.1, 0.5^{2})
+  \end{align}
+  where $c(i)$ denotes the cluster that person $i$ is a part of, and $\rho = 0.5$.
+
+  For a sample of 1000 simulations, what is the overall average estimate of $E(Y_{i} | D_{i} = 1) - E(Y_{i} | D_{i} = 0)$? This should be very close to \texttt{0.2}. What is the standard deviation of the average effect across simulations?
+
+  \hspace{10pt} $\rightarrow$ Label the calculated value as \texttt{est\_tau1} and \texttt{sd\_tau1} in your code.
+  \item Now for each simulation, estimate the standard error of the treatment effects using (1) HC2 robust standard errors, and (2)  clustered standard errors, clustering at the cluster level. What is the average coverage of the true value, using a 95\% confidence interval, for each of these estimators? What is the average ratio of the clustered standard errors to the robust standard errors?
+
+  \hspace{10pt} $\rightarrow$ Label the calculated value as \texttt{coverage\_hc2}, \texttt{coverage\_cluster}  and \texttt{ratio1} in your code.
+  \item Now, set $\tau_{c(i)} = 0.1$ for all $i$. What is the average estimate of the treatment effect in this setting? What is the average coverage of the true value, using a 95\% confidence interval, for each of these estimators? What is the average ratio of the clustered standard errors to the robust standard errors?
+  
+  \hspace{10pt} $\rightarrow$ Label the calculated value as \texttt{coverage\_hc2b}, \texttt{coverage\_clusterb}  and \texttt{ratio1b} in your code.
+  \item Now remove your change from part (c). Instead, set $\rho = 0.05$. What is the average coverage of the true value, using a 95\% confidence interval, for each of these estimators? What is the average ratio of the clustered standard errors to the robust standard errors?
+
+  \hspace{10pt} $\rightarrow$ Label the calculated value as \texttt{coverage\_hc2c}, \texttt{coverage\_clusterc}  and \texttt{ratio1c} in your code.
+  \item Consider what the implications are for the use of clustered standard errors in the presence of heterogeneous TE. If there is no correlation within a cluster for treatment effects, do you need to cluster your standard errors? 
 \end{enumerate}
 \end{enumerate}
 
