@@ -183,7 +183,7 @@
   \begin{columns}[T] % align columns
     \begin{column}{.6\textwidth}
       \begin{wideitemize}
-      \item Today: Two topics
+      \item Today: 
         \begin{enumerate}
         \item Minimizing objective functions instead of minimizing squares
         \item Studying binary choice model
@@ -461,10 +461,62 @@
     \end{wideitemize}
   \end{frame}
 
+  \begin{frame}{Log with zeros; Chen and Roth (QJE, 2024)}
+    \begin{columns}[T] % align columns
+      \begin{column}{.6\textwidth}
+    \begin{wideitemize}
+      \item Quite common to study $\log(Y + c) = X\beta + \epsilon$ to avoid zeros. 
+      \item What's the issue?
+\begin{itemize}
+  \item Arbitrarily sensitive to units of $Y$ (we lose scale equivariance)
+  \item Key insight comes from combining \emph{extensive} margin (0 to non-zero) with \emph{intensive} margin. That jump changes depending on $c$.
+\end{itemize}
+\item Second takeaway: When you have an outcome with zeros, you can't have all three of the following:
+  \begin{enumerate}
+    \item Average of individual effects
+    \item Invariant to rescaling units of outcome
+    \item Point identified
+  \end{enumerate}
+    \end{wideitemize}
+  
+      \end{column}%
+    \hfill%
+    \begin{column}{.4\textwidth}
+      \begin{center}
+        \includegraphics[width=\linewidth]{images/chenroth1.png}
+      \end{center}
+    \end{column}
+  \end{columns}
+  \end{frame}
+
+
+  \begin{frame}{Expanding on the trilemma}
+    \begin{columns}[T] % align columns
+      \begin{column}{.65\textwidth}
+    \begin{wideitemize}
+     \item Trilemma:
+  \begin{enumerate}
+    \item Average of individual effects $E(g(Y(1), Y(0)))$
+    \item Invariant to rescaling units
+    $E(g(Y(1), Y(0))) = E(g(aY(1), aY(0)))$
+    \item Point identified
+  \end{enumerate}
+    \end{wideitemize}
+      \end{column}%
+    \hfill%
+    \begin{column}{.3\textwidth}
+      \begin{wideitemize}
+        \item Any estimator must sacrifice one of these properties
+       \end{wideitemize}
+    \end{column}
+  \end{columns}
+  \includegraphics[width=\linewidth]{images/chenroth2.png}
+  \end{frame}
+
 
   \begin{frame}{Aside: GLM + Poisson Regression with Counts}
     \begin{wideitemize}
-    \item So what's the alternative? Poisson regression
+    \item Poisson regression allows us to estimate the normalized ATE
       \begin{itemize}
       \item Key to this model is estimating $\log(E(Y|X)) = X\beta$,
         rather than $E(\log(Y)|X)$. You get a simple semi-elasticity
@@ -687,7 +739,7 @@
   \end{frame}
 
 
-  \begin{frame}{Two line search algorithms - Newton's Method}
+  \begin{frame}{Two line search algorithms - (1) Newton's Method}
     \begin{wideitemize}
     \item Given a $d$, recall we need a $\lambda$. Redefine $\lambda^{*} = \arg\min_{\lambda} Q(\lambda)$
     \item The simplest method is Newton's method (which finds the root
@@ -701,7 +753,7 @@
     \end{wideitemize}
   \end{frame}
 
-  \begin{frame}{Two line search algorithms - Golden Search}
+  \begin{frame}{Two line search algorithms - (2) Golden Search}
     \begin{wideitemize}
     \item Start with two points you know for certain contain the minimum (need unimodality)
       \begin{itemize}
@@ -721,12 +773,12 @@
 
   \begin{frame}{Davidson-Fletcher-Powell}
     \begin{wideitemize}
-    \item DFP is more elaborate, and requires all these pieces
+
+    \item So how do we construct $A_k$? One common method comes from DFP
       \begin{itemize}
-      \item Commonly used, although not the fastest algorithm out there now
+      \item DFP is less popular now among quasi-Newton methods than  BFGS (Broyden-Fletcher-Goldfarb-Shanno)
+      \item BFGS uses a very similar approach but BFGS updates the Hessian, rather than the inverse of the Hessian.
       \end{itemize}
-    \item Its strongest feature is that it is efficient and can work
-      without calculating a second derivative
     \item Initiate with any positive definite matrix $A$
       (e.g. identity matrix)
     \item Steps (repeat till convergence):
