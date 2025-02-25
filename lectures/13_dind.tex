@@ -274,6 +274,27 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{Difference-in-differences}
+  \begin{columns}[T] % align columns
+    \begin{column}{.5\textwidth}
+      \begin{wideitemize}
+      \item Difference-in-differences has become the dominant methodology
+        for estimating causal effects in applied work
+        \item True across all fields (Goldsmith-Pinkham (2024))
+      \end{wideitemize}
+    \end{column}%
+    \hfill%
+    \begin{column}{.5\textwidth}
+\vspace{-10pt}
+      \begin{center}
+        \includegraphics[width=\linewidth]{images/extend_results_didforguido.pdf}
+
+        \includegraphics[width=\linewidth]{images/extend_results_didby_group.pdf}
+          \end{center}
+    \end{column}%
+  \end{columns}
+\end{frame}
+
 \begin{frame}{First, a warning}
   \begin{columns}[T] % align columns
     \begin{column}{.99\textwidth}
@@ -331,23 +352,6 @@
   \end{wideitemize}
 \end{frame}
 
-\begin{frame}{Basic 2x2 Diff-in-diff}
-  How can we identify the ATT?
-  \begin{enumerate}
-  \item Parallel Trends: ``in the absence of the treatment, the average outcomes would have evolved in parallel''
-    \begin{equation*}
-        E(Y_{i,2}(0) - Y_{i,1}(0) | D_{i} = 1) =     E(Y_{i,2}(0) - Y_{i,1}(0) | D_{i} = 0)
-      \end{equation*}
-      \begin{itemize}
-      \item Absent the policy, units may have different \emph{levels}, but their changes would be the same
-      \item A sufficient parametric formulation: $Y_{it}(0) = \gamma_{t} + \alpha_{i} + \epsilon_{it}$
-      \end{itemize}
-    \item No-anticipation: policy has no effect prior to treatment
-    \begin{equation*}
-        Y_{i,1}(0) = Y_{i,1}(1) 
-      \end{equation*}
-    \end{enumerate}
-\end{frame}
 
 \begin{frame}{Basic 2x2 DinD setup}
   \begin{columns}[T] % align columns
@@ -358,7 +362,7 @@
           \tau_{ATE} &= E(Y_{it}(1) - Y_{it}(0)) = E(\tau_{i})\\
           \tau_{ATT} &= E(Y_{it}(1) - Y_{it}(0) | D_{it} = 1) = E(\tau_{i} |D_{it} = 1)          
         \end{align*}
-      \item Since $D$ is not randomly assigned,, this model is inherently not identified without the additional assumptions (and two time periods).
+      \item Since $D$ is not randomly assigned, this model is inherently not identified without the additional assumptions (and two time periods).
         \begin{itemize}
         \item Why? $D_{i}$ could be correlated with $\alpha_{i}$
         \item Recall that our plug-in estimator approaches need
@@ -401,6 +405,25 @@
       E(Y_{i1} - Y_{i0} | D_{i1} = 1) - E(Y_{i1} - Y_{i0} | D_{i1} = 0) =  \underbrace{E(\tau_{i}  | D_{i1} = 1) }_{ATT}
     \end{align*}
   \end{wideitemize}
+\end{frame}
+
+
+\begin{frame}{Basic 2x2 Diff-in-diff}
+  How can we identify the ATT?
+  \begin{enumerate}
+  \item Parallel Trends: ``in the absence of the treatment, the average outcomes would have evolved in parallel''
+    \begin{equation*}
+        E(Y_{i,2}(0) - Y_{i,1}(0) | D_{i} = 1) =     E(Y_{i,2}(0) - Y_{i,1}(0) | D_{i} = 0)
+      \end{equation*}
+      \begin{itemize}
+      \item Absent the policy, units may have different \emph{levels}, but their changes would be the same
+      \item A sufficient parametric formulation: $Y_{it}(0) = \gamma_{t} + \alpha_{i} + \epsilon_{it}$
+      \end{itemize}
+    \item No-anticipation: policy has no effect prior to treatment
+    \begin{equation*}
+        E(Y_{i,1}(0)) = E(Y_{i,1}(1))
+      \end{equation*}
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}{Another way to see this, assuming absorbing treatment}
