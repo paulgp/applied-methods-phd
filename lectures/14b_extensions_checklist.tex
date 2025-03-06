@@ -193,6 +193,16 @@
   \end{wideitemize}
 \end{frame}
 
+\begin{frame}{Fix ideas with example (Callaway, Goodman-Bacon, Sant'anna (2024))}
+  \begin{center}
+    \includegraphics[width=0.75\linewidth]{images/continuous_did.png}
+  \end{center}
+  \begin{equation*}
+    y_{it} = \theta_{t} + \eta_{i} + \beta D_{i} \cdot Post_{t} + \varepsilon_{it}
+  \end{equation*}
+  In 1983, Prospective Payment System changed payment for Medicare patients to hospitals
+\end{frame}
+
 \begin{frame}{Continuous treatment}
   \begin{wideitemize}
   \item Recall that estimating treatment effects with random
@@ -208,6 +218,15 @@
   \end{wideitemize}
 \end{frame}
 
+
+\begin{frame}{ACRT vs. ATT}
+  \begin{center}
+    \includegraphics[width=0.75\linewidth]{images/acrt_1.png}
+  \end{center}
+\end{frame}
+
+
+
 \begin{frame}{Continuous treatment -- Estimand}
   \begin{wideitemize}
   \item How do these differ? Consider their interpretations:
@@ -215,9 +234,30 @@
     \item ATT: effect relative to baseline of zero effect
     \item ACRT: effect of marginally increasing treatment, evaluted at a given point (can integrate too!)
     \end{itemize}
-  \item Key point in DiD vs. RCT: these are \emph{conditional} on treatment status, which is not random!
-  \item Can we move between these? Consider comparing two ATTs in 2
-    period diff-in-diff, assuming standard parallel trends:
+    \item Under parallel trends, what can we identify?
+    \begin{itemize}
+      \item First, parallel in what counterfactual? Under \emph{no} treatment
+\begin{equation}
+  E(Y_{2}(0) - Y_{1}(0) | D = d) = E(Y_{2}(0) - Y_{1}(0) | D = 0).
+\end{equation}
+implies
+\begin{equation}
+  ATT(d|d) = E(\Delta Y  | D = d) - E(\Delta Y | D = 0).
+\end{equation}
+    \end{itemize} 
+\item However, this does not identify anything about the ACRT
+
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Continuous treatment -- Estimand}
+  \begin{wideitemize}
+    \item Can we move between ATT and ACRT?
+    \item Under standard parallel trends, 
+    \begin{equation}
+      \frac{\partial E(\Delta Y | D = d)}{\partial d} = \frac{\partial ATT(d|d)}{\partial d} = ACRT(d|d) + \frac{\partial ATT(d|l)}{\partial l}|_{l=d}
+    \end{equation}
+  \item Consider comparing two ATTs:
     \begin{align*}
       ATT(d | d) -  ATT(d' | d') &= \left(E[\Delta Y | D = d]  - E[\Delta Y | D=0]\right)\\
                                  &- \left(E[\Delta Y | D = d']  - E[\Delta Y | D=0]\right)\\
@@ -240,6 +280,55 @@
   \item ``Strong'' parallel trends assumption: $E(\Delta Y_{i}(d)) = E(\Delta Y_{i}(d) | D_{i} = d)$
   \item No selection bias ``on average''
   \item Effectively assuming some kind of homogeneity in the treatment across groups
+  \item Under this set of assumptions, you can identify the ATE as well as the ATT (and the ACR along with the ACRT)
+  \end{wideitemize}
+\end{frame}
+
+
+\begin{frame}{Continuous treatment -- what if there is no untreated group?}
+  \begin{wideitemize}
+  \item Can consider parallel trends relative to some $d_{l}$ ``baseline'' group 
+  \item However, this mixes the selection effect based on treatment:
+\begin{equation}
+  E(\Delta Y | D_{i} = d) - E(\Delta Y | D_{i} = d_{l}) = ATT(d | d) - ATT(d_{l} | d_{l})
+\end{equation}
+and would need that $ATT(d_l|d) = ATT(d_{l}| d_{l})$ to identify the ATT
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{So what does TWFE do?}
+  \includegraphics[width=0.8\linewidth]{images/twfe_continuous_did_weights.png}
+  \includegraphics[width=0.8\linewidth]{images/twfe_continuous_did_formula1.png}
+  
+\end{frame}
+
+\begin{frame}{So what does TWFE do?}
+  \includegraphics[width=0.8\linewidth]{images/twfe_continuous_did_weights.png}
+  \includegraphics[width=0.8\linewidth]{images/twfe_continuous_did_formula2.png}
+\end{frame}
+
+\begin{frame}{Under strong parallel trends, TWFE gets convex ACR}
+  \includegraphics[width=0.8\linewidth]{images/twfe_continuous_did_formula1.png}
+  \begin{wideitemize}
+    \item Under strong parallel trends, the selection bias terms disappear (and with $d_{l} = 0$, last term disappears in (a))
+    \item Weights are also convex and weakly causal! However, don't necessary map to an estimand of interest. Related to OLS weights from previous discussions
+    \item ATT composition does not have convexity property
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{So what can you do?}
+  \begin{wideitemize}
+    \item Easiest thing is to use untreated units as baseline category
+    \item When treatments are discrete:
+    \begin{equation}
+      \Delta Y_{i} = \beta_{0} + \sum_{j}1(D_{i} = d_{j})\beta_{j} + \epsilon_{i}
+    \end{equation}
+    Under parallel trends, each $\beta$ is $ATT(d|d)$, and with strong parallel trends, $\beta_{j} - \beta_{j-1}$ is $ACR(d_{j})$. 
+    \item Life is more complicated when $d$ is continuous of the groups are quite small at a given treatment:
+    \begin{equation}
+      \Delta Y_{i} = \sum_{k}\Psi_{Kk}(D)\beta_{Kk} + \epsilon_{i},
+    \end{equation}
+    where $\Psi_{Kk}(D)$ is a basis function for the treatment (implementation can be found in paper)
   \end{wideitemize}
 \end{frame}
 
