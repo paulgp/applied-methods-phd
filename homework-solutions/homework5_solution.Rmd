@@ -1,0 +1,106 @@
+
+---
+output:
+    rmdformats::robobook:
+        self_contained: true
+        thumbnails: true
+        lightbox: true
+        gallery: false
+        highlight: tango
+title: "Problem Set 5 Solutions"
+author: "Paul Goldsmith-Pinkham"
+---
+
+
+```{r setup, include=FALSE}
+library(fixest)
+library(tidyverse)
+```
+
+
+# Problem 1 -- Poisson regs
+```{r, include = FALSE}
+detroit <- read_csv("data/Detroit.csv")
+```
+
+
+## Part a 
+Run an OLS regression of `flows` on
+    `distance\_Google\_miles`, and include `home\_ID` and
+    `work\_ID` fixed effects (absorb them), and cluster on
+    \texttt{home\_ID}. Report the coefficient and standard error on
+    \texttt{distance\_Google\_miles}.
+```{r}
+feols(flows ~ distance_Google_miles | home_ID + work_ID, vcov=~home_ID, data = detroit)
+```
+
+
+## Part b
+Run an OLS regression of \texttt{log(flows)} on
+    \texttt{log(distance\_Google\_miles)} and include \texttt{home\_ID}
+    and \texttt{work\_ID} fixed effects , omitting the cells with zero
+    flows. Cluster on \texttt{home\_ID}. Report the coefficient and
+    standard error on \texttt{log(distance\_Google\_miles)}.
+```{r}
+feols(log(flows) ~ log(distance_Google_miles), data = detroit  %>% filter(flows > 0))
+```
+
+## Part c
+
+  \item Repeat part 1b, but instead of omitting the zero cells, run
+    the OLS regression of \texttt{log(c + flows)} for c = 0.1, 1 and
+    10. Compare how your coefficients change
+```{r}
+for (c in c(0.1, 1, 10)) {
+  print(feols(log(flows + c) ~ log(distance_Google_miles), data = detroit))
+}
+```
+
+We see very large changes in the coefficient, likely driven by the fact that there are a number of observations with zero flows. Hence, the choice of $c$ is extremely important, as pointed out in Chen and Roth. 
+
+
+## Part d
+
+  \item Finally, repeat part 1a using Poisson regression, and contrast
+    the estimates to Part b and c.
+
+```{r}
+fepois(flows ~ distance_Google_miles | home_ID + work_ID, vcov=~home_ID, data = detroit)
+```
+We see similar estimated coefficients to part a, but recall that the interpretation of the Poisson regression is very different -- Poisson estimates $log(E(Y|X))$ rather than $E(Y|X)$. Hence, we can interpret the effect as `r round((exp(-0.8854) - 1)*100)` percent change in the expected value of flows for a one unit change in distance.
+
+To have the same interpretation in part a, we would run
+```{r}
+feols(log(flows) ~ distance_Google_miles | home_ID + work_ID, vcov=~home_ID, data = detroit)
+```
+and get `r round((exp(-0.039045)-1)*100)` percent change in the expected value of flows for a one unit change in distance.
+
+# Problem 2 -- Duration model
+
+```{r}
+
+acs_data <- read_csv("data/acs_duration.csv")
+
+```
+# part a
+Using the ACS data, write down how to estimate the unconditional probability that a household stays in a home for T or more years, using the available data. Estimate this for $T=7$ and report the value.
+
+We can observe the empirical CDF of the duration variable. 
+```{r}
+acs_data %>% 
+ggplot(aes(x = moving_approx)) + 
+  stat_ecdf() + 
+  labs(title = "CDF of 'How long have you lived here?'")
+```
+
+The share of households that have lived in their home for 7 years or more is `r mean(acs_data$moving_approx >= 7)`.
+
+However, this will give us a biased estimate of the share of households that live in their home for 7 years or more, as we are not accounting for censoring. 
+
+# Part b
+Calculate the hazard rate for each observed value of
+      `moving\_approx`. Report this value for $T=7$.
+
+# Part c
+    \item Recalculate these hazard values for $T=7$ for homeowners and
+      renters. Contrast the difference in hazard rates over time.

@@ -24,3 +24,9 @@ homework_list.xlsx
 *.nav
 *.snm
 *.blg
+homework/data/Divorce-Wolfers-AER.dta
+homework/homework4.synctex (Paul Goldsmith-Pinkham's conflicted copy 2025-02-14 4).gz
+homework/homework4 (Paul Goldsmith-Pinkham's conflicted copy 2025-02-14 6).pdf
+grading/*
+.gitignore
+homework/data/116250-V1*

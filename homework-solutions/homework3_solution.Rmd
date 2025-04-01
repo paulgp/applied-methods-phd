@@ -1,0 +1,213 @@
+---
+output:
+    rmdformats::robobook:
+        self_contained: true
+        thumbnails: true
+        lightbox: true
+        gallery: false
+        highlight: tango
+title: "Problem Set 3 Solutions"
+author: "Paul Goldsmith-Pinkham"
+---
+
+# Problem 1 - Inference
+For this problem, use the dataset `networth_delta_elas.csv`, where `county_fips` is the county FIPS code, `statename` is the state FIPS code, `elasticity` is the Saiz elasticity measure, `total` is the number of households in each county, and `netwp_h` is the change in net worth within a county from 2006 to 2009.
+
+First we load some convenience packages and set seed:
+```{r, message = FALSE}
+library(tidyverse)
+library(data.table)
+library(fixest)
+library(broom)
+set.seed(1234)
+```
+
+## Part a
+Write a function to esitmate the linear regression of networth change against a constant and the Saiz elasticiy. Report the coefficient on the elasticity. 
+```{r}
+regress <- function(y, M) {
+  n <- dim(M)[1]
+  k <- dim(M)[2]
+  coef <- solve(t(M) %*% M) %*% t(M) %*% y
+  se <- std_errors(y, M, coef)
+  return(list(coef = coef, se = se))
+}
+
+std_errors <- function(y, M, coef) {
+  n <- dim(M)[1]
+  k <- dim(M)[2]
+  P <- M %*% solve(t(M) %*% M) %*% t(M)
+  eps <- y - M %*% coef
+  sigma_sq <- t(eps) %*% eps / (n - k)
+  v_homosk <- sigma_sq[1, 1] * solve(t(M) %*% M)
+  se_homosk <- sqrt(diag(v_homosk))
+  v_robust <- (n[1] / (n[1] - k[1])) * solve(t(M) %*% M) %*% t(M) %*% diag(eps[, 1]^2) %*% M %*% solve(t(M) %*% M)
+  se_robust <- sqrt(diag(v_robust))
+  v_hc2 <- solve(t(M) %*% M) %*% t(M) %*% diag((eps[, 1]^2) / (1 - diag(P))) %*% M %*% solve(t(M) %*% M)
+  se_hc2 <- sqrt(diag(v_hc2))
+  v_hc3 <- solve(t(M) %*% M) %*% t(M) %*% diag((eps[, 1]^2) / (1 - diag(P))^2) %*% M %*% solve(t(M) %*% M)
+  se_hc3 <- sqrt(diag(v_hc3))
+  return(list(
+    se_homosk = se_homosk,
+    se_robust = se_robust,
+    se_hc2 = se_hc2,
+    se_hc3 = se_hc3
+  ))
+}
+```
+
+
+```{r}
+ms_data <- read_csv("data/networth_delta_elas.csv")
+rhs <- cbind(matrix(rep(1, length(ms_data$elasticity))), matrix(ms_data$elasticity))
+reg_results <- regress(ms_data$netwp_h, rhs)
+reg_results$coef
+```
+
+## Part b
+Next, estimate the homoskedastic SE, heteroskedasticity-robust SE, HC2, and HC3 standard errors for the elasticity estimate.
+
+```{r}
+reg_results$se
+```
+
+
+## Part c
+Now, we will estimate the three standard errors from Abadie et al. (2020) [see section 4 for details]. 
+
+```{r}
+n <- length(ms_data$elasticity)
+eps <- matrix(ms_data$netwp_h - rhs %*% reg_results$coef)
+elas_demean <- ms_data$elasticity - mean(ms_data$elasticity)
+Z <- matrix(rep(1, n))
+X <- matrix(ms_data$elasticity)
+gamma <- solve(t(Z) %*% Z) %*% t(Z) %*% X
+X_tilde <- X - Z %*% gamma
+gamma <- (1 / n) * t(X_tilde) %*% X_tilde
+D_ehw <- (1 / n) * sum(elas_demean * (eps^2) * X_tilde)
+V_ehw <- (1 / n) * solve(gamma) %*% D_ehw %*% solve(gamma)
+sqrt(diag(V_ehw))
+rho <- n / 3006
+V_descr <- (1 - rho) * V_ehw
+sqrt(diag(V_descr))
+
+G <- t(X_tilde * eps) %*% Z %*% solve(t(Z) %*% Z)
+
+D_z <- (1 / n) * t(elas_demean * eps - Z %*% G) %*% (elas_demean * eps - Z %*% G)
+
+V_causal_sample <- (1 / n) * solve(gamma) %*% D_z %*% solve(gamma)
+V_causal <- rho * V_causal_sample + (1 - rho) * V_ehw
+sqrt(diag(V_causal_sample))
+sqrt(diag(V_causal))
+```
+
+Now reimplement this approach, but include state fixed effects as controls in Z. Report your estimates for the standard errors using V^{EHW}, V^{descr}, V^{causal} and V^{causal,sample} in this setting.
+  
+```{r}
+## with state Fe
+reg3 <- feols(netwp_h ~ elasticity | factor(statename), data = ms_data)
+summary(reg3, "hetero")
+Z <- as.matrix(model.matrix(~ factor(ms_data$statename)))
+X <- matrix(ms_data$elasticity)
+Y <- matrix(ms_data$netwp_h)
+W <- cbind(Z, X)
+coef <- solve(t(W) %*% W) %*% t(W) %*% Y
+eps <- matrix(ms_data$netwp_h - W %*% coef)
+
+gamma <- solve(t(Z) %*% Z) %*% t(Z) %*% X
+X_tilde <- X - Z %*% gamma
+gamma <- (1 / n) * t(X_tilde) %*% X_tilde
+D_ehw <- (1 / n) * sum(elas_demean * (eps^2) * X_tilde)
+V_ehw <- (1 / n) * solve(gamma) %*% D_ehw %*% solve(gamma)
+sqrt(diag(V_ehw))
+rho <- n / 3006
+V_descr <- (1 - rho) * V_ehw
+sqrt(diag(V_descr))
+
+G <- t(X_tilde * eps) %*% Z %*% solve(t(Z) %*% Z)
+
+D_z <- (1 / n) * t(X_tilde * eps - Z %*% t(G)) %*% (X_tilde * eps - Z %*% t(G))
+
+V_causal_sample <- (1 / n) * solve(gamma) %*% D_z %*% solve(gamma)
+V_causal <- rho * V_causal_sample + (1 - rho) * V_ehw
+sqrt(diag(V_causal_sample))
+sqrt(diag(V_causal))
+```
+
+
+# Problem 2 - Binscatter
+For this problem, use the dataset
+`yearly_hp_full_sample.csv`, where `county_fips` is
+the county FIPS code, `statename` is the state FIPS code,
+`year` is the year, `elasticity` is the Saiz
+elasticity measure, `total` is the number of
+households in each county, `hpi` is Zillow House Price value, and `hpa` is the annual growth in house prices. For this problem, you may use your own regression estimate function, or a pre-existing function to estimate the regression.
+
+## Part a
+Regress HPA on the elasticity measure interacted with year, using your constructed function. I.e. 
+
+\begin{equation}
+hpt_{it} = \alpha_{t} + \sum_{s}\texttt{elasticity}_{i}\times 1(year_{t} = s)\beta_{t}
+\end{equation}
+
+Plot the $\beta_{t}$ coefficient for each year across time. Report the coefficient measuring the effect of elasticity in 2008.
+```{r}
+hp_data <- read_csv("data/yearly_hp_full_sample.csv")
+
+yearly_coef <- tidy(feols(hpa ~ factor(year) + elasticity:factor(year) | factor(county_fips), data = hp_data)) %>%
+  filter(str_detect(term, "elasticity")) %>%
+  separate(term, into = c("term"), sep = ":") %>%
+  separate(term, into = c("factor", "year"), sep = "\\(year\\)") %>%
+  select(-factor) %>%
+  mutate(year = as.numeric(year))
+
+ggplot(data = yearly_coef) +
+  geom_point(aes(y = estimate, x = year)) +
+  theme_minimal() +
+  geom_hline(yintercept = 0)
+
+yearly_coef %>%
+  filter(year == 2008) %>%
+  pull(estimate)
+```
+
+
+
+## Part b
+Next, construct the house price change from 2001 to 2008, and 2008-2010 for each county.  Construct 10 decile dummies for the elasticity and reestimate the regression, using the two long changes as observations, using the ten dummies in the place of the continuous elasticity measure:
+\begin{equation}
+  \texttt{hpa}_{it} = \alpha_{2001-2008} + \alpha_{2008-2010} + \sum_{b = 1}^{10}\texttt{elasticity}_{b}\times \beta_{t} + \sum_{b = 1}^{10}\texttt{elasticity}_{b}\times 1(year = 2008-2010) \times \gamma_{t}.
+\end{equation}
+Plot these decile effects such that each point reflects an approximation to the conditional expectation function, for both periods. Report the value on $\gamma$ for the first decile.
+
+```{r}
+long_changes = hp_data %>% filter(year %in% c(2001,2008, 2010)) %>% select(-hpa)
+
+long_changes = long_changes %>% 
+spread(year, hpi) %>% 
+mutate(hpa_2010 = log(`2010`) - log(`2008`), 
+       hpa_2008 = log(`2008`) - log(`2001`)) %>% 
+  select(-`2010`, -`2008`, -`2001`) %>% 
+  gather(year, hpa, -c(county_fips, statename, elasticity, total, n)) %>%
+  mutate(post = year == "hpa_2010")
+
+
+cutpoints <- quantile(long_changes$elasticity, c(10, 20, 30, 40, 50, 60, 70, 80, 90) / 100)
+elas_bin <- cut(long_changes$elasticity, c(0, cutpoints, Inf))
+
+long_changes$elas_bin <- elas_bin
+
+bin_means <- long_changes %>%
+  group_by(elas_bin, post) %>%
+  summarize(
+    x = mean(elasticity, na.rm = TRUE),
+    y = mean(hpa, na.rm = TRUE)
+  )
+
+ggplot(data = bin_means) +
+  geom_point(aes(y = y, x = x, color = post)) +
+  theme_minimal() +
+  geom_hline(yintercept = 0) 
+bin_means
+bin_means[2,4] - bin_means[1,4]
+```

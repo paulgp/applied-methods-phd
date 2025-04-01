@@ -1,0 +1,305 @@
+
+---
+output:
+    rmdformats::robobook:
+        self_contained: true
+        thumbnails: true
+        lightbox: true
+        gallery: false
+        highlight: tango
+title: "Problem Set 4 Solutions"
+author: "Paul Goldsmith-Pinkham"
+---
+
+
+
+First we load some convenience packages,data and set seed:
+```{r, message = FALSE}
+library(tidyverse)
+library(data.table)
+library(fixest)
+library(broom)
+set.seed(1234)
+nsw_data <- read_csv("data/lalonde_nsw.csv")
+psid_data <- read_csv("data/lalonde_psid.csv")
+nsw_data %>%
+    group_by(education) %>%
+    tally()
+```
+
+
+# Problem 1 - Quantile Regression
+
+Defining the quantile regression function
+```{r}
+chamberlain_qr <- function(data_mat, tau) {
+    data_qr <- data_mat %>%
+        group_by(x) %>%
+        summarize(
+            y_quant = quantile(y, tau), q = tau,
+            n = n()
+        ) %>%
+        mutate(
+            total = length(data_mat$x),
+            pi = n / total
+        )
+    y <- data_qr$y_quant
+    x <- as.matrix(tibble(rep(1, length(data_qr$x)), data_qr$x))
+    pi <- data_qr$pi
+    N <- data_qr$n
+    w <- diag(data_qr$pi)
+    beta <- solve(t(x) %*% w %*% x) %*% t(x) %*% w %*% y
+    eps <- y - x %*% beta
+    b <- round(tau * N - 1.96 * sqrt(tau * (1 - tau) * N))
+    b[b <= 1] <- 1
+    t <- round(tau * N + 1.96 * sqrt(tau * (1 - tau) * N))
+    t[t >= N] <- N[t >= N]
+    sigma_sq <- data_mat %>%
+        arrange(x, y) %>%
+        nest(data = -x) %>%
+        mutate(x_num = row_number()) %>%
+        unnest(cols = c(data)) %>%
+        group_by(x) %>%
+        mutate(row_num = row_number()) %>%
+        left_join(
+            tibble(x_num = seq(1, length(b)), b = b)
+        ) %>%
+        left_join(
+            tibble(x_num = seq(1, length(b)), t = t)
+        ) %>%
+        filter(b == row_num | t == row_num) %>%
+        mutate(
+            y_min = case_when(
+                b == row_num ~ y,
+                TRUE ~ 0
+            ),
+            y_max = case_when(
+                t == row_num ~ y,
+                TRUE ~ 0
+            )
+        ) %>%
+        group_by(x) %>%
+        summarize(
+            y_min = max(y_min),
+            y_max = max(y_max)
+        ) %>%
+        bind_cols(tibble(N = N)) %>%
+        mutate(sigma = N * ((y_max - y_min) / (2 * 1.96))^2) %>%
+        pull(sigma)
+    Sigma <- diag(sigma_sq) * (diag(1 / pi))
+    V <- solve(t(x) %*% w %*% x) %*% t(x) %*% w %*% Sigma %*% w %*% x %*% solve(t(x) %*% w %*% x)
+    Delta <- diag(eps^2) * (diag(1 / pi))
+    D <- solve(t(x) %*% w %*% x) %*% t(x) %*% w %*% Delta %*% w %*% x %*% solve(t(x) %*% w %*% x)
+    Var_mat <- V + D
+    se <- sqrt(diag(Var_mat) / sum(N))
+    return(list(
+        coef = beta[2],
+        se = se[2]
+    ))
+}
+```
+
+
+## Part a
+
+We will begin by defining an estimation approach for doing quantile regression that doesn't require linear programming. This approach comes from Gary Chamberlain (in Chamberlain (1994), and discussed in Angrist et al. (2006)). 
+
+Let $X$ be a (discrete) right hand side variable with $J$ discrete values.  For each $j$ value of $X = x_{j}$, calculate $\hat{\pi}_{\tau}(x) = Q_{tau}(Y|X_{j})$, which is the $\tau$ percentile of the outcome variable, conditional on the value of $X$, and $\hat{p}_{j}$, which is the empirical probability of $X = x_{j}$.  Do so using the PSID dataset for `X = education`, for $\tau = (0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)$, using `re78` as the outcome variable.
+
+```{r, messsage = FALSE}
+psid_data_qr_educ <- psid_data %>%
+    group_by(education) %>%
+    summarize(
+        y_quant = quantile(re78, seq(0.1, 0.9, 0.1)), q = seq(0.1, 0.9, 0.1),
+        n = n()
+    ) %>%
+    mutate(
+        total = length(psid_data$treat),
+        pi_educ = n / total
+    )
+
+psid_data_qr_educ %>%
+    head() %>%
+    kableExtra::kable(digits = 3)
+```
+
+
+## Part b + c 
+```{r, message = FALSE}
+data <- psid_data %>%
+    rename(
+        y = re78,
+        x = education
+    )
+tau_values <- seq(0.1, 0.9, 0.1)
+
+output_list <- lapply(tau_values, function(tau) chamberlain_qr(data, tau))
+
+b_qr <- sapply(output_list, function(output) output$coef)
+se_qr <- sapply(output_list, function(output) output$se)
+output <- tibble(tau = seq(0.1, 0.9, 0.1), b = b_qr, se = se_qr)
+output
+# compare results to quantile regression function
+library(quantreg)
+rqfit <- rq(y ~ x, tau = seq(0.1, 0.9, 0.1), data = data)
+summary(rqfit, se = "nid")
+# Difference is due to mismeasurement in Q(Y|X) -- see Angrist, Chernozhukov and Hansen (2006)
+```
+
+# Part d
+```{r, message = FALSE}
+data <- nsw_data %>%
+    rename(
+        y = re78,
+        x = treat
+    )
+
+tau_values <- seq(0.1, 0.9, 0.1)
+
+output_list <- lapply(tau_values, function(tau) chamberlain_qr(data, tau))
+
+b_qr <- sapply(output_list, function(output) output$coef)
+se_qr <- sapply(output_list, function(output) output$se)
+output <- tibble(tau = seq(0.1, 0.9, 0.1), b = b_qr, se = se_qr)
+output
+```
+
+
+## Question 2
+
+
+```{r}
+data <- psid_data %>%
+    rename(
+        y = re78,
+        x = education
+    )
+
+b_uqr <- rep(0, length(seq(0.1, 0.9, 0.1)))
+i <- 1
+for (tau in seq(0.1, 0.9, 0.1)) {
+    q_tau <- quantile(data$y, probs = tau)
+    b <- 2534.263
+    f_y_tau <- (1 / (length(data$y) * b)) * sum(dnorm((data$y - q_tau) / b))
+    c_1_tau <- 1 / f_y_tau
+    c_2_tau <- q_tau - c_1_tau * (1 - tau)
+
+    rif <- c_1_tau * (data$y > q_tau) + c_2_tau
+
+    X_mat <- as.matrix(tibble(rep(1, length(data$x)), data$x))
+    beta <- solve(t(X_mat) %*% X_mat) %*% t(X_mat) %*% as.matrix(rif)
+    b_uqr[i] <- beta[2, 1]
+    i <- i + 1
+}
+
+ggplot(data = tibble(qr = b_qr, uqr = b_uqr, tau = seq(0.1, 0.9, 0.1))) +
+    geom_point(aes(y = qr, x = tau), color = "red") +
+    geom_point(aes(y = uqr, x = tau), color = "blue")
+```
+
+## Question 3
+
+```{r}
+nsw_treat <- nsw_data[nsw_data$treat == 1, ]
+psid_control <- psid_data[psid_data$treat == 0, ]
+
+dw_data <- rbind(nsw_treat, psid_control) %>% mutate(
+    re74_miss = re74 == 0,
+    re75_miss = re75 == 0,
+    age_sq = age^2,
+    age_cube = age^3,
+    re74_sq = re74^2,
+    re75_sq = re75^2,
+    re74_cube = re74^3,
+    re75_cube = re75^3
+)
+library(hdm)
+X <- cbind(model.matrix(~ as.factor(dw_data$education) - 1), as.matrix(dw_data %>% select(hispanic, black, re74_miss, re75_miss, age, re74, re75, ends_with("sq"), ends_with("cube"))))
+Y <- dw_data$re78
+D <- dw_data$treat
+
+outcome_reg <- rlasso(Y ~ X)
+treat_reg <- rlasso(D ~ X)
+
+I1 <- outcome_reg$beta != 0
+I2 <- treat_reg$beta != 0
+
+I <- I1 | I2
+subset_X <- X[, I]
+
+summary(lm(Y ~ D + subset_X))
+tidy(lm(Y ~ D + subset_X)) %>%
+    filter(term == "D") %>%
+    pull(estimate)
+```
+
+## Part B
+
+```{r}
+dw_data <- nsw_data %>% mutate(
+    re74_miss = re74 == 0,
+    re75_miss = re75 == 0,
+    age_sq = age^2,
+    age_cube = age^3,
+    re74_sq = re74^2,
+    re75_sq = re75^2,
+    re74_cube = re74^3,
+    re75_cube = re75^3
+)
+X <- cbind(model.matrix(~ as.factor(dw_data$education) - 1), as.matrix(dw_data %>% select(hispanic, black, re74_miss, re75_miss, age, re74, re75, ends_with("sq"), ends_with("cube"))))
+Y <- dw_data$re78
+D <- dw_data$treat
+
+outcome_reg <- rlasso(Y ~ X)
+treat_reg <- rlasso(D ~ X)
+
+I1 <- outcome_reg$beta != 0
+I2 <- treat_reg$beta != 0
+
+I <- I1 | I2
+subset_X <- X[, I]
+
+dim(subset_X)
+```
+
+## Question 4
+
+```{r}
+health_data <- read_csv("data/health_ins.csv")
+
+Y <- health_data$has_insurance
+X <- cbind(rep(1, length(Y)), health_data %>% select(-has_insurance, -czone) %>% as.matrix())
+ols_health <- lm(Y ~ X - 1)
+lasso_health <- rlasso(Y ~ X, intercept = FALSE)
+
+svd_X <- svd(X)
+F <- svd_X$u %*% solve(diag(svd_X$d)) %*% t(svd_X$u)
+
+Y_tilde <- F %*% Y
+X_tilde <- F %*% X
+ols_health_puffer <- lm(Y_tilde ~ X_tilde - 1)
+lasso_health_puffer <- rlasso(Y_tilde ~ X_tilde, intercept = FALSE)
+
+ols_health$coefficients[3]
+lasso_health$coefficients[3]
+dim(X[, lasso_health$coefficients != 0])
+
+ols_health_puffer$coefficients[3]
+lasso_health_puffer$coefficients[3]
+dim(X[, lasso_health_puffer$coefficients != 0])
+
+post_lasso_health_puffer <- lm(Y ~ X[, lasso_health_puffer$coefficients != 0] - 1)
+post_lasso_health_puffer$coefficients[3]
+tidy(post_lasso_health_puffer) %>%
+    filter(term == "X[, lasso_health_puffer$coefficients != 0]cs_frac_hisp") %>%
+    pull(std.error)
+
+ols_health$coefficients[3]
+tidy(ols_health) %>%
+    filter(term == "Xcs_frac_hisp") %>%
+    pull(std.error)
+
+
+summary(post_lasso_health_puffer)
+summary(ols_health)
+```
