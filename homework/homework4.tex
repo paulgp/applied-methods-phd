@@ -66,6 +66,16 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
 \end{center}
 
 
+You should have gotten this homework assignment from the Github classroom environment (\url{https://classroom.github.com/classrooms/192971645-yale-mgmt-737-spring-2025-classroom}). In submitting your problem set, you should have two files in your Github repository:
+
+
+\begin{enumerate}
+  \item \texttt{homework4-code.R}, which contains your code,
+  \item \texttt{homework4-writeup.pdf}, which contains your writeup 
+\end{enumerate} 
+
+You may have other files / folders if necessary when there are images or auxiliary files. My very strong preference is for you to write this up in R. If this is not possible, you can use Python. Please let me know if you're planning on this. (This is not a coding preference, but mainly a grading issue.)
+
 \begin{enumerate}
 \item \textbf{Quantile Regression}. This analysis will use the dataset
   from Problem Set 1, \texttt{lalonde\_nsw.csv} (which I will refer to
@@ -86,6 +96,8 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
     $X = \textrm{education}$, for
     $\tau = (0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)$, using
     \texttt{re78} as the outcome variable.
+
+\hspace{10pt} $\rightarrow$ Label the calculated value for  $\tau=0.5$ value as \texttt{tau\_med\_1a} in your code.
   \item Given these inputs, the quantile regression slope
     estimates is just
     $$ \hat{\beta}_{\tau} = \arg\min_{b} \sum_{j} (\hat{\pi}_{\tau}(x_{j}) - x_{j}b)^{2}\hat{p}_{j}.$$
@@ -93,6 +105,8 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
     problem), with the diagonal weight matrix
     $\hat{W} = diag(\hat{p}_{1}, \ldots, \hat{p}_{J})$. Estimate
     $\hat{\beta}_{\tau}$ for the education example above.
+
+    \hspace{10pt} $\rightarrow$ Label the calculated value for  $\tau=0.5$ value as \texttt{tau\_med\_beta\_1b} in your code.    
   \item Our variance estimator is the sum of two terms (coming from
     uncertainty in the QCF, and the estimation of the slope
     conditional on those terms), $V$ and $D$:
@@ -116,9 +130,13 @@ observations in the $j$th bin of $X$. Then,
   \hat{\sigma}^{2}_{\tau,j} = N_{j}\left(\frac{y_{j(t_{j})}-y_{j(b_{j})}}{2 z_{1-\alpha}}\right)^{2}.
 \end{equation}
 Report the standard error on your estimates, which is calculated as $\sqrt{(V+D)/N}$
+
+\hspace{10pt} $\rightarrow$ Label the calculated value for  $\tau=0.5$ value as \texttt{se\_med\_1c} in your code.
 \item Finally, using the NSW dataset, calculate the
   $\tau = (0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)$ treatment effects, and their
   standard errors.
+
+\hspace{10pt} $\rightarrow$ Label the calculated values for  $\tau=0.5$ value as \texttt{tau\_med\_1d\_nsw} and \texttt{se\_med\_1d\_nsw} in your code.
 \end{enumerate}
 \item \textbf{Unconditional Quantile Effects} This analysis will walk
   through an alternative way of approaching quantile effects, using
@@ -150,7 +168,7 @@ Report the standard error on your estimates, which is calculated as $\sqrt{(V+D)
     the density of $\hat{q}_{\tau}$. Calculate this directly using the
     following estimator:
     $$\hat{f}_{Y}(\hat{q}_{\tau}) = \frac{1}{Nb} \sum_{i = 1}^{N}K(\frac{Y_{i} - \hat{q}_{\tau}}{b}$$
-    Assume $b = 2534.263$ (this bandiwdth depending on the outcome),
+    Assume $b = 2534.263$ (this bandwidth depending on the outcome),
     and let $K$ be the Gaussian kernel,
     $$K(u) = \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{u^{2}}{2}\right)$$.
   \item Finally, we need to estimate $E(dPr(Y > q_{\tau} | X) /
@@ -164,8 +182,10 @@ Report the standard error on your estimates, which is calculated as $\sqrt{(V+D)
     the coefficient on $X_{i}$. This is the estimate for the $UQPE$ at
     the $\tau$ quantile.
   \item Implement the above estimation procedure for
-      $\tau = (0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)$. Compare these results to your
-    results in Part I.
+      $\tau = (0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)$. Compare these results to your results in Part I.
+
+      \hspace{10pt} $\rightarrow$ Label the calculated values for  $\tau=0.5$ value as \texttt{tau\_med\_2\_uncond} and \texttt{se\_med\_2\_uncond} in your code.
+
   \end{enumerate}
 \item \textbf{Debiased Lasso Regression}. We'll now consider estimation of
   Double/De-biased Lasso. Using the treated units in the NSW dataset
@@ -181,6 +201,9 @@ Report the standard error on your estimates, which is calculated as $\sqrt{(V+D)
     and in Stata in Lassopack), implement the DML codebook to identify
     the subset of $X$ to control for in the regression of $Y$ on $D$
     and controls. Report the coefficient on D.
+
+    \hspace{10pt} $\rightarrow$ Label the calculated coefficient on $D$ as \texttt{tau\_3} in your code.
+
   \item Now reimplement this using NSW dataset. What variables get
     selected in $X$?
   \end{enumerate}
@@ -194,18 +217,26 @@ Report the standard error on your estimates, which is calculated as $\sqrt{(V+D)
   variables in the dataset (except for \texttt{czone}).
   \begin{enumerate}
   \item Estimate the OLS regression of Y on X and report the coefficient on \texttt{cs\_frac\_hisp}
+
+  \hspace{10pt} $\rightarrow$ Label the calculated coefficient as \texttt{beta\_4a} in your code.
   \item Now estimate Lasso (using rLasso as before), and report the coefficient on \texttt{cs\_frac\_hisp}, and the number of non-zero coefficients
+
+  \hspace{10pt} $\rightarrow$ Label the calculated coefficient as \texttt{beta\_4b} in your code.
   \item Implement the Puffer transformation of $Y$ and $X$
     using the singular value decomposition of $X$ (you should use a
     built-in package to get these values) to construct a
     pre-multiplying matrix $F$. Report the coefficient on
     \texttt{cs\_frac\_hisp} and the number of non-zero coefficients of
-    the regressino of $FY$ on $FX$.
+    the regression of $FY$ on $FX$.
+
+    \hspace{10pt} $\rightarrow$ Label the calculated coefficient as \texttt{beta\_4c} in your code.
   \item Take the non-zero coefficients from the Puffer lasso
     regression, and rerun OLS using those selected coefficients (using
     the non-puffered data). Report the coefficient on
     \texttt{cs\_frac\_hisp}, and the standard error, and compare to the
     original OLS regression and standard error.
+
+    \hspace{10pt} $\rightarrow$ Label the calculated coefficient as \texttt{beta\_4d} in your code.
   \end{enumerate}
 \end{enumerate}
 

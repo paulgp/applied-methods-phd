@@ -83,25 +83,45 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
   \texttt{samesex} and \texttt{twins\_2}.
   \begin{enumerate}
   \item Replicate the coefficients from Table 5, Column 1, rows 1-4, using a linear regression.
+  
+        \hspace{10pt} $\rightarrow$ Report your answer for row 1 as \texttt{problem\_1a} in your code.
+        
   \item Replicate the coefficients from Table 5, Column 2, rows 3-4,
     using 2SLS. Convince yourself you could construct this estimate by
     hand using the result in the previous answer.
+    
+        \hspace{10pt} $\rightarrow$ Report your answer for row 3 as \texttt{problem\_1b} in your code.
+        
   \item Replicate the coefficients from Table 5, Column 7, rows 1-4, using a linear regression.
+  
+        \hspace{10pt} $\rightarrow$ Report your answer for row 1 as \texttt{problem\_1c} in your code.
+        
   \item For the endogeneous vairable ``More than 2 children'', what is
     the complier share for each of the two instruments?
+    
+        \hspace{10pt} $\rightarrow$ Report your answer as \texttt{problem\_1d} in your code.
+        
   \item For the endogeneous vairable ``More than 2 children'' and each
     of the two instruments, what is the average share of the complier
     population with an education greater than high school
     (\texttt{moreths})? What about different mother race shares?
+    
+        \hspace{10pt} $\rightarrow$ Report your answer for moreths as \texttt{problem\_1e} in your code.
+        
   \item Using the Same sex instrument, construct the Weak IV robust
     Anderson-Rubin confidence intervals using the algorithm outlined
     in Chernozhukov and Hansen (2007) (see the slides)
+    
+        \hspace{10pt} $\rightarrow$ Report the size of the confidence interval from your answer as \texttt{problem\_1f} in your code.
+        
   \end{enumerate}
+  
 \item \textbf{Kitagawa test} Now we implement the Kitagawa
   (2015) test for instrument validity. We will focus on the
   \textit{worked for pay} outcome as our endogeneous variable $Y$,
   more than two children as our endogeneous variable, and our two
   instruments will be as before (same sex and twins). Implement the procedure below for both instruments.
+  
   \begin{enumerate}
   \item Let
     $P(y,d) = n_{1}^{-1} \sum_{i : Z_{i} = 1} 1(Y_{i} = y, D_{i} = d)$,
@@ -111,6 +131,9 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
     where $n_{1}$ is the number of observations where $Z_{i} = 0$ in
     the sample. $n = n_{0} + n_{1}$ Estimate $P(y,d)$ and $Q(y,d)$ and
     report them for the 4 possible pairs of $(y,d)$.
+    
+        \hspace{10pt} $\rightarrow$ Report $P(1,1)$ as \texttt{problem\_2a} in your code.
+        
   \item Next, we want to calculate the following statistic (Note that this is simplified relative to the general Kitagawa case because $Y$ is binary):
     \begin{align*}
       T = \left(\frac{n_{0}n_{1}}{n}\right)^{1/2} \max \bigl\{&\sup_{y\in \{0,1\}} \left\{\frac{Q(y,1) - P(y,1)}{\xi \vee \sigma_{P,Q}(y,1)}\right\},\\
@@ -122,6 +145,9 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
     \end{equation*}
     Estimate $\sigma$ for each of the four possible pairs of $(y,d)$,
     and then calculate the $T$ based using a $\xi = 0.1$. Report this T statistic.
+    
+        \hspace{10pt} $\rightarrow$ Report your answer for $T$ as \texttt{problem\_2b} in your code.
+        
   \item Now, we need to construct critical values for the statistic
     $T$. First, take the subsample of $n_{1}$ observations where
     $Z_{i}=1$. Sample a new set of $n_{1}$ observations from this
@@ -134,12 +160,18 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
     $Z_{0} = 0$ using $H(y,d)$. Use this to construct $Q^{*}$. Then,
     calculate the $T$ statistic above, but using $P^{*}$ and $Q^{*}$
     in place of $P$ and $Q$.
+    
+        \hspace{10pt} $\rightarrow$ Report your answer for $T^{*}$ as \texttt{problem\_2c} in your code.
+        
   \item Repeat this last process 500 times and construct a
     distribution of the $T^{*}$. We reject the null of instrument
     validity (exclusion and monotonicity) at the 5 percent level if
     $T$ is greater than the 95th percentile of the distribution of
     $T^{*}$. Identify what quantile $T$ sits in the distribution of
     $T^{*}$.
+    
+        \hspace{10pt} $\rightarrow$ Report the quantile as \texttt{problem\_2d} in your code.
+        
   \end{enumerate}
   % For the future
 % \item PART III: \textbf{Weak and Many IV} In this problem, we will use simulated data. You should use built-in software to estimate 2SLS.
