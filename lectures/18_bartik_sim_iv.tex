@@ -421,61 +421,35 @@ Market size and demography: e.g., Acemoglu and Linn (2004)
 
 \end{frame}
 
-\begin{frame}{Key thing to remember from today}
-  \begin{itemize}
-  \item Assuming independence or exogeneity on the basis of a model
-    does not necessarily make it true
-    \begin{itemize}
-    \item E.g. Hausman instruments in IO models -- model may assume
-      that exclusion restriction is satisfied, but not necessarily
-      true in reality
-    \end{itemize}
-  \item Assuming that two things are independent because they don't
-    seem ``related'' doesn't make it true 
-    \begin{itemize}
-    \item Bartik literature many times argues that national nature of
-      shocks ``decouples'' the instrument from local market
-      conditions. However, it still exploits local
-      characteristics. Need to make very specific arguments to
-      validate claim (will come to this).
-    \end{itemize}
-  \item When evaluating an identification strategy, you should be able
-    to describe counterfactual claims using the measure. This is
-    typically not concrete in Bartik -- try to make it concrete!
-    What is exactly changing in China? Why is it random? 
-  \end{itemize}
-\end{frame}
+
+% %-----
+% \begin{frame}
+% \frametitle{More general econometric set-up}
+% \begin{align}
+% y_{lt} & =\mathbf{D}_{lt}\beta_0 +x_{lt}\beta+\epsilon_{lt}, \notag \\
+% x_{lt} & =\mathbf{D}_{lt}\tau+ B_{lt}\gamma+\eta_{lt}\notag \\
+% \mathbf{D}_{lt} &= \text{\footnotesize{controls, f.e.}} \notag \\
+% g_{lkt} &=   \textcolor{blue}{g_{ kt}} + \textcolor{red}{\tilde{g}_{lkt}}  \notag \\
+% B_{lt} &= \sum_{k=1}^K z_{lk0} \textcolor{blue}{g_{kt}}, \notag \\
+% \{\{  &  x_{lt},\mathbf{D}_{lt},\epsilon_{lt} \}_{t=1}^T\}_{l=1}^L, \text{ iid, } L\rightarrow \infty \notag
+% \end{align}
 
 
 
-%-----
-\begin{frame}
-\frametitle{More general econometric set-up}
-\begin{align}
-y_{lt} & =\mathbf{D}_{lt}\beta_0 +x_{lt}\beta+\epsilon_{lt}, \notag \\
-x_{lt} & =\mathbf{D}_{lt}\tau+ B_{lt}\gamma+\eta_{lt}\notag \\
-\mathbf{D}_{lt} &= \text{\footnotesize{controls, f.e.}} \notag \\
-g_{lkt} &=   \textcolor{blue}{g_{ kt}} + \textcolor{red}{\tilde{g}_{lkt}}  \notag \\
-B_{lt} &= \sum_{k=1}^K z_{lk0} \textcolor{blue}{g_{kt}}, \notag \\
-\{\{  &  x_{lt},\mathbf{D}_{lt},\epsilon_{lt} \}_{t=1}^T\}_{l=1}^L, \text{ iid, } L\rightarrow \infty \notag
-\end{align}
-
-
-
-  Assumptions for IV in terms of $B_{lt}$:
-  \begin{itemize}
-	\setlength\itemsep{1em}
-  \item Exogeneity: $\mathbb{E}\left[B_{lt}\epsilon_{lt}\middle| \mathbf{D}_{lt}\right] = 0$
-  \item Relevance: $\text{Cov}\left[B_{lt}, x_{lt} \middle| \mathbf{D}_{lt}\right] \not= 0$
-  \end{itemize}
+%   Assumptions for IV in terms of $B_{lt}$:
+%   \begin{itemize}
+% 	\setlength\itemsep{1em}
+%   \item Exogeneity: $\mathbb{E}\left[B_{lt}\epsilon_{lt}\middle| \mathbf{D}_{lt}\right] = 0$
+%   \item Relevance: $\text{Cov}\left[B_{lt}, x_{lt} \middle| \mathbf{D}_{lt}\right] \not= 0$
+%   \end{itemize}
   
-    Question:
-  \begin{itemize}
-  \item What do these statements about $B_{lt}$ imply about $z_{lk0}$ and $\textcolor{blue}{g_{kt}}$?
-%\item Vice-versa?
-  \end{itemize}
+%     Question:
+%   \begin{itemize}
+%   \item What do these statements about $B_{lt}$ imply about $z_{lk0}$ and $\textcolor{blue}{g_{kt}}$?
+% %\item Vice-versa?
+%   \end{itemize}
 
-\end{frame}
+% \end{frame}
 
 \begin{frame}{Recent Literature on this topic}
   \begin{wideitemize}
@@ -493,153 +467,6 @@ B_{lt} &= \sum_{k=1}^K z_{lk0} \textcolor{blue}{g_{kt}}, \notag \\
   \end{wideitemize}
 \end{frame}
 
-
-%----
-\begin{frame}
-\frametitle{Understanding the identifying assumption in GPSS: Three  special cases}
-
-\begin{enumerate}
-  \setlength\itemsep{1em}
-\item One time period, two industries
-\item T time periods, two industries
-\item One time period, K industries
-\end{enumerate}
-
-\end{frame}
-
-
-
-%------
-\begin{frame}[label=twoindustries]
-\frametitle{Special case \#1: One time period, two industries}
-\begin{itemize}
-	\setlength\itemsep{1em}
-\item $z_{l2}= 1-z_{l1}$ 
-\item Bartik:  \begin{align*}B_l &= z_{l1} \textcolor{blue}{g_1} + z_{l2} \textcolor{blue}{g_2}  =z_{l1} \textcolor{blue}{g_1} + (1-z_{l1}) \textcolor{blue}{g_2} \notag \\
-&=\textcolor{blue}{g_2}+ (\textcolor{blue}{g_1} - \textcolor{blue}{g_2}) z_{l1} \notag
-\end{align*}
-\end{itemize} 
-First-stage:
-\begin{align*}
-x_l &= \gamma_0 + \gamma B_l + \eta_l \notag \\
-%x_l &= \gamma_0 + \gamma (\hat{g}_2+ (\hat{g}_1 - \hat{g}_2) z_{l1}) + \eta_l \notag \\
-x_l &= \underbrace{\gamma_0+\gamma \textcolor{blue}{g_2}}_{\text{constant}} + \underbrace{\gamma (\textcolor{blue}{g_1} - \textcolor{blue}{g_2})}_{\text{coefficient}} z_{l1} + \eta_l \notag 
-\end{align*}
-
-The instrument is $z_{l1}$, while $\textcolor{blue}{g_k}$ affects relevance
-
-\hyperlink{whyolsisbiased}{\beamergotobutton{Why OLS is biased}}
-
-
-
-
-\end{frame}
-
-
-
-
-
-
-
-
-
-
-%---------
-\begin{frame}
-\frametitle{Special case \#2:  T time periods, two industries }
-
-
-
-Panel Bartik:
-
-$$B_{lt} = z_{l10} \textcolor{blue}{g_{1t}}  +z_{l20} \textcolor{blue}{g_{2t}} = \textcolor{blue}{g_{2t}} + \underbrace{ \textcolor{blue}{\Delta_{gt}}}_{g_{1t}-g_{2t}} z_{l10}$$
-
-
-
-
-First stage:
-\begin{align}
-x_{lt} & =\tau_{l}+\tau_{t}+ \gamma B_{lt} +\eta_{lt} \notag\\
-x_{lt} & =\tau_{l}+\underbrace{(\tau_{t}+\gamma \textcolor{blue}{g_{2t}})}_{\tilde{\tau_{t}}}+\underbrace{\gamma  \textcolor{blue}{\Delta_{gt}}}_{\tilde{\gamma}_{t}}z_{l10}+\eta_{lt} \notag
-\end{align}
-
-
-
-
-\begin{itemize}
-\item Industry shares times time period is the instrument
-\item (Updated industry shares: similar)
-\end{itemize}
-
-
-\end{frame}
-
-
-
-%---------
-\begin{frame}
-\frametitle{Special case \#2:  T time periods, two industries }
-
-\begin{itemize}
-	\setlength\itemsep{1em}
-\item Analogy to continuous difference-in-differences 
-	\begin{itemize}
-	\setlength\itemsep{1em}
-	\item $\textcolor{blue}{\Delta_{gt}}$ is size of policy 
-	\item $z_{l10}$ is exposure to policy
-	\end{itemize} 
-\item Sometimes a ``pre-period'' before policy: test for parallel pre-trends 
-	\begin{itemize}
-	\setlength\itemsep{1em}
-	\item E.g., in ADH, what happens from 1970 to 1990?
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-
-%----
-\begin{frame}[label=kindustries]
-\frametitle{Special case \#3: One time period, K industries}
-
-\begin{itemize}
-	\setlength\itemsep{1em}
-\item $\textcolor{blue}{G}$: $K \times 1$ vector of $\textcolor{blue}{g_k}$
-\item $Z$: $L \times K$, matrix of $Z_l$
-\item $Y^\perp$, $X^\perp$, $B = (Z \textcolor{blue}{G})$: $L \times 1$, vectors of $y_l^\perp$, $x_l^\perp$ and $B_l$
-\item $\Omega$: $K\times K$
-\end{itemize}
-
-
-
-\begin{align*}
-  \hat{\beta}_{Bartik} &= \frac{B^\prime  Y^\perp}{B^\prime X^\perp}\\
-  \hat{\beta}_{GMM} &= \frac{(X^{\perp \prime}Z)\Omega (Z'Y^\perp)}{(X^{\perp \prime} Z)\Omega (Z'X^\perp)}
-\end{align*} 
-
- If $\Omega = (\textcolor{blue}{G} \textcolor{blue}{G}^\prime)$, then $\hat{\beta}_{Bartik}=\hat{\beta}_{GMM}$   
-
-\end{frame}
-
-%-----
-\begin{frame}
-\frametitle{Full general result with $T$ time periods and $K$ industries}
-
-Two estimators are numerically identical:
-\begin{itemize}
-\item TSLS with Bartik instrument
-\item GMM with industry shares $\times$ time period as instruments and a particular weight matrix 
-\end{itemize}
-\begin{align*}
-  \hat{\beta}_{Bartik} &= \frac{\mathbf{B}^\prime  \widetilde{\mathbf{Y}}^\perp}{\mathbf{B}^\prime \widetilde{\mathbf{X}}^\perp}\\
-  \hat{\beta}_{GMM} &= \frac{(\mathbf{X}^{\perp \prime}\widetilde{\mathbf{Z}})\Omega (\widetilde{\mathbf{Z}}'\mathbf{Y}^\perp)}{(\mathbf{X}^{\perp \prime} \widetilde{\mathbf{Z}})\Omega (\widetilde{\mathbf{Z}}'\mathbf{X}^\perp)}
-\end{align*} 
-$\Omega = (\textcolor{blue}{\mathbf{G}}
-\textcolor{blue}{\mathbf{G}}^\prime)$, and $\widetilde{\mathbf{Z}}$ is
-an $LT \times KT$ stacked vector of $Z_{0}$ interacted with time fixed
-effects and $\textcolor{blue}{\mathbf{G}}$ is a $KT \times 1$ stacked
-vector of growth rates $g_{kt}$.
-
-\end{frame}
 
 
 
@@ -669,6 +496,194 @@ Two ideas:
 \end{frame}
 
 %----
+
+
+%----
+\begin{frame}
+  \frametitle{Understanding the shares assumption in GPSS}
+  
+  \begin{enumerate}
+    \setlength\itemsep{1em}
+  \item One time period, two industries
+  \item T time periods, two industries
+  \item One time period, K industries
+  \end{enumerate}
+  
+  \end{frame}
+  
+  
+  
+  %------
+  \begin{frame}[label=twoindustries]
+  \frametitle{Special case \#1: One time period, two industries}
+  \begin{itemize}
+    \setlength\itemsep{1em}
+  \item $z_{l2}= 1-z_{l1}$ 
+  \item Bartik:  \begin{align*}B_l &= z_{l1} \textcolor{blue}{g_1} + z_{l2} \textcolor{blue}{g_2}  =z_{l1} \textcolor{blue}{g_1} + (1-z_{l1}) \textcolor{blue}{g_2} \notag \\
+  &=\textcolor{blue}{g_2}+ (\textcolor{blue}{g_1} - \textcolor{blue}{g_2}) z_{l1} \notag
+  \end{align*}
+  \end{itemize} 
+  First-stage:
+  \begin{align*}
+  x_l &= \gamma_0 + \gamma B_l + \eta_l \notag \\
+  %x_l &= \gamma_0 + \gamma (\hat{g}_2+ (\hat{g}_1 - \hat{g}_2) z_{l1}) + \eta_l \notag \\
+  x_l &= \underbrace{\gamma_0+\gamma \textcolor{blue}{g_2}}_{\text{constant}} + \underbrace{\gamma (\textcolor{blue}{g_1} - \textcolor{blue}{g_2})}_{\text{coefficient}} z_{l1} + \eta_l \notag 
+  \end{align*}
+  
+  The instrument is $z_{l1}$, while $\textcolor{blue}{g_k}$ affects relevance
+  
+  \hyperlink{whyolsisbiased}{\beamergotobutton{Why OLS is biased}}
+  
+  
+  
+  
+  \end{frame}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  %---------
+  \begin{frame}
+  \frametitle{Special case \#2:  T time periods, two industries }
+  
+  
+  
+  Panel Bartik:
+  
+  $$B_{lt} = z_{l10} \textcolor{blue}{g_{1t}}  +z_{l20} \textcolor{blue}{g_{2t}} = \textcolor{blue}{g_{2t}} + \underbrace{ \textcolor{blue}{\Delta_{gt}}}_{g_{1t}-g_{2t}} z_{l10}$$
+  
+  
+  
+  
+  First stage:
+  \begin{align}
+  x_{lt} & =\tau_{l}+\tau_{t}+ \gamma B_{lt} +\eta_{lt} \notag\\
+  x_{lt} & =\tau_{l}+\underbrace{(\tau_{t}+\gamma \textcolor{blue}{g_{2t}})}_{\tilde{\tau_{t}}}+\underbrace{\gamma  \textcolor{blue}{\Delta_{gt}}}_{\tilde{\gamma}_{t}}z_{l10}+\eta_{lt} \notag
+  \end{align}
+  
+  
+  
+  
+  \begin{itemize}
+  \item Industry shares times time period is the instrument
+  \item (Updated industry shares: similar)
+  \end{itemize}
+  
+  
+  \end{frame}
+  
+  
+  
+  %---------
+  \begin{frame}
+  \frametitle{Special case \#2:  T time periods, two industries }
+  
+  \begin{itemize}
+    \setlength\itemsep{1em}
+  \item Analogy to continuous difference-in-differences 
+    \begin{itemize}
+    \setlength\itemsep{1em}
+    \item $\textcolor{blue}{\Delta_{gt}}$ is size of policy 
+    \item $z_{l10}$ is exposure to policy
+    \end{itemize} 
+  \item Sometimes a ``pre-period'' before policy: test for parallel pre-trends 
+    \begin{itemize}
+    \setlength\itemsep{1em}
+    \item E.g., in ADH, what happens from 1970 to 1990?
+    \end{itemize}
+  \end{itemize}
+  \end{frame}
+  
+  
+  %----
+  \begin{frame}[label=kindustries]
+  \frametitle{Special case \#3: One time period, K industries}
+  
+  \begin{itemize}
+    \setlength\itemsep{1em}
+  \item $\textcolor{blue}{G}$: $K \times 1$ vector of $\textcolor{blue}{g_k}$
+  \item $Z$: $L \times K$, matrix of $Z_l$
+  \item $Y^\perp$, $X^\perp$, $B = (Z \textcolor{blue}{G})$: $L \times 1$, vectors of $y_l^\perp$, $x_l^\perp$ and $B_l$
+  \item $\Omega$: $K\times K$
+  \end{itemize}
+  
+  
+  
+  \begin{align*}
+    \hat{\beta}_{Bartik} &= \frac{B^\prime  Y^\perp}{B^\prime X^\perp}\\
+    \hat{\beta}_{GMM} &= \frac{(X^{\perp \prime}Z)\Omega (Z'Y^\perp)}{(X^{\perp \prime} Z)\Omega (Z'X^\perp)}
+  \end{align*} 
+  
+   If $\Omega = (\textcolor{blue}{G} \textcolor{blue}{G}^\prime)$, then $\hat{\beta}_{Bartik}=\hat{\beta}_{GMM}$   
+  
+  \end{frame}
+  
+  %-----
+  \begin{frame}
+  \frametitle{Full general result with $T$ time periods and $K$ industries}
+  
+  Two estimators are numerically identical:
+  \begin{itemize}
+  \item TSLS with Bartik instrument
+  \item GMM with industry shares $\times$ time period as instruments and a particular weight matrix 
+  \end{itemize}
+  \begin{align*}
+    \hat{\beta}_{Bartik} &= \frac{\mathbf{B}^\prime  \widetilde{\mathbf{Y}}^\perp}{\mathbf{B}^\prime \widetilde{\mathbf{X}}^\perp}\\
+    \hat{\beta}_{GMM} &= \frac{(\mathbf{X}^{\perp \prime}\widetilde{\mathbf{Z}})\Omega (\widetilde{\mathbf{Z}}'\mathbf{Y}^\perp)}{(\mathbf{X}^{\perp \prime} \widetilde{\mathbf{Z}})\Omega (\widetilde{\mathbf{Z}}'\mathbf{X}^\perp)}
+  \end{align*} 
+  $\Omega = (\textcolor{blue}{\mathbf{G}}
+  \textcolor{blue}{\mathbf{G}}^\prime)$, and $\widetilde{\mathbf{Z}}$ is
+  an $LT \times KT$ stacked vector of $Z_{0}$ interacted with time fixed
+  effects and $\textcolor{blue}{\mathbf{G}}$ is a $KT \times 1$ stacked
+  vector of growth rates $g_{kt}$.
+  
+  \end{frame}
+  
+
+  \begin{frame}
+    \frametitle{Understanding the shocks assumption in BHJ (drop time for convenience)}
+    
+$$\hat{\beta}_{Bartik}=  \frac{  \sum_{l=1}^L  \sum_{k=1}^K  z_{lk} \textcolor{blue}{g_{k}} y_{l}^\perp    }{   \sum_{l=1}^L \sum_{k=1}^K  z_{lk} \textcolor{blue}{g_{k}} x_{l}^\perp   }  $$
+
+    \begin{wideitemize}
+      \item Now let's assume $g_{k}$ is as good as randomly assigned (conditional on the observed data)
+      \item Can view this as just-identified regression at industry level:
+    \end{wideitemize}
+    $$\hat{\beta}_{Bartik}=  \frac{ \sum_{k=1}^K\textcolor{blue}{g_{k}}\sum_{l=1}^L   z_{lk}  y_{l}^\perp    }{   \sum_{k=1}^K  \textcolor{blue}{g_{k}}  \sum_{l=1}^L z_{lk}x_{l}^\perp   }   =  \frac{ \sum_{k=1}^K\textcolor{blue}{g_{k}} z_{k} \overline{y}_{k}^\perp    }{   \sum_{k=1}^K  \textcolor{blue}{g_{k}} z_{k} \overline{x}_{k}^\perp   } $$
+    where $z_{k} = L^{-1}\sum_{l = 1}^{L}z_{lk}$ and $\overline{y}_{k}^{\perp} = \sum_{l}z_{lk}y_{l}^{\perp} / \sum_{l}z_{lk}$ (same for $\overline{x}^{\perp}_{k}$)
+  \end{frame}
+
+
+
+  \begin{frame}
+    \frametitle{Understanding the shocks assumption in BHJ (drop time for convenience)}
+
+    $$\hat{\beta}_{Bartik}=  \frac{ \sum_{k=1}^K\textcolor{blue}{g_{k}}\sum_{l=1}^L   z_{lk}  y_{l}^\perp    }{   \sum_{k=1}^K  \textcolor{blue}{g_{k}}  \sum_{l=1}^L z_{lk}x_{l}^\perp   }   =  \frac{ \sum_{k=1}^K\textcolor{blue}{g_{k}} z_{k} \overline{y}_{k}^\perp    }{   \sum_{k=1}^K  \textcolor{blue}{g_{k}} z_{k} \overline{x}_{k}^\perp   } $$
+
+    BHJ assumptions: 
+    \begin{enumerate}
+      \item $g_{k}$ is randomly assigned
+      \item You have \emph{many} uncorrelated $g_{k}$ shocks 
+      \begin{itemize}
+        \item Average shock exposure goes to zero
+        \item shocks are sufficiently uncorrelated (doesn't have to be completely independent, but need enough)
+      \end{itemize}
+      \item Key underappreciated assumption : $g_{k}$ is often not observed. We use an empirical proxy.
+      \begin{itemize}
+        \item When is this valid? We have $\hat{g}_{k} =  g_{k} + \psi_{k}$ -- need $\psi_{k}$ to not be correlated across $k$!
+        \item Important economic question of what drives these equilibrium measures we use (e.g. industry growth)
+      \end{itemize}
+
+    \end{enumerate}
+  \end{frame}
+
+
 %----
 \begin{frame}
 \frametitle{When are these views plausible? What do they mean?}
@@ -724,6 +739,32 @@ Shares:
 Bottom line: a little hard to tell what exactly ADH are assuming; ADH approach does not appear to satisfy testable assumptions under GPSS, but do appear to under BHJ.
 \end{frame}
 
+
+
+\begin{frame}{Key thing to remember from today}
+  \begin{itemize}
+  \item Assuming independence or exogeneity on the basis of a model
+    does not necessarily make it true
+    \begin{itemize}
+    \item E.g. Hausman instruments in IO models -- model may assume
+      that exclusion restriction is satisfied, but not necessarily
+      true in reality
+    \end{itemize}
+  \item Assuming that two things are independent because they don't
+    seem ``related'' doesn't make it true 
+    \begin{itemize}
+    \item Bartik literature many times argues that national nature of
+      shocks ``decouples'' the instrument from local market
+      conditions. However, it still exploits local
+      characteristics. Need to make very specific arguments to
+      validate claim (will come to this).
+    \end{itemize}
+  \item When evaluating an identification strategy, you should be able
+    to describe counterfactual claims using the measure. This is
+    typically not concrete in Bartik -- try to make it concrete!
+    What is exactly changing in China? Why is it random? 
+  \end{itemize}
+\end{frame}
 
 
 
