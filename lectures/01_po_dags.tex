@@ -202,7 +202,9 @@
 \begin{column}{.38\textwidth}
   \vfill
   ``We do not have knowledge of a thing until we have grasped its why, that is to say, its cause.''\\
-\hfill  -Aristotle
+\hfill  -Aristotle\\
+\vfill
+
 
 \end{column}%
 \end{columns}
@@ -244,8 +246,8 @@
   \begin{wideitemize}
     \item  Two variables:
     \begin{itemize}
-    \item $Y \in \{0, 1\}$: whether a person will get measles
-    \item $D \in \{0, 1\}$: whether a person gets a vaccine
+    \item $Y \in \{0, 1\}$: whether a person will get measles over their lifetime
+    \item $D \in \{0, 1\}$: whether a person gets a vaccine as a child
     \end{itemize}
   \item Our question: does $D$ causally affect $Y$?
   \item \emph{Ignore the question of data for now} -- this is purely a
@@ -364,15 +366,22 @@
   \item We will start with the \underline{Average Treatment Effect}:
     \begin{itemize}
     \item $\tau_{ATE} = \mathbb{E}(\tau_{i}) = \mathbb{E}(Y_{i}(1) - Y_{i}(0)) = \mathbb{E}(Y_{i}(1)) - \mathbb{E}(Y_{i}(0))$
-    \end{itemize}
-  \item This expression is defined over the full population, and
+    \item This expression is defined over the full population, and
     includes individuals who may never recieve the treatment.
-    \begin{itemize}
-    \item \underline{Average Treatment Effect on the Treated} $\tau_{ATT} = \mathbb{E}(\tau_{i} | D_{i} = 1) = \mathbb{E}(Y_{i}(1) - Y_{i}(0) | D_{i} = 1) = \mathbb{E}(Y_{i}(1) | D_{i} = 1) - \mathbb{E}(Y_{i}(0) | D_{i} = 1)$
-    \item Estimated effect for individuals who \emph{received} the treatment.
-    \item Note that one piece of this measure is purely observed data: $\mathbb{E}(Y_{i}(1) | D_{i} = 1)$
     \end{itemize}
-  \item \underline{Conditional Average Treatment Effect}:  $\tau_{CATE}(x) = \mathbb{E}(\tau_{i} | X_{i} = x) = \mathbb{E}(Y_{i}(1) - Y_{i}(0) |  X_{i} = x)$ where $X_{i}$ is some additional characteristic. 
+  \item \underline{Average Treatment Effect on the Treated}:
+    \begin{align*}
+    \tau_{ATT} = \mathbb{E}(\tau_{i} | D_{i} = 1) &= \mathbb{E}(Y_{i}(1) - Y_{i}(0) | D_{i} = 1) \\ 
+     &= \mathbb{E}(Y_{i}(1) | D_{i} = 1) - \mathbb{E}(Y_{i}(0) | D_{i} = 1)
+    \end{align*}\vspace{-10pt}
+    \begin{itemize}
+    \item Estimated effect for individuals who \emph{received} the treatment.
+    \item Note that $\mathbb{E}(Y_{i}(1) | D_{i} = 1)$ is  observed data!
+    \end{itemize}
+  \item \underline{Conditional Average Treatment Effect}: For a characteristic $X_{i}$,
+   \begin{equation*}
+   \tau_{CATE}(x) = \mathbb{E}(\tau_{i} | X_{i} = x) = \mathbb{E}(Y_{i}(1) - Y_{i}(0) |  X_{i} = x)
+   \end{equation*}
   \end{wideitemize}
 \end{column}%
 \hfill%
@@ -416,7 +425,10 @@ the data''\\
     \item Consider $\tau_{ATT}$. $\mathbb{E}(Y_{i}(1)| D_{i}= 1)$ is
       identified, mechanically. What about $\mathbb{E}(Y_{i}(0) | D_{i} = 1)$?
     \item One approach: make an assumption on the relationship between $D_{i}$ and
-      $(Y_{i}(1), Y_{i}(0))$.
+      $(Y_{i}(1), Y_{i}(0))$
+      \begin{itemize}
+        \item This is known as a \emph{design}-based approach (more later)
+      \end{itemize}
     \end{itemize}
 \end{itemize}
 \end{frame}
@@ -441,7 +453,7 @@ the data''\\
       \begin{itemize}
       \item But less commonly used in economics.
       \item You might instead say ``$D_{i}$ is conditionally randomly assigned.''
-      \item If you \emph{might} even say $D_{i}$ is exogeneous.
+      \item You \emph{might} even say $D_{i}$ is exogeneous.
       \end{itemize}
     \end{itemize}
       
