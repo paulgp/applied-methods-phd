@@ -1,0 +1,418 @@
+---
+title: "Problem Set 1: Randomization Inference - Answer Key"
+author: "MGMT 737 --- Spring 2025"
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(sandwich)
+library(lmtest)
+
+# Load the data
+lalonde <- read_csv("../homework/data/lalonde_nsw.csv")
+
+# Set seed for reproducibility
+set.seed(42)
+```
+
+## Part A: Baseline Implementation (20 points)
+
+### Question 1: Calculate the ATE using difference in means
+
+```{r}
+#| label: q1-ate
+
+# ATE using difference in means
+tau_ate <- mean(lalonde$re78[lalonde$treat == 1]) -
+           mean(lalonde$re78[lalonde$treat == 0])
+
+tau_ate
+```
+
+The estimated ATE is **$`r round(tau_ate, 2)`**.
+
+### Question 2: Calculate the ATT
+
+```{r}
+#| label: q2-att
+
+# ATT - average treatment effect on the treated
+# Under randomization, we estimate this the same way
+tau_att <- mean(lalonde$re78[lalonde$treat == 1]) -
+           mean(lalonde$re78[lalonde$treat == 0])
+
+tau_att
+```
+
+The estimated ATT is **$`r round(tau_att, 2)`**.
+
+**Why are ATE and ATT numerically identical under complete randomization?**
+
+Under complete randomization, treatment assignment is independent of potential outcomes. This means that the control group provides an unbiased estimate of the counterfactual outcomes for the treated group (what they would have earned without treatment). Since the control group is a random sample from the same population as the treated group, $E[Y_0 | W=1] = E[Y_0 | W=0]$. Therefore, the simple difference in means estimates both the ATE (average effect for everyone) and the ATT (average effect for the treated) without any bias.
+
+### Question 3: Randomization Inference Test
+
+```{r}
+#| label: q3-ri-test
+
+# Randomization inference for sharp null
+n_perms <- 1000
+n_treated <- sum(lalonde$treat)
+n <- nrow(lalonde)
+
+# Observed test statistic
+obs_diff <- tau_ate
+
+# Generate permutation distribution
+perm_diffs <- numeric(n_perms)
+for (i in 1:n_perms) {
+  # Permute treatment labels (keeping fixed number treated)
+  perm_treat <- sample(lalonde$treat)
+  perm_diffs[i] <- mean(lalonde$re78[perm_treat == 1]) -
+                   mean(lalonde$re78[perm_treat == 0])
+}
+
+# Two-sided p-value
+p_ri <- mean(abs(perm_diffs) >= abs(obs_diff))
+
+p_ri
+```
+
+The randomization inference p-value is **`r round(p_ri, 4)`**.
+
+### Question 4: Comparison with Robust Standard Errors
+
+```{r}
+#| label: q4-robust
+
+# Regression with HC2 robust standard errors
+reg <- lm(re78 ~ treat, data = lalonde)
+robust_test <- coeftest(reg, vcov = vcovHC(reg, type = "HC2"))
+
+# Extract p-value for treatment coefficient
+p_robust <- robust_test["treat", "Pr(>|t|)"]
+
+p_robust
+```
+
+The p-value from regression with HC2 robust standard errors is **`r round(p_robust, 4)`**.
+
+**Comparison:** The two p-values are similar (RI: `r round(p_ri, 4)`, Robust: `r round(p_robust, 4)`), which is expected in a reasonably sized sample. The randomization inference p-value is exact and valid in finite samples under the sharp null, while the robust regression p-value relies on asymptotic approximations.
+
+## Part B: Extend the Estimator (35 points)
+
+### Question 5: Stratified Randomization
+
+```{r}
+#| label: q5-stratified
+
+# Create strata based on married × nodegree
+lalonde <- lalonde %>%
+  mutate(strata = interaction(married, nodegree))
+
+# Function to permute within strata
+permute_within_strata <- function(data) {
+  data %>%
+    group_by(strata) %>%
+    mutate(treat_perm = sample(treat)) %>%
+    ungroup() %>%
+    pull(treat_perm)
+}
+
+# Stratified randomization inference
+perm_diffs_strat <- numeric(n_perms)
+for (i in 1:n_perms) {
+  perm_treat <- permute_within_strata(lalonde)
+  perm_diffs_strat[i] <- mean(lalonde$re78[perm_treat == 1]) -
+                         mean(lalonde$re78[perm_treat == 0])
+}
+
+# Two-sided p-value
+p_ri_strat <- mean(abs(perm_diffs_strat) >= abs(obs_diff))
+
+p_ri_strat
+```
+
+The stratified randomization inference p-value is **`r round(p_ri_strat, 4)`**.
+
+**Why does stratification matter?**
+
+For the randomization inference, the distribution over $\Omega$, the sample space for treatments, can look very different (and less dispersed) under stratification, because mecahnically, stratification reduces the set of potential treatment assignments. Hence, if the variance of outcomes is at all correlated with the stratification groups, there will generally be wider variation in the randomization test without stratification.
+
+For the estimate itself, ignoring stratification can be problematic if the likelihood of treatment is correlated with the efficacy of treatment. For example, if married individuals have more positive treatment effects and are more likely to be treated, then the estimate will misattribute the composition (more treated married indiviudals) with an actual treatment effect.
+
+
+### Question 6: Covariate Adjustment
+
+```{r}
+#| label: q6-covariate-adjusted
+
+# Regression-adjusted test statistic
+get_adj_coef <- function(Y, W, data) {
+  reg <- lm(Y ~ W + age + education + black + hispanic +
+              married + nodegree + re74, data = data)
+  coef(reg)["W"]
+}
+
+# Observed adjusted coefficient
+obs_adj_coef <- coef(lm(re78 ~ treat + age + education + black + hispanic +
+                         married + nodegree + re74, data = lalonde))["treat"]
+
+# Covariate-adjusted randomization inference
+perm_adj_coefs <- numeric(n_perms)
+for (i in 1:n_perms) {
+  lalonde$treat_perm <- sample(lalonde$treat)
+  reg_perm <- lm(re78 ~ treat_perm + age + education + black + hispanic +
+                  married + nodegree + re74, data = lalonde)
+  perm_adj_coefs[i] <- coef(reg_perm)["treat_perm"]
+}
+
+# Two-sided p-value
+p_ri_adjusted <- mean(abs(perm_adj_coefs) >= abs(obs_adj_coef))
+
+p_ri_adjusted
+```
+
+The covariate-adjusted randomization inference p-value is **`r round(p_ri_adjusted, 4)`**.
+
+**Theoretical justification:**
+
+Under the sharp null (no treatment effect for any unit), the potential outcomes are fixed, and permuting treatment labels is equivalent to permuting the treatment variable in the regression. The coefficient on treatment still estimates the difference in means of the residualized outcome, but the covariate adjustment can reduce the variance of the test statistic by explaining variation in outcomes. Under the sharp null itself, covariate adjustment doesn't "buy" anything in terms of validity—the test is exact either way. However, covariate adjustment can increase power by reducing the noise in the test statistic, making it easier to detect departures from the null when an effect exists.
+
+### Question 7: Studentized Test Statistic
+
+```{r}
+#| label: q7-studentized
+
+# Function to compute t-statistic
+compute_t_stat <- function(Y, W) {
+  n1 <- sum(W)
+  n0 <- sum(1 - W)
+  mean1 <- mean(Y[W == 1])
+  mean0 <- mean(Y[W == 0])
+  var1 <- var(Y[W == 1])
+  var0 <- var(Y[W == 0])
+
+  tau_hat <- mean1 - mean0
+  se_hat <- sqrt(var1/n1 + var0/n0)
+
+  tau_hat / se_hat
+}
+
+# Observed t-statistic
+obs_t <- compute_t_stat(lalonde$re78, lalonde$treat)
+
+# Studentized randomization inference
+perm_t_stats <- numeric(n_perms)
+for (i in 1:n_perms) {
+  perm_treat <- sample(lalonde$treat)
+  perm_t_stats[i] <- compute_t_stat(lalonde$re78, perm_treat)
+}
+
+# Two-sided p-value
+p_ri_studentized <- mean(abs(perm_t_stats) >= abs(obs_t))
+
+p_ri_studentized
+```
+
+The studentized randomization inference p-value is **`r round(p_ri_studentized, 4)`**.
+
+**When is studentization beneficial?**
+
+The studentized test statistic has better properties when there is heteroskedasticity—specifically, when the variance of outcomes differs between treatment and control groups. By normalizing by the standard error, we account for the fact that some permutations might have more variable treatment effects simply due to how units with different outcome variances get allocated. This can improve the power of the test when variances differ across groups, and ensures that the test is asymptotically valid even under heteroskedasticity.
+
+### Question 8: Confidence Interval Inversion
+
+```{r}
+#| label: q8-ci-inversion
+
+# Grid of hypothesized treatment effects
+c_grid <- seq(-5000, 10000, by = 250)
+
+# Function to test H0: tau_i = c for all i
+test_constant_effect <- function(c, Y, W, n_perms = 1000) {
+  # Adjust outcomes under the null
+  Y_adj <- Y - c * W
+
+  # Observed test statistic on adjusted outcomes
+  obs_diff_adj <- mean(Y_adj[W == 1]) - mean(Y_adj[W == 0])
+
+  # Permutation distribution
+  perm_diffs_adj <- numeric(n_perms)
+  for (i in 1:n_perms) {
+    perm_W <- sample(W)
+    perm_diffs_adj[i] <- mean(Y_adj[perm_W == 1]) - mean(Y_adj[perm_W == 0])
+  }
+
+  # Two-sided p-value
+  mean(abs(perm_diffs_adj) >= abs(obs_diff_adj))
+}
+
+# Test each value in the grid
+p_values <- sapply(c_grid, function(c) {
+  test_constant_effect(c, lalonde$re78, lalonde$treat, n_perms = 1000)
+})
+
+# Find 95% CI (values not rejected at alpha = 0.05)
+ci_ri <- range(c_grid[p_values >= 0.05])
+
+ci_ri
+```
+
+```{r}
+#| label: q8-comparison
+#| fig-height: 4
+
+# Robust regression CI for comparison
+robust_ci <- confint(coeftest(reg, vcov = vcovHC(reg, type = "HC2")))["treat", ]
+
+# Plot p-values across the grid
+tibble(c = c_grid, p = p_values) %>%
+  ggplot(aes(x = c, y = p)) +
+  geom_line() +
+  geom_point() +
+  geom_hline(yintercept = 0.05, linetype = "dashed", color = "red") +
+  geom_vline(xintercept = ci_ri, linetype = "dotted", color = "blue") +
+  labs(x = "Hypothesized Treatment Effect (c)",
+       y = "P-value",
+       title = "Confidence Interval by Test Inversion") +
+  theme_minimal()
+```
+
+**Randomization Inference 95% CI:** [`r ci_ri[1]`, `r ci_ri[2]`]
+
+**Robust Regression 95% CI:** [`r round(robust_ci[1], 2)`, `r round(robust_ci[2], 2)`]
+
+**Comparison:**
+
+The randomization inference confidence interval is `r ifelse(diff(ci_ri) > diff(robust_ci), "wider", "narrower")` than the robust regression interval. The RI interval is constructed by inverting a family of exact tests, which is typically more conservative in finite samples, but not in this case. Additionally, the grid-based approach means the RI interval is constrained to grid points.
+
+## Part C: Debugging (25 points)
+
+### Question 9: Find the Bug
+
+The buggy code is:
+
+```r
+run_ri_test <- function(Y, W, n_perms = 1000) {
+  obs_diff <- mean(Y[W == 1]) - mean(Y[W == 0])
+
+  perm_diffs <- numeric(n_perms)
+  for (i in 1:n_perms) {
+    W_perm <- sample(W)
+    perm_diffs[i] <- mean(Y[W_perm == 1]) - mean(Y[W_perm == 0])
+  }
+
+  p_value <- mean(perm_diffs >= obs_diff)  # BUG IS HERE
+  return(p_value)
+}
+```
+
+**The Bug:** The p-value calculation `mean(perm_diffs >= obs_diff)` computes a *one-sided* p-value instead of a *two-sided* p-value.
+
+**Why it causes under-rejection:** A two-sided test should reject when the observed statistic is extreme in *either* direction. By only counting permutations where `perm_diffs >= obs_diff`, the test ignores equally extreme negative values. This effectively doubles the p-value for most cases (cutting the rejection rate roughly in half), leading to systematic under-rejection of the null hypothesis.
+
+**The fix:** Replace the p-value line with:
+```r
+p_value <- mean(abs(perm_diffs) >= abs(obs_diff))
+```
+
+### Question 10: Diagnose the Simulation
+
+The simulation code:
+```r
+set.seed(42)
+reject <- numeric(1000)
+
+for (sim in 1:1000) {
+  # Generate data under sharp null
+  n <- 200
+  Y0 <- rnorm(n, mean = 10, sd = 5)
+  Y1 <- Y0  # Sharp null: no effect
+  W <- rbinom(n, 1, 0.5)
+  Y <- ifelse(W == 1, Y1, Y0)
+
+  # Run RI test
+  p <- run_ri_test_correct(Y, W, n_perms = 500)
+  reject[sim] <- (p < 0.05)
+}
+
+mean(reject)  # Returns 0.038
+```
+
+**The Issue:** The researcher used `rbinom(n, 1, 0.5)` for treatment assignment, which is *Bernoulli randomization* (each unit independently has 50% probability of treatment). However, standard randomization inference assumes *complete randomization* (a fixed number of units are assigned to treatment).
+
+**Why this causes under-rejection:** Under Bernoulli randomization, the number of treated units varies across draws—sometimes you get 90 treated, sometimes 110. The permutation test, which holds the number treated fixed, generates a permutation distribution that doesn't match the actual randomization distribution. Specifically:
+
+1. The actual randomization allows for more extreme imbalances in group sizes
+2. The permutation test conditions on the observed number treated
+3. This conditioning makes the permutation distribution *narrower* than the true randomization distribution
+4. With a narrower null distribution, it's harder to get extreme p-values, leading to under-rejection
+
+**The fix:** Either:
+1. Change the simulation to use complete randomization: `W <- sample(c(rep(1, n/2), rep(0, n/2)))`
+2. Or use a permutation test that allows the number treated to vary
+
+## Part D: Conceptual Questions (20 points)
+
+*Note: These questions are marked as an "AI Free Zone" in the problem set. Students should answer these without AI assistance. The answers below are provided for grading purposes.*
+
+### Question 11: Evaluating the Colleague's Claim
+
+**Model Answer:**
+
+The colleague's claim has merit asymptotically but misses important finite-sample considerations. Under complete randomization with a large sample, regression with robust standard errors provides valid inference that is asymptotically equivalent to randomization inference—both will give similar p-values and confidence intervals as the sample size grows. However, randomization inference has several advantages:
+
+First, it provides *exact* finite-sample inference under the sharp null, making no distributional assumptions about the errors. This is particularly valuable in small samples (n < 100) where asymptotic approximations may be poor.
+
+Second, randomization inference doesn't require specifying a parametric model or assuming homoskedasticity. While HC2 robust standard errors address heteroskedasticity, they still rely on asymptotic approximations that may not hold in small samples.
+
+Third, randomization inference makes transparent the source of randomness for inference—it comes from the experimental design, not from an assumed super-population model. This clarifies that we're making inferences about the *actual* treatment effect for *these* units, not about a hypothetical population parameter.
+
+Fourth, randomization inference naturally handles complex randomization schemes (blocking, stratification, clustering) by permuting according to the actual design, or spillovers across units.
+
+The computational cost argument is increasingly weak given modern computing. I would prefer randomization inference when samples are small, when the randomization scheme is complex, when I want to make minimal assumptions, or when I need to invert the test to get exact confidence intervals.
+
+### Question 12: The p = 0.08 Dilemma
+
+**Model Answer:**
+
+The colleague's reasoning contains a fundamental error about what p-values mean and the nature of statistical inference.
+
+First, they're confusing statistical power with validity. A test can be underpowered (low probability of rejecting when an effect exists) but still be *valid* (correct probability of rejecting when no effect exists). The fact that randomization inference gives p = 0.08 doesn't mean the test is "wrong"—it means the evidence, properly evaluated, isn't strong enough to reject at the 5% level.
+
+Second, switching to a different test because it gives a more favorable p-value is a form of p-hacking. The t-test's p-value of 0.03 relies on distributional assumptions (normally distributed errors) that may not hold, especially in small samples. With n = 30, the t-distribution approximation can be poor, particularly if outcomes are skewed or have outliers.
+
+Third, the randomization inference p-value of 0.08 is *exact*—it correctly represents the probability of seeing a treatment effect this large or larger under the null hypothesis, given the randomization that actually occurred. The t-test p-value of 0.03 is approximate and may be too small if its assumptions are violated.
+
+The correct conclusion isn't "the effect is clearly real but we lack power to detect it." The correct conclusion is: "We found suggestive evidence of a positive effect (p = 0.08), but we cannot rule out chance at conventional significance levels. A larger sample would be needed for more definitive conclusions."
+
+If the researcher wants to report results at a less stringent threshold (p < 0.10), that's a defensible choice if stated upfront—but switching tests post-hoc to cross the 0.05 threshold is not.
+
+The key counterargument to support your colleague's complaint is that the randomization inference about sharp nulls tends to be more conservative than a standard t-test p-value, which tests the *average* effect.
+
+## Summary of Key Results
+
+```{r}
+#| label: summary-table
+
+tibble(
+  Quantity = c("tau_ate", "tau_att", "p_ri", "p_robust",
+               "p_ri_strat", "p_ri_adjusted", "p_ri_studentized",
+               "ci_ri (lower)", "ci_ri (upper)"),
+  Value = c(tau_ate, tau_att, p_ri, p_robust,
+            p_ri_strat, p_ri_adjusted, p_ri_studentized,
+            ci_ri[1], ci_ri[2])
+) %>%
+  mutate(Value = round(Value, 4)) %>%
+  knitr::kable()
+```
