@@ -8,22 +8,6 @@
 \usepackage{epigraph}
 \usepackage{booktabs}
 \theoremstyle{break}
-% \usepackage[
-% bibencoding=utf8,% .bib file encoding
-% maxbibnames=3, % otherwise et al
-% minbibnames=1, % otherwise et al
-% backend=biber,%
-% sortlocale=en_US,%
-% style=apa,% or authoryear
-% % apabackref=false, % backreferences
-% natbib=true,% for citet/citep, but this is for backward compatibility
-% uniquename=false,%
-% url=true,%
-% sortcites=false,
-% doi=true,%
-% eprint=true%
-% ]{biblatex}
-% \addbibresource{lecture_note_bib.bib}
 
 \hypersetup{
   colorlinks,
@@ -51,6 +35,20 @@
 \newcommand{\bX}{\mathbf{X}}
 \newcommand{\bD}{\mathbf{D}}
 \newcommand{\E}{\mathbb{E}}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{bbm}
+\usepackage{accents}
+\newcommand\indep{\protect\mathpalette{\protect\independenT}{\perp}}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclarePairedDelimiter\indicatorfence{\{}{\}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\ip{\langle}{\rangle}
+\newcommand\1{\operatorname{\mathbbm{1}}\indicatorfence}
+\newcommand{\dbtilde}[1]{\accentset{\approx}{#1}}
+
 
 \newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
@@ -82,14 +80,15 @@
   \acro{FWL}{Frisch-Waugh-Lovell}
   \acro{DAG}{directed acyclic graph}
   \acro{PO}{potential outcomes}
+  \acro{CEF}{conditional expectation function}
 \end{acronym}
 
-\def\inprobHIGH{\,{\buildrel p \over \rightarrow}\,} 
-\def\inprob{\,{\inprobHIGH}\,} 
-\def\indistHIGH{\,{\buildrel d \over \rightarrow}\,} 
+\def\inprobHIGH{\,{\buildrel p \over \rightarrow}\,}
+\def\inprob{\,{\inprobHIGH}\,}
+\def\indistHIGH{\,{\buildrel d \over \rightarrow}\,}
 \def\indist{\,{\indistHIGH}\,}
 
-\usepackage[many]{tcolorbox} 
+\usepackage[many]{tcolorbox}
 \definecolor{main}{HTML}{5989cf}    % setting main color to be used
 \definecolor{sub}{HTML}{cde4ff}     % setting sub color to be used
 \definecolor{sub2}{HTML}{fde9ce}     % setting sub color to be used
@@ -102,9 +101,9 @@
 }                           % setting global options for tcolorbox
 
 \newtcolorbox{boxD}{
-    colback = sub, 
-    colframe = main, 
-    boxrule = 0pt, 
+    colback = sub,
+    colframe = main,
+    boxrule = 0pt,
     toprule = 3pt, % top rule weight
     bottomrule = 3pt % bottom rule weight
 }
@@ -113,7 +112,7 @@
 \newtcolorbox{boxF}{
     colback = sub2,
     enhanced,
-    boxrule = 1.5pt, 
+    boxrule = 1.5pt,
     colframe = white, % making the base for dash line
     borderline = {1.5pt}{0pt}{main, dashed} % add "dashed" for dashed line
 }
@@ -123,7 +122,7 @@
     boxrule = 0pt,
     toprule = 4.5pt, % top rule weight
     enhanced,
-    fuzzy shadow = {0pt}{-2pt}{-0.5pt}{0.5pt}{black!35} % {xshift}{yshift}{offset}{step}{options} 
+    fuzzy shadow = {0pt}{-2pt}{-0.5pt}{0.5pt}{black!35} % {xshift}{yshift}{offset}{step}{options}
 }
 \usepackage{colortbl}
 
@@ -137,32 +136,385 @@
 \usetikzlibrary{decorations.markings}
 \usetikzlibrary{shapes.misc}
 \usetikzlibrary{matrix,shapes,arrows,fit,tikzmark}
-
-\title{Lecture 6 -- Linear Regression 2 --- Semiparametrics and Visualization}
+\crefname{thmN}{theorem}{theorems}
+\title{Lecture 6 -- Linear Regression 2: Semiparametrics and Visualization}
 \author{Paul Goldsmith-Pinkham}
 \date{\today}
 \begin{document}
 \maketitle
-Linear Regression: Why so Popular
 
-Linear regression is incredibly popular as a tool. Why? 
- Many reasons:
-    \begin{itemize}
-    \item Fast (easy analytic solution and matrix inversion has gotten better)
-    \item Efficient (under some settings, OLS is BLUE)
-    \end{itemize}
+This lecture note continues our study of linear regression, focusing on two key themes: understanding what OLS estimates when we include controls, and improving how we visualize and communicate regression results. In the previous lecture, we focused on inference. Today, we turn to interpretation of coefficients and best practices for data visualization.
 
-    My view: linear regressions is
-    \begin{enumerate}
-    \item an intuitive summary of data relationships
-    \item A good default -- many ``better'' options are only good in
-      some settings, and linear regression is not bad in many
-    \item Does a good job with many of the things we throw at our
-      models (high dimensional fixed effects, lots of data)
-    \end{enumerate}
-Today: how to stay in the world of linear regression as much
-    as possible, improving our presentation
- 
-    As a side goal, we will do a discussion on good visualization practice
+The goals for this lecture are:
+\begin{itemize}
+  \item Understand how OLS weights treatment effects across strata when controls are included
+  \item Learn the Frisch-Waugh-Lovell theorem and its implications for visualization
+  \item Explore semiparametric approaches like binscatter
+  \item Develop principles for effective data visualization in research
+\end{itemize}
+
+\section{Why Linear Regression?}
+
+Linear regression remains the workhorse of empirical economics. Why is it so popular? There are several reasons:
+\begin{enumerate}
+  \item \textbf{Computational efficiency}: OLS has a closed-form analytic solution, and matrix inversion algorithms have become very fast.
+  \item \textbf{Statistical efficiency}: Under classical assumptions (homoskedasticity, no serial correlation), OLS is the Best Linear Unbiased Estimator (BLUE).
+  \item \textbf{Interpretability}: Linear regression provides an intuitive summary of relationships in the data.
+  \item \textbf{Robustness}: While ``better'' estimators may exist for specific settings, linear regression performs reasonably well across a wide range of situations.
+  \item \textbf{Scalability}: Modern implementations handle high-dimensional fixed effects and large datasets efficiently.
+\end{enumerate}
+
+This lecture focuses on how to stay in the world of linear regression while improving our understanding of what it estimates and how we present results.
+
+\section{General Framework for Causal Relationships}
+
+Without imposing any structure, we can describe relationships in our data as:
+\begin{equation*}
+  Y_i = F(D_i, W_i, \epsilon_i)
+\end{equation*}
+where $D_i$ is the causal variable of interest, $W_i$ represents controls or sources of heterogeneity, and $\epsilon_i$ captures unobservable noise. This general formulation is very challenging to estimate when $\epsilon_i$ enters non-separably or when $D_i$ or $W_i$ is high-dimensional.
+
+A simpler version separates the error term:
+\begin{equation*}
+  Y_i = F(D_i, W_i) + \epsilon_i
+\end{equation*}
+Even with this simplification, we face choices about what to report. Should we report:
+\begin{itemize}
+  \item Average partial effects: $E\left(\frac{\partial F}{\partial D_i} \middle| W_i = w\right)$?
+  \item Population average effects: $E\left(\frac{\partial F}{\partial D_i}\right)$?
+\end{itemize}
+
+The linear model further restricts this to:
+\begin{equation*}
+  Y_i = D_i\tau + W_i\beta + \epsilon_i
+\end{equation*}
+This can be made more complex through interactions (e.g., $Y_i = D_i\tau + W_i\beta_1 + D_i \times W_i\beta_2 + \epsilon_i$), but even then, there is not always a ``single number'' to report.
+
+\section{Visualizing Relationships}
+
+When plotting relationships between outcomes and causal variables, the data itself often tells a compelling story. However, regression lines provide useful summaries, especially when:
+\begin{enumerate}
+  \item The underlying relationship appears approximately linear
+  \item There are many data points making patterns difficult to discern
+  \item We want to communicate the average relationship succinctly
+\end{enumerate}
+
+The challenge becomes more complex when we need to account for control variables.
+
+\section{Residual Regression and the Frisch-Waugh-Lovell Theorem}
+
+Consider our basic specification:
+\begin{equation*}
+  Y_i = \tau D_i + \beta W_i + \epsilon_i
+\end{equation*}
+
+How does OLS handle the controls $W_i$? We can understand this through projection matrices.
+
+\begin{defN}[Projection and Annihilator Matrices]
+  Define the projection matrix as:
+  \begin{equation*}
+    \mathbf{P}_W = \mathbf{W}_n(\mathbf{W}_n'\mathbf{W}_n)^{-1}\mathbf{W}_n'
+  \end{equation*}
+  This matrix has the properties that $\mathbf{P}_W\mathbf{W}_n = \mathbf{W}_n$ and $\mathbf{P}_W\mathbf{P}_W = \mathbf{P}_W$ (idempotent). When applied to $\mathbf{D}_n$, we get the predicted values from regressing $D_i$ on $W_i$.
+
+  The annihilator matrix is:
+  \begin{equation*}
+    \mathbf{M}_W = \mathbf{I}_n - \mathbf{P}_W
+  \end{equation*}
+  This gives us the residuals from the regression on $W_i$.
+\end{defN}
+
+\begin{boxF}
+\begin{thmN}[Frisch-Waugh-Lovell]
+  \label{thm:fwl}
+  If we transform $\mathbf{Y}_n^* = \mathbf{M}_W\mathbf{Y}_n$ and $\mathbf{D}_n^* = \mathbf{M}_W\mathbf{D}_n$, then running the regression
+  \begin{equation*}
+    Y_i^* = \tau D_i^* + \tilde{\epsilon}_i
+  \end{equation*}
+  yields the same coefficient $\tau$ as the original multivariate regression.
+\end{thmN}
+\end{boxF}
+
+This theorem is powerful for both computation and visualization. When $W$ is a discrete set of covariates (e.g., fixed effects), the transformation demeans $D$ and $Y$ within each group. The resulting regression estimate gives:
+\begin{equation}
+  \label{eq:variance_weighted}
+  \tau = \frac{E(\sigma^2_D(W_i)\tau(W_i))}{E(\sigma^2_D(W_i))}, \qquad \sigma^2_D(W_i) = E((D_i - E(D_i|W_i))^2 | W_i)
+\end{equation}
+where $\tau(W_i)$ is the conditional treatment effect given $W_i$. This shows that OLS produces a \emph{variance-weighted} average of the conditional treatment effects.
+
+\section{Binary Treatment with Binary Controls}
+
+To build intuition, consider both $W_i$ and $D_i$ binary. Consider the regression:
+\begin{equation*}
+  Y_i = \alpha + D_i\beta + W_i\gamma + U_i
+\end{equation*}
+with $D_i, W_i \in \{0,1\}$. By definition, $U_i$ is a mean-zero regression residual uncorrelated with $(D_i, W_i)$.
+
+\begin{boxD}
+\begin{exmp}[Project STAR]
+  \label{exmp:star}
+  Consider a stylized version of Project STAR, where $D_i$ indicates assignment to a small classroom and $Y_i$ is the student's average test score. Randomization was stratified by school, so the probability of assignment to small vs. large classroom depends on school. Let $W_i$ denote the school fixed effect (binary for simplicity: only 2 schools).
+\end{exmp}
+\end{boxD}
+
+Using potential outcomes notation $Y_i(d)$:
+\begin{itemize}
+  \item Individual treatment effect: $\tau_{i1} = Y_i(1) - Y_i(0)$
+  \item Conditional treatment effect: $\tau_1(w) = E[\tau_{i1} | W_i = w]$
+  \item Observed outcome: $Y_i = Y_i(0) + \tau_{i1}D_i$
+  \item Propensity score: $p_1(W_i) = \Pr(D_i = 1 | W_i) = E[D_i | W_i]$
+\end{itemize}
+
+Under conditional random assignment $(Y_i(0), Y_i(1)) \independent D_i | W_i$, we get the key result from \citet{angrist1998estimating}:
+
+\begin{thmN}[OLS with Binary Treatment and Controls]
+  \label{thm:angrist}
+  Under conditional random assignment,
+  \begin{equation*}
+    \beta = \phi\tau_1(0) + (1-\phi)\tau_1(1)
+  \end{equation*}
+  where
+  \begin{equation*}
+    \phi = \frac{\var(D_i | W_i = 0)\Pr(W_i = 0)}{\sum_{w=0}^1 \var(D_i | W_i = w)\Pr(W_i = w)}
+  \end{equation*}
+\end{thmN}
+
+\begin{proof}
+  Let $\tilde{D}_i = D_i - E[D_i | W_i]$ denote the residual from regressing $D_i$ on $W_i$. By the FWL theorem:
+  \begin{align*}
+    \beta &= \frac{E[\tilde{D}_i Y_i]}{E[\tilde{D}_i^2]} = \frac{E[E[\tilde{D}_i Y_i(0) | W_i]]}{E[\tilde{D}_i^2]} + \frac{E[E[\tilde{D}_i D_i \tau_{i1} | W_i]]}{E[\tilde{D}_i^2]}
+  \end{align*}
+  The first term equals zero because $E[\tilde{D}_i | W_i] = 0$ (not just $\text{corr}(\tilde{D}_i, W_i) = 0$) and by random assignment. For the second term, note that $E[\tilde{D}_i D_i | W_i] = \var(D_i | W_i)$. Hence:
+  \begin{equation*}
+    \beta = \frac{E[\var(D_i | W_i)\tau(W_i)]}{E[\var(D_i | W_i)]}
+  \end{equation*}
+  which gives the stated result when $W_i$ is binary.
+\end{proof}
+
+\begin{boxF}
+\begin{cmt}[Key Features of the OLS Estimator with Controls]
+  \label{cmt:ols_features}
+  Several important properties follow from \Cref{thm:angrist}:
+  \begin{enumerate}
+    \item The weights $\phi \in (0,1)$ are guaranteed to be positive
+    \item No need to explicitly estimate propensity scores
+    \item OLS puts larger weight on strata with higher variation in $D_i$
+    \item The estimand $\neq$ ATE unless $\tau(w)$ is constant or $p_1(w)$ is constant across strata
+    \item This weighting helps avoid identification problems under overlap failure (e.g., $p_1(0) = 0$) or precision issues under weak overlap ($p_1(0)$ close to 0)
+  \end{enumerate}
+  See \citet{aronow2016does} for discussion of how this weighting may lead to ``unrepresentative'' estimands.
+\end{cmt}
+\end{boxF}
+
+\section{Multiple Treatment Arms}
+
+The framework extends to multiple treatments, but with important complications. Consider adding a second treatment arm (e.g., the teaching aide arm in Project STAR):
+\begin{equation*}
+  Y_i = \alpha + X_{i1}\beta_1 + X_{i2}\beta_2 + W_i\gamma + U_i
+\end{equation*}
+where $X_{ij} = \1{D_i = j}$ for treatments $j = 1, 2$.
+
+Define:
+\begin{itemize}
+  \item $\tau_{ik} = Y_i(k) - Y_i(0)$ as the treatment effect for arm $k$
+  \item $\tau_k(W_i) = E[\tau_{ik} | W_i]$ as the conditional effect
+  \item $p_{0k}(w) = E[X_{ik} | W_i = w]$ as the propensity scores
+\end{itemize}
+
+Under conditional random assignment $(Y_i(0), Y_i(1), Y_i(2)) \independent X_i | W_i$, we can derive the causal interpretation of $\beta_1$:
+
+\begin{equation*}
+  \beta_1 = E[\lambda_{11}(W_i)\tau_1(W_i)] + E[\lambda_{12}(W_i)\tau_2(W_i)]
+\end{equation*}
+where $\lambda_{11}(W_i) = \frac{E[\dbtilde{X}_{i1}X_{i1} | W_i]}{E[\dbtilde{X}_{i1}^2]} \geq 0$ and $\lambda_{12}(W_i) = \frac{E[\dbtilde{X}_{i1}X_{i2} | W_i]}{E[\dbtilde{X}_{i1}^2]} \neq 0$ in general.
+
+\begin{boxK}
+\begin{cmt}[Contamination Bias]
+  The key insight is that $\dbtilde{X}_{i1}$ is the residual from regressing $X_{i1}$ on $W_i$, a constant, \emph{and} $X_{i2}$. Since $X_{i2}$ depends non-linearly on $X_{i1}$ (they cannot both equal 1), the coefficient $\beta_1$ is ``contaminated'' by the effects of treatment 2. This is an important consideration when interpreting regression coefficients in settings with multiple treatment arms. See \citet{goldsmith2024contamination} for further discussion.
+\end{cmt}
+\end{boxK}
+
+\section{Visualization with Controls}
+
+The FWL theorem provides a powerful approach for visualizing relationships while controlling for covariates. The basic approach is:
+\begin{enumerate}
+  \item Residualize both $Y$ and $D$ by regressing each on $W$
+  \item Plot the residualized $Y^*$ against residualized $D^*$
+  \item The slope of the fitted line equals the coefficient from the multivariate regression
+\end{enumerate}
+
+However, there are practical considerations:
+\begin{itemize}
+  \item Residualized variables can be hard to interpret (they're centered at zero)
+  \item A simple fix: add back the overall means to make interpretation more intuitive
+  \item Be careful that the visualization reflects the variation identifying your parameter
+\end{itemize}
+
+\begin{boxF}
+\begin{cmt}
+  When adding back means for visualization, ensure the relationship you display corresponds to the estimand you care about. Simply adding raw means may not achieve this if there are compositional differences across strata.
+\end{cmt}
+\end{boxF}
+
+\section{Nonparametric and Semiparametric Approaches}
+
+Our interest often lies in conditional expectation functions $E(Y | D)$. The approaches we use can be categorized into three types:
+
+\begin{defN}[Model Types]
+  \begin{enumerate}
+    \item \textbf{Parametric}: Finite-dimensional specification
+    \begin{equation*}
+      Y_i = D_i\beta + \epsilon_i, \quad \epsilon_i \sim \mathcal{N}(0, \sigma^2)
+    \end{equation*}
+
+    \item \textbf{Nonparametric}: Infinite-dimensional specification
+    \begin{equation*}
+      Y_i = F(D_i, \theta_i)
+    \end{equation*}
+    where $\theta_i$ is infinite-dimensional
+
+    \item \textbf{Semiparametric}: Combination of both
+    \begin{equation*}
+      Y_i = D_i\beta + \epsilon_i, \quad \epsilon_i \sim F(\theta_i)
+    \end{equation*}
+    where $\beta$ is finite-dimensional but the error distribution $F(\theta_i)$ is infinite-dimensional
+  \end{enumerate}
+\end{defN}
+
+It is important to distinguish between \emph{nuisance parameters} (which we don't care about estimating, like $\theta_i$ in the robust standard error case) and parameters of interest.
+
+\section{Binscatter Analysis}
+
+One popular semiparametric approach is \emph{binscatter}, which approximates the conditional expectation function using binned means. Consider:
+\begin{equation*}
+  Y_i = f(D_i, \theta) + \epsilon_i
+\end{equation*}
+
+The binscatter approach works as follows:
+\begin{enumerate}
+  \item Divide observations into equally-sized bins based on values of $D_i$
+  \item Compute the mean of $Y_i$ within each bin
+  \item Plot these means against the bin centers (or midpoints)
+\end{enumerate}
+
+This is particularly useful when:
+\begin{itemize}
+  \item There are too many data points to see patterns in a raw scatter plot
+  \item We want to examine whether a linear relationship is appropriate
+  \item We want a flexible visualization of the conditional expectation function
+\end{itemize}
+
+\begin{boxD}
+\begin{exmp}[Choice of Bins]
+  \label{exmp:bins}
+  The choice of bin width affects the visualization substantially. Too few bins may oversimplify the relationship; too many bins produce noisy estimates. For example, plotting income on health insurance coverage with 10, 20, or 50 bins can yield quite different visual impressions of the same underlying relationship.
+\end{exmp}
+\end{boxD}
+
+\subsection{Advances in Binscatter: Cattaneo et al.}
+
+Recent work by \citet{cattaneo2024binscatter} provides important methodological advances for binscatter:
+
+\paragraph{Formal statistical framework.} The paper recognizes binscatter as a nonparametric estimation problem, providing a basis for inference rather than treating it as purely descriptive.
+
+\paragraph{Optimal bin selection.} The paper develops data-driven methods for choosing the number of bins that balance bias (too few bins misses curvature) against variance (too many bins are noisy). The canonical rule suggests approximately $n^{1/3}$ bins.
+
+\paragraph{Correct handling of controls.} This is perhaps the most practically important contribution. The traditional approach of residualizing $D_i$ before binning produces incorrect results when $f$ is nonlinear.
+
+\begin{boxK}
+\begin{cmt}[The FWL Problem with Binscatter]
+  Consider the model:
+  \begin{equation*}
+    Y_i = f(D_i, \theta) + W_i\beta + \epsilon_i
+  \end{equation*}
+  If $f$ is nonlinear, you cannot simply residualize $D_i$ by $W_i$ and recover the function $f$. The correct approach is:
+  \begin{enumerate}
+    \item Create bins based on the raw treatment variable $D_i$
+    \item Within each bin, estimate the effect controlling for $W_i$
+    \item Plot these conditional effects
+  \end{enumerate}
+  Unfortunately, the traditional Stata binscatter command residualized first, which could produce misleading results.
+\end{cmt}
+\end{boxK}
+
+\paragraph{Statistical inference.} The framework allows for construction of confidence intervals and tests for shape restrictions (e.g., monotonicity).
+
+Code for implementing these methods is available at \url{https://nppackages.github.io/binsreg/}. For a simpler fix to the FWL issue in the traditional approach, see \url{https://github.com/mdroste/stata-binscatter2}.
+
+\section{Design Principles for Research Communication}
+
+Binscatter's success reflects a broader lesson: improving data visualization dramatically improves communication of results. The status quo of large regression tables is often ineffective at conveying findings.
+
+\subsection{Four Design Goals}
+
+\begin{enumerate}
+  \item \textbf{Minimize tables}: Tables are important repositories of information but make comparison difficult and tend to include unnecessary information. Control variable coefficients, for example, rarely have a causal interpretation \citep{hunermund2025nuisance}. Consider moving detailed tables to online appendices.
+
+  \item \textbf{Have describable goals for every exhibit}: The purpose of each figure or table should be immediately obvious. If it's not clear, either:
+  \begin{itemize}
+    \item Too much information obscures the main message
+    \item Insufficient emphasis on key elements
+  \end{itemize}
+
+  \item \textbf{Craft not-ugly figures}: There's almost no good reason to have bad figures. Small improvements yield big returns:
+  \begin{itemize}
+    \item Fix the color scheme (default schemes are often poor)
+    \item Label axes clearly
+    \item Make the color scheme accessible
+    \item Adjust line weights and point sizes for emphasis
+  \end{itemize}
+
+  \item \textbf{Do not mislead readers}: Present data honestly. For example, in event study plots with discrete time periods, avoid smooth confidence bands that imply continuity that isn't present.
+\end{enumerate}
+
+\subsection{Schwabish's Guidelines for Figures}
+
+\citet{schwabish2014economist} provides excellent guidelines:
+\begin{enumerate}
+  \item Show the data
+  \item Reduce clutter
+  \item Integrate graphics and text
+  \item Avoid providing extraneous information
+  \item Start with grey (add color strategically for emphasis)
+\end{enumerate}
+
+\subsection{Practical Tips}
+
+\begin{boxF}
+\begin{cmt}[Making Good Figures]
+  \begin{itemize}
+    \item Bar graphs should almost always be horizontal for readable labels
+    \item Don't put confidence intervals on bar graphs; use point-range plots instead
+    \item Directly label on your figure rather than using legends when possible
+    \item Fix your units: round numbers, add commas, include currency symbols, use zero padding
+    \item Label your y-axis at the top of the graph rather than rotated 90 degrees
+    \item Use gestalt principles to highlight key elements: shape, thickness, saturation, color, size, position
+  \end{itemize}
+\end{cmt}
+\end{boxF}
+
+Academic papers differ from media visualizations. Our figures often:
+\begin{itemize}
+  \item Present multiple variations of similar analyses
+  \item Support robustness checks
+  \item Build understanding incrementally
+\end{itemize}
+
+The goal is to provide a polished way to convey bite-sized pieces of information, so that once readers understand the main result, subsequent robustness checks are easily processed.
+
+\begin{boxK}
+\begin{discussion}
+  \begin{enumerate}
+    \item Consider a paper you've recently read. How could its main figures be improved using the principles discussed?
+    \item When would you choose binscatter over a simple linear regression visualization? What are the tradeoffs?
+    \item In the multiple treatment arm setting, how might you visualize the contamination problem discussed in this lecture?
+  \end{enumerate}
+\end{discussion}
+\end{boxK}
+
+
+
+\bibliography{lecture_note_bib.bib}
+\bibliographystyle{plainnat}
 
 \end{document}
