@@ -33,3 +33,14 @@ homework/data/116250-V1*
 lectures/14b_extensions_checklist.synctex (Paul Goldsmith-Pinkham's conflicted copy 2025-03-06 1).gz
 *synctex*
 *(Paul Goldsmith-Pinkham's conflicted copy *
+syllabus.fdb_latexmk
+syllabus.fls
+.gitignore
+wrds_public_key.txt
+.gitignore
+.claude/settings.local.json
+.gitignore
+.zed/tasks.json
+.gitignore
+homework/homework_header.tex
+lecture_notes/01_po_dags_notes.fdb_latexmk
