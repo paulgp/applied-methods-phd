@@ -51,3 +51,5 @@ papers/Paul Goldsmith-Pinkham_files/react-dom.production.min.js
 papers/Paul Goldsmith-Pinkham_files/react.production.min.js
 papers/Paul Goldsmith-Pinkham_files/scale.fix.js
 papers/Paul Goldsmith-Pinkham_files/styles.css
+.vscode/settings.json
+wrds_helper.py
