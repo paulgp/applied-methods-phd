@@ -44,3 +44,10 @@ wrds_public_key.txt
 .gitignore
 homework/homework_header.tex
 lecture_notes/01_po_dags_notes.fdb_latexmk
+papers/Paul Goldsmith-Pinkham_files/circle_cropped.png
+papers/Paul Goldsmith-Pinkham_files/js
+papers/Paul Goldsmith-Pinkham_files/pdf_gallery.js
+papers/Paul Goldsmith-Pinkham_files/react-dom.production.min.js
+papers/Paul Goldsmith-Pinkham_files/react.production.min.js
+papers/Paul Goldsmith-Pinkham_files/scale.fix.js
+papers/Paul Goldsmith-Pinkham_files/styles.css
