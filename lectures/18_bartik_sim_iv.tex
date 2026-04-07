@@ -33,8 +33,20 @@
 \usepackage{graphicx}
 \usepackage{dcolumn}
 \usepackage{bbm}
+
+
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Var}{Var}
+
 \newcolumntype{d}[0]{D{.}{.}{5}}
 
+\usepackage{tikz}
+%\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,fit,backgrounds,calc, arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
 \usepackage{changepage}
 \usepackage{appendixnumberbeamer}
 \newcommand{\beginbackup}{
@@ -57,6 +69,24 @@
 }
 
 
+\tikzset{
+  treenode/.style = {shape=rectangle, rounded corners,
+                     draw, align=center,
+                     top color=white, bottom color=blue!20},
+  root/.style     = {treenode, font=\Large, bottom color=red!30},
+  env/.style      = {treenode, font=\ttfamily\normalsize},
+  dummy/.style    = {circle,draw}
+}
+
+% ── colour palette (muted teal, matching reference) ─────────
+\definecolor{outer}{RGB}{80,115,130}
+\definecolor{mid}{RGB}{120,155,170}
+\definecolor{inner}{RGB}{160,195,210}
+\definecolor{core}{RGB}{195,218,228}
+\definecolor{reddot}{RGB}{210,65,50}
+\definecolor{labcol}{RGB}{50,55,60}
+\definecolor{yrcol}{RGB}{90,95,100}
+\definecolor{linegray}{RGB}{155,165,170}
 \usepackage{graphicx}
 \usepackage[space]{grffile}
 \usepackage{booktabs}
@@ -279,7 +309,7 @@
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}{Hausman Instruments}
   \frametitle{Motivation: local labor market approaches + reduced form}
 
   Consider a local labor market regression like the following:  
@@ -1368,6 +1398,576 @@ Also, overidentification tests, which provides evidence of misspecification (but
 \item This tax literature is strongly tied to functional form or additional assumptions (see Blomquist, Newey, Kumar and Liang (2021))
 \end{wideitemize}
 \end{frame}
+
+
+\begin{frame}
+
+\frametitle{Motivation}
+
+\textbf{Consider static monopoly pricing with linear demand}
+\[
+Q_m = \xi_m - \alpha P_m,
+\qquad
+MC_m = c_m
+\]
+
+\begin{itemize}
+    \item \textbf{Unobserved heterogeneity:} demand shock $\xi_m$ is unknown
+    \item \textbf{Endogeneity:} under profit maximization
+\end{itemize}
+
+\[
+P_m^* = \frac{\xi_m}{2\alpha} + \frac{c_m}{2}
+\]
+
+%\qquad Q_m^* = \frac{\xi_m}{2} - \frac{\alpha c_m}{2}
+
+\vspace{0.2cm}
+
+\textbf{Problem:} price is correlated with the unobserved demand shock
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Instruments come to the rescue}
+
+\begin{itemize}
+    \item External instruments (cost shifters): input prices, exchange rates, wage rates, \ldots
+   \begin{itemize}
+        \item Standard IV logic: cost moves price, but not demand directly
+   \end{itemize}
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Internal instruments (constructed from data):}
+
+\begin{itemize}
+    \item BLP instruments: competitors' product characteristics
+    \item \textcolor{blue}{Hausman instrument: leave-one-out prices in other markets}
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Literature}
+
+\begin{figure}
+    \centering
+    \resizebox{0.88\textwidth}{!}{
+   \begin{tikzpicture}[
+  lbl/.style={font=\fontsize{10.5}{12.6}\selectfont, text=black},
+]
+
+% ================================================================
+%  X mapping:  x = (year - 1994) * 0.516
+%  1994→0   1996→1.03   2000→3.10   2010→8.26   2011→8.77
+%  2012→9.29   2013→9.81   2014→10.32   2018→12.39
+%  2019→12.90   2021→13.94   2022→14.45   2023→14.97   2025→16.0
+% ================================================================
+
+% ── RIBBON LAYERS (back to front) ────────────────────────────
+
+% Layer 1 – outermost, darkest
+\fill[outer, opacity=0.42]
+  (0, 0)
+  .. controls (2, 0.95) and (6, 2.9) .. (10, 4.8)
+  .. controls (12, 5.7) and (14, 6.5) .. (16.5, 7.2)
+  -- (16.5, -7.2)
+  .. controls (14, -6.5) and (12, -5.7) .. (10, -4.8)
+  .. controls (6, -2.9) and (2, -0.95) .. (0, 0) -- cycle;
+
+% Layer 2 – middle
+\fill[mid, opacity=0.38]
+  (0, 0)
+  .. controls (2, 0.72) and (6, 2.2) .. (10, 3.7)
+  .. controls (12, 4.4) and (14, 5.1) .. (16.5, 5.6)
+  -- (16.5, -5.6)
+  .. controls (14, -5.1) and (12, -4.4) .. (10, -3.7)
+  .. controls (6, -2.2) and (2, -0.72) .. (0, 0) -- cycle;
+
+% Layer 3 – inner
+\fill[inner, opacity=0.38]
+  (0, 0)
+  .. controls (2, 0.50) and (6, 1.55) .. (10, 2.6)
+  .. controls (12, 3.1) and (14, 3.6) .. (16.5, 3.95)
+  -- (16.5, -3.95)
+  .. controls (14, -3.6) and (12, -3.1) .. (10, -2.6)
+  .. controls (6, -1.55) and (2, -0.50) .. (0, 0) -- cycle;
+
+% Layer 4 – core, lightest
+\fill[core, opacity=0.32]
+  (0, 0)
+  .. controls (2, 0.30) and (6, 0.95) .. (10, 1.55)
+  .. controls (12, 1.85) and (14, 2.15) .. (16.5, 2.35)
+  -- (16.5, -2.35)
+  .. controls (14, -2.15) and (12, -1.85) .. (10, -1.55)
+  .. controls (6, -0.95) and (2, -0.30) .. (0, 0) -- cycle;
+
+% ── Center line ──
+\draw[linegray, line width=0.3pt] (-1.8, 0) -- (16.8, 0);
+
+% ================================================================
+%  MARKET LEVEL  (above center line)
+%  10 papers: Hausman'94, Hausman'96, Nevo'00, Nakamura&Zerom'10,
+%  Ghose-et-al'12, Buccirossi'13, Ghose&Han'14,
+%  Adams&Williams'19, Compiani'22, Gerarden'23
+% ================================================================
+
+% Hausman et al. (1994) — at origin
+\fill[reddot] (0, 0) circle (2.5pt);
+\node[lbl, anchor=east] at (-0.4, 0) {Hausman et al.\ (1994)};
+
+% Hausman (1996)
+\fill[reddot] (1.03, 0.30) circle (2.5pt);
+\node[lbl, anchor=south west] at (1.15, 0.40) {Hausman (1996)};
+
+% Nevo (2000)
+\fill[reddot] (3.10, 0.55) circle (2.5pt);
+\node[lbl, anchor=north west] at (3.20, 0.40) {Nevo (2000)};
+
+% Nakamura & Zerom (2010)
+\fill[reddot] (8.26, 1.6) circle (2.5pt);
+\node[lbl, anchor=south east] at (8.16, 1.75) {Nakamura \& Zerom (2010)};
+
+% Ghose et al. (2012)
+\fill[reddot] (9.29, 2.5) circle (2.5pt);
+\node[lbl, anchor=south east] at (9.19, 2.65) {Ghose et al.\ (2012)};
+
+% Buccirossi et al. (2013) — near center
+\fill[reddot] (9.81, 0.20) circle (2.5pt);
+\node[lbl, anchor=west] at (9.95, 0.20) {Buccirossi et al.\ (2013)};
+
+% Ghose & Han (2014)
+\fill[reddot] (10.32, 3.5) circle (2.5pt);
+\node[lbl, anchor=south east] at (10.22, 3.65) {Ghose \& Han (2014)};
+
+% Adams & Williams (2019)
+\fill[reddot] (12.90, 4.8) circle (2.5pt);
+\node[lbl, anchor=south east] at (12.80, 4.95) {Adams \& Williams (2019)};
+
+% Compiani (2022)
+\fill[reddot] (14.45, 1.5) circle (2.5pt);
+\node[lbl, anchor=south west] at (14.55, 1.6) {Compiani (2022)};
+
+% Gerarden (2023)
+\fill[reddot] (14.97, 3.5) circle (2.5pt);
+\node[lbl, anchor=south west] at (15.07, 3.6) {Gerarden (2023)};
+
+% ================================================================
+%  CONSUMER / MICRO LEVEL  (below center line)
+%  11 papers: Beresteanu&Li'11, Crawford&Yurukoglu'12,
+%  Atkin'13, Finkelstein'13, Atkin-et-al'18,
+%  Allcott'19, DellaVigna&Gentzkow'19, Atkin-et-al'21,
+%  Bau'22, Azar'22, Ouimet&Tate'25
+% ================================================================
+
+% Beresteanu & Li (2011)
+\fill[reddot] (8.77, -1.7) circle (2.5pt);
+\node[lbl, anchor=north east] at (8.67, -1.85) {Beresteanu \& Li (2011)};
+
+% Crawford & Yurukoglu (2012)
+\fill[reddot] (9.29, -2.7) circle (2.5pt);
+\node[lbl, anchor=north east] at (9.19, -2.85) {Crawford \& Yurukoglu (2012)};
+
+% Atkin (2013)
+\fill[reddot] (9.81, -3.6) circle (2.5pt);
+\node[lbl, anchor=east] at (9.65, -3.6) {Atkin (2013)};
+
+% Finkelstein et al. (2013)  — offset slightly
+\fill[reddot] (10.1, -4.5) circle (2.5pt);
+\node[lbl, anchor=north east] at (10.0, -4.65) {Finkelstein et al.\ (2013)};
+
+% Atkin et al. (2018)
+\fill[reddot] (12.39, -3.8) circle (2.5pt);
+\node[lbl, anchor=west] at (12.55, -3.8) {Atkin et al.\ (2018)};
+
+% Allcott et al. (2019)
+\fill[reddot] (12.90, -2.5) circle (2.5pt);
+\node[lbl, anchor=north east] at (12.75, -2.65) {Allcott et al.\ (2019)};
+
+% DellaVigna & Gentzkow (2019)
+\fill[reddot] (13.15, -0.65) circle (2.5pt);
+\node[lbl, anchor=west] at (13.30, -0.65) {DellaVigna \& Gentzkow (2019)};
+
+% Atkin et al. (2021)
+\fill[reddot] (13.94, -1.9) circle (2.5pt);
+\node[lbl, anchor=west] at (14.10, -1.9) {Atkin et al.\ (2021)};
+
+% Azar et al. (2022)
+\fill[reddot] (14.45, -5.0) circle (2.5pt);
+\node[lbl, anchor=north east] at (14.35, -5.15) {Azar et al.\ (2022)};
+
+% Bau (2022) — offset from Azar
+\fill[reddot] (14.75, -3.0) circle (2.5pt);
+\node[lbl, anchor=west] at (14.90, -3.0) {Bau (2022)};
+
+% Ouimet & Tate (2025) — rightmost
+\fill[reddot] (16.0, -1.0) circle (2.5pt);
+\node[lbl, anchor=west] at (16.15, -1.0) {Ouimet \& Tate (2025)};
+
+% ================================================================
+%  ANNOTATION
+% ================================================================
+\draw[-{Stealth[length=4pt]}, line width=0.55pt, black]
+  (-1.2, -2.0) -- (-0.15, -0.15);
+\node[lbl, anchor=north east, align=left, font=\fontsize{10}{12}\selectfont\itshape]
+  at (-0.9, -2.0) {Hausman's\\original insight};
+
+% ================================================================
+%  TIMELINE
+% ================================================================
+\def\tly{-8.2}
+\draw[yrcol, line width=0.5pt] (0, \tly) -- (16, \tly);
+\draw[-{Stealth[length=4pt]}, yrcol, line width=0.5pt] (16, \tly) -- (16.6, \tly);
+
+\foreach \x/\yr in {0/1994, 3.10/2000, 8.26/2010, 10.84/2015, 13.42/2020, 16/2025}{
+  \draw[yrcol, line width=0.5pt] (\x, \tly+0.18) -- (\x, \tly-0.18);
+  \node[font=\fontsize{12}{14.4}\selectfont, text=black, anchor=north] at (\x, \tly-0.25) {\yr};
+}
+
+% ================================================================
+%  TITLE
+% ================================================================
+%\node[font=\fontsize{16}{19.2}\selectfont\bfseries, text=black, anchor=south]  at (8, 7.8) {The Hausman Instrument: A Growing Literature};
+%\node[font=\fontsize{12}{14.4}\selectfont, text=black, anchor=south]  at (8, 7.05) {Instrumental variables based on prices in other markets --- three decades of leave-out mean IVs};
+
+% Subtle region labels
+\node[font=\fontsize{13}{15.6}\selectfont\itshape, text=black, anchor=west]
+  at (0.5, 5.8) {Market Level};
+\node[font=\fontsize{13}{15.6}\selectfont\itshape, text=black, anchor=west]
+  at (0.5, -5.8) {Consumer / Micro Level};
+
+\end{tikzpicture}
+}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Standard justification is incomplete}
+
+\begin{itemize}
+    \item Standard argument is often \textbf{statistical}:
+    \begin{itemize}
+        \item if demand shocks are independent across markets, then prices elsewhere are independent of the focal market shock $\xi_{jm}$
+    \end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Our point:} this reasoning is incomplete.
+
+\begin{itemize}
+    \item The \textbf{economic structure of pricing} matters just as much
+    \item captured by the Jacobian matrix
+\end{itemize}
+\[
+\textcolor{blue}{J^{\xi}
+\equiv
+\frac{\partial p_{m'}}{\partial \xi_m}}
+\]
+i.e., the reduced-form response of equilibrium prices in other markets to a local demand shock
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Our contributions}
+
+\begin{enumerate}
+    \item \textbf{Equivalence:} Hausman IV is 
+    \begin{itemize}
+        \item best viewed as a set of time or region-by-time dummies
+        \item a \textbf{Jackknife IV} estimator
+    \end{itemize}
+
+    \vspace{0.15cm}
+
+    \item \textbf{Bias characterization}
+    \[
+    \text{bias} = \sigma_{\xi}^2 \cdot \mathrm{tr}(C J^{\xi})
+    \]
+    \begin{itemize}
+        \item Validity requires
+        \[
+        \mathrm{tr}(C J^{\xi})=0
+        \]
+        \item This restricts both the estimator and the economic structure
+    \end{itemize}
+
+    \vspace{0.15cm}
+
+    \item \textbf{Diagnostics and solutions}
+    \begin{itemize}
+        \item Decompose estimates into period-specific contributions
+        \item Cluster-JIVE restores validity when spillovers are geographically or temporally clustered
+        \item Some uniform pricing or hierarchical pricing structures can also restore validity
+    \end{itemize}
+\end{enumerate}
+
+\end{frame}
+
+\section{Motivating Example}
+
+\begin{frame}{Motivating Example}
+
+\begin{itemize}
+
+    \item Three markets (Chicago, Milwaukee and Detroit), two periods
+    \item Demand equation
+    \[
+        q_{mt} = \alpha + \beta p_{mt} + \xi_{mt}
+    \]
+    \begin{itemize}
+        \item $\xi_{mt}$: a demand shock, $E[\xi_{mt}] = 0$, $Var(\xi_{mt}) = \sigma_\xi^2$
+        \item $\xi_{mt} \perp \xi_{m't'}$ for $(m,t) \neq (m',t')$
+    \end{itemize}
+    \item Price is endogenous: $Cov(p_{mt}, \xi_{mt}) \neq 0$.
+    
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Time dummies}
+
+\begin{itemize}
+    \item Use period-2 as an IV: common cost shock $\eta_t$ affects all markets in period t but uncorrelated with demand shocks $\xi_{mt}$
+    \item the first-stage predicted value under 2SLS 
+    \[
+     \hat{p}_{mt} = M^{-1}\sum_{m=1}^{M}p_{mt}.
+    \]
+    \begin{itemize}
+        \item includes own price $\rightarrow$ violates exclusion restriction mechanically
+        \item And, $M=3$ $\rightarrow$ the own-price is a significant term.
+    \end{itemize}
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Hausman instrument}
+
+\begin{itemize}
+    \item Define 
+    \[
+     h_{mt} = \frac{1}{M-1} \sum_{m' \neq m} p_{m't}.
+    \]
+    \begin{itemize}
+        \item avoid own-market demand 
+        \item leverage the independence of $\xi_{mt}$ across $m$
+    \end{itemize}
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Why might this fail?}
+
+\begin{itemize}
+    \item Suppose 
+    \[
+     p_{mt} = \eta_t + \delta \xi_{mt} + \lambda \bar{\xi}_t
+    \]
+    \begin{itemize}
+        \item $\eta_t$ is a common cost in period $t$
+        \item $\bar{\xi}_t = (1/M)\sum_m \xi_{mt}$ is the average demand shock
+        \item $\lambda > 0$ captures the firm's tendency to make prices uniform
+    \end{itemize} 
+
+    \vspace{.2cm}
+
+    \item Even after leave-one-out, Chicago’s shock enters via the average demand component 
+    \begin{align*}
+    Cov(\xi_{C1}, h_{C1}) &= Cov\left(\xi_{C1}, \frac{p_{M1} + p_{D1}}{2}\right) \\
+      &= Cov\left(\xi_{C1}, \lambda \bar{\xi}_1\right) \\
+    &= \lambda Cov\left(\xi_{C1}, \frac{\xi_{C1} + \xi_{M1} + \xi_{D1}}{3}\right) \\
+    &= \frac{\lambda \sigma_\xi^2}{3}.
+\end{align*}
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Problem: cross-market spillovers, not own-market contamination}
+
+\begin{itemize}
+    \item The statistical assumption—independence of $\xi_{mt}$ across markets—holds. 
+    \item The problem is economic: the pricing function transmits Chicago's demand shock to Milwaukee's price because the Jacobian $\partial p_{M1}/\partial \xi_{C1} = \lambda/M$ of the reduced-form pricing equation is nonzero. 
+    \item The leave-one-out structure removes the \emph{own-market} contamination (Chicago's price doesn't enter its own instrument) but not the \emph{cross-market} contamination (Milwaukee's price, which appears in Chicago's instrument, responds to Chicago's demand).
+\end{itemize}
+    
+\end{frame}
+
+
+\section{Equivalence and Bias}
+
+\begin{frame}{General Setup}
+
+
+\begin{itemize}
+    \item Demand shocks: $\xi_{mt}$ are independent across markets and periods with $E[\xi_{mt}] = 0$ and $Var(\xi_{mt}) = \sigma_\xi^2$.
+    \item Cost shocks: $\eta_{mt}$ have mean zero with period-specific covariance $\Sigma_{\eta,t} = Var(\eta_t)$ where $\eta_t = (\eta_{1t}, \ldots, \eta_{Mt})$. 
+    \item Demand and cost shocks are independent: $\xi \perp \eta$.
+    \begin{itemize}
+    \item $M$ markets, $T$ time periods, $N = MT$ total observations. 
+    \item $q_{mt}$: quantity/market share, $p_{mt}$: the price
+    \item $\xi_{mt}$: structural demand shock, $\eta_{mt}$: structural supply shock. 
+\begin{itemize}
+        \item Stack observations as vectors $q, p, \xi, \eta \in \mathbb{R}^N$.
+\end{itemize}
+\end{itemize}
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Economic Assumption: Pricing}
+
+\begin{itemize}
+    \item Prices in period $t$: \textcolor{blue}{$p_t = g(\xi_t, \eta_t)$.}
+
+    \item Define the Jacobian matrices $J_t^\xi, J_t^\eta \in \mathbb{R}^{M \times M}$ with entries
+\begin{equation*}
+    \textcolor{blue}{[J_t^\xi]_{m'm} = \frac{\partial p_{m't}}{\partial \xi_{mt}}, \qquad [J_t^\eta]_{m'm} = \frac{\partial p_{m't}}{\partial \eta_{mt}}.}
+\end{equation*}
+
+\begin{itemize}
+    \item Diagonal entries $[J_t^\xi]_{mm}$ capture how market $m$'s own demand shock affects its price—the standard endogeneity concern. 
+
+    \item Off-diagonal entries $[J_t^\xi]_{m'm}$ capture cross-market spillovers: how market $m$'s demand shock affects market $m'$'s price.
+\end{itemize}
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Examples}
+
+\begin{enumerate}
+    \item \textbf{Independent pricing:} 
+    \begin{itemize}
+        \item Each market sets its own price based only on local conditions.  
+        \item $[J_t^\xi]_{m'm} = 0$ for $m' \neq m$ and $J_t^\xi$ is diagonal.
+    \end{itemize}
+
+    \item \textbf{Uniform pricing:} 
+    \begin{itemize}
+        \item A multi-market firm sets the same price everywhere. \item $\partial p_{m't}/\partial \xi_{mt} = \partial p_t/\partial \xi_{mt}$ for all $m'$, so all entries in row $m'$ are equal—maximal spillovers.
+    \end{itemize}
+
+    \item \textbf{Partial spillovers:} 
+    \begin{itemize}
+        \item The firm adjusts all prices in response to average demand 
+        \item In the motivating example, $[J_t^\xi]_{m'm} = \lambda/M$ for $m' \neq m$, with $\lambda$ measuring the sensitivity to aggregate conditions.
+    \end{itemize}
+\end{enumerate}
+    
+\end{frame}
+
+\begin{frame}{Bias Characterization}
+
+\begin{itemize}
+    \item Consider the linear IV estimator: 
+    \[
+    \widehat{\beta} = (p'Cp)^{-1}(p'Cq)
+    \]
+
+\begin{itemize}
+    \item $C$: an $N \times N$ weighting matrix
+    \item IV estimators can be written using a weighting matrix $C$
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{}
+
+\begin{enumerate}
+    \item \textbf{2SLS:} 
+    \[
+    C = P_Z
+    \]
+    $P_Z = Z(Z'Z)^{-1}Z'$ is the projection onto $Z$
+    \item \textbf{JIVE:} ``leave-one-out at observation level''
+    \[
+    C_{\textup{JIVE}} = (I - \diag(P_Z))^{-1}(P_Z - \diag(P_Z))
+    \]
+    removes the own-observation from the first-stage fitted value
+    \item \textbf{CJIVE (Cluster-JIVE):} ``leave-one-out at cluster level''
+    \[
+    C_{\textup{CJIVE}} = (I - \mathcal{D}(P_Z))^{-1}(P_Z - \mathcal{D}(P_Z))
+    \]
+    removes the entire cluster from the first-stage fitted value
+\end{enumerate}
+    
+\end{frame}
+
+
+\begin{frame}{Covariance Structure}
+   For $m' \neq m$ in the same period $t$:
+\[
+\textcolor{blue}{Cov(\xi_{mt}, p_{m't}) = \sigma_\xi^2 \, [J_t^\xi]_{m'm}}
+\]
+
+\begin{itemize}
+    \item A first-order Taylor expansion yields
+\[ 
+p_{m't} = p_{m't}\big|_{\xi_t=0, \eta_t=0} + \textcolor{red}{\sum_{k=1}^M [J_t^\xi]_{m'k} \xi_{kt} }+ \sum_{k=1}^M [J_t^\eta]_{m'k} \eta_{kt} + O(\|\xi_t\|^2, \|\eta_t\|^2)
+\]
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Bias}
+
+For any linear IV estimator with weighting matrix $C$:
+\[
+    \textcolor{blue}{E[\xi' C p] = \sigma_\xi^2 \cdot \tr(C \, J^\xi),}
+\]
+where $J^\xi$ is the $N \times N$ block-diagonal matrix with blocks $J_t^\xi$.
+
+\end{frame}
+
+\begin{frame}{Hausman IV as JIVE}
+
+\begin{itemize}
+    \item $Z$: time dummies
+    
+    \item the projection matrix $P_Z$ has blocks:
+    \begin{itemize}
+        \item the same period, all entries equal $1/M$ 
+        \item across periods, all entries equal zero
+    \end{itemize}
+
+\item $C_{\textup{JIVE}} = (I - \diag(P_Z))^{-1}(P_Z - \diag(P_Z))$ removes diagonal 
+\begin{equation} \nonumber
+    [C_{\textup{JIVE}}]_{(m,t),(m',t)} = \begin{cases}
+        \frac{1}{M-1} & \text{if } m \neq m' \\
+        0 & \text{if } m = m'
+    \end{cases}.
+\end{equation}
+
+\item The JIVE predicted price is
+\begin{equation} \nonumber
+    \textcolor{blue}{\hat{p}_{mt}^{\text{JIVE}} = \sum_{m'} C_{(m,t),(m',t)} p_{m't} = \frac{1}{M-1} \sum_{m' \neq m} p_{m't} = h_{mt}.}
+\end{equation}
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Bias of the Hausman Estimator}
+
+\begin{equation}
+  \textcolor{blue}{  E[\xi' C_{\textup{JIVE}} p] = \frac{\sigma_\xi^2}{M-1} \sum_{t=1}^T \underbrace{\left( \mathbf{1}' J_t^\xi \mathbf{1} - \tr(J_t^\xi) \right)}_{\text{\tiny sum of off-diagonal spillovers}}} \nonumber
+\end{equation}    
+\end{frame}
+
+
 
 \begin{frame}{Granular Instruments (Gabaix and Koijen)}
 \begin{columns}[T] % align columns
