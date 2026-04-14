@@ -147,7 +147,7 @@
   \end{frame}
 }
 
-\title[]{\textcolor{blue}{Canonical Research Designs VI:\\ Examiner Designs (aka Judge IV, aka leniency IV) }}
+\title[]{\textcolor{blue}{Canonical Research Designs VI:\\ Leniency Designs (aka Judge IV, aka Examiner IV) }}
 \author[PGP]{}
 \institute[FRBNY]{\small{\begin{tabular}{c}
   Paul Goldsmith-Pinkham  \\
@@ -183,31 +183,41 @@
 
 \begin{frame}{Roadmap for Today}
   \begin{wideitemize}
-  \item Today we're focusing on a particular research design: the examiner design
-  \item Like many of the designs we are studying, they have shown up
-    in papers for a while, but have really started to take off
-    recently with the rise of high-quality administrative microdata.
-  \item Key issues we'll touch on:
-    \begin{itemize}
-    \item Identification: what are we getting at?
-    \item Estimation: What's the best estimation method for using the
-      examiner design?
-    \item Inference: How should we do inference?
-    \end{itemize}
+  \item Today we're focusing on a particular research design: the \emph{leniency design} (aka examiner/judge IV)
+  \item These designs harness quasi-random assignment of decision-makers to estimate causal effects of high-stakes treatments
+  \item Structure follows Goldsmith-Pinkham, Hull, and Koles\'{a}r (2025), ``Leniency Designs: An Operator's Manual''
+  \item Key topics:
+    \begin{enumerate}
+    \item Setup and intuition
+    \item Estimation: why UJIVE?
+    \item Heterogeneous effects and monotonicity
+    \item Inference
+    \item A practical checklist
+    \end{enumerate}
   \end{wideitemize}
 \end{frame}
 
-\begin{frame}{High-level description of examiner design}
+%% ============================================================
+%% PART 1: SETUP AND EXAMPLES
+%% ============================================================
+
+\begin{transitionframe}
+  \begin{center}
+    {\Huge \textcolor{blue}{Part 1: Setup and Examples}}
+  \end{center}
+\end{transitionframe}
+
+\begin{frame}{High-level description of leniency designs}
     \begin{columns}[onlytextwidth, T] % align columns
       \begin{column}{.6\textwidth}
         \begin{wideitemize}
         \item In many applications, there is an administrator, judge,
-          or monitor who plays an important role in deciding an
+          or examiner who plays an important role in deciding an
           outcome
         \item These outcomes include:
           \begin{itemize}
           \item bail
-          \item banktrupcy
+          \item bankruptcy
           \item getting a loan
           \item parole
           \item disability insurance
@@ -225,9 +235,9 @@
         \begin{wideitemize}
         \item Key ingredients:
           \begin{enumerate}
-          \item random assignment of examiner
-          \item discretion over a (typically binary) outcome
-          \item heterogeneity in behavior
+          \item as-good-as-random assignment of decision-maker
+          \item discretion over a (typically binary) treatment
+          \item heterogeneity in decision-maker behavior (``leniency'')
           \end{enumerate}
         \end{wideitemize}
         }
@@ -235,11 +245,11 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Consider two examples}
+\begin{frame}{Example 1: Bail setting in Philadelphia}
   \begin{columns}[onlytextwidth, T] % align columns
     \begin{column}{.50\textwidth}
       \begin{wideitemize}
-      \item Example 1: Bail setting in Philadelphia (Stevenson (2018))
+      \item Stevenson (2018): Bail setting in Philadelphia
       \item After you're arrested, you can be:
         \begin{itemize}
         \item held in jail
@@ -265,11 +275,11 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Consider two examples}
+\begin{frame}{Example 2: Bankruptcy judges}
   \begin{columns}[onlytextwidth, T] % align columns
     \begin{column}{.50\textwidth}
       \begin{wideitemize}
-      \item Example 2: Bankruptcy judges in Chapter 13 (Dobbie et al.(2017))
+      \item Dobbie et al.\ (2017): Bankruptcy judges in Chapter 13
       \item When you file for Chapter 13 bankruptcy, you file a
         repayment plan to be approved by a judge
       \item This decision is made by different judges staffed at a
@@ -289,64 +299,51 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Notation}
+\begin{frame}{A simple motivating example: Two examiners}
   \begin{wideitemize}
-  \item Before we get to intuition, let's start with some notation
-  \item We consider $n$ individuals indexed by $i$, with two outcomes: $D_{i}$  and $Y_{i}$
-  \item Each individual is assigned to one of $K$ examiners: $Q_{i} \in \{0, \ldots, K-1\}$
-  \item Hence, very easy to consider the potential outcomes $D_{i}(q)$
-    for each of the potential exmainers, where we observe only one!
+  \item Consider a stylized patent setting (Farre-Mensa et al.\ (2020)):
     \begin{itemize}
-    \item If $K=2$, this is just our simple binary case.
-    \item With  $K > 2$, it becomes more complicated
-    \item Note that there's no meaningful ordering to the $K$ exmainers 
+    \item $n$ patent applications, randomly assigned to one of two examiners $s$ (``soft'') or $t$ (``tough'')
+    \item Treatment $x_{i} \in \{0,1\}$: patent granted or not
+    \item Outcome $y_{i}$: future patent applications by the firm
     \end{itemize}
-  \item We can \emph{also} consider the potential outcomes $Y_{i}(q)$. What are we ignoring?
-    \pause
-    \begin{itemize}
-    \item Potential impact of $D_{i}$ on $Y_{i}$. When we do IV, we'll
-      need to consider $Y_{i}(D_{i}(Q_{i}), Q_{i})$, and then shut
-      down the direct effect of $Q_{i}$ in order to do IV
-    \end{itemize}
-  \end{wideitemize}
-\end{frame}
-
-\begin{frame}{Intuition}
-  \begin{wideitemize}
-  \item First consider the variation in $D_{i}$ across the $Q_{i}$.
-    \begin{itemize}
-    \item Conditional on some covariates $W_{i}$, we assume that
-      strong ignorability holds
-    \end{itemize}
-  \item If $W_{i}$ is just a constant, then we can consider
-    $\tau_{q, q'} = E(D_{i} | Q_{i} = q) - E(D_{i} | Q_{i} = q')$
-    \begin{itemize}
-    \item This is the relative effect of judge $q$ vs. $q'$ on bail
-      decisions or bankruptcy discharge 
-    \end{itemize}
-  \item We have an RCT, but with judges!
-  \item Useful to also define $\mu_{D}(q) = E(D_{i}| Q_{i} = q)$
-    \begin{itemize}
-    \item     $\hat{\mu}_{D}(q)$ is the corresponding empirical estimate
-    \end{itemize}
-  \end{wideitemize}
-\end{frame}
-
-\begin{frame}{What is this measure? }
-  \begin{wideitemize}
-  \item In the context of bankruptcy or bail judges, $\mu_{D}(q)$
-    measures judge $q$'s \emph{leniency} -- e.g. their average
-    propensity
-  \item We can literally estimate this with a simple linear regression of dummies! E.g. let $\mathcal{Q}_{i}$ be the set of dummies for $Q_{i}$:
+  \item Outcome equation (constant effects for now):
     \begin{equation*}
-      D_{i} = \mathcal{Q}_{i}\mu_{D} + u_{i}
+      y_{i} = \gamma + \beta x_{i} + \varepsilon_{i}
     \end{equation*}
-  \item Note that given the simplicity of this measure, the $\mu_{D}$ are equivalent to the predicted values for $D_{i}$
+  \item OLS is biased: firms with high $\varepsilon_{i}$ (better scientists, more R\&D) submit stronger applications $\Rightarrow$ positive selection bias
+  \item Leniency design idea: use the randomly-assigned examiner's tendency to grant patents (their \emph{leniency}) as an instrument for $x_{i}$
+  \item With two examiners: using the examiner dummy $z_{i}$ as an instrument is numerically identical to using estimated leniency $\hat{\ell}_{i}$
+  \end{wideitemize}
+\end{frame}
+
+%% ============================================================
+%% PART 2: LENIENCY AND ESTIMATION
+%% ============================================================
+
+\begin{transitionframe}
+  \begin{center}
+    {\Huge \textcolor{blue}{Part 2: Leniency, Many IVs, and Estimation}}
+  \end{center}
+\end{transitionframe}
+
+\begin{frame}{Notation: Many decision-makers and controls}
+  \begin{wideitemize}
+  \item Now consider $K$ examiners. Assignment captured by instrument vector $z_{i}$ (examiner dummies)
+  \item \textbf{Necessary controls} $w_{i}$: variables needed to make assignment as-good-as-random
     \begin{itemize}
-    \item E.g. $\hat{D}$ from the regression on $\mathcal{Q}_{i}$
+    \item E.g.\ art unit $\times$ year FE (patents), court $\times$ time FE (judges)
     \end{itemize}
-  \item This predicted measure dovetails exactly into the measure that
-    papers have historically used!
+  \item First-stage equation:
+    \begin{equation*}
+      x_{i} = z_{i}'\pi + w_{i}'\delta + \nu_{i}
+    \end{equation*}
+  \item Population first-stage fitted values give \textbf{absolute leniency}: $\ell_{i} = z_{i}'\pi + w_{i}'\delta$
+  \item After residualizing for $w_{i}$, we get \textbf{relative leniency}: $\tilde{\ell}_{i} = \tilde{z}_{i}'\pi$
+    \begin{itemize}
+    \item Measures leniency of assigned examiner \emph{relative to} other examiners who could have been assigned
+    \item E.g.\ examiner's granting rate minus art unit average granting rate
+    \end{itemize}
   \end{wideitemize}
 \end{frame}
 
@@ -355,20 +352,15 @@
       \begin{column}{.5\textwidth}
         \begin{wideitemize}
         \item In many papers, the measure that has been used is a
-          ``leniency'' metric for judges: e.g. the $\hat{D}_{i}$
+          ``leniency'' metric for judges: e.g.\ the $\hat{\ell}_{i}$
         \item This is the overall average leniency across judges in
           DGPY [note, not observation weighted -- hence outliers]
-        \item What's the problem with just the overall, in the DGPY
-          context?
+        \item What's the problem with just the overall?
           \begin{itemize}
           \item Judges are not random overall -- location (and time)
             specific
           \end{itemize}
-        \item Importantly, the average judge characteristic may
-          capture location specific features
-          \begin{itemize}
-          \item Control for $W_{i}$
-          \end{itemize}
+        \item Must control for $w_{i}$ to get \emph{relative} leniency
         \end{wideitemize}
       \end{column}%
       \hfill%
@@ -378,42 +370,15 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{How to incorporate $W_{i}$?}
-  \begin{wideitemize}
-  \item Now consider the simple linear regression with $W_{i}$:
-    \begin{equation*}
-      D_{i} = \mathcal{Q}_{i}\mu_{D} + W_{i}\gamma +  u_{i}
-    \end{equation*}
-  \item Now, the $\mu_{D}$ are equivalent to the predicted values for
-    $D_{i}$ \emph{after residualizing out for $W_{i}$} (which usually
-    includes a constant)
-    \begin{itemize}
-    \item E.g. $\hat{D}^{\perp}$ from the regression on $\mathcal{Q}_{i}^{\perp}$
-    \item Call this measure $Z_{i} = \hat{D}^{\perp}$ our leniency measure
-    \end{itemize}
-  \item This captures the average variation in leniency within the average of a location
-    \begin{itemize}
-    \item In the simple case where judges are nested within courts,
-      this just captures variation across $Q$ due to judge specific
-      random variation
-    \item Mechanically, this would literally capture
-      \begin{align*}
-        \hat{D}^{\perp} &= n^{-1}\left(\underbrace{\sum_{i}1(Q_{i} = q)D_{i}}_{\text{judge mean}} - \underbrace{\sum_{i}1(W_{i} = w)D_{i}}_{\text{location mean}}\right)
-      \end{align*}
-    \end{itemize}
-  \end{wideitemize}
-\end{frame}
-
-
-\begin{frame}{What's the instrument that people have used?}
+\begin{frame}{Relative leniency after residualizing}
     \begin{columns}[onlytextwidth, T] % align columns
       \begin{column}{.5\textwidth}
         \begin{wideitemize}
-        \item Once you do this exercise with judge leniency, you get a
+        \item Once you residualize for controls, you get a
           much more recentered object
-        \item This captures across location differences, and give true variation
-        \item Point worth noting -- due to the location effect, we
-          can't estimate the ``true'' judge leniency -- just relative
+        \item This captures within-location variation and gives true examiner-specific variation
+        \item Due to the location effect, we
+          can't estimate ``true'' judge leniency -- just relative
           leniency within an office
         \end{wideitemize}
       \end{column}%
@@ -422,200 +387,195 @@
         \includegraphics[width=\linewidth]{images/leniency_res.png}
       \end{column}%
     \end{columns}
-  \end{frame}
-
-  \begin{frame}{ Important note: Leave-out}
-    \begin{itemize}
-    \item In practice, individuals use the ``leave-one-out'' mean,
-      rather than the actual average
-    \item Why? Because if you include your own observation, that will
-      be endogeneously correlated
-    \item The ``leave-one-out'' leniency is the mechanical solution
-      that deals with the many instrument problem
-    \end{itemize}
-  \end{frame}
-
-  \begin{frame}{ Recall Many IV bias is pernicious}
-    \only<1>{    \includegraphics[width=0.7\linewidth]{images/manyiv_hull1.png}    }
-    \only<2>{    \includegraphics[width=0.7\linewidth]{images/manyiv_hull2.png}    }
-    \only<3>{    \includegraphics[width=0.7\linewidth]{images/manyiv_hull3.png}    }    
-  \end{frame}
-  
-
-\begin{frame}{Nothing stops us from doing the same with outcomes!}
-    \begin{columns}[onlytextwidth, T] % align columns
-      \begin{column}{.5\textwidth}
-        \begin{wideitemize}
-        \item We can do the same exercise with our outcome measures!
-        \item Nothing changes in this setting -- we have both location
-          and judge effects, and we can see differences if we don't
-          account for them
-        \item Location variation absorbs a large chunk, but we still
-          see variation in our outcome caused by variation in judges
-        \end{wideitemize}
-      \end{column}%
-      \hfill%
-      \begin{column}{.5\textwidth}
-        \only<1>{\includegraphics[width=\linewidth]{images/outcome.png}}
-        \only<2>{\includegraphics[width=\linewidth]{images/outcome_res.png}}        
-      \end{column}%
-    \end{columns}
 \end{frame}
 
-\begin{frame}{Thinking about instrumental variables}
+\begin{frame}{The infeasible ideal and the bias problem}
+  \begin{wideitemize}
+  \item If we knew $\pi$, we could use relative leniency $\tilde{\ell}_{i} = \tilde{z}_{i}'\pi$ as the instrument:
+    \begin{equation*}
+      \hat{\beta}^{*} = \frac{\sum_{i} y_{i} \tilde{\ell}_{i}}{\sum_{i} x_{i} \tilde{\ell}_{i}}
+    \end{equation*}
+  \item Since $\tilde{\ell}_{i}$ is as-good-as-random and uncorrelated with $\varepsilon_{i}$, this is approximately unbiased
+  \item But we don't know $\pi$! Using sample estimates $\hat{\pi}$ gives us 2SLS:
+    \begin{itemize}
+    \item The estimated leniency $\hat{\ell}_{i} = \tilde{z}_{i}'\hat{\pi}$ is constructed \emph{in part from observation $i$'s own treatment}
+    \item This creates a mechanical correlation with $\varepsilon_{i}$ $\Rightarrow$ many-IV bias toward OLS
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+
+\begin{frame}{How severe is the many-IV bias?}
+  \begin{wideitemize}
+  \item Under homoskedasticity, 2SLS bias $\approx$ OLS bias $\times \frac{1}{(1-R^{2}) \times E[F]}$
+    \begin{itemize}
+    \item $E[F]$: expected first-stage $F$ statistic; $R^{2}$: partial R-squared from instruments
+    \item Since $R^{2} \approx 0$ typically, the magnitude of $E[F]$ tells us how much smaller 2SLS bias is vs.\ OLS
+    \end{itemize}
+  \item This justifies the $F > 10$ rule of thumb (Staiger and Stock, 1997): if $E[F] < 10$, 2SLS bias exceeds 10\% of OLS bias
+  \item With many examiners, $F$ can be modest even when leniency explains meaningful variation, because the formula divides by $K$
+  \end{wideitemize}
+  % \only<1>{\begin{center}\includegraphics[width=0.55\linewidth]{images/manyiv_hull1.png}\end{center}}
+  % \only<2>{\begin{center}\includegraphics[width=0.55\linewidth]{images/manyiv_hull2.png}\end{center}}
+  % \only<3>{\begin{center}\includegraphics[width=0.55\linewidth]{images/manyiv_hull3.png}\end{center}}
+\end{frame}
+
+\begin{frame}{The leave-out solution and why manual leniency is fragile}
+  \begin{wideitemize}
+  \item The bias comes from using own treatment to estimate leniency
+  \item Common practice: use a ``leave-one-out'' (LOO) leniency measure $\hat{\ell}_{-i}$
+    \begin{itemize}
+    \item Excludes observation $i$'s own treatment from the examiner average
+    \item Removes the mechanical correlation with $\varepsilon_{i}$
+    \end{itemize}
+  \item But this ``manual'' leniency construction is fragile!
+    \begin{itemize}
+    \item LOO of \emph{absolute} leniency $\Rightarrow$ residualizing for $w_{i}$ reintroduces own-observation bias through the control means
+    \item This is JIVE (Phillips and Hale, 1977); its bias can be comparable to 2SLS when there are many controls:
+      \begin{equation*}
+        \text{JIVE bias} \approx \text{2SLS bias} \times \frac{-E[F] \times L}{(E[F]-1)K - L}
+      \end{equation*}
+      where $L$ = number of controls, $K$ = number of instruments
+    \end{itemize}
+  \item \textbf{Takeaway}: subtle variations in how the leniency measure is constructed and accounts for covariates can have large consequences
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Use UJIVE!}
+  \begin{wideitemize}
+  \item \textbf{UJIVE} (Unbiased Jackknife IV, Koles\'{a}r 2013): the purpose-built solution
+    \begin{itemize}
+    \item Estimates \emph{relative} leniency using leave-out: $\hat{\ell}_{-i} = \tilde{z}_{i}'\hat{\pi}_{-i}$
+    \item First residualize instruments for $w_{i}$, \emph{then} do leave-out estimation
+    \item Avoids the own-observation bias of both 2SLS and JIVE
+    \end{itemize}
+  \item Approximately unbiased even with many examiners and many controls
+  \item Remains consistent even with weak instruments (as long as $\sqrt{K} \times E[F]$ is large)
+  \item No need to report first-stage $F$ as a diagnostic: UJIVE doesn't suffer from the bias that $F > 10$ screens for
+  \item Don't construct leniency manually -- use UJIVE as a one-step estimator
+    \begin{itemize}
+    \item R package: \texttt{ManyIV} at \texttt{github.com/kolesarm/ManyIV}
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Comparison of estimators}
+  \begin{wideitemize}
+  \item \textbf{2SLS with examiner dummies}: biased toward OLS with many examiners
+  \item \textbf{JIVE} (leave-out absolute leniency): bias reintroduced by many controls
+  \item \textbf{IJIVE} (Ackerberg and Devereux, 2009): reverses order---residualize \emph{then} leave-out; similar to UJIVE in practice
+  \item \textbf{FEJIV} (Chao, Swanson, Woutersen, 2023): minimal MSE leniency with orthogonality to controls; attractive but computationally demanding 
+  \item \textbf{UJIVE}: recommended default
+    \begin{itemize}
+    \item Minimal MSE without orthogonality constraint
+    \item Simple, established unbiasedness properties
+    \item Works with many instruments \emph{and} many controls
+    \end{itemize}
+  \item \textbf{Manual leniency IV}: widely advised against (like ``manual 2SLS'')
+  \end{wideitemize}
+\end{frame}
+
+%% ============================================================
+%% PART 3: HETEROGENEOUS EFFECTS AND MONOTONICITY
+%% ============================================================
+
+\begin{transitionframe}
+  \begin{center}
+    {\Huge \textcolor{blue}{Part 3: Heterogeneous Effects and Monotonicity}}
+  \end{center}
+\end{transitionframe}
+
+
+\begin{frame}{What does UJIVE estimate with heterogeneous effects?}
+  \begin{wideitemize}
+  \item So far we assumed constant $\beta$. In practice, treatment effects $\beta_{i}$ vary across individuals
+  \item The LATE theorem (Imbens and Angrist, 1994) provides a causal interpretation under:
+    \begin{enumerate}
+    \item As-good-as-random assignment (conditional on controls)
+    \item Exclusion restriction
+    \item \textbf{Monotonicity}: if examiner $a$ would grant in a case where $b$ wouldn't, then $a$ is more lenient in \emph{all} cases
+    \end{enumerate}
+  \item With two examiners: divides population into \textbf{compliers} (treatment depends on assignment) and \textbf{non-responders} (always/never treated)
+  \item Monotonicity rules out \textbf{defiers} (treated only by the tough examiner)
+  \item IV estimates the average treatment effect for compliers (LATE)
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Monotonicity with many examiners}
   \begin{columns}[onlytextwidth, T] % align columns
-    \begin{column}{.7\textwidth}
+    \begin{column}{.55\textwidth}
       \begin{wideitemize}
-      \item The reason that this is approach is used, of course, is to
-        use the variation in $\mu_{D}(q)$ to identify the effect of
-        $D$ on $Y$
-      \item   So what do we need? Recall
+      \item With many examiners, standard monotonicity is very strong:
+        requires all examiners to rank \emph{every} case identically
+      \item Equivalent to assuming examiners differ only in their \emph{cutoff}, not their ranking criteria
+      \item Two core concerns:
         \begin{enumerate}
-          \item  relevance -- e.g. we need that our instrument is predictive of D
-          \item exclusion -- e.g. we need that the examiner
-            \emph{only} has an effect on Y e.g. potential outcomes
-            $Y_{i}(D_{i}(Q_{i}), Q_{i}) = Y_{i}(D_{i}(Q_{i}))$
-          \item monotonicity -- e.g. we need an ordering in the effects
-          \end{enumerate}
-        \item The last two are the challenging part, and not
-          inherently testable. Let's discuss the issues, but first,
-          how is this done in practice?
+        \item Multi-dimensional evaluation criteria (e.g.\ novelty vs.\ usefulness vs.\ non-obviousness)
+        \item Skill variation induces ranking differences through mistakes
+        \end{enumerate}
       \end{wideitemize}
     \end{column}%
     \hfill%
-    \begin{column}{.5\textwidth}
+    \begin{column}{.45\textwidth}
+      \includegraphics[width=\linewidth]{images/imbensangrist_judge.png}
     \end{column}%
   \end{columns}
 \end{frame}
 
-
-\begin{frame}{How is this done in practice, usually?}
+\begin{frame}{Average monotonicity: a weaker condition}
   \begin{wideitemize}
-  \item In many papers (including my own, historically), the
-    \emph{leniency} measure $Z_{i}$ has been used, rather than the
-    dummies for judges
-  \item Why? A number of reasons:
+  \item With many examiners, UJIVE estimates a weighted average of pairwise-complier treatment effects, weighted by squared leniency differences
     \begin{itemize}
-    \item Faster -- one time calculation vs. over identifed 2sls
-    \item Visualization -- plotting the reduced form and first stage against leniency is very intuitive
-    \item Worry about first stage power is easier in the just identified case
+    \item Larger complier groups get more weight
     \end{itemize}
-  \item But note the following equivalency from our GMM/2SLS estimator:
-    \begin{equation}
-      \hat{\beta}_{2SLS} = \frac{D'\mathcal{Q}(\mathcal{Q}'\mathcal{Q})^{-1}\mathcal{Q}'Y}{D'\underbrace{\mathcal{Q}(\mathcal{Q}'\mathcal{Q})^{-1}\mathcal{Q}'}_{P_{\mathcal{Q}}}D} = \frac{\hat{D}'Y}{\hat{D}'D} 
-    \end{equation}
-  \item Using many instruments and using the predicted first stage
-    as your instrument are the same thing (adding controls just adds residualization)
-  \end{wideitemize}
-\end{frame}
-
-\begin{frame}{So which is it?}
-  \begin{wideitemize}
-  \item Our variation is really the random assignment of $K$
-    judges. Collapsing to a predicted first stage doesn't change this,
-    and if anything masks the experiement
-  \item The estimator is exactly the same (or close, once we deal with
-    some estimation issues)
+  \item Without monotonicity, defier groups get \emph{negative} weight $\Rightarrow$ problematic
+  \item But each individual appears in many pairwise comparisons. Total weight on individual $i$ is their \emph{average} complier/defier status
+  \item \textbf{Average monotonicity} (Frandsen et al.\ 2023): the average leniency of examiners who would grant exceeds the average leniency of those who would deny
     \begin{itemize}
-    \item If this were the right approach, we could do this in every overidentified setting! 
-    \end{itemize}
-  \item The issue is with inference -- e.g. how much uncertainty is there in the underlying projections?
-    \begin{itemize}
-    \item Consider the real line with the $\mu_{D}(q)$ and
-      $\hat{\mu}_{D}(q)$. Focusing on the estimated leniency measure
-      ignores potential important underlying variation in the first stage estimates
-    \end{itemize}
-  \item In some cases, using the overidentified approach and the
-    leniency just-identified approach give very similar standard
-    errors -- this is due to relative precision in estimates
-    in the $\mu$, and is not guaranteed!
-  \end{wideitemize}
-\end{frame}
-
-\begin{frame}{An important reason to like leniency measures}
-  \begin{wideitemize}
-  \item The biggest reason why researchers used the leniency measure
-    is it gave a natural way to deal with the ``own-observation''
-    problem
-  \item Note that $\hat{\mu}_{D}(q)$ includes indivudal $i$'s
-    observation in the estimation procedure, scaled by $n^{-1}$
-    \begin{itemize}
-    \item This term is endogeneous!
-    \end{itemize}
-  \item Leniency measures that researchers construct use a
-    ``leave-one-out'' mean to account for this, and instead measure an
-    individual's leniency exposure as a judge's leniency
-    \emph{excluding} own observation
-  \item This variable was easily plugged into 2SLS and avoided the bias
-  \item But... this approach just approximates jackknife IV!
-    \begin{itemize}
-    \item This own observation issue is exactly the bias that came up from overidentified IV in finite samples
-    \item When the number of judges is large-ish within a court, this
-      can be an issue
+    \item Weaker than standard monotonicity: allows some pairwise violations
+    \item Sufficient for positive individual weights in UJIVE
+    \item With two examiners, reduces to standard monotonicity
     \end{itemize}
   \end{wideitemize}
 \end{frame}
 
-
-\begin{frame}{Use (U)JIVE!}
-  \begin{wideitemize}
-  \item Given the leniency approach is exactly solved with a known technique, there is
-    no great reason to use leniency directly
-  \item It is more transparent to use the judge variation directly
-  \item If you want to do graphical visualization, just use the first stage coefficients!
-  \item A key issue raised in Kolesar (2013) is the issue of many controls (e.g. many fixed effects) which creates the same problem as many instruments under certain settings
-    \begin{itemize}
-    \item Provides a solution, through UJIVE. See his website for
-      code.
-    \end{itemize}
-  \end{wideitemize}
-\end{frame}
-
-
-\begin{frame}{How to test these exclusion and monotonoicity?}
+\begin{frame}{What if monotonicity is violated?}
   \begin{columns}[onlytextwidth, T] % align columns
     \begin{column}{.5\textwidth}
       \begin{wideitemize}
-      \item Testing exclusion is always challenging
-      \item However, like standard treatment designs and RCTs, we can test for balance
-      \item Use the predicted first stage (e.g. the propensity score)
-        and test of excluded covariates across p-scores $\hat{\mu}_{D}(q)$
-      \item See Aronow and Miller for discusion on balance tests
+      \item Even with some negative weights, it only matters if negatively-weighted observations have systematically different treatment effects
+      \item Sigstad (2025): in judicial panels where multiple judges see the same case, monotonicity is technically violated, but ranking disagreements are not severe enough to create substantial bias
+      \item Key question: are the violations \emph{large enough} to matter?
       \end{wideitemize}
     \end{column}%
     \hfill%
     \begin{column}{.5\textwidth}
-      \includegraphics[width=\linewidth]{images/dgy_3.png}
-    \end{column}%
-  \end{columns}
-  
-\end{frame}
-
-\begin{frame}{How to test these exclusion and monotonoicity?}
-  \begin{columns}[onlytextwidth, T] % align columns
-    \begin{column}{.5\textwidth}
-      \begin{wideitemize}
-      \item<1-> Testing (and believing) monotonicity is also challenging
-      \item<2-> Kitagawa (2015) and Frandsen et al. (2019) discuss ways to
-        test this for binary outcomes
-      \item<2-> Current limitation is finite sample approximation
-      \item<2-> However, provide useful intuititon for tests
-      \end{wideitemize}
-    \end{column}%
-    \hfill%
-    \begin{column}{.5\textwidth}
-      \only<1>{\includegraphics[width=\linewidth]{images/imbensangrist_judge.png}}
-\only<2>{      \includegraphics[width=\linewidth]{images/jjfe_1.png}}
+      \includegraphics[width=\linewidth]{images/gphk_avgmonotonicity.png}
     \end{column}%
   \end{columns}
 \end{frame}
 
+\begin{frame}{Testing average monotonicity with UJIVE}
+  \begin{wideitemize}
+  \item Key insight (building on Abadie 2002, Kitagawa 2015): UJIVE can \textbf{characterize compliers}
+  \item For a binary variable $v_{i}$ (determined before assignment), construct $\tilde{y}_{i} = v_{i} \times x_{i}$ and run UJIVE with $\tilde{y}_{i}$ as outcome
+    \begin{itemize}
+    \item Under average monotonicity, UJIVE estimates a convex-weighted average of $v_{i}$ for compliers
+    \item This estimate must lie in $[0,1]$ since $v_{i} \in \{0,1\}$
+    \item A negative estimate or one exceeding 1 $\Rightarrow$ evidence against average monotonicity
+    \end{itemize}
+  \item Can also use the original outcome: set $\tilde{y}_{i} = y_{i} \times x_{i}$ to estimate weighted average of \emph{treated} complier outcomes
+  \item Create indicators for each outcome value (e.g.\ ``zero future applications'') and check all UJIVE estimates are positive
+  \item This test inherits UJIVE's unbiasedness with many examiners/controls
+  \end{wideitemize}
+\end{frame}
 
-\begin{frame}{Kitagawa (2015) result}
+
+\begin{frame}{Kitagawa (2015) result (background)}
   \begin{columns}[onlytextwidth, T] % align columns
     \begin{column}{.5\textwidth}
       \begin{itemize}
-      \item Consider binary endogeneous treatment $D$ and a discrete instrument $Z$.
+      \item Consider binary endogenous treatment $D$ and a discrete instrument $Z$.
       \item Joint \emph{testable} assumption: instrument is valid and monotonicity. Why?
         \begin{itemize}
         \item Consider $p(y,d) = Pr(Y = y, D = d | Z = 1)$, $q(y,d) = Pr(Y = y, D = d | Z = 0)$
@@ -644,60 +604,197 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Extension to Examiner designs (Frandsen et al.)}
-  \begin{columns}[onlytextwidth, T] % align columns
-    \begin{column}{.5\textwidth}
-      \begin{itemize}
-      \item Now, with multiple judges, we don't know the ``true'' $z$ values
-      \item Need to instead consider how this moves with noise
-      \item Mapping from judges to ``leniency'' and then use Kitagawa test
-        \item Package available: \texttt{testjfe} in Stata
-      \end{itemize}
-    \end{column}%
-    \hfill%
-    \begin{column}{.5\textwidth}
-    \end{column}%
-  \end{columns}
-\end{frame}
 
+%% ============================================================
+%% PART 4: INFERENCE
+%% ============================================================
 
-\begin{frame}{What to do if test fails? (Frandsen et al.)}
-  \begin{columns}[onlytextwidth, T] % align columns
-    \begin{column}{.5\textwidth}
-      \begin{itemize}
-      \item If monotonicity fails in the strict sense, can we rescue the result?
-      \item 
-      \end{itemize}
-    \end{column}%
-    \hfill%
-    \begin{column}{.5\textwidth}
-      \includegraphics[width=\linewidth]{images/average_judge_iv1.pdf}\\
-      \includegraphics[width=\linewidth]{images/average_judge_iv2.pdf}\\
-      \includegraphics[width=\linewidth]{images/average_judge_iv3.pdf}
-    \end{column}%
-  \end{columns}
-\end{frame}
+\begin{transitionframe}
+  \begin{center}
+    {\Huge \textcolor{blue}{Part 4: Inference}}
+  \end{center}
+\end{transitionframe}
 
-
-\begin{frame}{Brief aside on inference}
+\begin{frame}{Standard errors: cluster or not?}
   \begin{wideitemize}
-  \item The many instruments field is still working on heteroskedasticty and complicated inference settings
-  \item This stuff is challenging!
-  \item However, given that the random assignment is effectively a set
-    of judges to a given individual, robust standard errors seems most appropriate
-  \item However, the norm (requested by referees, etc.) appears to be judge clustering 
+  \item The assignment mechanism should guide the choice of standard errors
+  \item \textbf{Individual-level randomization} (e.g.\ patent examiners assigned idiosyncratically within art unit-year):
     \begin{itemize}
-    \item   Not totally clear why
+    \item Heteroskedasticity-robust (HC) standard errors are appropriate
+    \item No need to cluster by examiner
     \end{itemize}
+  \item \textbf{Group-level assignment} (e.g.\ all cases in a month assigned to the same examiner):
+    \begin{itemize}
+    \item Cluster at the group level (e.g.\ month)
+    \item May also need leave-cluster-out modification of UJIVE (Frandsen et al.\ 2025)
+    \end{itemize}
+  \item Rule of thumb: clustering is needed when groups of observations are assigned together
+  \item UJIVE computes correct heteroskedastic-robust SEs automatically
+  \item Clustering justification also has implications for the \emph{estimator}, not just inference
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Don't be fooled by small 2SLS standard errors}
+  \begin{wideitemize}
+  \item With many examiners, 2SLS standard errors can be \emph{much} smaller than UJIVE SEs
+  \item This reflects statistical pathology, not efficiency:
+    \begin{itemize}
+    \item 2SLS estimates are pulled toward OLS (biased)
+    \item 2SLS standard errors are also pulled toward OLS SEs (too small)
+    \item Creates a false sense of precision around biased estimates
+    \end{itemize}
+  \item Even leave-out leniency measures (manual construction) can produce SEs that don't reflect estimation error in the leniency measure
+  \item UJIVE delivers both unbiased point estimates \emph{and} standard errors that accurately capture sampling variation
+  \end{wideitemize}
+\end{frame}
+
+
+%% ============================================================
+%% PART 5: PRACTICAL CHECKLIST
+%% ============================================================
+
+\begin{transitionframe}
+  \begin{center}
+    {\Huge \textcolor{blue}{Part 5: A Practical Checklist}}
+  \end{center}
+\end{transitionframe}
+
+\begin{frame}{The 5-step checklist (GHK 2025)}
+  \begin{enumerate}
+  \addtolength{\itemsep}{8pt}
+  \item \textbf{Identify necessary controls} for as-good-as-random assignment, and determine appropriate estimator and standard errors
+  \item \textbf{Verify balance} on predetermined observables
+  \item \textbf{Estimate treatment effects} by UJIVE (and compare to 2SLS/OLS)
+  \item \textbf{Test average monotonicity} to assess LATE interpretation
+  \item \textbf{Characterize compliers} to assess external validity
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Step 1: Identify necessary controls and design}
+  \begin{wideitemize}
+  \item Begin with institutional knowledge that justifies quasi-random assignment
+    \begin{itemize}
+    \item What is the assignment mechanism? What must be conditioned on?
+    \item Patent example: assignment within art units is effectively random, conditional on the set of examiners $\Rightarrow$ art unit $\times$ year FE
+    \item Bail example: rotating schedule $\Rightarrow$ time-of-day variation
+    \end{itemize}
+  \item These are \emph{necessary controls}---must be included in every specification
+  \item Separately, may include \emph{precision controls} (pre-assignment covariates) to reduce SEs
+  \item Also argue for the exclusion restriction from institutional knowledge
+    \begin{itemize}
+    \item Patent examiners make narrow approval decisions $\Rightarrow$ unlikely to directly affect future innovation
+    \end{itemize}
+  \item Assignment mechanism determines clustering level for SEs (and potentially for leave-cluster-out UJIVE)
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Step 2: Verify balance on observables}
+  \begin{columns}[onlytextwidth, T] % align columns
+    \begin{column}{.5\textwidth}
+      \begin{wideitemize}
+      \item As-good-as-random assignment implies average predetermined characteristics are equal across examiners (conditional on controls)
+      \item \textbf{Best practice}: run UJIVE specification with each predetermined covariate as the outcome
+        \begin{itemize}
+        \item Same instruments, same controls as main specification
+        \item Avoids finite-sample biases from regressing on constructed leniency
+        \end{itemize}
+      \item Magnitude of imbalance directly translates to potential bias in treatment effects
+      \end{wideitemize}
+    \end{column}%
+    \hfill%
+    \begin{column}{.5\textwidth}
+      \includegraphics[width=\linewidth]{images/gphk_balance_table.png}
+    \end{column}%
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Step 3: Estimate treatment effects}
+  \begin{wideitemize}
+  \item Use UJIVE as the preferred estimator
+  \item Report alongside alternative estimators for comparison:
+    \begin{itemize}
+    \item OLS (benchmark for selection bias)
+    \item 2SLS with examiner dummies (shows many-IV bias)
+    \item Manual leniency IV if used in prior literature (shows construction sensitivity)
+    \end{itemize}
+  \item Pattern to look for:
+    \begin{itemize}
+    \item 2SLS estimates between OLS and UJIVE $\Rightarrow$ 2SLS pulled toward OLS as predicted
+    \item 2SLS SEs much smaller than UJIVE SEs $\Rightarrow$ false precision from bias
+    \end{itemize}
+  \item In Farre-Mensa et al.\ reanalysis: UJIVE finds significant positive effects of patent approval on future innovation, but 2SLS SEs are 3--4x smaller (pathological)
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}{Step 4: Test average monotonicity}
+  \begin{wideitemize}
+  \item For each possible outcome value, create indicator and interact with treatment:
+    \begin{itemize}
+    \item E.g.\ $\tilde{y}_{i} = \mathbf{1}(y_{i} = k) \times x_{i}$ for each $k$
+    \item Run UJIVE with same instruments and controls
+    \item All estimates should be positive (and between 0 and 1)
+    \end{itemize}
+  \item This tests the weaker \emph{average} monotonicity, not full IA94 monotonicity
+  \item Uses the same UJIVE framework---inherits robustness to many instruments/controls
+  \item Frandsen et al.\ (2023) test of strict monotonicity also available (\texttt{testjfe} in Stata), but:
+    \begin{itemize}
+    \item Rules out many decision-makers
+    \item Requires bounded outcomes
+    \item Tests the stronger condition
+    \end{itemize}
+  \end{wideitemize}
+\end{frame}
+
+\begin{frame}
+  \includegraphics[width=\linewidth]{images/monotonicity_ujive.png}
+\end{frame}
+
+\begin{frame}{Step 5: Characterize compliers for external validity}
+  \begin{wideitemize}
+  \item Even with a valid LATE, we want to know: are compliers representative of the broader population?
+  \item Use UJIVE with modified outcomes to characterize compliers:
+    \begin{itemize}
+    \item For each baseline covariate $v_{i}$, run UJIVE with $\tilde{y}_{i} = v_{i} \times x_{i}$ as outcome
+    \item Recovers weighted average of $v_{i}$ for treated compliers
+    \item For untreated compliers: use $v_{i} \times (1 - x_{i})$ instead
+    \item Pool efficiently: use $\tilde{x}_{i} = 2x_{i} - 1$ and regress $v_{i} \times \tilde{x}_{i}$ on $\tilde{x}_{i}$ (Angrist et al.\ 2023)
+    \end{itemize}
+  \item Compare complier means to population means
+    \begin{itemize}
+    \item If similar: LATE likely approximates ATE
+    \item If different: effects may not generalize
+    \end{itemize}
+  \item Complier estimates within $[0,1]$ for binary $v_{i}$ also supports average monotonicity
+  \end{wideitemize}
+\end{frame}
+
+%% ============================================================
+%% CONCLUSION
+%% ============================================================
+
+\begin{frame}{Summary: Key recommendations}
+  \begin{wideitemize}
+  \item \textbf{Estimation}: Use UJIVE, not manual leniency or 2SLS
+    \begin{itemize}
+    \item Avoids many-IV bias and many-control bias simultaneously
+    \item R package: \texttt{ManyIV}
+    \end{itemize}
+  \item \textbf{Controls}: Identify necessary controls from institutional knowledge; precision controls optional
+  \item \textbf{Inference}: Heteroskedastic-robust SEs when individual-level assignment; cluster when group assignment
+  \item \textbf{Monotonicity}: Test average monotonicity (weaker than standard) via UJIVE
+  \item \textbf{External validity}: Characterize compliers using UJIVE with modified outcomes
+  \item \textbf{Don't} construct leniency measures manually -- one-step UJIVE is simpler and safer
   \end{wideitemize}
 \end{frame}
 
 \begin{frame}{Further Readings}
   \begin{wideitemize}
+  \item Goldsmith-Pinkham, Hull, and Koles\'{a}r (2025), ``Leniency Designs: An Operator's Manual''
+  \item Frandsen, Lefgren, and Leslie (2023), ``Judging Judge Fixed Effects''
+  \item Koles\'{a}r (2013), ``Estimation in an Instrumental Variables Model with Treatment Effect Heterogeneity''
   \item Cunningham (2021) chapter 7.8.2
-  \item Judging Judge Fixed Effects (2020)
-  \item Mueller-Smith (2015)
-  \item Dobbie and Song (2015)
+  \item Farre-Mensa, Hegde, and Ljungqvist (2020)
+  \item Stevenson (2018); Dobbie, Goldsmith-Pinkham, and Yang (2017)
   \end{wideitemize}
 \end{frame}
 
